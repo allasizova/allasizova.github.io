@@ -5,59 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bibliographic Entries System</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        #entries .entry {
-            border: 1px solid #ddd;
+        .entry {
             margin-bottom: 20px;
+            border: 1px solid #ccc;
             padding: 10px;
         }
-
-        #filters {
-            margin-bottom: 20px;
+        .group {
+            margin-top: 40px;
         }
-
-        #filters button {
-            padding: 5px 10px;
-            cursor: pointer;
+        .group h2 {
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <h1>Bibliographic Entries</h1>
-    <div id="filters">
-        <button onclick="groupByAuthor()">Group by Author</button>
-        <button onclick="groupByHashtag()">Group by Hashtag</button>
-    </div>
-    <div id="entries">
-        <!-- Example Entry -->
-        <div class="entry" data-author="John Doe" data-hashtags="science,space">
-            <h2>Title of the Paper</h2>
-            <p>Author: John Doe</p>
-            <p>Year: 2024</p>
-            <p>Abstract: Brief description of the paper...</p>
-            <p>Hashtags: #science #space</p>
-        </div>
-        <div class="entry" data-author="Ivanov" data-hashtags="space">
-            <h2>Title of the Paper</h2>
-            <p>Author: Ivanov</p>
-            <p>Year: 2024</p>
-            <p>Abstract: 111111</p>
-            <p>Hashtags: #science #space</p>
-        </div>
-        <!-- Repeat for other entries -->
-    </div>
-    <script>
-        function groupByAuthor() {
-            // Implement grouping by author logic
-            console.log("Grouped by Author");
-        }
 
-        function groupByHashtag() {
-            // Implement grouping by hashtag logic
-            console.log("Grouped by Hashtag");
+    <!-- Group by Author -->
+    <div class="group" id="authorGroup">
+        <h2>Grouped by Author</h2>
+        <!-- Author 1 -->
+        <div class="entry" data-type="book" data-hashtags="science,history">
+            <p>Title: <strong>History of Science</strong></p>
+            <p>Author: <strong>Author 1</strong></p>
+            <p>Type: Book</p>
+            <p>Hashtags: #science #history</p>
+            <p>URL: <a href="http://example.com/book1" target="_blank">http://example.com/book1</a></p>
+        </div>
+        <!-- Author 2 -->
+        <div class="entry" data-type="article" data-hashtags="technology">
+            <p>Title: <strong>Future of Technology</strong></p>
+            <p>Author: <strong>Author 2</strong></p>
+            <p>Type: Article</p>
+            <p>Hashtags: #technology</p>
+            <p>URL: <a href="http://example.com/article1" target="_blank">http://example.com/article1</a></p>
+        </div>
+    </div>
+
+    <!-- Group by Type -->
+    <div class="group" id="typeGroup">
+        <h2>Grouped by Type</h2>
+        <!-- Books -->
+        <h3>Books</h3>
+        <!-- Repeat book entries here -->
+        
+        <!-- Articles -->
+        <h3>Articles</h3>
+        <!-- Repeat article entries here -->
+
+        <!-- Dissertations -->
+        <h3>Dissertations</h3>
+        <!-- Repeat dissertation entries here -->
+    </div>
+
+    <!-- Group by Hashtag -->
+    <div class="group" id="hashtagGroup">
+        <h2>Grouped by Hashtag</h2>
+        <!-- #science -->
+        <h3>#science</h3>
+        <!-- Repeat entries for #science -->
+
+        <!-- #technology -->
+        <h3>#technology</h3>
+        <!-- Repeat entries for #technology -->
+    </div>
+
+    <script>
+        // Example JavaScript to potentially toggle visibility based on grouping criteria.
+        // This is a simplistic approach. A full solution would require more complex logic.
+        function filterByCategory(category, value) {
+            // Implement filtering logic here
+            console.log(`Filtering by ${category}: ${value}`);
         }
     </script>
 </body>
