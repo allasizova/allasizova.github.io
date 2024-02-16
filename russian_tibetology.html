@@ -1,89 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bibliographic Entries System</title>
+    <title>Библиографические записи</title>
     <style>
-        .entry {
+        .biblio-entry {
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             padding: 10px;
-        }
-        .group {
-            margin-top: 40px;
-        }
-        .group h2 {
-            color: #333;
-        }
-        a {
-            text-decoration: none;
-            color: blue;
-        }
-        a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Bibliographic Entries</h1>
-
-    <!-- Group by Author -->
-    <div class="group" id="authorGroup">
-        <h2>Grouped by Author</h2>
-        <!-- Author 1 -->
-        <div class="entry" data-type="book" data-hashtags="science,history">
-            <p>Title: <strong>History of Science</strong></p>
-            <p>Author: <strong>Author 1</strong></p>
-            <p>Type: Book</p>
-            <p>Hashtags: #science #history</p>
-            <p>URL: <a href="http://example.com/book1" target="_blank">http://example.com/book1</a></p>
-        </div>
-        <!-- Author 2 -->
-        <div class="entry" data-type="article" data-hashtags="technology">
-            <p>Title: <strong>Future of Technology</strong></p>
-            <p>Author: <strong>Author 2</strong></p>
-            <p>Type: Article</p>
-            <p>Hashtags: #technology</p>
-            <p>URL: <a href="http://example.com/article1" target="_blank">http://example.com/article1</a></p>
-        </div>
-    </div>
-
-    <!-- Group by Type -->
-    <div class="group" id="typeGroup">
-        <h2>Grouped by Type</h2>
-        <!-- Books -->
-        <h3>Books</h3>
-        <!-- Repeat book entries here -->
-        
-        <!-- Articles -->
-        <h3>Articles</h3>
-        <!-- Repeat article entries here -->
-
-        <!-- Dissertations -->
-        <h3>Dissertations</h3>
-        <!-- Repeat dissertation entries here -->
-    </div>
-
-    <!-- Group by Hashtag -->
-    <div class="group" id="hashtagGroup">
-        <h2>Grouped by Hashtag</h2>
-        <!-- #science -->
-        <h3>#science</h3>
-        <!-- Repeat entries for #science -->
-
-        <!-- #technology -->
-        <h3>#technology</h3>
-        <!-- Repeat entries for #technology -->
-    </div>
+    <h1>Библиографические записи</h1>
+    <div id="biblioContainer"></div>
 
     <script>
-        // Example JavaScript to potentially toggle visibility based on grouping criteria.
-        // This is a simplistic approach. A full solution would require more complex logic.
-        function filterByCategory(category, value) {
-            // Implement filtering logic here
-            console.log(`Filtering by ${category}: ${value}`);
+        // Массив данных библиографических записей
+        const bibliographicEntries = [
+            {
+                authors: ["Иван Иванов", "Петр Петров"],
+                title: "Исследование А",
+                type: "Книга",
+                hashtags: ["#наука", "#образование"]
+            },
+            {
+                authors: ["Алексей Алексеев"],
+                title: "Разработка Б",
+                type: "Статья",
+                hashtags: ["#технологии", "#инновации"]
+            }
+            // Добавьте дополнительные записи по аналогии
+        ];
+
+        // Функция для отображения библиографических записей
+        function displayBibliographicEntries() {
+            const container = document.getElementById('biblioContainer');
+            container.innerHTML = ''; // Очистить текущее содержимое контейнера
+
+            bibliographicEntries.forEach(entry => {
+                const entryElement = document.createElement('div');
+                entryElement.classList.add('biblio-entry');
+
+                const authors = document.createElement('p');
+                authors.textContent = `Авторы: ${entry.authors.join(", ")}`;
+
+                const title = document.createElement('p');
+                title.textContent = `Название: ${entry.title}`;
+
+                const type = document.createElement('p');
+                type.textContent = `Тип: ${entry.type}`;
+
+                const hashtags = document.createElement('p');
+                hashtags.textContent = `Хэштеги: ${entry.hashtags.join(" ")}`;
+
+                entryElement.appendChild(authors);
+                entryElement.appendChild(title);
+                entryElement.appendChild(type);
+                entryElement.appendChild(hashtags);
+
+                container.appendChild(entryElement);
+            });
         }
+
+        // Вызвать функцию для отображения записей при загрузке страницы
+        document.addEventListener('DOMContentLoaded', displayBibliographicEntries);
     </script>
 </body>
 </html>
