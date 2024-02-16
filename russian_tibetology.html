@@ -13,10 +13,22 @@
 </head>
 <body>
     <h1>Библиографические записи</h1>
+    <div>
+        <label for="filterAuthor">Фильтр по автору:</label>
+        <select id="filterAuthor" onchange="filterByAuthor(this.value)">
+            <option value="">Все авторы</option>
+            <!-- Опции заполняются динамически -->
+        </select>
+
+        <label for="filterHashtag">Фильтр по хэштэгу:</label>
+        <select id="filterHashtag" onchange="filterByHashtag(this.value)">
+            <option value="">Все хэштэги</option>
+            <!-- Опции заполняются динамически -->
+        </select>
+    </div>
     <div id="biblioContainer"></div>
 
     <script>
-        // Массив данных библиографических записей
         const bibliographicEntries = [
             {
                 authors: ["Иван Иванов", "Петр Петров"],
@@ -30,41 +42,60 @@
                 type: "Статья",
                 hashtags: ["#технологии", "#инновации"]
             }
-            // Добавьте дополнительные записи по аналогии
         ];
 
-        // Функция для отображения библиографических записей
-        function displayBibliographicEntries() {
+        function displayBibliographicEntries(entries = bibliographicEntries) {
             const container = document.getElementById('biblioContainer');
-            container.innerHTML = ''; // Очистить текущее содержимое контейнера
+            container.innerHTML = '';
 
-            bibliographicEntries.forEach(entry => {
+            entries.forEach(entry => {
                 const entryElement = document.createElement('div');
                 entryElement.classList.add('biblio-entry');
-
-                const authors = document.createElement('p');
-                authors.textContent = `Авторы: ${entry.authors.join(", ")}`;
-
-                const title = document.createElement('p');
-                title.textContent = `Название: ${entry.title}`;
-
-                const type = document.createElement('p');
-                type.textContent = `Тип: ${entry.type}`;
-
-                const hashtags = document.createElement('p');
-                hashtags.textContent = `Хэштеги: ${entry.hashtags.join(" ")}`;
-
-                entryElement.appendChild(authors);
-                entryElement.appendChild(title);
-                entryElement.appendChild(type);
-                entryElement.appendChild(hashtags);
-
+                entryElement.innerHTML = `
+                    <p>Авторы: ${entry.authors.join(", ")}</p>
+                    <p>Название: ${entry.title}</p>
+                    <p>Тип: ${entry.type}</p>
+                    <p>Хэштеги: ${entry.hashtags.join(" ")}`;
                 container.appendChild(entryElement);
             });
         }
 
-        // Вызвать функцию для отображения записей при загрузке страницы
-        document.addEventListener('DOMContentLoaded', displayBibliographicEntries);
+        function populateFilters() {
+            const authorSet = new Set();
+            const hashtagSet = new Set();
+
+            bibliographicEntries.forEach(entry => {
+                entry.authors.forEach(author => authorSet.add(author));
+                entry.hashtags.forEach(hashtag => hashtagSet.add(hashtag));
+            });
+
+            const authorSelect = document.getElementById('filterAuthor');
+            authorSet.forEach(author => {
+                const option = new Option(author, author);
+                authorSelect.add(option);
+            });
+
+            const hashtagSelect = document.getElementById('filterHashtag');
+            hashtagSet.forEach(hashtag => {
+                const option = new Option(hashtag, hashtag);
+                hashtagSelect.add(option);
+            });
+        }
+
+        function filterByAuthor(author) {
+            const filteredEntries = author ? bibliographicEntries.filter(entry => entry.authors.includes(author)) : bibliographicEntries;
+            displayBibliographicEntries(filteredEntries);
+        }
+
+        function filterByHashtag(hashtag) {
+            const filteredEntries = hashtag ? bibliographicEntries.filter(entry => entry.hashtags.includes(hashtag)) : bibliographicEntries;
+            displayBibliographicEntries(filteredEntries);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayBibliographicEntries();
+            populateFilters();
+        });
     </script>
 </body>
 </html>
