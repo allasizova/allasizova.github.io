@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliographic Entries System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #entries .entry {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        #filters {
+            margin-bottom: 20px;
+        }
+
+        #filters button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bibliographic Entries</h1>
+    <div id="filters">
+        <button onclick="groupByAuthor()">Group by Author</button>
+        <button onclick="groupByHashtag()">Group by Hashtag</button>
+    </div>
+    <div id="entries">
+        <!-- Example Entry -->
+        <div class="entry" data-author="John Doe" data-hashtags="science,space">
+            <h2>Title of the Paper</h2>
+            <p>Author: John Doe</p>
+            <p>Year: 2024</p>
+            <p>Abstract: Brief description of the paper...</p>
+            <p>Hashtags: #science #space</p>
+        </div>
+        <!-- Repeat for other entries -->
+    </div>
+    <script>
+        function groupByAuthor() {
+            // Implement grouping by author logic
+            console.log("Grouped by Author");
+        }
+
+        function groupByHashtag() {
+            // Implement grouping by hashtag logic
+            console.log("Grouped by Hashtag");
+        }
+    </script>
+</body>
+</html>
