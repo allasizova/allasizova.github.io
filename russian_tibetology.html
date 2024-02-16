@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Библиографические записи</title>
+    <title>Библиография по тибетологии</title>
     <style>
         .biblio-entry {
             margin-bottom: 20px;
@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-    <h1>Библиографические записи</h1>
+    <h1>Список публикаций по тибетологии и тибетско-монгольскому буддизму российских или аффилированных с российскими научными учреждениями авторов: 1730 – 2022 гг.</h1>
     <div class="filter-section">
         <div id="authorFilters"><b>Авторы:</b></div>
         <div id="hashtagFilters"><b>Хэштеги:</b></div>
@@ -32,46 +32,103 @@
     <script>
         const bibliographicEntries = [
             {
-                authors: ["Иван Иванов", "Петр Петров"],
-                editors: ["Александр Смирнов"],
-                title: "Исследование А",
-                type: "Книга",
-                hashtags: ["#наука", "#образование", "#тибетология"],
-                url: "http://example.com/book1",
-                year: 2020
+                authors: [],
+                editors: ["Лепехов С. Ю."],
+                title: "Агван Доржиев — выдающийся политический, общественный, религиозный деятель и видный российский дипломат.",
+				periodical: "",
+                type: "Сборник статей",
+                placeOfPublication: "Улан-Удэ: ИПК ФГОУ ВПО ВСГАКИ.",
+                hashtags: ["#Агван Доржиев", "#Бурятия"],
+                url: "",
+                year: 2007
             },
             {
-                authors: ["Алексей Алексеев"],
-                editors: ["Мария Иванова"],
-                title: "Разработка Б",
+                authors: [],
+                editors: ["Вертоградова В. В.", "Исаева Н. В.", "Кулланда С. В."],
+                title: "Буддизм. История и культура.",
+				periodical: "",
+                type: "Сборник статей",
+                placeOfPublication: "М.: Наука, ГРВЛ.",
+                hashtags: ["#буддизм"],
+                url: "https://archive.org/details/6yggu3m_UcTopu9I_u_KuJIbTupa",
+                year: 1989
+            },
+            // Пример записи с пустыми полями для демонстрации
+            {
+                authors: ["Абаева Л. Л.", "Андросов В. П.", "Бакаева Э. П.", "Благов С. А.", "Бухаев Ю. Г.", "Волков С. В.", "Жуковская Н. Л.", "Игнатович А. Н.", "Кабанов А. М.", "Канаева Н. А.", "Каратыгина М. И.", "Корнев В. И.", "Малявин В. В.", "Монтлевич В. М.", "Мялль Л. Э.", "Огнева Е. Д.", "Сафронова Е. С.", "Светлов Г. Е.", "Ставиский Б. Я.", "Терентьев А. А.", "Торчинов Е. А.", "Фурцева Л. Р."],
+                editors: ["Жуковская Н. Л.", "Игнатович А. Н.", "Корнев В.И."],
+                title: "Буддизм: Словарь.",
+                type: "Словарь",
+				periodical: "",
+                placeOfPublication: "М.: Изд-во «Республика».",
+                hashtags: ["#буддизм"],
+                url: "https://phototour.pro/library/tibet/72/",
+                year: 1992
+            },
+			{
+                authors: ["Абаева Л. Л."],
+                editors: ["Жуковская Н. Л."],
+                title: "Религиозная культура монгольских народов в векторе буддийских традиций.",
+				periodical: "",
+                type: "Монография",
+                placeOfPublication: "Улан-Удэ: Бурят-Монгол ном.",
+                hashtags: ["#буддизм", "#монгольские народы"],
+                url: "https://elibrary.ru/item.asp?id=42436823",
+                year: 2018
+            },
+			{
+                authors: ["Абаева Л. Л."],
+                editors: [""],
+                title: "Буддийская культура и ее концепты в мировоззрении Агвана Доржиева.",
+				periodical: "Власть. 2012, № 4. С. 137–139.",
                 type: "Статья",
-                hashtags: ["#технологии", "#инновации"],
-                url: "http://example.com/article1",
-                year: 2021
-            }
+                placeOfPublication: "",
+                hashtags: ["#буддизм", "#Агван Доржиев"],
+                url: "https://cyberleninka.ru/article/n/buddiyskaya-kultura-i-ee-kontsepty-v-mirovozrenii-agvana-dorzhieva",
+                year: 2012
+            },
             // Добавьте дополнительные записи здесь
         ];
 
         function displayBibliographicEntries(entries) {
-            const container = document.getElementById('biblioContainer');
-            container.innerHTML = '';
+			const container = document.getElementById('biblioContainer');
+			container.innerHTML = '';
 
-            entries.forEach(entry => {
-                const entryElement = document.createElement('div');
-                entryElement.classList.add('biblio-entry');
-                entryElement.innerHTML = `
-                    <p>Авторы: ${entry.authors.join(", ")}</p>
-                    <p>Редакторы: ${entry.editors.join(", ")}</p>
-                    <p>Название: ${entry.title}</p>
-                    <p>Тип: ${entry.type}</p>
-                    <p>Год: ${entry.year}</p>
-                    <p>Хэштеги: ${entry.hashtags.join(" ")}</p>
-                    <p>URL: <a href="${entry.url}" target="_blank">Перейти к источнику</a></p>`;
-                container.appendChild(entryElement);
-            });
-        }
+			entries.forEach(entry => {
+				const entryElement = document.createElement('div');
+				entryElement.classList.add('biblio-entry');
+				let innerHTML = '';
+				
+				if (entry.authors.length > 0) {
+					innerHTML += `<p>Авторы: ${entry.authors.join(", ")}</p>`;
+				}
+				if (entry.editors.join(", ") !== "") {
+					innerHTML += `<p>Редакторы: ${entry.editors.join(", ")}</p>`;
+				}
+				innerHTML += `<p>Название: ${entry.title}</p>`;
+				if (entry.periodical) { // Проверка и добавление нового поля
+					innerHTML += `<p>В: ${entry.periodical}</p>`;
+				}
+				innerHTML += `<p>Тип: ${entry.type}</p>`;
+				if (entry.placeOfPublication !== "") {
+					innerHTML += `<p>Место издания: ${entry.placeOfPublication}</p>`;
+				}
+				if (entry.year) {
+					innerHTML += `<p>Год: ${entry.year}</p>`;
+				}
+				if (entry.hashtags.length > 0) {
+					innerHTML += `<p>Хэштеги: ${entry.hashtags.join(" ")}</p>`;
+				}
+				if (entry.url) {
+					innerHTML += `<p>URL: <a href="${entry.url}" target="_blank">Перейти к источнику</a></p>`;
+				}
+				
+				entryElement.innerHTML = innerHTML;
+				container.appendChild(entryElement);
+			});
+		}
 
-        function initFilters() {
+         function initFilters() {
             const authors = new Set();
             const hashtags = new Set();
             bibliographicEntries.forEach(entry => {
@@ -113,8 +170,8 @@
                 hashtagFiltersDiv.appendChild(document.createElement('br'));
             });
         }
-
-        function applyFilters() {
+		
+		function applyFilters() {
             const selectedAuthors = Array.from(document.querySelectorAll('input[name="author"]:checked')).map(el => el.value);
             const selectedHashtags = Array.from(document.querySelectorAll('input[name="hashtag"]:checked')).map(el => el.value);
             const sortOrder = document.getElementById('sortOrder').value;
