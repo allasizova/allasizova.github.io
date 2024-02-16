@@ -8,6 +8,7 @@
             margin-bottom: 20px;
             border: 1px solid #ddd;
             padding: 10px;
+            background-color: #73D0F0; /* Цвет фона */
         }
     </style>
 </head>
@@ -32,15 +33,19 @@
         const bibliographicEntries = [
             {
                 authors: ["Иван Иванов", "Петр Петров"],
+                editors: ["Александр Смирнов"],
                 title: "Исследование А",
                 type: "Книга",
-                hashtags: ["#наука", "#образование"]
+                hashtags: ["#наука", "#образование"],
+                url: "http://example.com/book1"
             },
             {
                 authors: ["Алексей Алексеев"],
+                editors: ["Мария Иванова"],
                 title: "Разработка Б",
                 type: "Статья",
-                hashtags: ["#технологии", "#инновации"]
+                hashtags: ["#технологии", "#инновации"],
+                url: "http://example.com/article1"
             }
         ];
 
@@ -53,9 +58,11 @@
                 entryElement.classList.add('biblio-entry');
                 entryElement.innerHTML = `
                     <p>Авторы: ${entry.authors.join(", ")}</p>
+                    <p>Редакторы: ${entry.editors.join(", ")}</p>
                     <p>Название: ${entry.title}</p>
                     <p>Тип: ${entry.type}</p>
-                    <p>Хэштеги: ${entry.hashtags.join(" ")}`;
+                    <p>Хэштеги: ${entry.hashtags.join(" ")}</p>
+                    <p>URL: <a href="${entry.url}" target="_blank">Перейти к источнику</a></p>`;
                 container.appendChild(entryElement);
             });
         }
