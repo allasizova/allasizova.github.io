@@ -7,27 +7,40 @@
     <title>Khara-Khoto City</title>
     <style>
         body, html {
-            height: 100%; /* Make sure the body and html fill the entire height of the page */
+            height: 100%;
             margin: 0;
             padding: 0;
-            display: flex; /* Use Flexbox to layout children */
-            justify-content: center; /* Center children horizontally */
-            align-items: center; /* Center children vertically */
-            background-color: #73D0F0; /* Sets the background color to blue */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #73D0F0;
             font-family: Arial, sans-serif;
         }
         .container {
-            text-align: center; /* Center the content inside the container */
+            display: flex; /* Changed to flex to allow items to be inline */
+            align-items: center; /* Align items vertically */
+            justify-content: center; /* Center items horizontally */
         }
-        img {
-            max-width: 100%; /* Make sure the image is responsive and does not overflow the page */
-            height: auto; /* Maintain the aspect ratio of the image */
+        .container img,
+        .container a {
+            margin: 0 20px; /* Add margin to space out the image and button */
+        }
+        .button-image {
+            cursor: pointer; /* Changes the cursor to indicate the image is clickable */
+            transition: transform 0.3s ease; /* Optional: Adds a subtle transform effect on hover */
+        }
+        .button-image:hover {
+            transform: scale(1.05); /* Optional: Scales up the button image on hover */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="stupa_sm.png" alt="Stupa Image">
+        <!-- Hyperlink that acts as a button to the right of the image -->
+        <a href="https://khara-khoto.city/russian_tibetology.html">
+            <img src="lotus button_russian tibetology.png" alt="Button" class="button-image">
+        </a>
     </div>
 </body>
 </html>
