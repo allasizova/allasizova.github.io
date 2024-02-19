@@ -2191,6 +2191,83 @@
 				"hashtags": ["#П. К. Козлов", "#путешествия"],
 				"url": "",
 				"year": 1996
+			},
+			{
+				"authors": ["Andreev A."],
+				"editors": [],
+				"title": "Bolshevik Intrigue in Tibet.",
+				"periodical": "Tibetan Studies. Proceedings of the 7th Seminar of the IATS, Graz 1995. Vol. 1. Wien, 1997. P. 7–15.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#российско-тибетские отношения"],
+				"url": "",
+				"year": 1997
+			},
+			{
+				"authors": ["Andreev A."],
+				"editors": [],
+				"title": "Soviet Russia and Tibet: A Debacle of Secret Diplomacy.",
+				"periodical": "The Tibet Journal. 1996, vol. 21, № 3. P. 4–34. Reprinted in: The History of Tibet, in 3 vol. Vol. III: The Modern Period: 1895–1959. Routledge Curzon. London-New York, 2003. P. 434–454.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#российско-тибетские отношения"],
+				"url": "https://www.jstor.org/stable/43300583",
+				"year": 1996
+			},
+			{
+				"authors": ["Андреев А. И."],
+				"editors": [],
+				"title": "Н. В. Валеро-Грачев: Путешественник или мистификатор? О неизвестных путешествиях русского ученого по Тибету и Индии. Сообщение Н. В. Валеро-Грачева «О диком человекообразном существе в Монголии и Тибете».",
+				"periodical": "Ариаварта. № 2. СПб., 1998. С. 157–167.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["путешествия"],
+				"url": "",
+				"year": 1998
+			},
+			{
+				"authors": ["Андреев А. И."],
+				"editors": [],
+				"title": "Уход Агвана Доржиева.",
+				"periodical": "Orient. Альманах. Вып. 2–3. Исследователи Центральной Азии в судьбах России. СПб.: Утпала, 1998. С. 93–105.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Агван Доржиев"],
+				"url": "",
+				"year": 1998
+			},
+			{
+				"authors": ["Андреев А. И."],
+				"editors": [],
+				"title": "Неизвестная страница из истории Большой Игры. Дело о посылке русского агента в Тибет (1869–1873).",
+				"periodical": "Ариаварта. № 3. Спб., 1999. С. 120–133.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#российско-тибетские отношения"],
+				"url": "",
+				"year": 1999
+			},
+			{
+				"authors": ["Андреев А. И."],
+				"editors": [],
+				"title": "Доктор Барченко — русский искатель Шамбалы.",
+				"periodical": "Невский Архив. «Лики России». СПб., 2001. С. 295–341.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Шамбала", "#оккультизм"],
+				"url": "",
+				"year": 2001
+			},
+			{
+				"authors": ["Андреев А. И."],
+				"editors": [],
+				"title": "Новая Монголия глазами русского путешественника (По страницам дневников последней экспедиции П. К. Козлова).",
+				"periodical": "Mongolica-V. 2001. С. 157–163.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Монголия", "#П. К. Козлов"],
+				"url": "http://www.orientalstudies.ru/rus//images/pdf/p_mongolica_5_2001_17_andreev.pdf",
+				"year": 2001
 			}
 			
             // Добавьте дополнительные записи здесь
@@ -2243,7 +2320,10 @@
                 entry.hashtags.forEach(hashtag => hashtags.add(hashtag));
             });
 
-            const authorFiltersDiv = document.getElementById('authorFilters');
+			const authorFiltersDiv = document.getElementById('authorFilters');
+			// Очистка div перед добавлением новых элементов
+			authorFiltersDiv.innerHTML = '';
+
 			// Преобразование Set в массив и сортировка
 			[...authors].sort().forEach(author => {
 				const checkbox = document.createElement('input');
