@@ -17,27 +17,39 @@
             font-family: Arial, sans-serif;
         }
         .container {
-            display: flex; /* Changed to flex to allow items to be inline */
-            align-items: center; /* Align items vertically */
-            justify-content: center; /* Center items horizontally */
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap onto the next line if not enough space */
+            align-items: center;
+            justify-content: center;
         }
         .container img,
         .container a {
-            margin: 0 20px; /* Add margin to space out the image and button */
+            margin: 10px;
+            flex: 0 1 auto; /* Allows image and button to shrink but not to grow */
         }
         .button-image {
-            cursor: pointer; /* Changes the cursor to indicate the image is clickable */
-            transition: transform 0.3s ease; /* Optional: Adds a subtle transform effect on hover */
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
         .button-image:hover {
-            transform: scale(1.05); /* Optional: Scales up the button image on hover */
+            transform: scale(1.05);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column; /* Stack items vertically on small screens */
+            }
+            .container img,
+            .container a {
+                margin: 10px auto; /* Center items horizontally */
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="stupa_sm.png" alt="Stupa Image">
-        <!-- Hyperlink that acts as a button to the right of the image -->
         <a href="https://khara-khoto.city/russian_tibetology.html">
             <img src="lotus button_russian tibetology.png" alt="Button" class="button-image">
         </a>
