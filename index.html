@@ -18,40 +18,28 @@
         }
         .container {
             display: flex;
-            flex-wrap: wrap; /* Allows items to wrap onto the next line if not enough space */
-            align-items: center;
-            justify-content: center;
+            flex-direction: column; /* Stack flex items vertically */
+            align-items: center; /* Center align items horizontally */
+            text-align: center;
         }
-        .container img,
-        .container a {
-            margin: 10px;
-            flex: 0 1 auto; /* Allows image and button to shrink but not to grow */
+        img {
+            max-width: 90%; /* Adjust the max-width to allow for better responsiveness */
+            height: auto;
+            margin-bottom: 20px; /* Add space between the image and the button */
         }
-        .button-image {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .button-image:hover {
-            transform: scale(1.05);
-        }
-
-        /* Media Queries for responsiveness */
-        @media (max-width: 600px) {
-            .container {
-                flex-direction: column; /* Stack items vertically on small screens */
-            }
-            .container img,
-            .container a {
-                margin: 10px auto; /* Center items horizontally */
-            }
+        /* Style for the button image if needed */
+        .button-img {
+            cursor: pointer; /* Indicates the link is clickable */
+            max-width: 90%; /* Optional: Adjust the max-width as needed for responsiveness */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="stupa_sm.png" alt="Stupa Image">
+        <!-- Button below the image -->
         <a href="https://khara-khoto.city/russian_tibetology.html">
-            <img src="lotus button_russian tibetology.png" alt="Button" class="button-image">
+            <img src="lotus button_russian tibetology.png" alt="Button Image" class="button-img">
         </a>
     </div>
 </body>
