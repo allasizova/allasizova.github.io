@@ -30,6 +30,8 @@
 </head>
 <body>
     <h1>Список публикаций по тибетологии и тибетско-монгольскому буддизму российских или аффилированных с российскими научными учреждениями авторов: 1730 – 2022 гг.</h1>
+	<!-- Элемент для отображения счетчика публикаций -->
+    <div id="publicationCount">Число публикаций: <span id="count">0</span></div>
     <div class="filter-section">
         <div id="authorFilters"><b>Авторы:</b></div>
         <div id="hashtagFilters"><b>Хэштеги:</b></div>
@@ -2298,6 +2300,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             initFilters();
             applyFilters(); // Показать все записи по умолчанию
+        });
+		
+		function updatePublicationCount() {
+            const countElement = document.getElementById('count');
+            countElement.textContent = bibliographicEntries.length;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initFilters();
+            applyFilters(); // Показать все записи по умолчанию
+            updatePublicationCount(); // Обновить счетчик публикаций
         });
     </script>
 </body>
