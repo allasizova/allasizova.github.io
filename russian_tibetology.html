@@ -17,6 +17,14 @@
         .authors-list {
             margin-bottom: 20px;
         }
+		#authorsList {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+		.letterBlock {
+			margin-right: 20px;
+		}
         .clickable {
             cursor: pointer;
             color: blue;
@@ -58,7 +66,15 @@
 		<button onclick="applySearch()">Полнотекстовый поиск</button>
 	</div>
 	
+	<h1 style="color: #000080; text-align: center; font-size: 24px;">
+		Ключевые слова
+	</h1>
+	
 	<div id="tagsContainer" style="text-align: center; margin-top: 20px;"></div>
+	
+	<h1 style="color: #000080; text-align: center; font-size: 24px;">
+		Список авторов
+	</h1>
 	
 	<div id="authorsList" class="filter-section"></div>
 	
@@ -3445,9 +3461,15 @@
         }
 				
 		document.addEventListener('DOMContentLoaded', function() {
-			displayAuthorsList();
+			displayAuthorsListByAlphabet();
 			displayBibliographicEntries(bibliographicEntries);
+			updateTotalPublicationCount(); // Вызов функции для обновления счетчика
 		});
+		
+		function updateTotalPublicationCount() {
+			const countElement = document.getElementById('count');
+			countElement.textContent = bibliographicEntries.length; // Установка общего числа записей
+		}
 		
 		function displayAuthorsList() {
 			const authorsList = document.getElementById('authorsList');
@@ -3471,12 +3493,51 @@
 			entries.forEach(entry => {
 				entry.authors.forEach(author => authorsSet.add(author));
 			});
-			return Array.from(authorsSet);
+			return Array.from(authorsSet).sort();
 		}
 
 		function filterEntriesByAuthor(authorName) {
 			currentFilteredEntries = bibliographicEntries.filter(entry => entry.authors.includes(authorName));
 			applyFilters();
+		}
+		
+		function displayAuthorsListByAlphabet() {
+			const authorsList = document.getElementById('authorsList');
+			const uniqueAuthors = getUniqueAuthors(bibliographicEntries);
+			const authorsByAlphabet = {};
+
+			// Группировка авторов по первой букве фамилии
+			uniqueAuthors.forEach(author => {
+				const firstLetter = author.charAt(0).toUpperCase(); // Получение первой буквы фамилии
+				if (!authorsByAlphabet[firstLetter]) {
+					authorsByAlphabet[firstLetter] = [];
+				}
+				authorsByAlphabet[firstLetter].push(author);
+			});
+
+			// Отображение авторов по алфавиту
+			Object.keys(authorsByAlphabet).sort().forEach(letter => {
+				const letterBlock = document.createElement('div');
+				letterBlock.className = 'letterBlock'; // Добавление класса для стилей
+				const letterTitle = document.createElement('h3');
+				letterTitle.textContent = letter;
+				letterBlock.appendChild(letterTitle);
+
+				authorsByAlphabet[letter].sort().forEach(author => {
+					const authorLink = document.createElement('a');
+					authorLink.href = "#";
+					authorLink.textContent = author;
+					authorLink.className = 'author-link';
+					authorLink.onclick = function() {
+						filterEntriesByAuthor(author);
+						return false;
+					};
+					letterBlock.appendChild(authorLink);
+					letterBlock.appendChild(document.createElement('br'));
+				});
+
+				authorsList.appendChild(letterBlock);
+			});
 		}
 					
 		function displayBibliographicEntries(entries) {
@@ -3519,8 +3580,8 @@
 				container.appendChild(entryElement);
 			});
 		}
-
-        function initFilters() {
+		
+		function initFilters() {
             const authors = new Set();
             const hashtags = new Set();
             bibliographicEntries.forEach(entry => {
