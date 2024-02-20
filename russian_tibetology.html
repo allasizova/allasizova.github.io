@@ -14,6 +14,14 @@
             padding: 10px;
             background-color: #73D0F0;
         }
+        .authors-list {
+            margin-bottom: 20px;
+        }
+        .clickable {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+		}
         .filter-section {
             margin-bottom: 20px;
         }
@@ -41,21 +49,28 @@
 	<br>(исправления и дополнения просьба присылать по адресу: Sizova.Alla@campus.lmu.de)
     </p>
 	<p style="font-size: 1.2em; text-align: justify; margin: 20px;">
-    В настоящую библиографию включены публикации авторов, внесших вклад в развитие российской тибетологии. Основным принципом отбора был не языковой или этнический фактор, а принадлежность научным учреждениям Российской империи (1721–1917), Советской России (1917–1991) и Российской Федерации. Таким образом, в список оказались включены немецкие востоковеды, состоявшие на службе в Петербургской академии наук: Готлиб Зигфрид Байер, Исаак Якоб (Яков Иванович) Шмидт и другие. Также мы сочли необходимым перечислить здесь русскоязычные работы иностранных авторов (таких как Ш. Бира, Ц. Дамдинсурэн, Д. Ёндон, К. Седлачек и др.), защитивших диссертации и издавших некоторые свои труды в СССР и РФ.
+    В библиографию включены публикации авторов, внесших вклад в развитие российской тибетологии. Основным принципом отбора был не языковой или этнический фактор, а принадлежность научным учреждениям Российской империи (1721–1917), Советской России (1917–1991) и Российской Федерации. Таким образом, в список оказались включены немецкие востоковеды, состоявшие на службе в Петербургской академии наук: Готлиб Зигфрид Байер, Исаак Якоб (Яков Иванович) Шмидт и другие. Также мы сочли необходимым перечислить здесь русскоязычные работы иностранных авторов (таких как Ш. Бира, Ц. Дамдинсурэн, Д. Ёндон, К. Седлачек и др.), защитивших диссертации и издавших некоторые свои труды в СССР и РФ.
     </p>
 	<!-- Элемент для отображения счетчика публикаций -->
 
-    <div class="filter-section">
-        <div id="authorFilters"><b>Авторы:</b></div>
-        <div id="hashtagFilters"><b>Хэштеги:</b></div>
-        <label for="sortOrder"><b>Сортировка по году:</b></label>
-        <select id="sortOrder">
-            <option value="asc">По возрастанию</option>
-            <option value="desc">По убыванию</option>
-        </select>
-        <button onclick="applyFilters()">Применить фильтры</button>
-    </div>
-    <div id="biblioContainer"></div>
+	<div style="text-align: center; margin-top: 20px;">
+		<input type="text" id="searchInput" placeholder="Введите текст для поиска..." onkeypress="handleKeyPress(event)" style="margin-right: 10px;">
+		<button onclick="applySearch()">Полнотекстовый поиск</button>
+	</div>
+	
+	<div id="tagsContainer" style="text-align: center; margin-top: 20px;"></div>
+	
+	<div id="authorsList" class="filter-section"></div>
+	
+	<div class="filter-section">
+		<label for="sortOrder"><b>Сортировка по году:</b></label>
+		<select id="sortOrder">
+			<option value="asc">По возрастанию</option>
+			<option value="desc">По убыванию</option>
+		</select>
+		<button onclick="applyFilters()">Применить фильтры</button>
+	</div>
+	<div id="biblioContainer"></div>
 
     <script>
         const bibliographicEntries = [
@@ -3348,11 +3363,122 @@
 			  "hashtags": ["#Ваджраяна", "#Хеваджра-тантра", "#переводы", "#буддизм"],
 			  "url": "",
 			  "year": 2013
+			},
+			{
+				authors: ["Аникеева С. М."],
+				editors: [],
+				title: "Тибетская медицинская терминология (на материале источников традиционной тибетской медицины): автореф. дис. … канд. филол. наук.",
+				periodical: "",
+				type: "Диссертация",
+				placeOfPublication: "Л.",
+				hashtags: [],
+				url: "",
+				year: 1990
 			}
 			
             // Добавьте дополнительные записи здесь
         ];
+		
+		const tagsByGroup = {
+			"Буддизм": ["#буддизм", "#Махаяна", "#Ваджраяна"],
+			"Индийские учители": ["#Нагарджуна", "#Шантаракшита"],
+			"Путешественники": ["#П. К. Козлов"],
+			"Тексты": ["#Алмазная сутра"],
+			// Добавьте другие группы и теги по аналогии
+		};
 
+		const tagsContainer = document.getElementById('tagsContainer');
+
+		// Перебор групп тегов
+		for (const group in tagsByGroup) {
+			const groupHeader = document.createElement('h3');
+			groupHeader.textContent = group;
+			tagsContainer.appendChild(groupHeader);
+
+			// Перебор тегов внутри группы
+			tagsByGroup[group].forEach(tag => {
+				const tagElement = document.createElement('a');
+				tagElement.href = "#";
+				tagElement.textContent = tag;
+				tagElement.style.margin = "0 10px"; // небольшой отступ между тегами
+				tagElement.onclick = function() {
+					applyHashtagFilter(tag); // Убедитесь, что функция фильтрации обрабатывает теги корректно
+					return false;
+				};
+				tagsContainer.appendChild(tagElement);
+			});
+		}
+		
+        function displayAuthorsList() {
+            const authorsSet = new Set();
+            bibliographicEntries.forEach(entry => {
+                entry.authors.forEach(author => {
+                    authorsSet.add(author);
+                });
+            });
+
+            const authorsListElement = document.getElementById('authorsList');
+            authorsListElement.innerHTML = '<h2>Авторы</h2>';
+            Array.from(authorsSet).sort().forEach(author => {
+                const authorElement = document.createElement('a');
+                authorElement.className = 'clickable';
+                authorElement.textContent = author;
+                authorElement.onclick = () => displayEntriesByAuthor(author);
+                authorsListElement.appendChild(authorElement);
+                authorsListElement.appendChild(document.createElement('br'));
+            });
+        }
+
+        function displayEntriesByAuthor(authorName) {
+            const entriesListElement = document.getElementById('entriesList');
+            entriesListElement.innerHTML = '';
+            const filteredEntries = bibliographicEntries.filter(entry => entry.authors.includes(authorName));
+            if (filteredEntries.length > 0) {
+                filteredEntries.forEach(entry => {
+                    const entryElement = document.createElement('div');
+                    entryElement.textContent = `${entry.title} (${entry.year})`;
+                    entriesListElement.appendChild(entryElement);
+                });
+            } else {
+                entriesListElement.textContent = 'Нет публикаций для этого автора.';
+            }
+        }
+				
+		document.addEventListener('DOMContentLoaded', function() {
+			displayAuthorsList();
+			displayBibliographicEntries(bibliographicEntries);
+		});
+		
+		function displayAuthorsList() {
+			const authorsList = document.getElementById('authorsList');
+			const uniqueAuthors = getUniqueAuthors(bibliographicEntries);
+
+			uniqueAuthors.forEach(author => {
+				const authorLink = document.createElement('a');
+				authorLink.href = "#";
+				authorLink.textContent = author;
+				authorLink.onclick = function() {
+					filterEntriesByAuthor(author);
+					return false;
+				};
+				authorsList.appendChild(authorLink);
+				authorsList.appendChild(document.createElement('br'));
+			});
+		}
+
+		function getUniqueAuthors(entries) {
+			const authorsSet = new Set();
+			entries.forEach(entry => {
+				entry.authors.forEach(author => authorsSet.add(author));
+			});
+			return Array.from(authorsSet);
+		}
+
+		function filterEntriesByAuthor(authorName) {
+			currentFilteredEntries = bibliographicEntries.filter(entry => entry.authors.includes(authorName));
+			applyFilters();
+		}
+					
 		function displayBibliographicEntries(entries) {
 			const container = document.getElementById('biblioContainer');
 			container.innerHTML = '';
@@ -3393,13 +3519,6 @@
 				container.appendChild(entryElement);
 			});
 		}
-
-		function applyHashtagFilter(hashtag) {
-			console.log("Фильтр по хэштегу: ", hashtag);
-			// Здесь вы можете добавить логику для фильтрации записей по выбранному хэштегу
-			// и затем повторно вызвать displayBibliographicEntries с отфильтрованными записями.
-		}
-
 
         function initFilters() {
             const authors = new Set();
@@ -3451,38 +3570,60 @@
 			});
 		}
 		
+		let currentFilteredEntries = bibliographicEntries;
+		
 		function applyFilters() {
-            const selectedAuthors = Array.from(document.querySelectorAll('input[name="author"]:checked')).map(el => el.value);
-            const selectedHashtags = Array.from(document.querySelectorAll('input[name="hashtag"]:checked')).map(el => el.value);
             const sortOrder = document.getElementById('sortOrder').value;
+			let sortedEntries = [...currentFilteredEntries].sort((a, b) => {
+				return sortOrder === 'asc' ? a.year - b.year : b.year - a.year;
+			});
 
-            let filteredEntries = bibliographicEntries.filter(entry => 
-                (selectedAuthors.length === 0 || entry.authors.some(author => selectedAuthors.includes(author))) &&
-                (selectedHashtags.length === 0 || entry.hashtags.some(hashtag => selectedHashtags.includes(hashtag)))
-            );
-
-            filteredEntries = filteredEntries.sort((a, b) => {
-                return sortOrder === 'asc' ? a.year - b.year : b.year - a.year;
-            });
-
-            displayBibliographicEntries(filteredEntries);
+			displayBibliographicEntries(sortedEntries);
         }
+		
+		function applyHashtagFilter(hashtag) {
+			// Удаляем символ '#' для корректного сравнения
+			const filteredTag = hashtag.replace('#', '');
+			currentFilteredEntries = bibliographicEntries.filter(entry => entry.hashtags.some(tag => tag.includes(filteredTag)));
+			displayBibliographicEntries(currentFilteredEntries);
+		}
+		
+		function handleKeyPress(event) {
+			// Check if the key pressed is the Enter key
+			if (event.key === "Enter") {
+				event.preventDefault(); // Prevent the default form submission (if any)
+				applySearch(); // Trigger the search function
+			}
+		}
+		
+		function applySearch() {
+			const searchText = document.getElementById('searchInput').value.toLowerCase();
+			const filteredEntries = bibliographicEntries.filter(entry => {
+				// Проверяем каждое поле объекта на наличие поисковой строки
+				return Object.values(entry).some(value => {
+					if (typeof value === 'string') {
+						return value.toLowerCase().includes(searchText);
+					} else if (Array.isArray(value)) {
+						// Для массива проверяем каждый элемент
+						return value.some(arrayValue => arrayValue.toLowerCase().includes(searchText));
+					}
+					return false;
+				});
+			});
 
-        document.addEventListener('DOMContentLoaded', () => {
-            initFilters();
-            applyFilters(); // Показать все записи по умолчанию
-        });
+			displayBibliographicEntries(filteredEntries);
+			updatePublicationCount();
+		}
+				
+		function showAllEntries() {
+			currentFilteredEntries = bibliographicEntries; // Сброс к полному списку записей
+			applyFilters(); // Пересортировать и показать все записи
+		}
 		
 		function updatePublicationCount() {
             const countElement = document.getElementById('count');
             countElement.textContent = bibliographicEntries.length;
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initFilters();
-            applyFilters(); // Показать все записи по умолчанию
-            updatePublicationCount(); // Обновить счетчик публикаций
-        });
     </script>
 </body>
 </html>
