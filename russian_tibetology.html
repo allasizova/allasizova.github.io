@@ -51,11 +51,66 @@
         1730 – 2022 гг.
     </h1>
 	<div id="publicationCount" style="text-align: center;">Число публикаций: <span id="count">0</span></div>
+	</div>
+    <!-- Button to Show All Publications -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button type="button" onclick="showAllEntries()">Показать все</button>
+    </div>
 	<p style="color: #000080; font-size: 1.0em; text-align: left; margin: 20px;">
     <b>Составители:</b> А. В. Зорин, А. А. Сизова,<br>при участии Мэн Ся, Тао Юань.<br>Проект составления библиографии был инициирован проф. Ван Цилуном (Шэньсийский педагогический университет, Сиань) в 2017 г.
 	<br><b>Под общей редакцией</b> А. А. Сизовой.
 	<br>(исправления и дополнения просьба присылать по адресу: Sizova.Alla@campus.lmu.de)
     </p>
+	<h1 style="color: #000080; margin: 20px; margin-bottom: -20px; text-align: left; font-size: 20px;">
+    Список сокращений
+	</h1>
+	<details style="margin: 20px 20px 0 20px; text-align: left;">
+		<summary style="cursor: pointer; font-weight: bold; font-size: 16px;">Показать список сокращений</summary>
+		<p>АлтГУ — Алтайский государственный университет</p>
+		<p>АН — Академия наук</p>
+		<p>БГСХА — Бурятская государственная сельскохозяйственная академия</p>
+		<p>БГУ — Бурятский государственный университет</p>
+		<p>БГУЭП — Байкальский государственный университет экономики и права</p>
+		<p>БКНИИ — Бурятский комплексный научно-исследовательский институт</p>
+		<p>БНЦ СО РАН — Бурятский научный центр Сибирского отделения Российской академии наук</p>
+		<p>БФ — Бурятский филиал</p>
+		<p>ВолГУ — Волгоградский государственный университет</p>
+		<p>ВСГАКИ — Восточно-Сибирская государственная академия культуры и искусств</p>
+		<p>ВСГУТУ — Восточно-Сибирский государственный университет технологий и управления</p>
+		<p>ГМИРиА — Государственный музей истории религии и атеизма</p>
+		<p>ГРВЛ — Главная редакция восточной литературы</p>
+		<p>ЗабГГПУ — Забайкальский государственный гуманитарно-педагогический университет</p>
+		<p>ИВ — Институт востоковедения</p>
+		<p>ИИЯЛ УНЦ — Институт истории, языка и литературы Уфимского научного центра</p>
+		<p>ИПК — Издательско-полиграфический комплекс</p>
+		<p>ИРГО — Императорское Русское Географическое Общество</p>
+		<p>КалмНЦ РАН — Калмыцкий научный центр Российской академии наук</p>
+		<p>КИГИ РАН — Калмыцкий институт гуманитарных исследований Российской академии наук</p>
+		<p>кит. — китайский язык</p>
+		<p>КНИИ ИФЭ — Калмыцкий научно-исследовательский институт истории, филологии и экономики</p>
+		<p>ЛО — Ленинградское отделение</p>
+		<p>МГХПА — Московская государственная художественно-промышленная академия</p>
+		<p>монг. — монгольский язык</p>
+		<p>МЦР — Международный центр Рерихов</p>
+		<p>НГУ — Новосибирский государственный университет</p>
+		<p>ПП и ПИКНВ — Письменные памятники и проблемы истории культуры народов Востока</p>
+		<p>ППВ — Письменные памятники Востока</p>
+		<p>РГГУ — Российский государственный гуманитарный университет</p>
+		<p>Респ. тип. — Республиканская типография</p>
+		<p>РУДН — Российский университет дружбы народов</p>
+		<p>РХГА — Русская христианская гуманитарная академия</p>
+		<p>СНВ — Страны и народы Востока</p>
+		<p>СО — Сибирское отделение</p>
+		<p>СПбГБУК — Санкт-Петербургское государственное бюджетное культурно-досуговое учреждение</p>
+		<p>СПбГУ — Санкт-Петербургский государственный университет</p>
+		<p>тиб. — тибетский язык</p>
+		<p>УрФУ — Уральский федеральный университет</p>
+		<p>ФГБОУ ВО ВСГИК — Федеральное государственное бюджетное образовательное учреждение высшего образования Восточно-Сибирский государственный институт культуры</p>
+		<p>ФГОУ ВПО ВСГАКИ — Федеральное государственное образовательное учреждение высшего профессионального образования Восточно-Сибирская государственная академия культуры и искусств</p>
+		<p>JUHRI — Journal of Urusvati Himalayan Research Institute</p>
+		<p>WMO — Written Monuments of the Orient</p>
+		<!-- Добавьте дополнительные сокращения по мере необходимости -->
+	</details>
 	<p style="font-size: 1.2em; text-align: justify; margin: 20px;">
     В библиографию включены публикации авторов, внесших вклад в развитие российской тибетологии. Основным принципом отбора был не языковой или этнический фактор, а принадлежность научным учреждениям Российской империи (1721–1917), Советской России (1917–1991) и Российской Федерации. Таким образом, в список оказались включены немецкие востоковеды, состоявшие на службе в Петербургской академии наук: Готлиб Зигфрид Байер, Исаак Якоб (Яков Иванович) Шмидт и другие. Также мы сочли необходимым перечислить здесь русскоязычные работы иностранных авторов (таких как Ш. Бира, Ц. Дамдинсурэн, Д. Ёндон, К. Седлачек и др.), защитивших диссертации и издавших некоторые свои труды в СССР и РФ.
     </p>
@@ -3387,9 +3442,328 @@
 				periodical: "",
 				type: "Диссертация",
 				placeOfPublication: "Л.",
-				hashtags: [],
+				hashtags: ["#тибетская медицина"],
 				url: "",
 				year: 1990
+			},
+			{
+				"authors": ["Абрамова Н. А."],
+				"editors": [],
+				"title": "Об исследовании буддизма в Институте монголоведения, буддологии и тибетологии СО РАН в рамках научных проектов РГНФ.",
+				"periodical": "Вестн. БНЦ СО РАН. 2013, № 4 (12). С. 68–76.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддизм", "#ИМБТ СО РАН"],
+				"url": "http://publisher.bscnet.ru/wp-content/uploads/2019/11/vestnik_12.pdf",
+				"year": 2013
+			},
+			{
+				"authors": ["Аверьянов С. С."],
+				"editors": [],
+				"title": "Современный Тибет глазами путешественника.",
+				"periodical": "Труды Института востоковедения РАН. Вып. 1. Тибетология и буддология на стыке науки и религии. М.: ИВ РАН, 2017. С. 282–287.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#путешествия"],
+				"url": "https://trudy.ivran.ru/number/1785",
+				"year": 2017
+			},
+			{
+				"authors": ["Агван Ешей (Доржинов А. Н.)"],
+				"editors": [],
+				"title": "О роли духовенства в возрождении культуры калмыков.",
+				"periodical": "Буддийское духовенство и культура калмыцкого народа. Материалы Международной научной конференции, посвященной 405-летию со дня рождения выдающегося просветителя Зая-Пандиты Намкай Джамцо (г. Элиста, 20–21 октября 2004 г.). Элиста: АПП «Джангар», 2004. С. 14–16.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддизм", "#Калмыкия"],
+				"url": "",
+				"year": 2004
+			},
+			{
+				"authors": ["Ажунова Т. А."],
+				"editors": [],
+				"title": "Регуляция состояния монооксигеназной системы печени препаратами тибетской медицины.",
+				"periodical": "Тибетская медицина (История, методология изучения и перспективы использования). Улан-Удэ: Кооператив «Тайга», 1989. С. 189–197.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "",
+				"year": 1989
+			},
+			{
+				"authors": ["Алдошин В. А."],
+				"editors": [],
+				"title": "Легенды о стране Шамбала.",
+				"periodical": "Филологические исследования старописьменных памятников / Отв. ред. П. Ц. Биткеев. Элиста: КНИИ ИФЭ, 1987. С. 19–33.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Шамбала"],
+				"url": "",
+				"year": 1987
+			},
+			{
+				authors: ["Алдошин В. А."],
+				"editors": [],
+				title: "Сведения о стране Шамбала в сочинениях тибетской Трипитаки.",
+				periodical: "ПП и ПИКНВ. XXI годичная научная сессия ЛО ИВ АН СССР (доклады и сообщения). 1987 г. Ч. 1. М.: ГРВЛ, 1987. С. 11–17.",
+				type: "Статья",
+				placeOfPublication: "",
+				hashtags: ["#Шамбала", "#буддийский канон"],
+				url: "http://www.orientalstudies.ru/rus/images/pdf/journals/ppipiknv_21_1_1987_02_aldoshin.pdf",
+				year: 1987
+			},
+			{
+				"authors": ["Алексеев Н. А."],
+				"editors": [""],
+				"title": "Связь традиционных верований якутов с древними верованиями народов Тибета и Северной Индии.",
+				"periodical": "Этнография и фольклор народов Сибири. Новосибирск: Наука, 2008. С. 400–404.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": [""],
+				"url": "",
+				"year": 2008
+			},
+			{
+				"authors": ["Алексеев-Апраксин А. М."],
+				"editors": [""],
+				"title": "Буддизм в культурной жизни Петербурга.",
+				"periodical": "Буддизм Ваджраяны в России: история и современность. СПб.: Unlimited Space, 2009. С. 57–69.",
+				"type": "Статья",
+				"placeOfPublication": "СПб.",
+				"hashtags": [""],
+				"url": "",
+				"year": 2009
+			},
+			{
+				"authors": ["Альбедиль М. Ф."],
+				"editors": [""],
+				"title": "Буддийские культовые предметы в музейном пространстве: к истории одной коллекции МАЭ РАН.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Пятые Доржиевские чтения. 2013. С. 230–234.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#музеи", "#МАЭ РАН"],
+				"url": "",
+				"year": 2013
+			},
+			{
+				"authors": ["Альбедиль М. Ф."],
+				"editors": [""],
+				"title": "Неварский буддизм: синтез с индуизмом.",
+				"periodical": "Буддизм Ваджраяны в России: Актуальная история и социокультурная аналитика. М.: Алмазный Путь, 2020. С. 44–50.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Непал"],
+				"url": "https://elibrary.ru/item.asp?id=44429816",
+				"year": 2020
+			},
+			{
+				"authors": ["Альфонсо Н. Г."],
+				"editors": [""],
+				"title": "Ритуальный кинжал phur ра.",
+				"periodical": "Буддизм Ваджраяны в России: Традиции и новации. Колл. моногр. М.: Алмазный путь, 2016. С. 310–315.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#ритуалы"],
+				"url": "https://abhidharma.ru/A/Raznoe/0083.pdf",
+				"year": 2016
+			},
+			{
+				"authors": ["Альфонсо Н. Г."],
+				"editors": [""],
+				"title": "Ритуальный кинжал пурпа.",
+				"periodical": "Сибирские исторические исследования. 2018, № 3. С. 158–177.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#ритуалы"],
+				"url": "https://cyberleninka.ru/article/n/buddiyskiy-ritualnyy-kinzhal-purpa/",
+				"year": 2018
+			},
+			{
+				"authors": ["Амгалан Н."],
+				"editors": [""],
+				"title": "Архивный документ об истории буддийского храма в Санкт-Петербурге.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Пятые Доржиевские чтения. СПб.: Гиперион, 2013, С. 10–16.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Санкт-Петербургский буддийский храм"],
+				"url": "",
+				"year": 2013
+			},
+			{
+				"authors": ["Ангаева С. П."],
+				"editors": [""],
+				"title": "Буддизм в Бурятии и Агван Доржиев.",
+				"periodical": "Улан-Удэ: Бурят. кн. изд-во, 1999.",
+				"type": "Монография",
+				"placeOfPublication": "",
+				"hashtags": ["#Агван Доржиев", "#Бурятия"],
+				"url": "",
+				"year": 1999
+			},
+			{
+				"authors": ["Антипова Е. А."],
+				"editors": [""],
+				"title": "Формирование и специфика воплощения буддийского художественного канона в скульптуре Монголии: автореф. дис. … канд. искусствоведения.",
+				"periodical": "",
+				"type": "Диссертация",
+				"placeOfPublication": "Екатеринбург.",
+				"hashtags": ["#буддийское искусство", "#Монголия"],
+				"url": "",
+				"year": 2010
+			},
+			{
+				"authors": ["Антонова М. С."],
+				"editors": [""],
+				"title": "Буддийский храм как культурно-символический текст: культурологический подход.",
+				"periodical": "Буддийские тексты Китая, Тибета, Монголии и Бурятии (социально-философский аспект): сб. ст. / Отв. ред. Л. Е. Янгутов. Улан-Удэ: Изд-во БГУ, 2012, С. 168–175.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийская архитектура"],
+				"url": "https://www.klex.ru/m35",
+				"year": 2012
+			},
+			{
+				"authors": ["Ариунболд Т."],
+				"editors": [""],
+				"title": "О буддийской секте «красношапочников» в Монголии.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Пятые Доржиевские чтения. СПб.: Гиперион, 2013, С. 38–41.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Монголия", "#Карма Кагью"],
+				"url": "",
+				"year": 2013
+			},
+			{
+				"authors": ["Артишевский Э. В.", "Земцов Р. Н.", "Даргаева Т. Д.", "Земцова Г. Н.", "Патудин А. В."],
+				"editors": [""],
+				"title": "Комплексный противовоспалительный препарат из арсенала тибетской медицины и его исследование.",
+				"periodical": "Тибетская медицина (История, методология изучения и перспективы использования). Улан-Удэ: Кооператив «Тайга», 1989, С. 225–231.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "",
+				"year": 1989
+			},
+			{
+				"authors": ["Атраш И. А."],
+				"editors": [""],
+				"title": "Бон и буддизм — две социокультурные традиции Тибета. Путь к компромиссу.",
+				"periodical": "Вопросы философии. 2009, № 2. С. 158–166.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#бон"],
+				"url": "",
+				"year": 2009
+			},
+			{
+				"authors": ["Атсанавонг С. Г."],
+				"editors": [""],
+				"title": "«Эрдэниин сан субашид» — памятник письменной культуры бурят (исследование, транслитерация текста, перевод, комментарии).",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "Шэтэ: Забайкалиин гүрэнэй университедэй хэблэл, 2013.",
+				"hashtags": ["#Бурятия", "#Субхашита", "#переводы"],
+				"url": "",
+				"year": 2013
+			},
+			{
+				"authors": ["Атсанавонг С. Г."],
+				"editors": [""],
+				"title": "Бурятская версия «Субхашиты» (исследование, перевод памятника со старописьменного монгольского языка на русский язык, комментарии к русскому переводу, глоссарий С. Г. Атсанавонг).",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "Чита: ЗабГУ, 2017.",
+				"hashtags": ["#Бурятия", "#Субхашита", "#переводы"],
+				"url": "",
+				"year": 2017
+			},
+			{
+				"authors": ["Атсанавонг С. Г."],
+				"editors": [""],
+				"title": "«Драгоценная сокровищница изящных изречений» в переводе Р. Номтоева: некоторые особенности исследования.",
+				"periodical": "Вестник ЗабГУ. 2012, № 11 (90). С. 111–116.",
+				"type": "Монография",
+				"placeOfPublication": "",
+				"hashtags": ["#Бурятия", "#Субхашита", "#переводы"],
+				"url": "https://cyberleninka.ru/article/n/dragotsennaya-sokrovischnitsa-izyaschnyh-izrecheniy-v-perevode-r-nomtoeva-nekotorye-osobennosti-issledovaniya-1",
+				"year": 2012
+			},
+			{
+				"authors": ["Бабаян Д. К."],
+				"editors": [""],
+				"title": "Тибетский плацдарм китайской геополитики.",
+				"periodical": "Восток. Афро-Азиатские общества: история и современность. 2011, № 4, С. 81–99.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Китай"],
+				"url": "https://vk.com/wall-52136985_7291",
+				"year": 2011
+			},
+			{
+				"authors": ["Бадагаров Ж. Б."],
+				"editors": [""],
+				"title": "Первый ойратоязычный памятник на тибетской письменности.",
+				"periodical": "Oriental Studies. 2017, № 10(5), С. 211–223.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#ойраты"],
+				"url": "https://cyberleninka.ru/article/n/pervyy-oyratoyazychnyy-pamyatnik-na-tibetskoy-pismennosti",
+				"year": 2017
+			},
+			{
+				"authors": ["Бадашкеева Т. Т."],
+				"editors": [""],
+				"title": "История тибетской медицины в Монголии.",
+				"periodical": "Тибетская медицина (История, методология изучения и перспективы использования). Улан-Удэ: Кооператив «Тайга», 1989, С. 92–97.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина", "#Монголия"],
+				"url": "",
+				"year": 1989
+			},
+			{
+				"authors": ["Бадлаева Т. В."],
+				"editors": [""],
+				"title": "Г. Ц. Цыбиков и развитие тибетологии в россии в начале ХХ века.",
+				"periodical": "Культура Центральной Азии: письменные источники. Вып. 16. Улан-Удэ: Изд-во БНЦ СО РАН, 2023, С. 33–42.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Г. Цыбиков"],
+				"url": "http://publisher.bscnet.ru/?page_id=6988",
+				"year": 2023
+			},
+			{
+				"authors": ["Бадмаева Т. Б."],
+				"editors": [""],
+				"title": "Функциональная роль танцевальной пластики в ритуально-обрядовой культуре буддизма.",
+				"periodical": "Вестн. Московского гос. ун-та культуры и искусств. 2009, № 3 (29), С. 225–229.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#ритуалы"],
+				"url": "https://cyberleninka.ru/article/n/funktsionalnaya-rol-tantsevalnoy-plastiki-v-ritualno-obryadovoy-kulture-buddizma",
+				"year": 2009
+			},
+			{
+				"authors": ["Бадмаева Э. Э."],
+				"editors": [""],
+				"title": "Актуальные вопросы подготовки специалистов тибетской медицины.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Шестые Доржиевские чтения. СПб.: Гиперион, 2015, С. 324–327.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "",
+				"year": 2015
+			},
+			{
+				"authors": ["Баженов М. Л.", "Миколайчук А. В."],
+				"editors": [""],
+				"title": "Формирование структуры Центральной Азии к северу от Тибета в кайнозое: синтез палеомагнитных и геологических данных.",
+				"periodical": "Геотектоника. 2004, № 5, С. 68–84.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#геология"],
+				"url": "http://neotec.ginras.ru/comrus/_bazhenov-m-l-i-dr-2004-formirovanie-struktury-centralnoy-azii-k-severu-ot-tibeta-v-kaynozoe-sintez-paleomagnitnyh-i-geologicheskih-dannyh.pdf",
+				"year": 2004
 			}
 			
             // Добавьте дополнительные записи здесь
@@ -3463,12 +3837,13 @@
 		document.addEventListener('DOMContentLoaded', function() {
 			displayAuthorsListByAlphabet();
 			displayBibliographicEntries(bibliographicEntries);
-			updateTotalPublicationCount(); // Вызов функции для обновления счетчика
+			updatePublicationCount(); // Вызов функции для обновления счетчика
 		});
 		
-		function updateTotalPublicationCount() {
+		function updatePublicationCount() {
 			const countElement = document.getElementById('count');
-			countElement.textContent = bibliographicEntries.length; // Установка общего числа записей
+			// Используем currentFilteredEntries для отображения актуального количества видимых записей
+			countElement.textContent = currentFilteredEntries.length;
 		}
 		
 		function displayAuthorsList() {
@@ -3498,7 +3873,8 @@
 
 		function filterEntriesByAuthor(authorName) {
 			currentFilteredEntries = bibliographicEntries.filter(entry => entry.authors.includes(authorName));
-			applyFilters();
+			displayBibliographicEntries(currentFilteredEntries);
+			updatePublicationCount(); // Обновляем счетчик после фильтрации
 		}
 		
 		function displayAuthorsListByAlphabet() {
@@ -3647,6 +4023,7 @@
 			const filteredTag = hashtag.replace('#', '');
 			currentFilteredEntries = bibliographicEntries.filter(entry => entry.hashtags.some(tag => tag.includes(filteredTag)));
 			displayBibliographicEntries(currentFilteredEntries);
+			updatePublicationCount();
 		}
 		
 		function handleKeyPress(event) {
@@ -3659,31 +4036,33 @@
 		
 		function applySearch() {
 			const searchText = document.getElementById('searchInput').value.toLowerCase();
-			const filteredEntries = bibliographicEntries.filter(entry => {
-				// Проверяем каждое поле объекта на наличие поисковой строки
+			currentFilteredEntries = bibliographicEntries.filter(entry => {
 				return Object.values(entry).some(value => {
 					if (typeof value === 'string') {
 						return value.toLowerCase().includes(searchText);
 					} else if (Array.isArray(value)) {
-						// Для массива проверяем каждый элемент
 						return value.some(arrayValue => arrayValue.toLowerCase().includes(searchText));
 					}
 					return false;
 				});
 			});
-
-			displayBibliographicEntries(filteredEntries);
-			updatePublicationCount();
+			displayBibliographicEntries(currentFilteredEntries);
+			updatePublicationCount(); // Обновляем счетчик после поиска
 		}
 				
 		function showAllEntries() {
 			currentFilteredEntries = bibliographicEntries; // Сброс к полному списку записей
-			applyFilters(); // Пересортировать и показать все записи
+			displayBibliographicEntries(currentFilteredEntries);
+			updatePublicationCount(); // Обновляем счетчик при показе всех записей
 		}
 		
 		function updatePublicationCount() {
             const countElement = document.getElementById('count');
-            countElement.textContent = bibliographicEntries.length;
+            countElement.textContent = currentFilteredEntries.length;
+			entry.forEach(entry => {
+                entry.style.display = ''; // Remove any inline display style to show the publication
+            });
+            updatePublicationCount();
         }
     </script>
 </body>
