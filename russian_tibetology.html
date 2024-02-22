@@ -118,19 +118,19 @@
 
 	<div style="text-align: center; margin-top: 20px;">
 		<input type="text" id="searchInput" placeholder="Введите текст для поиска..." onkeypress="handleKeyPress(event)" style="margin-right: 10px;">
-		<button onclick="applySearch()">Полнотекстовый поиск</button>
+		<button onclick="applySearch()" style="background-color: #73D0F0;">Полнотекстовый поиск</button>
 	</div>
 	
 	<div style="text-align: center; margin-top: 20px;">
-    <span class="clickable" onclick="showDictionaries()">Все словари</span>
+		<button onclick="showDictionaries()" style="background-color: #73D0F0; border: none; padding: 5px 10px">Все словари</button>
 	</div>
 	
 	<div style="text-align: center; margin-top: 20px;">
-    <span class="clickable" onclick="showCatalogues()">Все каталоги</span>
+		<button onclick="showCatalogues()" style="background-color: #73D0F0; border: none; padding: 5px 10px">Все каталоги</button>
 	</div>
 	
 	<div style="text-align: center; margin-top: 20px;">
-    <span class="clickable" onclick="showDissertations()">Все диссертации</span>
+		<button onclick="showDissertations()" style="background-color: #73D0F0; border: none; padding: 5px 10px">Все диссертации</button>
 	</div>
 	
 	<h1 style="color: #000080; text-align: center; font-size: 24px;">
@@ -151,7 +151,7 @@
 			<option value="asc">По возрастанию</option>
 			<option value="desc">По убыванию</option>
 		</select>
-		<button onclick="applyFilters()">Применить фильтры</button>
+		<button onclick="applyFilters()" style="background-color: #73D0F0;">Применить фильтры</button>
 	</div>
 	<div id="biblioContainer"></div>
 
@@ -300,6 +300,17 @@
                 hashtags: ["#буддизм"],
                 url: "https://www.elibrary.ru/item.asp?id=41351647",
                 year: 2009
+            },
+			{
+                authors: [],
+                editors: ["Боркин Л. Я."],
+                title: "Российские гималайские исследования: вчера, сегодня, завтра.",
+				periodical: "",
+                type: "Сборник статей",
+                placeOfPublication: "СПб.: Издательство «Европейский Дом»",
+                hashtags: ["#Непал"],
+                url: "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+                year: 2017
             },
 			{
                 authors: [],
@@ -4964,6 +4975,710 @@
 				"hashtags": ["#Агван Доржиев"],
 				"url": "",
 				"year": 2009
+			},
+			{
+				"authors": ["Дампилова Л. С."],
+				"editors": [""],
+				"title": "Буддийские мотивы в монголоязычной поэзии.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Четвертые Доржиевские чтения. СПб.: Нестор-История, 2011. С. 272–277.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#монгольская литература"],
+				"url": "",
+				"year": 2011
+			},
+			{
+				"authors": ["Дампилова Л. С."],
+				"editors": [""],
+				"title": "Образ Миларайбы в современной бурятской поэзии.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Пятые Доржиевские чтения. СПб.: Гиперион, 2013. С. 242–248.",
+				"type": "Статья",
+				"placeOfPublication": "Санкт-Петербург",
+				"hashtags": ["#Миларепа", "#монгольская литература"],
+				"url": "",
+				"year": 2013
+			},
+			{
+				"authors": ["Дзунба Кунчог Жигме Ванбо", "Дампилон Б. Б."],
+				"editors": [""],
+				"title": "Драгоценное ожерелье учений философских школ / Пер. с тиб. Б. Б. Дампилона.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "Улан-Удэ: Дашичойхорлин (Бурят. Кн. изд-во), 1998.",
+				"hashtags": ["#переводы", "#буддийская философия"],
+				"url": "https://vk.com/wall-61741653_72463",
+				"year": 1998
+			},
+			{
+				"authors": ["Дампилон Б. Б."],
+				"editors": [""],
+				"title": "Гунчен Жамьян Шадба. Исследование крайностей семидесяти значений парамиты / Пер. с тиб. Б. Б. Дампилона.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "Верхняя Иволга",
+				"hashtags": ["#Жамьян Шадба", "#буддийская философия", "#переводы"],
+				"url": "",
+				"year": 2001
+			},
+			{
+				"authors": ["Дандарон Л. Б."],
+				"editors": [""],
+				"title": "А. Доржиев и история Ацагатского дацана.",
+				"periodical": "Буддийская традиция: история и современность. Юбилейные чтения, посвященные 150-летию со дня рождения А. Доржиева. СПб., 2005. С. 80–82.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Агван Доржиев", "#дацаны"],
+				"url": "",
+				"year": 2005
+			},
+			{
+				"authors": ["Данжинов Л.-Д.", "Дондоков Б. Б.", "Ламажапов В. Е.", "Будажапов Д. Д."],
+				"editors": [],
+				"title": "Наставления для мирян / Пер. со старомонгольского Дондокова Б. Б., Ламажапова В. Е., Будажапова Д. Д.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "Амитхаша, 2021.",
+				"hashtags": ["#буддийская литература", "#переводы"],
+				"url": "",
+				"year": 2021
+			},
+			{
+				"authors": ["Данзанова А. А.", "Дулганов К. П.", "Дулганов В. К."],
+				"editors": [""],
+				"title": "К истории тибетской медицины в Забайкалье.",
+				"periodical": "Тибетская медицина: теория и практика. Материалы конференции, посвященной 70-летию со дня рождения Б.-Д. Бадараева. Ч. 1. Улан-Удэ: Изд-во БНЦ СО РАН, 2001. С. 32–34.",
+				"type": "Статья",
+				"placeOfPublication": "Улан-Удэ",
+				"hashtags": ["#тибетская медицина", "#Бурятия"],
+				"url": "",
+				"year": 2001
+			},
+			{
+				"authors": ["Даурский В."],
+				"editors": [],
+				"title": "Можно ли признать тибетскую медицину наукой?.",
+				"periodical": "Современная Монголия. № 5 (94), 1937. С. 58–71.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "",
+				"year": 1937
+			},
+			{
+				"authors": ["Дацышен В. Г."],
+				"editors": [],
+				"title": "Буддизм и тувинская государственность в XVIII — начале ХХ в.",
+				"periodical": "Буддизм Ваджраяны в России: на перекрестке культур. Коллективная монография по материалам V Международной научно-практической конференции. М.: Алмазный путь, 2018. С. 132–139.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Тува", "#история буддизма"],
+				"url": "https://www.elibrary.ru/item.asp?id=41395818&pff=1",
+				"year": 2018
+			},
+			{
+				"authors": ["Дашидондоков C. С."],
+				"editors": [],
+				"title": "Творческий путь Кенсур Агвана Нимы и его работа «Чойчжун Лунриг Донме» («Светильник, проливающий свет на цитаты из классических трудов по истории буддизма»).",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Третьи Доржиевские чтения. СПб.: Нестор-История, 2009. С. 97–100.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийская литература", "#история буддизма"],
+				"url": "",
+				"year": 2009
+			},
+			{
+				"authors": ["Дашидондоков C. С."],
+				"editors": [],
+				"title": "Творческий путь Кенсур Агван Нимы и его работа «Чойжунг Лунриг Донгме» (Светильник цитат из классических трудов по истории буддизма).",
+				"periodical": "Буддийские тексты Китая, Тибета, Монголии и Бурятии (социально-философский аспект). Улан-Удэ: Изд-во БГУ, 2012. С. 128–133.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийская литература", "#история буддизма"],
+				"url": "https://www.klex.ru/m35",
+				"year": 2012
+			},
+			{
+				"authors": ["Дашидондоков Ш. С."],
+				"editors": [],
+				"title": "Агван Доржиев и его сподвижники из Аги.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Четвертые Доржиевские чтения. СПб.: Нестор-История, 2011. С. 16–25.",
+				"type": "Статья",
+				"placeOfPublication": "Санкт-Петербург",
+				"hashtags": ["#Агван Доржиев"],
+				"url": "",
+				"year": 2011
+			},
+			{
+				"authors": ["Дашиева А. А."],
+				"editors": [],
+				"title": "Мантра «Хридая-Сутры».",
+				"periodical": "Философско-сотериологические аспекты Абхидхармы, Праджняпарамиты и Тантры в буддизме Китая, Тибета и Бурятии. Сб. ст. Улан-Удэ: Изд-во БГУ, 2010. С. 134–145.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Хридая cутра", "#мантры"],
+				"url": "https://www.klex.ru/m3k",
+				"year": 2010
+			},
+			{
+				"authors": ["Дашиева Л. Д."],
+				"editors": [],
+				"title": "Буддийские песнопения бурят: к вопросу жанровой типологии.",
+				"periodical": "Память мира: историко-документальное наследие буддизма. Материалы Международной научно-практической конференции. Москва, 25–26 ноября 2010 г. М.: РГГУ, 2011. С. 196–201.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Бурятия", "музыка"],
+				"url": "http://www2.rsuh.ru/binary/object_71.1323951189.77277.pdf",
+				"year": 2011
+			},
+			{
+				"authors": ["Дашиева Л. Д."],
+				"editors": [],
+				"title": "Феномен буддийской музыки в традиционной культуре бурят.",
+				"periodical": "Буддизм Ваджраяны в России: Актуальная история и социокультурная аналитика. М.: Алмазный Путь, 2020. С. 606–610.",
+				"type": "Статья",
+				"placeOfPublication": "Москва",
+				"hashtags": ["#Бурятия", "музыка"],
+				"url": "https://www.elibrary.ru/item.asp?id=44429879&pff=1",
+				"year": 2020
+			},
+			{
+				"authors": ["Дашиева С. Б."],
+				"editors": [],
+				"title": "«Рабочая тетрадь» Д. Ендонова – опыт внедрения европейской медицины в практику эмчи-ламы.",
+				"periodical": "Вестн. БНЦ СО РАН. 2023, 4 (52). С. 107–112.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "http://publisher.bscnet.ru/?page_id=6927",
+				"year": 2023
+			},
+			{
+				"authors": ["Дашиева С. Б."],
+				"editors": [],
+				"title": "Лексический анализ «Рабочей тетради» эмчи-ламы Д. Ендонова.",
+				"periodical": "Культура Центральной Азии: письменные источники. Вып. 16. Улан-Удэ: Изд-во БНЦ СО РАН, 2023. С. 245–253.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "http://publisher.bscnet.ru/?page_id=7050",
+				"year": 2023
+			},
+			{
+				"authors": ["Дашиева С. Б.", "Гармаева С. П."],
+				"editors": [],
+				"title": "Лечебные мантры на материале трактата «“Ханская сокровищница” — о способах лечения».",
+				"periodical": "Культура Центральной Азии: письменные источники. Вып. 14. Улан-Удэ: Изд-во БНЦ СО РАН, 2021. С. 215–223.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#мантры", "#тибетская медицина"],
+				"url": "http://publisher.bscnet.ru/?page_id=5490",
+				"year": 2021
+			},
+			{
+				"authors": ["Дашиева С. З."],
+				"editors": [],
+				"title": "Буддийская танка в истории культуры монголов и бурят.",
+				"periodical": "Вестн. БГУ. 2015. № 14. С. 185–189.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#монгольские народы", "#Бурятия"],
+				"url": "https://cyberleninka.ru/article/n/buddiyskaya-tanka-v-istorii-kultury-mongolov-i-buryat",
+				"year": 2015
+			},
+			{
+				"authors": ["Дашинимаева П. П.", "Сандитов Д. С."],
+				"editors": [],
+				"title": "«Обуздание» ума и экология нравственности: нейропсихолингвистические основания в первом приближении.",
+				"periodical": "Буддизм в контексте диалога культур. Сб. ст. Улан-Удэ: Изд-во БГУ, 2015. С. 87–94.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийская философия", "#буддийская психология"],
+				"url": "https://www.klex.ru/m33",
+				"year": 2015
+			},
+			{
+				"authors": ["Дашицыренов Ж. Ж."],
+				"editors": [],
+				"title": "Тибетская медицина в Швейцарии.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Четвертые Доржиевские чтения. СПб.: Нестор-История, 2011. С. 67–73.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#тибетская медицина"],
+				"url": "",
+				"year": 2011
+			},
+			{
+				"authors": ["Дворецкая А. П."],
+				"editors": [],
+				"title": "Буддийский мир Тувы глазами путешественников (конец XIX — первая треть ХХ в.).",
+				"periodical": "Буддизм Ваджраяны в России: на перекрестке культур. Коллективная монография по материалам V Международной научно-практической конференции. М.: Алмазный путь, 2018. С. 140–145.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Тува", "#путешествия"],
+				"url": "https://www.elibrary.ru/item.asp?id=41395902&pff=1",
+				"year": 2018
+			},
+			{
+				"authors": ["Дворецкая А. П.", "Ондар Н. М."],
+				"editors": [],
+				"title": "Буддийская культура Тувы в экспедиционных материалах Ф. Я. Кона.",
+				"periodical": "Буддизм Ваджраяны в России: Актуальная история и социокультурная аналитика. М.: Алмазный Путь, 2020. С. 74–85.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Тува", "#путешествия"],
+				"url": "https://www.elibrary.ru/item.asp?id=44429820&pff=1",
+				"year": 2020
+			},
+			{
+				"authors": ["Деменова В. В."],
+				"editors": [],
+				"title": "Проблемы искусствоведческого анализа произведений современного буддийского искусства.",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Четвертые Доржиевские чтения. СПб.: Нестор-История, 2011. С. 277–283.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство"],
+				"url": "",
+				"year": 2011
+			},
+			{
+				"authors": ["Деменова В. В."],
+				"editors": [],
+				"title": "Истоки формирования коллекций буддийского искусства на Урале (Ирбит, Екатеринбург, Челябинск).",
+				"periodical": "Буддийская культура: история, источниковедение, языкознание и искусство. Шестые Доржиевские чтения. СПб.: Гиперион, 2015. С. 302–309.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#музеи"],
+				"url": "",
+				"year": 2015
+			},
+			{
+				"authors": ["Деменова В. В."],
+				"editors": [],
+				"title": "Светоносная природа буддийских божеств: иконографическое и образное отражение в искусстве.",
+				"periodical": "Буддизм Ваджраяны в России: Традиции и новации. Колл. моногр. М.: Алмазный путь, 2016. С. 344–353.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство"],
+				"url": "https://abhidharma.ru/A/Raznoe/0083.pdf",
+				"year": 2016
+			},
+			{
+				"authors": ["Деменова В. В."],
+				"editors": [],
+				"title": "Истоки формирования коллекций буддийского искусства на Урале (Ирбит, Екатеринбург, Челябинск).",
+				"periodical": "Индия — Тибет: текст и интертекст в культуре: Рериховские чтения 2012–2015 в Институте востоковедения РАН. М.: Издательский дом ЯСК (Языки славянской культуры), 2017. С. 91–96.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#музеи"],
+				"url": "http://www.spsl.nsc.ru/FullText/konfe/NDIA-TIBET%202017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Герасименко Т. И.", "Родоман Б. Б."],
+				"editors": [],
+				"title": "Глобализация и традиции: грани взаимодействия (на примере Непала и Бутана).",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 129–132.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Непал", "#Бутан"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Балалаев С. Ю."],
+				"editors": [],
+				"title": "Истоки четырех великих рек Азии: сакральная и физическая география района горы Кайлас (Западный Тибет).",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 123–128.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#география"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Андреев А. И."],
+				"editors": [],
+				"title": "Через Тибет в Гималаи: неосуществленный план путешествия Н. М. Пржевальского.",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 15–21.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#путешествия", "#Н. М. Пржевальский"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Боркин Л. Я.", "Андреев А. В.", "Ганнибал Б. К.", "Литвинчук С. Н."],
+				"editors": [],
+				"title": "Из Британской Индии в Фергану (1898): полевые наблюдения и сборы капитана Генерального штаба В. Ф. Новицкого в Кашмире и Ладаке.",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 22–35.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#путешествия", "#Кашмир", "#Ладакх"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Альбедиль М. Ф."],
+				"editors": [],
+				"title": "Гималайский регион: отражение в коллекциях Музея антропологии и этнографии имени Петра Великого (Кунсткамера) РАН.",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 61–65.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#музеи"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Альфонсо Н. Г."],
+				"editors": [],
+				"title": "Непал — Тибет: кросс-культурные контакты.",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 66–69.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Непал"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Демиденко М. И."],
+				"editors": [],
+				"title": "По следам СС в Тибет.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "СПб.: Северо-Запад.",
+				"hashtags": ["#оккультизм"],
+				"url": "",
+				"year": 1999
+			},
+			{
+				"authors": ["Демиденко М. И."],
+				"editors": [],
+				"title": "По следам СС в Тибет. 2-е изд.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "СПб.: Нева.",
+				"hashtags": ["#оккультизм"],
+				"url": "",
+				"year": 2004
+			},
+			{
+				"authors": ["Демиденко М. И."],
+				"editors": [],
+				"title": "По следам СС в Тибет.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "СПб.: Нева : ОЛМА-ПРЕСС.",
+				"hashtags": ["#оккультизм"],
+				"url": "",
+				"year": 2003
+			},
+			{
+				"authors": ["Демиденко М. И."],
+				"editors": [],
+				"title": "По следам СС в Тибет.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "М.: ОЛМА Медиа Групп.",
+				"hashtags": ["#оккультизм"],
+				"url": "",
+				"year": 2010
+			},
+			{
+				"authors": ["Демиденко М. И."],
+				"editors": [],
+				"title": "Барон Унгерн — белый рыцарь Тибета. Записки поручика Волкова.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "М.: Яуза : Эксмо, 2004.",
+				"hashtags": ["#оккультизм", "#путешествия"],
+				"url": "",
+				"year": 2004
+			},
+			{
+				"authors": ["Дмитриев С. В."],
+				"editors": [],
+				"title": "Экспедиция подъесаула Н. Э. Уланова и Ламы Дамбо Ульянова в Центральную Азию.",
+				"periodical": "Кюнеровский сборник: материалы восточноазиатских и юго-восточноазиатских исследований: этнография, фольклор, искусство, история, археология, музееведение, 2011–2012. Вып. 7. СПб., 2013. С. 48–57.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#путешествия"],
+				"url": "https://lib.kunstkamera.ru/files/lib/978-5-88431-218-0/978-5-88431-218-0_05.pdf",
+				"year": 2013
+			},
+			{
+				"authors": ["Дондокова Л. Ю."],
+				"editors": [],
+				"title": "О женском хубилгане буддийской богини Сагаан Дара-эхэ у бурят (по рукописи Г. Хаакова «История Эхирит-Булагатской хубилганки»).",
+				"periodical": "Память мира: историко-документальное наследие буддизма. Материалы Международной научно-практической конференции. Москва, 25–26 ноября 2010 г. М.: РГГУ, 2011. С. 136–150.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#рукописи", "#Бурятия", "#хубилганы"],
+				"url": "http://www2.rsuh.ru/binary/object_71.1323951189.77277.pdf",
+				"year": 2011
+			},
+			{
+				"authors": ["Допай А.-Х. М."],
+				"editors": [],
+				"title": "Коллекция буддийских тханок в фондах Национального музея Республики Тыва.",
+				"periodical": "Ермолаевские чтения: материалы IV научно-практической конференции (19 июня 2020 г.). С. 164–169.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#Тува", "#музеи"],
+				"url": "https://cyberleninka.ru/article/n/kollektsiya-buddiyskih-thanok-v-fondah-natsionalnogo-muzeya-respubliki-tyva",
+				"year": 2020
+			},
+			{
+				"authors": ["Допай А.-Х. М."],
+				"editors": [],
+				"title": "Состав буддийского собрания Национального музея Республики Тыва и его репрезентация в постоянной экспозиции.",
+				"periodical": "Ермолаевские чтения – 2021. С. 272–278.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#Тува", "#музеи"],
+				"url": "https://www.elibrary.ru/item.asp?id=48050480",
+				"year": 2021
+			},
+			{
+				"authors": ["Дорджиева Г. Ш."],
+				"editors": [],
+				"title": "Лхарамба А. Доржиев и калмыцкое духовенство.",
+				"periodical": "Буддийское духовенство и культура калмыцкого народа. Материалы Международной научной конференции, посвященной 405-летию со дня рождения выдающегося просветителя Зая-Пандиты Намкай Джамцо (г. Элиста, 20–21 октября 2004 г.). Элиста: АПП «Джангар», 2004. С. 49–53.",
+				"type": "Статья",
+				"placeOfPublication": "Элиста",
+				"hashtags": ["#Агван Доржиев", "#Калмыкия"],
+				"url": "",
+				"year": 2004
+			},
+			{
+				"authors": ["Доржиева Д. Л."],
+				"editors": [],
+				"title": "Джамьянг Кхьенце Вангпо (1820–1892) в истории движения Риме.",
+				"periodical": "Культура Центральной Азии: письменные источники. Вып. 16. Улан-Удэ: Изд-во БНЦ СО РАН, 2023. С. 62–70.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Джамьянг Кхьенце Вангпо"],
+				"url": "http://publisher.bscnet.ru/?page_id=6997",
+				"year": 2023
+			},
+			{
+				"authors": ["Доржиева Д. Л."],
+				"editors": [],
+				"title": "Роль Джамгон Конгтрула (1813–1899) в возникновении идеи движения Риме.",
+				"periodical": "Вестн. БНЦ СО РАН. 2023, 3 (51). С. 147–153.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Джамгон Конгтрул"],
+				"url": "http://publisher.bscnet.ru/?page_id=6796",
+				"year": 2023
+			},
+			{
+				"authors": ["Доржиева М. Б."],
+				"editors": [],
+				"title": "Коллекция Мирде-бурхан из фондов ГУ Национального музея Республики Калмыкия им. профессора Н. Н. Пальмова.",
+				"periodical": "Буддизм Ваджраяны в России: история и современность. СПб.: Unlimited Space, 2009. С. 405–411.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийское искусство", "#Калмыкия"],
+				"url": "https://www.elibrary.ru/item.asp?id=41397023&pff=1",
+				"year": 2009
+			},
+			{
+				"authors": ["Доржигушаева О. В."],
+				"editors": [],
+				"title": "Экологическая этика буддизма (Учебное пособие).",
+				"periodical": "",
+				"type": "Учебное пособие",
+				"placeOfPublication": "СПб.: Карма Йеше Палдрон, 2002.",
+				"hashtags": ["#буддийская философия"],
+				"url": "",
+				"year": 2002
+			},
+			{
+				"authors": ["Доржигушаева О. В."],
+				"editors": [],
+				"title": "Экологическая этика буддизма.",
+				"periodical": "Междисциплинарный научный и прикладной журнал «Биосфера», 2013, т. 5, № 2. С. 254–272.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#буддийская философия"],
+				"url": "https://cyberleninka.ru/article/n/ekologicheskaya-etika-buddizma.pdf",
+				"year": 2013
+			},
+			{
+				"authors": ["Доржигушаева О. В."],
+				"editors": [],
+				"title": "Буддийская практика сострадания: экологическая деятельность Его Святейшества Далай-ламы XIV-го.",
+				"periodical": "Особенности формирования здорового образа жизни: факторы и условия. Материалы III Международной научно-практической конференции. 2015. С. 92–95.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": [],
+				"url": "",
+				"year": 2015
+			},
+			{
+				"authors": ["Доржиев Агван"],
+				"editors": [""],
+				"title": "Ло-гун-гьэ-бо (Один из религиозных обычаев в Лхасе).",
+				"periodical": "Записки ИРГО по отделению этнографии. Т. XXXIV: Сборник в честь семидесятилетия Григория Николаевича Потанина. С. 289–292.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Агван Доржиев", "#обряды"],
+				"url": "https://elib.rgo.ru/handle/123456789/219635",
+				"year": 1909
+			},
+			{
+				"authors": ["Дорогова Е. Ю."],
+				"editors": [""],
+				"title": "Роль пограничного вопроса в отношениях Индии и Китая.",
+				"periodical": "Индия в мировой политике. Материалы заседания «круглого стола». М.: Рос. ун-т дружбы народов, 2013. С. 35–43.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Китай"],
+				"url": "",
+				"year": 2013
+			},
+			{
+				"authors": ["Драгункин А. Н.", "Котков К. А."],
+				"editors": [],
+				"title": "Тибет — правда и вымыслы: «развеяние» мифов и заблуждений о Тибете и тибетцах.",
+				"periodical": "",
+				"type": "Монография",
+				"placeOfPublication": "СПб.: Корона-принт, 2015.",
+				"hashtags": [],
+				"url": "",
+				"year": 2015
+			},
+			{
+				"authors": ["Драгунов А. А."],
+				"editors": [],
+				"title": "Особенности фонологической системы древне-тибетского языка.",
+				"periodical": "Записки ИВ АН СССР. Т. VII. Л.: АН СССР, 1939. С. 284–295.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#лингвистика"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/zivan_07_1939_12_dragunov.pdf",
+				"year": 1939
+			},
+			{
+				"authors": ["Дробышев Ю. И."],
+				"editors": [],
+				"title": "Тибетский вклад в этническую экологию Монголии.",
+				"periodical": "Восток (Oriens). 2003, № 5. С. 42–51.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Монголия", "#монголо-тибетские отношения"],
+				"url": "",
+				"year": 2003
+			},
+			{
+				"authors": ["Дробышев Ю. И."],
+				"editors": [],
+				"title": "Тибетская политика монголов (1205–1235).",
+				"periodical": "Ориенталистика. 2021, 4 (5). С. 1125–1144.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Монголия", "#монголо-тибетские отношения"],
+				"url": "https://www.orientalistica.su/jour/article/view/508/592",
+				"year": 2021
+			},
+			{
+				"authors": ["Дугар-Нимаев Ц. А."],
+				"editors": [],
+				"title": "Произведения тибетской художественной литературы в бурятских переводах.",
+				"periodical": "Центральная Азия и Тибет. Материалы к конференции. Новосибирск: Наука, СО, 1972. С. 171.",
+				"type": "Статья",
+				"placeOfPublication": "Новосибирск",
+				"hashtags": ["#буддийская литература", "#переводы"],
+				"url": "",
+				"year": 1972
+			},
+			{
+				"authors": ["Дугаров В. Д."],
+				"editors": [],
+				"title": "Некоторые формы репрессивной экономической политики МНРП по отношению к ламству в 1932–1938 гг. (по материалам архива ФСБ РФ по РБ).",
+				"periodical": "Буддизм в общественно-политических процессах Бурятии и стран Центральной Азии. Улан-Удэ: Изд-во БГУ, 2012. С. 86–95.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Монголия"],
+				"url": "https://www.klex.ru/m38",
+				"year": 2012
+			},
+			{
+				"authors": ["Дудин П. Н."],
+				"editors": [],
+				"title": "Становление и нормативное закрепление теократической монархии в Монголии в 1911–1924 годах.",
+				"periodical": "Право. Журнал Высшей школы экономики. 2013, № 2. С. 156–161.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Монголия"],
+				"url": "https://cyberleninka.ru/article/n/stanovlenie-i-normativnoe-zakreplenie-teokraticheskoy-monarhii-v-mongolii-v-1911-1924-godah",
+				"year": 2013
+			},
+			{
+				"authors": ["Дюфур М. С."],
+				"editors": [],
+				"title": "Геологическое строение Гималаев.",
+				"periodical": "Российские гималайские исследования: вчера, сегодня, завтра. СПб.: Издательство «Европейский Дом», 2017. С. 133–137.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#геология"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/journals/himalaya_01_2017.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Ермолин В. Ю."],
+				"editors": [],
+				"title": "Значимые места традиции Карма Камцанг в Тибете.",
+				"periodical": "Буддизм Ваджраяны в России: на перекрестке культур. Коллективная монография по материалам V Международной научно-практической конференции. М.: Алмазный путь, 2018. С. 152–168.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#история буддизма"],
+				"url": "https://www.elibrary.ru/item.asp?id=41395799&pff=1",
+				"year": 2018
+			},
+			{
+				"authors": ["Ерофеева И. В."],
+				"editors": [],
+				"title": "Буддийские монастыри ойратов в Семиречье (середина XVII — середина ХІХ в.).",
+				"periodical": "Mongolica-XVIII. 2017. С. 35–48.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#ойраты", "#буддийская архитектура"],
+				"url": "http://www.orientalstudies.ru/rus/images/pdf/p_mongolica_18_2017_06_erofeyeva.pdf",
+				"year": 2017
+			},
+			{
+				"authors": ["Етонова С. З."],
+				"editors": [],
+				"title": "Цанидская традиция образования в историко-культурной трансляции философского учения буддизма: автореф. … к. культурологии.",
+				"periodical": "",
+				"type": "Диссертация",
+				"placeOfPublication": "Чита, 2004.",
+				"hashtags": ["#буддийское образование", "#буддийская философия"],
+				"url": "https://www.dissercat.com/content/tsanidskaya-traditsiya-obrazovaniya-v-istoriko-kulturnoi-translyatsii-filosofskogo-ucheniya-",
+				"year": 2004
+			},
+			{
+				"authors": ["Ефремов Ю. В."],
+				"editors": [],
+				"title": "О географии Западного Тибета.",
+				"periodical": "Известия Русского географического общества. 2007, т. 139, № 2. С. 1–10.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#география"],
+				"url": "https://elib.rgo.ru/handle/123456789/219735",
+				"year": 2007
+			},
+			{
+				"authors": ["Амоголонова Д. Д."],
+				"editors": [],
+				"title": "Возвращение хамбо-ламы Итигэлова и новая концепция возрождения Бурятии.",
+				"periodical": "Вестн. БГУ. 2012, № 7. С. 65–70.",
+				"type": "Статья",
+				"placeOfPublication": "",
+				"hashtags": ["#Хамбо-лама Итигэлов", "#Бурятия"],
+				"url": "https://cyberleninka.ru/article/n/vozvraschenie-hambo-lamy-itigelova-i-novaya-kontseptsiya-vozrozhdeniya-buryatii",
+				"year": 2012
 			}			
 					
             // Добавьте дополнительные записи здесь
@@ -4987,19 +5702,28 @@
 
 			// Перебор тегов внутри группы
 			tagsByGroup[group].forEach(tag => {
-				const tagElement = document.createElement('a');
-				tagElement.href = "#";
+				const tagElement = document.createElement('button');
 				tagElement.textContent = tag;
 				tagElement.style.margin = "0 10px"; // небольшой отступ между тегами
+				tagElement.style.backgroundColor = "#73D0F0"; // Setting the background color
+				tagElement.style.border = "none"; // Optional: Removing the border
+				tagElement.style.padding = "5px 10px"; // Optional: Adjusting padding for better visual
+				tagElement.style.cursor = "pointer"; // Changing cursor to pointer on hover
 				tagElement.onclick = function() {
 					applyHashtagFilter(tag); // Убедитесь, что функция фильтрации обрабатывает теги корректно
-					return false;
+					// return false;
 				};
 				tagsContainer.appendChild(tagElement);
 			});
 		}
+				
+		document.addEventListener('DOMContentLoaded', function() {
+			displayAuthorsListByAlphabet();
+			displayBibliographicEntries(bibliographicEntries, false); // Здесь прокрутки не будет
+			updatePublicationCount(); // Вызов функции для обновления счетчика
+		});
 		
-        function displayAuthorsList() {
+		function displayAuthorsList() {
             const authorsSet = new Set();
             bibliographicEntries.forEach(entry => {
                 entry.authors.forEach(author => {
@@ -5010,60 +5734,37 @@
             const authorsListElement = document.getElementById('authorsList');
             authorsListElement.innerHTML = '<h2>Авторы</h2>';
             Array.from(authorsSet).sort().forEach(author => {
-                const authorElement = document.createElement('a');
-                authorElement.className = 'clickable';
+                const authorElement = document.createElement('button');
                 authorElement.textContent = author;
+				authorElement.style.margin = "0 10px"; // небольшой отступ между тегами
+				authorElement.style.backgroundColor = "#73D0F0"; // Setting the background color
+				authorElement.style.border = "none"; // Optional: Removing the border
+				authorElement.style.padding = "5px 10px"; // Optional: Adjusting padding for better visual
+				authorElement.style.cursor = "pointer"; // Changing cursor to pointer on hover
                 authorElement.onclick = () => displayEntriesByAuthor(author);
                 authorsListElement.appendChild(authorElement);
                 authorsListElement.appendChild(document.createElement('br'));
             });
         }
-
-        function displayEntriesByAuthor(authorName) {
-            const entriesListElement = document.getElementById('entriesList');
-            entriesListElement.innerHTML = '';
-            const filteredEntries = bibliographicEntries.filter(entry => entry.authors.includes(authorName));
-            if (filteredEntries.length > 0) {
-                filteredEntries.forEach(entry => {
-                    const entryElement = document.createElement('div');
-                    entryElement.textContent = `${entry.title} (${entry.year})`;
-                    entriesListElement.appendChild(entryElement);
-                });
-            } else {
-                entriesListElement.textContent = 'Нет публикаций для этого автора.';
-            }
-        }
-						
-		document.addEventListener('DOMContentLoaded', function() {
-			displayAuthorsListByAlphabet();
-			displayBibliographicEntries(bibliographicEntries);
-			updatePublicationCount(); // Вызов функции для обновления счетчика
-		});
-		
-		function updatePublicationCount() {
-			const countElement = document.getElementById('count');
-			// Используем currentFilteredEntries для отображения актуального количества видимых записей
-			countElement.textContent = currentFilteredEntries.length;
-		}
 		
 		function showDictionaries() {
 			const dictionaries = bibliographicEntries.filter(entry => entry.type === "Словарь");
 			currentFilteredEntries = dictionaries; // Обновляем currentFilteredEntries с отфильтрованными записями
-			displayBibliographicEntries(dictionaries);
+			displayBibliographicEntries(dictionaries, true);
 			updatePublicationCount(); // Теперь счетчик будет обновляться правильно
 		}
 		
 		function showCatalogues() {
 			const catalogues = bibliographicEntries.filter(entry => entry.type === "Каталог");
 			currentFilteredEntries = catalogues; // Обновляем currentFilteredEntries с отфильтрованными записями
-			displayBibliographicEntries(catalogues);
+			displayBibliographicEntries(catalogues, true);
 			updatePublicationCount(); // Теперь счетчик будет обновляться правильно
 		}
 		
 		function showDissertations() {
 			const dissertations = bibliographicEntries.filter(entry => entry.type === "Диссертация");
 			currentFilteredEntries = dissertations; // Обновляем currentFilteredEntries с отфильтрованными записями
-			displayBibliographicEntries(dissertations);
+			displayBibliographicEntries(dissertations, true);
 			updatePublicationCount(); // Теперь счетчик будет обновляться правильно
 		}
 		
@@ -5072,9 +5773,13 @@
 			const uniqueAuthors = getUniqueAuthors(bibliographicEntries);
 
 			uniqueAuthors.forEach(author => {
-				const authorLink = document.createElement('a');
-				authorLink.href = "#";
+				const authorLink = document.createElement('button');
 				authorLink.textContent = author;
+				authorLink.style.margin = "0 10px"; // небольшой отступ между тегами
+				authorLink.style.backgroundColor = "#73D0F0"; // Setting the background color
+				authorLink.style.border = "none"; // Optional: Removing the border
+				authorLink.style.padding = "5px 10px"; // Optional: Adjusting padding for better visual
+				authorLink.style.cursor = "pointer"; // Changing cursor to pointer on hover
 				authorLink.onclick = function() {
 					filterEntriesByAuthor(author);
 					return false;
@@ -5094,7 +5799,7 @@
 
 		function filterEntriesByAuthor(authorName) {
 			currentFilteredEntries = bibliographicEntries.filter(entry => entry.authors.includes(authorName));
-			displayBibliographicEntries(currentFilteredEntries);
+			displayBibliographicEntries(currentFilteredEntries, true);
 			updatePublicationCount(); // Обновляем счетчик после фильтрации
 		}
 		
@@ -5121,10 +5826,13 @@
 				letterBlock.appendChild(letterTitle);
 
 				authorsByAlphabet[letter].sort().forEach(author => {
-					const authorLink = document.createElement('a');
-					authorLink.href = "#";
+					const authorLink = document.createElement('button');
 					authorLink.textContent = author;
 					authorLink.className = 'author-link';
+					authorLink.style.margin = "0 10px"; // небольшой отступ между тегами
+					authorLink.style.backgroundColor = "#73D0F0"; // Setting the background color
+					authorLink.style.padding = "5px 10px"; // Optional: Adjusting padding for better visual
+					authorLink.style.cursor = "pointer"; // Changing cursor to pointer on hover
 					authorLink.onclick = function() {
 						filterEntriesByAuthor(author);
 						return false;
@@ -5136,8 +5844,15 @@
 				authorsList.appendChild(letterBlock);
 			});
 		}
-					
-		function displayBibliographicEntries(entries) {
+		
+		function scrollIntoView(elementId) {
+			const element = document.getElementById(elementId);
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}
+		}
+		
+		function displayBibliographicEntries(entries, scrollToEntries = false) {
 			const container = document.getElementById('biblioContainer');
 			container.innerHTML = '';
 
@@ -5165,7 +5880,7 @@
 				}
 				if (entry.hashtags.length > 0) {
 					const hashtagsHTML = entry.hashtags.map(hashtag => 
-						`<a href="#" onclick="applyHashtagFilter('${hashtag}'); return false;">${hashtag}</a>`
+						`<button onclick="applyHashtagFilter('${hashtag}');">${hashtag}</button>`
 					).join(" ");
 					innerHTML += `<p class="field-name">${hashtagsHTML}</p>`;
 				}
@@ -5176,6 +5891,10 @@
 				entryElement.innerHTML = innerHTML;
 				container.appendChild(entryElement);
 			});
+			
+			if (scrollToEntries) {
+				scrollIntoView('biblioContainer'); // Прокрутка к контейнеру с записями
+			}
 		}
 		
 		function initFilters() {
@@ -5230,20 +5949,20 @@
 		
 		let currentFilteredEntries = bibliographicEntries;
 		
-		function applyFilters() {
+		function applyFilters(entries, scrollToEntries = true) {
             const sortOrder = document.getElementById('sortOrder').value;
 			let sortedEntries = [...currentFilteredEntries].sort((a, b) => {
 				return sortOrder === 'asc' ? a.year - b.year : b.year - a.year;
 			});
 
-			displayBibliographicEntries(sortedEntries);
+			displayBibliographicEntries(sortedEntries, true);
         }
 		
-		function applyHashtagFilter(hashtag) {
+		function applyHashtagFilter(hashtag, scrollToEntries = true) {
 			// Удаляем символ '#' для корректного сравнения
 			const filteredTag = hashtag.replace('#', '');
 			currentFilteredEntries = bibliographicEntries.filter(entry => entry.hashtags.some(tag => tag.includes(filteredTag)));
-			displayBibliographicEntries(currentFilteredEntries);
+			displayBibliographicEntries(currentFilteredEntries, true);
 			updatePublicationCount();
 		}
 		
@@ -5267,7 +5986,7 @@
 					return false;
 				});
 			});
-			displayBibliographicEntries(currentFilteredEntries);
+			displayBibliographicEntries(currentFilteredEntries, true);
 			updatePublicationCount(); // Обновляем счетчик после поиска
 		}
 				
@@ -5283,8 +6002,8 @@
 			entry.forEach(entry => {
                 entry.style.display = ''; // Remove any inline display style to show the publication
             });
-            updatePublicationCount();
         }
+		
     </script>
 </body>
 </html>
