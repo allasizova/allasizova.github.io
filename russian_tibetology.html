@@ -54035,27 +54035,6 @@
 			updatePublicationCount(); // Теперь счетчик будет обновляться правильно
 		}
 		
-		function displayAuthorsList() {
-			const authorsList = document.getElementById('authorsList');
-			const uniqueAuthors = getUniqueAuthors(bibliographicEntries);
-
-			uniqueAuthors.forEach(author => {
-				const authorLink = document.createElement('button');
-				authorLink.textContent = author;
-				authorLink.style.margin = "0 10px"; // небольшой отступ между тегами
-				authorLink.style.backgroundColor = "#73D0F0"; // Setting the background color
-				authorLink.style.border = "none"; // Optional: Removing the border
-				authorLink.style.padding = "5px 10px"; // Optional: Adjusting padding for better visual
-				authorLink.style.cursor = "pointer"; // Changing cursor to pointer on hover
-				authorLink.onclick = function() {
-					filterEntriesByAuthor(author);
-					return false;
-				};
-				authorsList.appendChild(authorLink);
-				authorsList.appendChild(document.createElement('br'));
-			});
-		}
-
 		function getUniqueAuthors(entries) {
 			const authorsSet = new Set();
 			entries.forEach(entry => {
