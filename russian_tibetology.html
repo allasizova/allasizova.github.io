@@ -54014,30 +54014,6 @@
 			updatePublicationCount(); // Вызов функции для обновления счетчика
 		});
 		
-		function displayAuthorsList() {
-            const authorsSet = new Set();
-            bibliographicEntries.forEach(entry => {
-                entry.authors.forEach(author => {
-                    authorsSet.add(author);
-                });
-            });
-
-            const authorsListElement = document.getElementById('authorsList');
-            authorsListElement.innerHTML = '<h2>Авторы</h2>';
-            Array.from(authorsSet).sort().forEach(author => {
-                const authorElement = document.createElement('button');
-                authorElement.textContent = author;
-				authorElement.style.margin = "0 10px"; // небольшой отступ между тегами
-				authorElement.style.backgroundColor = "#73D0F0"; // Setting the background color
-				authorElement.style.border = "none"; // Optional: Removing the border
-				authorElement.style.padding = "5px 10px"; // Optional: Adjusting padding for better visual
-				authorElement.style.cursor = "pointer"; // Changing cursor to pointer on hover
-                authorElement.onclick = () => displayEntriesByAuthor(author);
-                authorsListElement.appendChild(authorElement);
-                authorsListElement.appendChild(document.createElement('br'));
-            });
-        }
-		
 		function showDictionaries() {
 			const dictionaries = bibliographicEntries.filter(entry => entry.type === "Словарь");
 			currentFilteredEntries = dictionaries; // Обновляем currentFilteredEntries с отфильтрованными записями
