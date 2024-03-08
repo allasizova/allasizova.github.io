@@ -54853,14 +54853,19 @@
 						const letterButton = document.createElement('button');
 						letterButton.textContent = letter;
 						letterButton.style.margin = "2px"; // Styling for better spacing
+						let originalColor = letterButton.style.backgroundColor;
 						letterButton.onclick = () => {
 							if (lastClickedLetter === letter) {
-								// If the same button is clicked again, toggle the display
+								// If the same button is clicked again, toggle the display and color
 								authorsDisplayArea.innerHTML = '';
 								lastClickedLetter = null; // Reset last clicked letter
+								// Revert the color back to original
+								letterButton.style.backgroundColor = originalColor;
 							} else {
 								displayAuthorsByLetter(letter);
 								lastClickedLetter = letter; // Update last clicked letter
+								// Change the color to #73D0F0
+								letterButton.style.backgroundColor = '#73D0F0';
 							}
 						};
 						container.appendChild(letterButton);
