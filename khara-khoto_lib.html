@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tibetan Texts from Khara-Khoto: A Database</title>
+    <style>
+		body {
+            font-family: book antiqua;}
+        .container { margin-bottom: 20px; }
+		.text-item {
+			background-color: #e6ffe6; /* Светло-зеленый для текстов */
+			border: 1px solid #ccc; /* Граница вокруг каждого элемента */
+			border-radius: 5px; /* Скругление углов для более мягкого внешнего вида */
+		}
+
+		.manuscript-item {
+			background-color: #e6f2ff; /* Светло-синий для рукописей */
+			border: 1px solid #ccc; /* Граница вокруг каждого элемента */
+			border-radius: 5px; /* Скругление углов для более мягкого внешнего вида */
+		}
+
+		.publication-item {
+			background-color: #fff0f0; /* Светло-красный для публикаций */
+			border: 1px solid #ccc; /* Граница вокруг каждого элемента */
+			border-radius: 5px; /* Скругление углов для более мягкого внешнего вида */
+		}
+    </style>
+</head>
+<body>
+    <h1 style="color: #000000; text-align: center;">
+        Tibetan Texts from Khara-Khoto:<br>A Database
+    </h1>
+	<div style="text-align: center;">
+    <img src="garuda_sm.png">
+	</div>
+    <div id="textsContainer" class="container"><h2>Texts</h2></div>
+    <div id="manuscriptsContainer" class="container"><h2>Manuscripts</h2></div>
+    <div id="publicationsContainer" class="container"><h2>Publications</h2></div>
+
+    <script>
+        const texts = [
+            {
+                textId: 1,
+                textTitle: "Uṣṇīṣa Vijaya Dhāraṇī Sūtra",
+                textAlternativeTitle: "Text 1, Text 2",
+                manuscriptId: 1,
+                publicationId: 1,
+                textNotes: "",
+            }
+            // Добавьте дополнительные тексты здесь
+        ];
+        const manuscripts = [
+            {
+                manuscriptId: 1,
+                manuscriptTitle: "gtsug gtor",
+                collection: ["St. Petersburg"],
+                shelfmark: "Kh. Tib. 16",
+                textId: 1,
+                publicationId: 1,
+                manuscriptNotes: "jhkfjgkagfaug",
+            }
+            // Добавьте дополнительные рукописи здесь
+        ];
+		const publications = [
+			{
+				publicationId: 1,
+				authors: ["Hamanaka S.", "Sizova A."],
+				publicationTitle: "Imperial Postscript to the Tangut, Chinese and Tibetan Editions of the Dhāraṇī-sūtras in the Collection of the IOM, RAS.",
+				publicationPlace: "WMO. Vol. 6, No. 2(12), 2020. P. 65–92.",
+				collection: "St. Petersburg",
+				shelfmark: "Kh. Tib. 16",
+				textId: 1,
+				manuscriptId: 1,
+				tags: ["Dhāraṇī-sūtras", "item description"],
+				url: "https://example.com/source",
+				publicationNotes: "jhkfjgkagfaug",
+			}
+			// Add additional publications here
+		];
+
+		function getPublicationReference(publicationId) {
+			const publication = publications.find(pub => pub.publicationId === publicationId);
+			if (!publication) return `Unknown Publication ${publicationId}`;
+			
+			const year = publication.publicationPlace.match(/\d{4}/) ? publication.publicationPlace.match(/\d{4}/)[0] : 'Unknown Year';
+			return `${publication.authors.join(', ')} ${year}`;
+		}
+
+		function getManuscriptReference(manuscriptId) {
+			const manuscript = manuscripts.find(ms => ms.manuscriptId === manuscriptId);
+			if (!manuscript) return `Unknown Manuscript ${manuscriptId}`;
+			
+			return `${manuscript.manuscriptTitle}, ${manuscript.collection.join(', ')}`;
+		}
+		
+		function displayData() {
+            // Функции отображения для текстов
+            const textsContainer = document.getElementById('textsContainer');
+			texts.forEach(text => {
+				const textEl = document.createElement('div');
+				textEl.classList.add('item', 'text-item');
+				textEl.setAttribute('id', `text-${text.textId}`);
+				textEl.innerHTML = `<h3>${text.textTitle}</h3>
+									<p>Alternative Titles: ${text.textAlternativeTitle}</p>
+									<p>Notes: ${text.textNotes}</p>
+									<p>Manuscripts: <a href="#manuscript-${text.manuscriptId}">${getManuscriptReference(text.manuscriptId)}</a></p>
+									<p>Publications: <a href="#publication-${text.publicationId}">${getPublicationReference(text.publicationId)}</a></p>`;
+				textsContainer.appendChild(textEl);
+			});
+
+            // Функции отображения для рукописей
+            const manuscriptsContainer = document.getElementById('manuscriptsContainer');
+            manuscripts.forEach(manuscript => {
+				const manuscriptEl = document.createElement('div');
+				manuscriptEl.classList.add('item', 'manuscript-item');
+                manuscriptEl.setAttribute('id', `manuscript-${manuscript.manuscriptId}`);
+                manuscriptEl.innerHTML = `<h3>${manuscript.manuscriptTitle}</h3>
+                                          <p>Collection: ${manuscript.collection.join(', ')}</p>
+                                          <p>Shelfmark: ${manuscript.shelfmark}</p>
+                                          <p>Notes: ${manuscript.manuscriptNotes}</p>
+                                          <p>Texts: <a href="#text-${manuscript.textId}">Text ${manuscript.textId}</a></p>
+                                          <p>Publications: <a href="#publication-${manuscript.publicationId}">Publication ${manuscript.publicationId}</a></p>`;
+                manuscriptsContainer.appendChild(manuscriptEl);
+            });
+
+            // Функции отображения для публикаций
+            const publicationsContainer = document.getElementById('publicationsContainer');
+            publications.forEach(publication => {
+				const publicationEl = document.createElement('div');
+				publicationEl.classList.add('item', 'publication-item');
+                publicationEl.setAttribute('id', `publication-${publication.publicationId}`);
+                publicationEl.innerHTML = `<h3>${publication.publicationTitle}</h3>
+                                           <p>Authors: ${publication.authors.join(', ')}</p>
+                                           <p>Place: ${publication.publicationPlace}</p>
+                                           <p>Tags: ${publication.tags.join(', ')}</p>
+										   <a href="${publication.url}" target="_blank">See the source</a> <!-- URL displayed as hyperlink -->
+                                           <p>Notes: ${publication.publicationNotes}</p>
+                                           <p>Texts: <a href="#text-${publication.textId}">Text ${publication.textId}</a></p>
+                                           <p>Manuscrips: <a href="#manuscript-${publication.manuscriptId}">Manuscript ${publication.manuscriptId}</a></p>`;
+                publicationsContainer.appendChild(publicationEl);
+            });
+        }
+
+        window.onload = displayData;
+    </script>
+</body>
+</html>
