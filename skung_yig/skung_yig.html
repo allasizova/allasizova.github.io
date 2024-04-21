@@ -1,0 +1,5097 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+    <link rel="icon" href="/icon.png" type="image/x-icon">
+  <title>Tibetan shorthand contractions</title>
+  <style>
+    body {
+      color: #000080;
+      font-family: book antiqua; /* Замените на 'oceanic-font-family' или любой другой нужный вам шрифт */
+    }
+    .clickable {
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+    button {
+      background-color: #73D0F0;
+    }
+    .card {
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid #73D0F0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .card-info {
+      padding: 10px;
+      flex-grow: 1;
+    }
+    
+    .card-info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+<h1 style="text-align: center;">
+</h1>
+<p style="font-size: 1.5cm; text-align: left; margin: 20px;">
+  <b>Tibetan shorthand contractions</b> <br/>
+  <p style="font-size: 0.5cm; text-align: left; margin: 20px;">Compiled by A. Sizova<br/></p>
+  <br/>
+  <b>Special signs</b><br/>
+* — anusvāra (ṃ)<br/>
+Example: bco*dan (← bcom ldan)<br/>
+<br/>
+# — reversed t (ṭ) = "gs"<br/>
+Example: bdee# (← bde gshegs)<br/>
+<br/>
+^ — ts/tsh/dz<br/>
+Example: bsti^n (← bstan 'dzin)<br/>
+<br/>
+<br/>
+<b>Abbreviations</b><br/>
+Bacot 1912: Bacot, Jaques. L'écriture cursive tibétaine. <i>Journal asiatique XIX</i> (1912): 5–78.<br/>
+SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
+</p>
+
+<div style="display: flex;">
+  <input type="text" id="search_input" placeholder="Enter text to search" style="margin-right: 10px; width: 50%">
+  <button type="button" onclick="document.getElementById('search_input').value = ``; display_entries();">Show&nbsp;all</button>
+</div>
+<div id="container"></div>
+<script>
+  const entries = [
+    {
+        "picture": "_chi_med.png",
+        "contracted_form": "'chied",
+        "full_form": "'chi med",
+        "source": "Bacot 1912: Immortalit\u00e9."
+    },
+    {
+        "picture": "mo_grus_drag_po.png",
+        "contracted_form": "mruoog",
+        "full_form": "mo grus drag po",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "yi_dam.png",
+        "contracted_form": "yid*",
+        "full_form": "yi dam",
+        "source": "Bacot 1912: Yidam; divinit\u00e9 tut\u00e9laire."
+    },
+    {
+        "picture": "thor_gtsug.png",
+        "contracted_form": "thour^g",
+        "full_form": "thor gtsug",
+        "source": "Bacot 1912: Turban."
+    },
+    {
+        "picture": "dpon_mo.png",
+        "contracted_form": "dpon*",
+        "full_form": "dpon mo",
+        "source": "Bacot 1912: Ma\u00eetresse."
+    },
+    {
+        "picture": "rnam_grangs.png",
+        "contracted_form": "rnra*ngs",
+        "full_form": "rnam grangs",
+        "source": "Bacot 1912: Enum\u00e9ration, d\u00e9veloppement."
+    },
+    {
+        "picture": "bsdigs_dzub.png",
+        "contracted_form": "bsdiu^b",
+        "full_form": "bsdigs 'dzub",
+        "source": "Bacot 1912: L'index."
+    },
+    {
+        "picture": "srin_mo.png",
+        "contracted_form": "31_668",
+        "full_form": "srin mo",
+        "source": "Bacot 1912: D\u00e9mon cannibale femelle (Raksasi)."
+    },
+    {
+        "picture": "dbang_phyug.png",
+        "contracted_form": "dbyug",
+        "full_form": "dbang phyug",
+        "source": "Bacot 1912: : Puissant; prince, seigneur; Dieu supr\u00eame; I\u00e7vara."
+    },
+    {
+        "picture": "theg_chen.png",
+        "contracted_form": "thegen",
+        "full_form": "theg chen",
+        "source": "Bacot 1912: Le grand v\u00e9hicule."
+    },
+    {
+        "picture": "mtshams_sgrub.png",
+        "contracted_form": "mtshru*b",
+        "full_form": "mtshams sgrub",
+        "source": "Bacot 1912: Remplir les intervalles; atteindre la limite."
+    },
+    {
+        "picture": "mtha_khob.png",
+        "contracted_form": "mthob",
+        "full_form": "mtha' 'khob",
+        "source": "Bacot 1912: Contr\u00e9e barbare."
+    },
+    {
+        "picture": "gru_yon.png",
+        "contracted_form": "gruon",
+        "full_form": "gru yon",
+        "source": "Bacot 1912: P\u00e9age; salaire d'un marinier."
+    },
+    {
+        "picture": "phun_gsum_tshogs.png",
+        "contracted_form": "phuuo*^#",
+        "full_form": "phun gsum tshogs",
+        "source": "Bacot 1912: Parfait, accompli."
+    },
+    {
+        "picture": "bla_ma.png",
+        "contracted_form": "bla*",
+        "full_form": "bla ma",
+        "source": "Bacot 1912: Lama."
+    },
+    {
+        "picture": "yang_yang.png",
+        "contracted_form": "yangng",
+        "full_form": "yang yang",
+        "source": "Bacot 1912: Encore et encore."
+    },
+    {
+        "picture": "_gro_mgan.png",
+        "contracted_form": "'gron",
+        "full_form": "'gro mgan",
+        "source": "Bacot 1912: Marcheur, voyageur."
+    },
+    {
+        "picture": "ngo_mtshar.png",
+        "contracted_form": "ngo^r",
+        "full_form": "ngo mtshar",
+        "source": "Bacot 1912: S'\u00e9tonner."
+    },
+    {
+        "picture": "bcu_bzhi.png",
+        "contracted_form": "bcui",
+        "full_form": "bcu bzhi",
+        "source": "Bacot 1912: Quatorze."
+    },
+    {
+        "picture": "rab_byung.png",
+        "contracted_form": "rabyung",
+        "full_form": "rab byung",
+        "source": "Bacot 1912: Qui a obtenu la perfection; cycle de 60 ann\u00e9es."
+    },
+    {
+        "picture": "rab_byams.png",
+        "contracted_form": "rabya*s",
+        "full_form": "rab 'byams",
+        "source": "Bacot 1912: Homme tr\u00e8s savant."
+    },
+    {
+        "picture": "rgyal_po.png",
+        "contracted_form": "rgyaol",
+        "full_form": "rgyal po",
+        "source": "Bacot 1912: Roi."
+    },
+    {
+        "picture": "kun_shes.png",
+        "contracted_form": "kues",
+        "full_form": "kun shes",
+        "source": "Bacot 1912: Omniscient."
+    },
+    {
+        "picture": "_khor_bcas.png",
+        "contracted_form": "'khoras",
+        "full_form": "'khor bcas",
+        "source": "Bacot 1912: Avec un cort\u00e8ge."
+    },
+    {
+        "picture": "chu_stod.png",
+        "contracted_form": "chuod",
+        "full_form": "chu stod",
+        "source": "Bacot 1912: \u00c9toile du Zodiaque dans le Sagittaire; le mois de juillet."
+    },
+    {
+        "picture": "rang_nyid.png",
+        "contracted_form": "rangid",
+        "full_form": "rang nyid",
+        "source": "Bacot 1912: Soi-m\u00eame (deux synonymes)."
+    },
+    {
+        "picture": "_dod_yon.png",
+        "contracted_form": "'dodon",
+        "full_form": "'dod yon",
+        "source": "Bacot 1912: Diable rus\u00e9."
+    },
+    {
+        "picture": "tshigs_bcad_dang_lhug_ma.png",
+        "contracted_form": "bcad lhug",
+        "full_form": "tshigs bcad dang lhug ma",
+        "source": "Bacot 1912: Vers et prose."
+    },
+    {
+        "picture": "_bum_phrag.png",
+        "contracted_form": "'bu*g",
+        "full_form": "'bum phrag",
+        "source": "Bacot 1912: 100,000."
+    },
+    {
+        "picture": "sdug_bsngal.png",
+        "contracted_form": "bsdul",
+        "full_form": "sdug bsngal",
+        "source": "Bacot 1912: Souffrance, douleur."
+    },
+    {
+        "picture": "lcags_sgrog.png",
+        "contracted_form": "lcagsgrog",
+        "full_form": "lcags sgrog",
+        "source": "Bacot 1912: Cha\u00eene de fer, entrave."
+    },
+    {
+        "picture": "dgra_bgegs.png",
+        "contracted_form": "dgrae#",
+        "full_form": "dgra bgegs",
+        "source": "Bacot 1912: D\u00e9mon ennemi."
+    },
+    {
+        "picture": "phrin_las.png",
+        "contracted_form": "phris",
+        "full_form": "phrin las",
+        "source": "Bacot 1912: Affaire, commission."
+    },
+    {
+        "picture": "mthu_stobs.png",
+        "contracted_form": "mthuobs",
+        "full_form": "mthu stobs",
+        "source": "Bacot 1912: Magie, sorcellerie."
+    },
+    {
+        "picture": "rdo_rje_chang.png",
+        "contracted_form": "rdoe^ng",
+        "full_form": "rdo rje 'chang",
+        "source": "Bacot 1912: Vajradhara; nom de divinit\u00e9."
+    },
+    {
+        "picture": "snying_re_rje.png",
+        "contracted_form": "snyienge",
+        "full_form": "snying re rje",
+        "source": "Bacot 1912: Avoir piti\u00e9, compatir."
+    },
+    {
+        "picture": "dpon_po.png",
+        "contracted_form": "dpoon",
+        "full_form": "dpon po",
+        "source": "Bacot 1912: Chef."
+    },
+    {
+        "picture": "phyag_rgya_chen_po.png",
+        "contracted_form": "phyargyoen",
+        "full_form": "phyag rgya chen po",
+        "source": "Bacot 1912: Mahamudra; extase sexuelle des divinit\u00e9s tantriques."
+    },
+    {
+        "picture": "rig_pa_drug.png",
+        "contracted_form": "rigrug",
+        "full_form": "rig pa drug",
+        "source": "Bacot 1912: Les six sciences ou connaissances."
+    },
+    {
+        "picture": "rang_byung_rang_byung.png",
+        "contracted_form": "ryu*g",
+        "full_form": "rang 'byung / rang byung",
+        "source": "Bacot 1912: Svayambhu (\u00e9pith\u00e8te de Brahma)."
+    },
+    {
+        "picture": "gnam_lcags.png",
+        "contracted_form": "gna*ca#",
+        "full_form": "gnam lcags",
+        "source": "Bacot 1912: Le tonnerre."
+    },
+    {
+        "picture": "rgyu_med.png",
+        "contracted_form": "rgyued",
+        "full_form": "rgyu med",
+        "source": "Bacot 1912: Sans cause."
+    },
+    {
+        "picture": "mkha_spyod.png",
+        "contracted_form": "mkhyod",
+        "full_form": "mkha' spyod",
+        "source": "Bacot 1912: Qui est dans le ciel."
+    },
+    {
+        "picture": "_jigs_byed.png",
+        "contracted_form": "'jyied",
+        "full_form": "'jigs byed",
+        "source": "Bacot 1912: Faire peur."
+    },
+    {
+        "picture": "mtshams_sbyor.png",
+        "contracted_form": "mtsha*syor",
+        "full_form": "mtshams sbyor",
+        "source": "Bacot 1912: Adh\u00e9rence, contact; r\u00e9unir; occuper un espace; prendre une r\u00e9solution."
+    },
+    {
+        "picture": "rtsang_bstod.png",
+        "contracted_form": "rtsto*d",
+        "full_form": "rtsang bstod",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "_tshe_skyong.png",
+        "contracted_form": "'tshyoeng",
+        "full_form": "'tshe skyong",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mnyam_par_bzhag.png",
+        "contracted_form": "mnya*rg",
+        "full_form": "mnyam par bzhag",
+        "source": "Bacot 1912: Apaiser son esprit pour la m\u00e9ditation."
+    },
+    {
+        "picture": "bram_ze.png",
+        "contracted_form": "bre*^",
+        "full_form": "bram ze",
+        "source": "Bacot 1912: Brahmane."
+    },
+    {
+        "picture": "_ja_od.png",
+        "contracted_form": "'ja'od",
+        "full_form": "'ja' 'od",
+        "source": "Bacot 1912: Lumi\u00e8re; splendeur de l'arc-en-ciel."
+    },
+    {
+        "picture": "tshe_das.png",
+        "contracted_form": "tshdes",
+        "full_form": "tshe 'das",
+        "source": "Bacot 1912: Mort."
+    },
+    {
+        "picture": "mthar_phyin.png",
+        "contracted_form": "mtharin",
+        "full_form": "mthar phyin",
+        "source": "Bacot 1912: Parfait; arriv\u00e9 \u00e0 la perfection; fini, \u00e9mancip\u00e9; arriver \u00e0 ses fins."
+    },
+    {
+        "picture": "_khor_das.png",
+        "contracted_form": "'khodas",
+        "full_form": "'khor 'das",
+        "source": "Bacot 1912: Ceux qui sont d\u00e9livr\u00e9s de la transmigration."
+    },
+    {
+        "picture": "las_byang.png",
+        "contracted_form": "lyasyang",
+        "full_form": "las byang",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "thugs_dam_bskang.png",
+        "contracted_form": "thyada*ng",
+        "full_form": "thugs dam bskang",
+        "source": "Bacot 1912: Accomplissement des d\u00e9sirs."
+    },
+    {
+        "picture": "zla_dzin.png",
+        "contracted_form": "zli^n",
+        "full_form": "zla 'dzin",
+        "source": "Bacot 1912: Eclipse de lune."
+    },
+    {
+        "picture": "mgo_bsnyen_mgo_brnyen.png",
+        "contracted_form": "mgonyen",
+        "full_form": "mgo bsnyen / mgo brnyen",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "tshe_srog.png",
+        "contracted_form": "tshroeg",
+        "full_form": "tshe srog",
+        "source": "Bacot 1912: Vie."
+    },
+    {
+        "picture": "nges_shes.png",
+        "contracted_form": "ngees",
+        "full_form": "nges shes",
+        "source": "Bacot 1912: Connaissance de la v\u00e9rit\u00e9."
+    },
+    {
+        "picture": "yab_yum.png",
+        "contracted_form": "yu*b",
+        "full_form": "yab yum",
+        "source": "Bacot 1912: P\u00e8re et m\u00e8re."
+    },
+    {
+        "picture": "ci_ltar.png",
+        "contracted_form": "citar",
+        "full_form": "ci ltar",
+        "source": "Bacot 1912: Comment. Comment?"
+    },
+    {
+        "picture": "bcom_ldan_das.png",
+        "contracted_form": "bco*das",
+        "full_form": "bcom ldan 'das",
+        "source": "Bacot 1912: Mort victorieux; \u00e9pith\u00e8te du Bouddha; Bhagavat."
+    },
+    {
+        "picture": "nag_po.png",
+        "contracted_form": "nog",
+        "full_form": "nag po",
+        "source": "Bacot 1912: Noir."
+    },
+    {
+        "picture": "sgro_dogs.png",
+        "contracted_form": "sgroo#",
+        "full_form": "sgro 'dogs",
+        "source": "Bacot 1912: Doutes."
+    },
+    {
+        "picture": "che_ge_mo.png",
+        "contracted_form": "cheemo",
+        "full_form": "che ge mo",
+        "source": "Bacot 1912: Tel, un tel."
+    },
+    {
+        "picture": "che_ge_mo0.png",
+        "contracted_form": "chemo",
+        "full_form": "che ge mo",
+        "source": "Bacot 1912: Tel, un tel."
+    },
+    {
+        "picture": "gzugs_med0.png",
+        "contracted_form": "gzu#ed*",
+        "full_form": "gzugs med",
+        "source": "Bacot 1912: Sans corps, immat\u00e9riel."
+    },
+    {
+        "picture": "bya_tshogs.png",
+        "contracted_form": "by^o#",
+        "full_form": "bya tshogs",
+        "source": "Bacot 1912: Une vol\u00e9e d'oiseaux."
+    },
+    {
+        "picture": "gzhal_yas.png",
+        "contracted_form": "zhyas",
+        "full_form": "gzhal yas",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "me_long.png",
+        "contracted_form": "mloeng",
+        "full_form": "me long",
+        "source": "Bacot 1912: Miroir."
+    },
+    {
+        "picture": "ye_shes.png",
+        "contracted_form": "yees",
+        "full_form": "ye shes",
+        "source": "Bacot 1912: Prescience, sagesse."
+    },
+    {
+        "picture": "byang_phyogs.png",
+        "contracted_form": "byao#",
+        "full_form": "byang phyogs",
+        "source": "Bacot 1912: Le Nord."
+    },
+    {
+        "picture": "mtsho_rgyal.png",
+        "contracted_form": "mtshyol",
+        "full_form": "mtsho rgyal",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mngon_shes.png",
+        "contracted_form": "mngoes",
+        "full_form": "mngon shes",
+        "source": "Bacot 1912: Prescience (abhijna)."
+    },
+    {
+        "picture": "mchod.png",
+        "contracted_form": "chyod",
+        "full_form": "mchod",
+        "source": "Bacot 1912: Honneur, respect; Honorer; respecter."
+    },
+    {
+        "picture": "dngos_po.png",
+        "contracted_form": "dngoos",
+        "full_form": "dngos po",
+        "source": "Bacot 1912: Richesses."
+    },
+    {
+        "picture": "don_grub.png",
+        "contracted_form": "donrub",
+        "full_form": "don grub",
+        "source": "Bacot 1912: Amoghasiddha."
+    },
+    {
+        "picture": "ljang_gsal.png",
+        "contracted_form": "ljangal",
+        "full_form": "ljang gsal",
+        "source": "Bacot 1912: Vert clair."
+    },
+    {
+        "picture": "gnyis_dzin.png",
+        "contracted_form": "2^in",
+        "full_form": "gnyis 'dzin",
+        "source": "Bacot 1912: Ambiguit\u00e9, doute."
+    },
+    {
+        "picture": "_khor_lo.png",
+        "contracted_form": "'oor",
+        "full_form": "'khor lo",
+        "source": "Bacot 1912: Roue."
+    },
+    {
+        "picture": "dngos_grub.png",
+        "contracted_form": "dngorub",
+        "full_form": "dngos grub",
+        "source": "Bacot 1912: Perfection, excellence ; naturel, r\u00e9el."
+    },
+    {
+        "picture": "thun_bzhi.png",
+        "contracted_form": "thuni",
+        "full_form": "thun bzhi",
+        "source": "Bacot 1912: Les quatre veilles de nuit."
+    },
+    {
+        "picture": "bag_chags.png",
+        "contracted_form": "bag#",
+        "full_form": "bag chags",
+        "source": "Bacot 1912: Tendance, inclination, passion."
+    },
+    {
+        "picture": "thabs_shes.png",
+        "contracted_form": "thabes",
+        "full_form": "thabs shes",
+        "source": "Bacot 1912: Les arts et la science."
+    },
+    {
+        "picture": "gshin_rje.png",
+        "contracted_form": "gishen",
+        "full_form": "gshin rje",
+        "source": "Bacot 1912: Dieu de la mort."
+    },
+    {
+        "picture": "rtsal_sgrub.png",
+        "contracted_form": "rtsrub",
+        "full_form": "rtsal sgrub",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "bsod_nams.png",
+        "contracted_form": "31_684",
+        "full_form": "bsod nams",
+        "source": "Bacot 1912: M\u00e9rite moral; bonheur."
+    },
+    {
+        "picture": "rnam_snang.png",
+        "contracted_form": "rna*ng",
+        "full_form": "rnam snang",
+        "source": "Bacot 1912: Apparaitre; prendre forme."
+    },
+    {
+        "picture": "thugs_rje_chen_po.png",
+        "contracted_form": "thyeeno",
+        "full_form": "thugs rje chen po",
+        "source": "Bacot 1912: Le tr\u00e8s compatissant (\u00e9pith\u00e8te d'Avalokite\u00e7vara)."
+    },
+    {
+        "picture": "shar_phyogs.png",
+        "contracted_form": "shyao#",
+        "full_form": "shar phyogs",
+        "source": "Bacot 1912: L'Est."
+    },
+    {
+        "picture": "zhu_chen.png",
+        "contracted_form": "zhuen",
+        "full_form": "zhu chen",
+        "source": "Bacot 1912: Reviseur."
+    },
+    {
+        "picture": "dkor_nor.png",
+        "contracted_form": "dkoor",
+        "full_form": "dkor nor",
+        "source": "Bacot 1912: Richesses, tr\u00e9sors."
+    },
+    {
+        "picture": "snag_tsha_dang_smyug_gu.png",
+        "contracted_form": "snag smyug",
+        "full_form": "snag tsha dang smyug gu",
+        "source": "Bacot 1912: Encre et calame."
+    },
+    {
+        "picture": "gshin_rje_gshed.png",
+        "contracted_form": "shyien",
+        "full_form": "gshin rje gshed",
+        "source": "Bacot 1912: Dieu de la mort."
+    },
+    {
+        "picture": "ye_shes_sems_dpa_.png",
+        "contracted_form": "yees*da'",
+        "full_form": "ye shes sems dpa'",
+        "source": "Bacot 1912: Sage et courageux."
+    },
+    {
+        "picture": "rgya_gar.png",
+        "contracted_form": "rgyar",
+        "full_form": "rgya gar",
+        "source": "Bacot 1912: L'Inde."
+    },
+    {
+        "picture": "sku_smad.png",
+        "contracted_form": "skud",
+        "full_form": "sku smad",
+        "source": "Bacot 1912: La partie inf\u00e9rieure du corps."
+    },
+    {
+        "picture": "zhing_skyong.png",
+        "contracted_form": "zhyaoing",
+        "full_form": "zhing skyong",
+        "source": "Bacot 1912: Gardien des champs."
+    },
+    {
+        "picture": "skyil_dkrung.png",
+        "contracted_form": "skyiung",
+        "full_form": "skyil dkrung",
+        "source": "Bacot 1912: Position assise les jambes crois\u00e9es."
+    },
+    {
+        "picture": "mtshams_bcad.png",
+        "contracted_form": "mtshca*d",
+        "full_form": "mtshams bcad",
+        "source": "Bacot 1912: Finir, mettre un terme."
+    },
+    {
+        "picture": "gtsug_gtor.png",
+        "contracted_form": "gtsugor",
+        "full_form": "gtsug gtor",
+        "source": "Bacot 1912: Usnisa: excroissance sur la t\u00e8te."
+    },
+    {
+        "picture": "snag_tsha_dang_shog_bu.png",
+        "contracted_form": "snag shog",
+        "full_form": "snag tsha dang shog bu",
+        "source": "Bacot 1912: Encre et papier."
+    },
+    {
+        "picture": "nyin_mtshan.png",
+        "contracted_form": "nyi^n",
+        "full_form": "nyin mtshan",
+        "source": "Bacot 1912: Jour et nuit."
+    },
+    {
+        "picture": "dbang_chen.png",
+        "contracted_form": "dbangen",
+        "full_form": "dbang chen",
+        "source": "Bacot 1912: Mahendra."
+    },
+    {
+        "picture": "rnam_shes.png",
+        "contracted_form": "rna*es",
+        "full_form": "rnam shes",
+        "source": "Bacot 1912: Connaissance."
+    },
+    {
+        "picture": "dgra_bcom.png",
+        "contracted_form": "dgrao*",
+        "full_form": "dgra bcom",
+        "source": "Bacot 1912: Arhat."
+    },
+    {
+        "picture": "sbrang_rtsi.png",
+        "contracted_form": "sbri^ng",
+        "full_form": "sbrang rtsi",
+        "source": "Bacot 1912: Miel."
+    },
+    {
+        "picture": "chos_skyong.png",
+        "contracted_form": "choosyang",
+        "full_form": "chos skyong",
+        "source": "Bacot 1912: Protecteur de la doctrine."
+    },
+    {
+        "picture": "rtse_mo.png",
+        "contracted_form": "rtsoe",
+        "full_form": "rtse mo",
+        "source": "Bacot 1912: Pointe, sommet."
+    },
+    {
+        "picture": "rma_bya.png",
+        "contracted_form": "rmya",
+        "full_form": "rma bya",
+        "source": "Bacot 1912: Le paon."
+    },
+    {
+        "picture": "dpal_byor.png",
+        "contracted_form": "dpalyor",
+        "full_form": "dpal 'byor",
+        "source": "Bacot 1912: Gloire, grandeur."
+    },
+    {
+        "picture": "dkar_po.png",
+        "contracted_form": "dkor",
+        "full_form": "dkar po",
+        "source": "Bacot 1912: Blanc."
+    },
+    {
+        "picture": "dpon_g_yog.png",
+        "contracted_form": "dponog",
+        "full_form": "dpon g.yog",
+        "source": "Bacot 1912: Ma\u00eetres et serviteurs; serviteurs de chef."
+    },
+    {
+        "picture": "dmag_tshogs.png",
+        "contracted_form": "dmo^#",
+        "full_form": "dmag tshogs",
+        "source": "Bacot 1912: Arm\u00e9e."
+    },
+    {
+        "picture": "dbyer_med.png",
+        "contracted_form": "dbyeerd",
+        "full_form": "dbyer med",
+        "source": "Bacot 1912: Ins\u00e9parable."
+    },
+    {
+        "picture": "gcu_gal.png",
+        "contracted_form": "gcul",
+        "full_form": "gcu gal",
+        "source": "Bacot 1912: Chose importante; affaire."
+    },
+    {
+        "picture": "chos_dbyings.png",
+        "contracted_form": "chyoings",
+        "full_form": "chos dbyings",
+        "source": "Bacot 1912: \u00c9tendue de la doctrine (dharmadhatu)."
+    },
+    {
+        "picture": "kha_drang0.png",
+        "contracted_form": "khyra*",
+        "full_form": "kha drang",
+        "source": "Bacot 1912: Aussit\u00f4t."
+    },
+    {
+        "picture": "zhe_sdang.png",
+        "contracted_form": "zhdeng",
+        "full_form": "zhe sdang",
+        "source": "Bacot 1912: Col\u00e8re, rage."
+    },
+    {
+        "picture": "ting_dzin.png",
+        "contracted_form": "ting^in",
+        "full_form": "ting 'dzin",
+        "source": "Bacot 1912: M\u00e9ditation profonde; nom propre usit\u00e9 au Tibet."
+    },
+    {
+        "picture": "bsod_snyoms.png",
+        "contracted_form": "31_685",
+        "full_form": "bsod snyoms",
+        "source": "Bacot 1912: Aum\u00f4nes."
+    },
+    {
+        "picture": "shing_chen_.png",
+        "contracted_form": "shingen",
+        "full_form": "shing chen ",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "nub_byang.png",
+        "contracted_form": "nubyang",
+        "full_form": "nub byang",
+        "source": "Bacot 1912: Nord-Ouest."
+    },
+    {
+        "picture": "gzugs_sdug.png",
+        "contracted_form": "gzugsdug",
+        "full_form": "gzugs sdug",
+        "source": "Bacot 1912: Un beau corps."
+    },
+    {
+        "picture": "gru_bzhi.png",
+        "contracted_form": "grui",
+        "full_form": "gru bzhi",
+        "source": "Bacot 1912: Quadrangulaire."
+    },
+    {
+        "picture": "yang_dag.png",
+        "contracted_form": "yla*g",
+        "full_form": "yang dag",
+        "source": "Bacot 1912: Actuel, r\u00e9el; en v\u00e9rit\u00e9."
+    },
+    {
+        "picture": "bya_rog.png",
+        "contracted_form": "byrog",
+        "full_form": "bya rog",
+        "source": "Bacot 1912: Corbeau."
+    },
+    {
+        "picture": "dpal_chen.png",
+        "contracted_form": "dpalen",
+        "full_form": "dpal chen",
+        "source": "Bacot 1912: Glorieux, illustre."
+    },
+    {
+        "picture": "the_tshom_.png",
+        "contracted_form": "th^oe",
+        "full_form": "the tshom ",
+        "source": "Bacot 1912: H\u00e9sitation, doute."
+    },
+    {
+        "picture": "mnyam_nyid.png",
+        "contracted_form": "mnya*id",
+        "full_form": "mnyam nyid",
+        "source": "Bacot 1912: Impartialit\u00e9, \u00e9quit\u00e9."
+    },
+    {
+        "picture": "mngon_sum.png",
+        "contracted_form": "mngonu*",
+        "full_form": "mngon sum",
+        "source": "Bacot 1912: Public, manifeste, perceptible aux sens."
+    },
+    {
+        "picture": "yon_mchod.png",
+        "contracted_form": "29_605",
+        "full_form": "yon mchod",
+        "source": "Bacot 1912: Pr\u00e9sent; aum\u00f4ne (compos\u00e9 de deux synonymes)."
+    },
+    {
+        "picture": "snying_rje.png",
+        "contracted_form": "snyieng",
+        "full_form": "snying rje",
+        "source": "Bacot 1912: Bonte, compassion."
+    },
+    {
+        "picture": "kun_dkris.png",
+        "contracted_form": "kuis",
+        "full_form": "kun dkris",
+        "source": "Bacot 1912: Mis\u00e8re, corruption naturelle."
+    },
+    {
+        "picture": "mu_men_.png",
+        "contracted_form": "muen",
+        "full_form": "mu men ",
+        "source": "Bacot 1912: Lapis-lazuli ou malachite."
+    },
+    {
+        "picture": "blon_po_dang_bangs_khor.png",
+        "contracted_form": "blon 'bangs",
+        "full_form": "blon po dang 'bangs 'khor",
+        "source": "Bacot 1912: Les officiers et les sujets."
+    },
+    {
+        "picture": "gzi_rjid_gzi_brjid.png",
+        "contracted_form": "gziid",
+        "full_form": "gzi rjid / gzi brjid",
+        "source": "Bacot 1912: Honneur, c\u00e9l\u00e9brit\u00e9, splendeur, lumi\u00e8re."
+    },
+    {
+        "picture": "dpon_g_yog0.png",
+        "contracted_form": "dpoog",
+        "full_form": "dpon g.yog",
+        "source": "Bacot 1912: Ma\u00eetres et serviteurs; serviteurs de chef."
+    },
+    {
+        "picture": "sngon_chad.png",
+        "contracted_form": "sngond",
+        "full_form": "sngon chad",
+        "source": "Bacot 1912: Autrefois."
+    },
+    {
+        "picture": "kun_nas.png",
+        "contracted_form": "kunas",
+        "full_form": "kun nas",
+        "source": "Bacot 1912: De tous c\u00f4t\u00e9s."
+    },
+    {
+        "picture": "mu_ge.png",
+        "contracted_form": "mue",
+        "full_form": "mu ge",
+        "source": "Bacot 1912: Famine."
+    },
+    {
+        "picture": "rab_chad_.png",
+        "contracted_form": "rabd",
+        "full_form": "rab chad ",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "dkar_phyogs.png",
+        "contracted_form": "dkyo#",
+        "full_form": "dkar phyogs",
+        "source": "Bacot 1912: Partie lumineuse de la lune, lune croissante. Moiti\u00e9 \u00e9clair\u00e9e du mois."
+    },
+    {
+        "picture": "lha_chen.png",
+        "contracted_form": "31_689",
+        "full_form": "lha chen",
+        "source": "Bacot 1912: Dieu puissant."
+    },
+    {
+        "picture": "drag_po.png",
+        "contracted_form": "drago",
+        "full_form": "drag po",
+        "source": "Bacot 1912: Terrible."
+    },
+    {
+        "picture": "spyan_ras_gzigs.png",
+        "contracted_form": "spyri^#",
+        "full_form": "spyan ras gzigs",
+        "source": "Bacot 1912: Avalokite\u00e7vara."
+    },
+    {
+        "picture": "gzugs_med.png",
+        "contracted_form": "gzued",
+        "full_form": "gzugs med",
+        "source": "Bacot 1912: Sans corps, immat\u00e9riel."
+    },
+    {
+        "picture": "bcom_ldan0.png",
+        "contracted_form": "bcodan",
+        "full_form": "bcom ldan",
+        "source": "Bacot 1912: Victorieux; b\u00e9ni; triomphant. Bhagavat."
+    },
+    {
+        "picture": "dngos_grub_rtsol.png",
+        "contracted_form": "dngo br^ol",
+        "full_form": "dngos grub rtsol",
+        "source": "Bacot 1912: S'efforcer d'atteindre la perfection."
+    },
+    {
+        "picture": "rab_byor.png",
+        "contracted_form": "rabyor",
+        "full_form": "rab 'byor",
+        "source": "Bacot 1912: Subhuti, disciple du Bouddha."
+    },
+    {
+        "picture": "lo_tshA_ba_dang_paNDi_ta.png",
+        "contracted_form": "lo paN",
+        "full_form": "lo tshA ba dang paNDi ta",
+        "source": "Bacot 1912: Lotsava (interpr\u00e8te); pandit."
+    },
+    {
+        "picture": "bde_med_ye_shes_che_ske_gter_de_dbed.png",
+        "contracted_form": "32_709",
+        "full_form": "bde med ye shes che ske gter de dbed",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "bkra_shis.png",
+        "contracted_form": "bkris",
+        "full_form": "bkra shis",
+        "source": "Bacot 1912: Bonheur, b\u00e9n\u00e9diction."
+    },
+    {
+        "picture": "brkyung_bskrum.png",
+        "contracted_form": "brkyu*ng",
+        "full_form": "brkyung bskrum",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mi_gyur.png",
+        "contracted_form": "myuir",
+        "full_form": "mi 'gyur",
+        "source": "Bacot 1912: Inchangeable."
+    },
+    {
+        "picture": "longs_sku.png",
+        "contracted_form": "longsku",
+        "full_form": "longs sku",
+        "source": "Bacot 1912: Personne \u00e9man\u00e9e d'une divinit\u00e9."
+    },
+    {
+        "picture": "spyan_drangs.png",
+        "contracted_form": "spyanrangs",
+        "full_form": "spyan drangs",
+        "source": "Bacot 1912: Invitation; inauguration."
+    },
+    {
+        "picture": "don_dam.png",
+        "contracted_form": "don*",
+        "full_form": "don dam",
+        "source": "Bacot 1912: Sens propre; sens vrai objectivement."
+    },
+    {
+        "picture": "sku_mdog.png",
+        "contracted_form": "skuog",
+        "full_form": "sku mdog",
+        "source": "Bacot 1912: La couleur du corps."
+    },
+    {
+        "picture": "mchod_rten.png",
+        "contracted_form": "mchoen",
+        "full_form": "mchod rten",
+        "source": "Bacot 1912: Tchorten; stupa; pyramide \u00e0 reliques; chapelle."
+    },
+    {
+        "picture": "blo_mthun.png",
+        "contracted_form": "bloun",
+        "full_form": "blo mthun",
+        "source": "Bacot 1912: Volont\u00e9s qui sont d'accord."
+    },
+    {
+        "picture": "bdag_nyid.png",
+        "contracted_form": "bdagid",
+        "full_form": "bdag nyid",
+        "source": "Bacot 1912: Moi-m\u00eame."
+    },
+    {
+        "picture": "ting_nge_dzin.png",
+        "contracted_form": "tingi^n",
+        "full_form": "ting nge 'dzin",
+        "source": "Bacot 1912: M\u00e9ditation profonde, extase (samadhi)."
+    },
+    {
+        "picture": "mtshams_zhus.png",
+        "contracted_form": "'tshu*s [mtshu*s]",
+        "full_form": "mtshams zhus",
+        "source": "Bacot 1912: Formule de transition du style \u00e9pistolaire: \"Veuillez (remplir) le vide.\""
+    },
+    {
+        "picture": "_gag_med.png",
+        "contracted_form": "'gae*d",
+        "full_form": "'gag med",
+        "source": "Bacot 1912: D\u00e9gag\u00e9, libre; ciel."
+    },
+    {
+        "picture": "bskyed_rdzogs0.png",
+        "contracted_form": "bskye^o#",
+        "full_form": "bskyed rdzogs",
+        "source": "Bacot 1912: Engendr\u00e9 parfait."
+    },
+    {
+        "picture": "snying_po.png",
+        "contracted_form": "snyiong",
+        "full_form": "snying po",
+        "source": "Bacot 1912: La moelle, le coeur, l'essence."
+    },
+    {
+        "picture": "dge_slong.png",
+        "contracted_form": "dgelong",
+        "full_form": "dge slong",
+        "source": "Bacot 1912: Moine ordonn\u00e9 (bhiksu)."
+    },
+    {
+        "picture": "nyid_du.png",
+        "contracted_form": "nyidu",
+        "full_form": "nyid du",
+        "source": "Bacot 1912: Pourquoi; cause."
+    },
+    {
+        "picture": "gzhu_thog.png",
+        "contracted_form": "gzhuog",
+        "full_form": "gzhu thog",
+        "source": "Bacot 1912: Toit vo\u00fbt\u00e9."
+    },
+    {
+        "picture": "thod_khrag.png",
+        "contracted_form": "thodg",
+        "full_form": "thod khrag",
+        "source": "Bacot 1912: Cr\u00e2ne rempli de sang."
+    },
+    {
+        "picture": "sngon_gyi.png",
+        "contracted_form": "sngonyi",
+        "full_form": "sngon gyi",
+        "source": "Bacot 1912: D'autrefois, ant\u00e9rieur."
+    },
+    {
+        "picture": "gnyis_su_med.png",
+        "contracted_form": "2sued",
+        "full_form": "gnyis su med",
+        "source": "Bacot 1912: Sans double, identique, unique."
+    },
+    {
+        "picture": "chos_byung.png",
+        "contracted_form": "choyung",
+        "full_form": "chos 'byung",
+        "source": "Bacot 1912: D\u00e9veloppement, progr\u00e8s de la doctrine."
+    },
+    {
+        "picture": "mes_po_dang_tsha_bo.png",
+        "contracted_form": "mes dbon",
+        "full_form": "mes po dang tsha bo",
+        "source": "Bacot 1912: Grand-p\u00e8re et petit-fils."
+    },
+    {
+        "picture": "tshogs_bsag_pa_dang_sdig_pa_sbyang_ba.png",
+        "contracted_form": "bsag sbyang",
+        "full_form": "tshogs bsag pa dang sdig pa sbyang ba",
+        "source": "Bacot 1912: Acquisition de vertus et purification de vices."
+    },
+    {
+        "picture": "kha_dog.png",
+        "contracted_form": "khdog",
+        "full_form": "kha dog",
+        "source": "Bacot 1912: La couleur."
+    },
+    {
+        "picture": "_jam_dpal.png",
+        "contracted_form": "'ja*al",
+        "full_form": "'jam dpal",
+        "source": "Bacot 1912: Manjusri."
+    },
+    {
+        "picture": "pho_nya.png",
+        "contracted_form": "phnyo",
+        "full_form": "pho nya",
+        "source": "Bacot 1912: Messager."
+    },
+    {
+        "picture": "thod_phreng.png",
+        "contracted_form": "throdeng",
+        "full_form": "thod phreng",
+        "source": "Bacot 1912: Guirlande de cr\u00e2nes; guirlande pour orner la t\u00eate."
+    },
+    {
+        "picture": "bsod_nams_phun_sum_tshogs_pa_i_bkra_shis_shog.png",
+        "contracted_form": "31_688",
+        "full_form": "bsod nams phun sum tshogs pa'i bkra shis shog",
+        "source": "Bacot 1912: F\u00e9licit\u00e9 soit \u00e0 la saintet\u00e9 sublime."
+    },
+    {
+        "picture": "dkar_yol.png",
+        "contracted_form": "dkol",
+        "full_form": "dkar yol",
+        "source": "Bacot 1912: Porcelaine."
+    },
+    {
+        "picture": "yon_bdag.png",
+        "contracted_form": "yong",
+        "full_form": "yon bdag",
+        "source": "Bacot 1912: Donateur."
+    },
+    {
+        "picture": "lha_srin.png",
+        "contracted_form": "31_693",
+        "full_form": "lha srin",
+        "source": "Bacot 1912: Dieux anthropophages."
+    },
+    {
+        "picture": "bla_mas.png",
+        "contracted_form": "blas",
+        "full_form": "bla mas",
+        "source": "Bacot 1912: Cas instrumental de lama."
+    },
+    {
+        "picture": "dal_byor.png",
+        "contracted_form": "dalyor",
+        "full_form": "dal 'byor",
+        "source": "Bacot 1912: B\u00e9atitude."
+    },
+    {
+        "picture": "phyogs_bcu_i_lha_la_phyag_tshal_bstod.png",
+        "contracted_form": "phyou'i lha lya stod",
+        "full_form": "phyogs bcu'i lha la phyag 'tshal bstod",
+        "source": "Bacot 1912: Salut aux dieux des dix directions."
+    },
+    {
+        "picture": "sku_stod.png",
+        "contracted_form": "skuod",
+        "full_form": "sku stod",
+        "source": "Bacot 1912: La partie sup\u00e9rieure du corps."
+    },
+    {
+        "picture": "tshul_khrims.png",
+        "contracted_form": "tshruis*",
+        "full_form": "tshul khrims",
+        "source": "Bacot 1912: Moralit\u00e9; bonnes moeurs."
+    },
+    {
+        "picture": "yo_byad.png",
+        "contracted_form": "yyod",
+        "full_form": "yo byad",
+        "source": "Bacot 1912: Biens, mobilier."
+    },
+    {
+        "picture": "bcom_ldan1.png",
+        "contracted_form": "bco*n",
+        "full_form": "bcom ldan",
+        "source": "Bacot 1912: Victorieux; b\u00e9ni; triomphant. Bhagavat."
+    },
+    {
+        "picture": "bslu_med.png",
+        "contracted_form": "31_687",
+        "full_form": "bslu med",
+        "source": "Bacot 1912: Sans mentir."
+    },
+    {
+        "picture": "_phra_chen.png",
+        "contracted_form": "'phren",
+        "full_form": "'phra chen",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "gdub_bu.png",
+        "contracted_form": "gdubu",
+        "full_form": "gdub bu",
+        "source": "Bacot 1912: Bracelet, anneau; ornement."
+    },
+    {
+        "picture": "sngon_po.png",
+        "contracted_form": "sngoon",
+        "full_form": "sngon po",
+        "source": "Bacot 1912: Bleu."
+    },
+    {
+        "picture": "bla_med.png",
+        "contracted_form": "bleda*",
+        "full_form": "bla med",
+        "source": "Bacot 1912: Supr\u00eame."
+    },
+    {
+        "picture": "gyur_cig0.png",
+        "contracted_form": "gyurig",
+        "full_form": "gyur cig",
+        "source": "Bacot 1912: Soit ! qu\u2019il soit ! imp\u00e9ratif de devenir."
+    },
+    {
+        "picture": "cha_shas.png",
+        "contracted_form": "ches [chas]",
+        "full_form": "cha shas",
+        "source": "Bacot 1912: Part, portion."
+    },
+    {
+        "picture": "bris_pa_dang_par_ma.png",
+        "contracted_form": "bris par",
+        "full_form": "bris pa dang par ma",
+        "source": "Bacot 1912: Livre manuscrit et livre imprime."
+    },
+    {
+        "picture": "bshes_gnyen.png",
+        "contracted_form": "bshyeen",
+        "full_form": "bshes gnyen",
+        "source": "Bacot 1912: Ami, relation."
+    },
+    {
+        "picture": "ting_shag.png",
+        "contracted_form": "tingg",
+        "full_form": "ting shag",
+        "source": "Bacot 1912: Grelots."
+    },
+    {
+        "picture": "gzugs_can_.png",
+        "contracted_form": "gzun",
+        "full_form": "gzugs can ",
+        "source": "Bacot 1912: Fait de mati\u00e8re, mat\u00e9riel."
+    },
+    {
+        "picture": "mu_tig.png",
+        "contracted_form": "muig",
+        "full_form": "mu tig",
+        "source": "Bacot 1912: Perle."
+    },
+    {
+        "picture": "gnas_su.png",
+        "contracted_form": "nyasu",
+        "full_form": "gnas su",
+        "source": "Bacot 1912: Sur place."
+    },
+    {
+        "picture": "lcam_dral.png",
+        "contracted_form": "lca*ral",
+        "full_form": "lcam dral",
+        "source": "Bacot 1912: Fr\u00e8re et soeur."
+    },
+    {
+        "picture": "rje_btsun.png",
+        "contracted_form": "rjeun",
+        "full_form": "rje btsun",
+        "source": "Bacot 1912: R\u00e9v\u00e9rend."
+    },
+    {
+        "picture": "rgyal_po_dang_blon_po.png",
+        "contracted_form": "rgyal blon",
+        "full_form": "rgyal po dang blon po",
+        "source": "Bacot 1912: Le roi et les chefs ou ministres."
+    },
+    {
+        "picture": "mnyan_yod.png",
+        "contracted_form": "mnyod",
+        "full_form": "mnyan yod",
+        "source": "Bacot 1912: \u00c7r\u00e0vasti ; nom de ville."
+    },
+    {
+        "picture": "zhi_khro.png",
+        "contracted_form": "zhio",
+        "full_form": "zhi khro",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "ser_po.png",
+        "contracted_form": "30_661",
+        "full_form": "ser po",
+        "source": "Bacot 1912: Jaune."
+    },
+    {
+        "picture": "bcu_gnyis.png",
+        "contracted_form": "bcuis",
+        "full_form": "bcu gnyis",
+        "source": "Bacot 1912: Douze."
+    },
+    {
+        "picture": "_gro_ba_dang_sdad_pa.png",
+        "contracted_form": "'gro sdod",
+        "full_form": "'gro ba dang sdad pa",
+        "source": "Bacot 1912: Aller et s'arr\u00eater."
+    },
+    {
+        "picture": "byin_gyis_rlabs.png",
+        "contracted_form": "byinibs",
+        "full_form": "byin gyis rlabs",
+        "source": "Bacot 1912: B\u00e9n\u00e9diction."
+    },
+    {
+        "picture": "jo_bo_jo_mo_mjo_mo_bzhob.png",
+        "contracted_form": "31_704",
+        "full_form": "jo bo jo mo mjo mo bzhob",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "ma_lus.png",
+        "contracted_form": "mlus",
+        "full_form": "ma lus",
+        "source": "Bacot 1912: Tout, entier."
+    },
+    {
+        "picture": "gal_te.png",
+        "contracted_form": "galte",
+        "full_form": "gal te",
+        "source": "Bacot 1912: Si, dans le cas o\u00f9."
+    },
+    {
+        "picture": "log_dren0.png",
+        "contracted_form": "logren",
+        "full_form": "log 'dren",
+        "source": "Bacot 1912: Vinayaka (\u00e9pith\u00e8te de Gane\u00e7a)."
+    },
+    {
+        "picture": "skad_cig.png",
+        "contracted_form": "skadig",
+        "full_form": "skad cig",
+        "source": "Bacot 1912: Un moment, un instant."
+    },
+    {
+        "picture": "zung_jug.png",
+        "contracted_form": "zuu*g",
+        "full_form": "zung 'jug",
+        "source": "Bacot 1912: Terme mystique."
+    },
+    {
+        "picture": "so_sor.png",
+        "contracted_form": "31_665",
+        "full_form": "so sor",
+        "source": "Bacot 1912: Diff\u00e9remment; \u00e0 part."
+    },
+    {
+        "picture": "zhes_bstod_do.png",
+        "contracted_form": "zhestood",
+        "full_form": "zhes bstod do",
+        "source": "Bacot 1912: Ainsi fut lou\u00e9."
+    },
+    {
+        "picture": "lho_nub.png",
+        "contracted_form": "31_701",
+        "full_form": "lho nub",
+        "source": "Bacot 1912: Sud-Ouest."
+    },
+    {
+        "picture": "yi_ge.png",
+        "contracted_form": "yie",
+        "full_form": "yi ge",
+        "source": "Bacot 1912: Lettre, \u00e9p\u00eetre."
+    },
+    {
+        "picture": "lung_bstan.png",
+        "contracted_form": "lungn",
+        "full_form": "lung bstan",
+        "source": "Bacot 1912: Vyakarana; proph\u00e9tie."
+    },
+    {
+        "picture": "mtshams_brgyad.png",
+        "contracted_form": "mtsha*d",
+        "full_form": "mtshams brgyad",
+        "source": "Bacot 1912: Les huit points cardinaux."
+    },
+    {
+        "picture": "gdam_ngag.png",
+        "contracted_form": "gda*g",
+        "full_form": "gdam ngag",
+        "source": "Bacot 1912: Conseil, avis."
+    },
+    {
+        "picture": "mgon_po.png",
+        "contracted_form": "myoon",
+        "full_form": "mgon po",
+        "source": "Bacot 1912: Divinit\u00e9 protectrice."
+    },
+    {
+        "picture": "soms_shig.png",
+        "contracted_form": "31_666",
+        "full_form": "soms shig",
+        "source": "Bacot 1912: Qu'il pense, qu'il r\u00e9fl\u00e9chisse."
+    },
+    {
+        "picture": "blo_gros0.png",
+        "contracted_form": "blos",
+        "full_form": "blo gros",
+        "source": "Bacot 1912: Prudence, intelligence."
+    },
+    {
+        "picture": "klu_gnyen.png",
+        "contracted_form": "kluen",
+        "full_form": "klu gnyen",
+        "source": "Bacot 1912: Dragon bienfaisant, protecteur."
+    },
+    {
+        "picture": "bcu_gsum0.png",
+        "contracted_form": "bcu*",
+        "full_form": "bcu gsum",
+        "source": "Bacot 1912: Treize."
+    },
+    {
+        "picture": "mi_lus.png",
+        "contracted_form": "mluis",
+        "full_form": "mi lus",
+        "source": "Bacot 1912: Le corps humain."
+    },
+    {
+        "picture": "rnam_dag.png",
+        "contracted_form": "rna*g",
+        "full_form": "rnam dag",
+        "source": "Bacot 1912: Tr\u00e8s pur."
+    },
+    {
+        "picture": "gzu_bo.png",
+        "contracted_form": "gzuo",
+        "full_form": "gzu bo",
+        "source": "Bacot 1912: Droit, juste."
+    },
+    {
+        "picture": "ril_bu.png",
+        "contracted_form": "rilu",
+        "full_form": "ril bu",
+        "source": "Bacot 1912: Pilule."
+    },
+    {
+        "picture": "bdag_nyid0.png",
+        "contracted_form": "bdid",
+        "full_form": "bdag nyid",
+        "source": "Bacot 1912: Moi-m\u00eame."
+    },
+    {
+        "picture": "chos_nyid.png",
+        "contracted_form": "chosi",
+        "full_form": "chos nyid",
+        "source": "Bacot 1912: Qualit\u00e9, nature; existence."
+    },
+    {
+        "picture": "phyag_tshal0.png",
+        "contracted_form": "phyag^l",
+        "full_form": "phyag 'tshal",
+        "source": "Bacot 1912: Saluer; prostration, salut (namas)."
+    },
+    {
+        "picture": "bka_srung.png",
+        "contracted_form": "bkrung",
+        "full_form": "bka' srung",
+        "source": "Bacot 1912: Ob\u00e9ir."
+    },
+    {
+        "picture": "pho_rgyud.png",
+        "contracted_form": "phyuod",
+        "full_form": "pho rgyud",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "gtor_ma.png",
+        "contracted_form": "tyo*r",
+        "full_form": "gtor ma",
+        "source": "Bacot 1912: Objets qui doivent \u00eatre consum\u00e9s dans un sacrifice."
+    },
+    {
+        "picture": "zag_med.png",
+        "contracted_form": "zaged*",
+        "full_form": "zag med",
+        "source": "Bacot 1912: Sans tache."
+    },
+    {
+        "picture": "tsha_bo_dang_zhang_po.png",
+        "contracted_form": "tsha zhang",
+        "full_form": "tsha bo dang zhang po",
+        "source": "Bacot 1912: Petit-neveu et grand-oncle maternel."
+    },
+    {
+        "picture": "dkon_mchog.png",
+        "contracted_form": "dkoog",
+        "full_form": "dkon mchog",
+        "source": "Bacot 1912: Ratna."
+    },
+    {
+        "picture": "bstan_skyong0.png",
+        "contracted_form": "bstanyong",
+        "full_form": "bstan skyong",
+        "source": "Bacot 1912: Conserver, prot\u00e9ger la doctrine."
+    },
+    {
+        "picture": "skye_gro.png",
+        "contracted_form": "skyero",
+        "full_form": "skye 'gro",
+        "source": "Bacot 1912: Les \u00eatres engendr\u00e9s, les hommes."
+    },
+    {
+        "picture": "slan_chad.png",
+        "contracted_form": "31_671",
+        "full_form": "slan chad",
+        "source": "Bacot 1912: Plus tard, dans la suite."
+    },
+    {
+        "picture": "ngur_smrig.png",
+        "contracted_form": "nguig",
+        "full_form": "ngur smrig",
+        "source": "Bacot 1912: Rouge pale; v\u00eatement de cette couleur."
+    },
+    {
+        "picture": "mar_me.png",
+        "contracted_form": "mer",
+        "full_form": "mar me",
+        "source": "Bacot 1912: Une lampe."
+    },
+    {
+        "picture": "dus_chod.png",
+        "contracted_form": "dus^od",
+        "full_form": "dus chod",
+        "source": "Bacot 1912: Heure; douzi\u00e8me partie du jour."
+    },
+    {
+        "picture": "_du_byed.png",
+        "contracted_form": "'dued",
+        "full_form": "'du byed",
+        "source": "Bacot 1912: Notion, forme des choses; com pos\u00e9; synth\u00e8se (samskara)."
+    },
+    {
+        "picture": "ji_srid.png",
+        "contracted_form": "jiid",
+        "full_form": "ji srid",
+        "source": "Bacot 1912: Aussi long; aussi longtemps que."
+    },
+    {
+        "picture": "_khrug_cod.png",
+        "contracted_form": "'khru^od",
+        "full_form": "'khrug cod",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "gser_skyems.png",
+        "contracted_form": "31_680-1",
+        "full_form": "gser skyems",
+        "source": "Bacot 1912: Boisson c\u00e9leste, nectar."
+    },
+    {
+        "picture": "bka_brgyud.png",
+        "contracted_form": "bkyud",
+        "full_form": "bka' brgyud",
+        "source": "Bacot 1912: Suite des enseignements (du Bouddha); tradition."
+    },
+    {
+        "picture": "gri_gug.png",
+        "contracted_form": "griug",
+        "full_form": "gri gug",
+        "source": "Bacot 1912: Sabre courb\u00e9."
+    },
+    {
+        "picture": "ces_bstod_do.png",
+        "contracted_form": "cestodo",
+        "full_form": "ces bstod do",
+        "source": "Bacot 1912: Il c\u00e9l\u00e8bre ainsi."
+    },
+    {
+        "picture": "bsnyen_bkur.png",
+        "contracted_form": "bsnyur",
+        "full_form": "bsnyen bkur",
+        "source": "Bacot 1912: Respect; politesse."
+    },
+    {
+        "picture": "byin_rlabs.png",
+        "contracted_form": "byinblas",
+        "full_form": "byin rlabs",
+        "source": "Bacot 1912: B\u00e9n\u00e9diction."
+    },
+    {
+        "picture": "rtse_mo_lnga.png",
+        "contracted_form": "rtsngoem",
+        "full_form": "rtse mo lnga",
+        "source": "Bacot 1912: A 5 pointes."
+    },
+    {
+        "picture": "bar_chad.png",
+        "contracted_form": "bard",
+        "full_form": "bar chad",
+        "source": "Bacot 1912: Entre, parmi, pendant que; interruption."
+    },
+    {
+        "picture": "_dzin.png",
+        "contracted_form": "'^in",
+        "full_form": "'dzin",
+        "source": "Bacot 1912: Tenir; saisir; contenir; celui qui tient; contrat."
+    },
+    {
+        "picture": "bcu_bdun.png",
+        "contracted_form": "bcun",
+        "full_form": "bcu bdun",
+        "source": "Bacot 1912: Dix-sept."
+    },
+    {
+        "picture": "phyi_nang_gsang_gsum.png",
+        "contracted_form": "phying syangsu*",
+        "full_form": "phyi nang gsang gsum",
+        "source": "Bacot 1912: Les trois caract\u00e8res (exot\u00e9rique, \u00e9sot\u00e9rique et mystique)."
+    },
+    {
+        "picture": "thod_phreng_rtsal_.png",
+        "contracted_form": "throdeng^l",
+        "full_form": "thod phreng rtsal ",
+        "source": "Bacot 1912: La force d'une guirlande de cr\u00e2nes."
+    },
+    {
+        "picture": "legs_ldan.png",
+        "contracted_form": "legdan",
+        "full_form": "legs ldan",
+        "source": "Bacot 1912: Beau, \u00e9l\u00e9gant; dou\u00e9 de qualit\u00e9s."
+    },
+    {
+        "picture": "jo_mo.png",
+        "contracted_form": "joo*",
+        "full_form": "jo mo",
+        "source": "Bacot 1912: Ma\u00eetresse de maison."
+    },
+    {
+        "picture": "bsam_gtan_.png",
+        "contracted_form": "31_682",
+        "full_form": "bsam gtan ",
+        "source": "Bacot 1912: M\u00e9ditation, contemplation."
+    },
+    {
+        "picture": "bye_brag.png",
+        "contracted_form": "byreg",
+        "full_form": "bye brag",
+        "source": "Bacot 1912: Particulier, diff\u00e9rent."
+    },
+    {
+        "picture": "che_ge_mo1.png",
+        "contracted_form": "chegeo",
+        "full_form": "che ge mo",
+        "source": "Bacot 1912: Tel, un tel."
+    },
+    {
+        "picture": "skyo_shes.png",
+        "contracted_form": "skyoes",
+        "full_form": "skyo shes",
+        "source": "Bacot 1912: Qui conna\u00eet la douleur."
+    },
+    {
+        "picture": "brtul_zhugs.png",
+        "contracted_form": "brtug",
+        "full_form": "brtul zhugs",
+        "source": "Bacot 1912: Voeu, p\u00e9nitence."
+    },
+    {
+        "picture": "bla_ma_dang_slob_ma.png",
+        "contracted_form": "bla slob",
+        "full_form": "bla ma dang slob ma",
+        "source": "Bacot 1912: Le lama et son disciple."
+    },
+    {
+        "picture": "ral_gri.png",
+        "contracted_form": "ralri",
+        "full_form": "ral gri",
+        "source": "Bacot 1912: Ep\u00e9e, glaive."
+    },
+    {
+        "picture": "bdag_med.png",
+        "contracted_form": "bdaged",
+        "full_form": "bdag med",
+        "source": "Bacot 1912: Sans ma\u00eetre; le vide."
+    },
+    {
+        "picture": "_gyur_med.png",
+        "contracted_form": "'gyured",
+        "full_form": "'gyur med",
+        "source": "Bacot 1912: Inchangeable; immuable."
+    },
+    {
+        "picture": "sde_brgyad.png",
+        "contracted_form": "sdyed",
+        "full_form": "sde brgyad",
+        "source": "Bacot 1912: Les huit classes (de d\u00e9mons)."
+    },
+    {
+        "picture": "bu_tsha.png",
+        "contracted_form": "bu^",
+        "full_form": "bu tsha",
+        "source": "Bacot 1912: Fils, gar\u00e7on."
+    },
+    {
+        "picture": "bcu_gsum.png",
+        "contracted_form": "bcuu*",
+        "full_form": "bcu gsum",
+        "source": "Bacot 1912: Treize."
+    },
+    {
+        "picture": "phung_po.png",
+        "contracted_form": "phuong",
+        "full_form": "phung po",
+        "source": "Bacot 1912: Le corps."
+    },
+    {
+        "picture": "man_ngag_.png",
+        "contracted_form": "mnga*g",
+        "full_form": "man ngag ",
+        "source": "Bacot 1912: Conseil religieux; direction."
+    },
+    {
+        "picture": "slob_bu.png",
+        "contracted_form": "31_676",
+        "full_form": "slob bu",
+        "source": "Bacot 1912: Ecolier."
+    },
+    {
+        "picture": "thig_le.png",
+        "contracted_form": "thige",
+        "full_form": "thig le",
+        "source": "Bacot 1912: Tilaka."
+    },
+    {
+        "picture": "bdud_rtsi.png",
+        "contracted_form": "bdu^id",
+        "full_form": "bdud rtsi",
+        "source": "Bacot 1912: Nectar."
+    },
+    {
+        "picture": "srungs_ma.png",
+        "contracted_form": "31_669",
+        "full_form": "srungs ma",
+        "source": "Bacot 1912: Gardien, garde."
+    },
+    {
+        "picture": "khrun_ring.png",
+        "contracted_form": "khruing",
+        "full_form": "khrun ring",
+        "source": "Bacot 1912: \u00c9tendue et longueur."
+    },
+    {
+        "picture": "gshin_rje_gshed0.png",
+        "contracted_form": "gshieend",
+        "full_form": "gshin rje gshed",
+        "source": "Bacot 1912: Dieu de la mort."
+    },
+    {
+        "picture": "shes_rab0.png",
+        "contracted_form": "shreb",
+        "full_form": "shes rab",
+        "source": "Bacot 1912: Esprit, intelligence."
+    },
+    {
+        "picture": "mya_ngan.png",
+        "contracted_form": "myan",
+        "full_form": "mya ngan",
+        "source": "Bacot 1912: Mis\u00e8re."
+    },
+    {
+        "picture": "gyur_cig1.png",
+        "contracted_form": "gyur 1",
+        "full_form": "gyur cig",
+        "source": "Bacot 1912: Soit ! qu\u2019il soit ! imp\u00e9ratif de devenir."
+    },
+    {
+        "picture": "gzu_shing.png",
+        "contracted_form": "gzuing",
+        "full_form": "gzu shing",
+        "source": "Bacot 1912: Levier, barre."
+    },
+    {
+        "picture": "mkha_lding.png",
+        "contracted_form": "mkhding",
+        "full_form": "mkha' lding",
+        "source": "Bacot 1912: Aigle."
+    },
+    {
+        "picture": "mig_dmar.png",
+        "contracted_form": "dmir",
+        "full_form": "mig dmar",
+        "source": "Bacot 1912: La plan\u00e8te Mars."
+    },
+    {
+        "picture": "skye_dgu.png",
+        "contracted_form": "skyeu",
+        "full_form": "skye dgu",
+        "source": "Bacot 1912: Les \u00eatres engendr\u00e9s, les hommes."
+    },
+    {
+        "picture": "ru_mtshon.png",
+        "contracted_form": "ru^on",
+        "full_form": "ru mtshon",
+        "source": "Bacot 1912: \u00c9tendard."
+    },
+    {
+        "picture": "gti_mug.png",
+        "contracted_form": "gtiug",
+        "full_form": "gti mug",
+        "source": "Bacot 1912: Ignorance, stupidit\u00e9."
+    },
+    {
+        "picture": "phyag_tshal_lo0.png",
+        "contracted_form": "ph^yaol",
+        "full_form": "phyag 'tshal lo",
+        "source": "Bacot 1912: Salut \u00e0; je salue."
+    },
+    {
+        "picture": "shes_bya.png",
+        "contracted_form": "shyes",
+        "full_form": "shes bya",
+        "source": "Bacot 1912: Ce qu'il faut conna\u00eetre; la science, l'instruction."
+    },
+    {
+        "picture": "thugs_rje.png",
+        "contracted_form": "thu#e",
+        "full_form": "thugs rje",
+        "source": "Bacot 1912: G\u00e9n\u00e9rosit\u00e9; compassion."
+    },
+    {
+        "picture": "khro_chen.png",
+        "contracted_form": "khroen",
+        "full_form": "khro chen",
+        "source": "Bacot 1912: Grande col\u00e8re."
+    },
+    {
+        "picture": "lha_dre.png",
+        "contracted_form": "31_690",
+        "full_form": "lha 'dre",
+        "source": "Bacot 1912: Dieu malfaisant."
+    },
+    {
+        "picture": "dngos_gzhi.png",
+        "contracted_form": "dngosi",
+        "full_form": "dngos gzhi",
+        "source": "Bacot 1912: R\u00e9alit\u00e9; origine d'une chose."
+    },
+    {
+        "picture": "bcom_ldan_das0.png",
+        "contracted_form": "bco*nas",
+        "full_form": "bcom ldan 'das",
+        "source": "Bacot 1912: Mort victorieux; \u00e9pith\u00e8te du Bouddha; Bhagavat."
+    },
+    {
+        "picture": "gnas_kyis.png",
+        "contracted_form": "nyasyi",
+        "full_form": "gnas kyis",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "blo_gros.png",
+        "contracted_form": "bloos",
+        "full_form": "blo gros",
+        "source": "Bacot 1912: Prudence, intelligence."
+    },
+    {
+        "picture": "rtse_rgyal.png",
+        "contracted_form": "rtsyel",
+        "full_form": "rtse rgyal",
+        "source": "Bacot 1912: Adroit, expert."
+    },
+    {
+        "picture": "_khor_bcas0.png",
+        "contracted_form": "'ors",
+        "full_form": "'khor bcas",
+        "source": "Bacot 1912: Avec un cort\u00e8ge."
+    },
+    {
+        "picture": "sdigs_mdzub.png",
+        "contracted_form": "sdiu^b",
+        "full_form": "sdigs mdzub",
+        "source": "Bacot 1912: Un doigt mena\u00e7ant."
+    },
+    {
+        "picture": "man_chad.png",
+        "contracted_form": "mand",
+        "full_form": "man chad",
+        "source": "Bacot 1912: Inf\u00e9rieur."
+    },
+    {
+        "picture": "gnod_sbyin_bdag_po.png",
+        "contracted_form": "gnyodingo",
+        "full_form": "gnod sbyin bdag po",
+        "source": "Bacot 1912: Le roi des Yaksas."
+    },
+    {
+        "picture": "de_dag.png",
+        "contracted_form": "dge",
+        "full_form": "de dag",
+        "source": "Bacot 1912: Ces; eux."
+    },
+    {
+        "picture": "gru_dzin.png",
+        "contracted_form": "gruin",
+        "full_form": "gru 'dzin",
+        "source": "Bacot 1912: Port, havre."
+    },
+    {
+        "picture": "phyogs.png",
+        "contracted_form": "phyo#",
+        "full_form": "phyogs",
+        "source": "Bacot 1912: R\u00e9gion."
+    },
+    {
+        "picture": "phyi_rol.png",
+        "contracted_form": "phyriol",
+        "full_form": "phyi rol",
+        "source": "Bacot 1912: Ext\u00e9rieur, dehors."
+    },
+    {
+        "picture": "spyan_gzigs.png",
+        "contracted_form": "spyin#",
+        "full_form": "spyan gzigs",
+        "source": "Bacot 1912: Voir, regarder; pr\u00e9sents pr\u00e9cieux."
+    },
+    {
+        "picture": "_gro_drug.png",
+        "contracted_form": "'groug",
+        "full_form": "'gro drug",
+        "source": "Bacot 1912: Les six classes d'\u00eatres anim\u00e9s."
+    },
+    {
+        "picture": "_khor_bsrungs0.png",
+        "contracted_form": "'khorrungs",
+        "full_form": "'khor bsrungs",
+        "source": "Bacot 1912: Protecteur contre les mauvais esprits."
+    },
+    {
+        "picture": "zla_gam.png",
+        "contracted_form": "zla*",
+        "full_form": "zla gam",
+        "source": "Bacot 1912: Semi-circulaire ; demi-disque; p\u00e8lerine."
+    },
+    {
+        "picture": "bu_med.png",
+        "contracted_form": "bued*",
+        "full_form": "bu med",
+        "source": "Bacot 1912: Sans fils."
+    },
+    {
+        "picture": "sa_gzhi_dang_gnam_ga.png",
+        "contracted_form": "sa ga*n",
+        "full_form": "sa gzhi dang gnam ga",
+        "source": "Bacot 1912: Terre et ciel."
+    },
+    {
+        "picture": "rta_mgrin.png",
+        "contracted_form": "rtrin",
+        "full_form": "rta mgrin",
+        "source": "Bacot 1912: Tamdin; divinit\u00e9 \u00e0 t\u00eate de cheval."
+    },
+    {
+        "picture": "bcu_drug.png",
+        "contracted_form": "bcug",
+        "full_form": "bcu drug",
+        "source": "Bacot 1912: Seize."
+    },
+    {
+        "picture": "shar_phyogs0.png",
+        "contracted_form": "sharo#",
+        "full_form": "shar phyogs",
+        "source": "Bacot 1912: L'Est."
+    },
+    {
+        "picture": "mtho_ris.png",
+        "contracted_form": "mthrois",
+        "full_form": "mtho ris",
+        "source": "Bacot 1912: Le paradis."
+    },
+    {
+        "picture": "_ja_tshon0.png",
+        "contracted_form": "'^on",
+        "full_form": "'ja' tshon",
+        "source": "Bacot 1912: Arc-en-ciel."
+    },
+    {
+        "picture": "spu_gri.png",
+        "contracted_form": "sprui",
+        "full_form": "spu gri",
+        "source": "Bacot 1912: Rasoir; ciseaux."
+    },
+    {
+        "picture": "_khams_gsum.png",
+        "contracted_form": "kha*su*",
+        "full_form": " khams gsum",
+        "source": "Bacot 1912: Les trois mondes; les trois royaumes; les trois classes (des \u00eatres)."
+    },
+    {
+        "picture": "blun_po.png",
+        "contracted_form": "bluon",
+        "full_form": "blun po",
+        "source": "Bacot 1912: Un idiot, un fou."
+    },
+    {
+        "picture": "sgra_bla.png",
+        "contracted_form": "sgla",
+        "full_form": "sgra bla",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "longs_spyod_rdzogs.png",
+        "contracted_form": "lyooongd#",
+        "full_form": "longs spyod rdzogs",
+        "source": "Bacot 1912: Bonheur parfait."
+    },
+    {
+        "picture": "grub_thob.png",
+        "contracted_form": "gruob",
+        "full_form": "grub thob",
+        "source": "Bacot 1912: Un saint (siddha)."
+    },
+    {
+        "picture": "gtso_bo.png",
+        "contracted_form": "gtsoo",
+        "full_form": "gtso bo",
+        "source": "Bacot 1912: Ame; ma\u00eetre, seigneur; excellence, sup\u00e9riorit\u00e9."
+    },
+    {
+        "picture": "mchog.png",
+        "contracted_form": "chyo",
+        "full_form": "mchog",
+        "source": "Bacot 1912: Grand; excellent."
+    },
+    {
+        "picture": "don_yod_grub.png",
+        "contracted_form": "donruodb",
+        "full_form": "don yod grub",
+        "source": "Bacot 1912: Amoghasiddha."
+    },
+    {
+        "picture": "_jig_rten0.png",
+        "contracted_form": "'jien",
+        "full_form": "'jig rten",
+        "source": "Bacot 1912: Monde."
+    },
+    {
+        "picture": "byang_shar.png",
+        "contracted_form": "byangr",
+        "full_form": "byang shar",
+        "source": "Bacot 1912: Nord-Est."
+    },
+    {
+        "picture": "za_byed.png",
+        "contracted_form": "zyed",
+        "full_form": "za byed",
+        "source": "Bacot 1912: Mangeur."
+    },
+    {
+        "picture": "bdag_cag.png",
+        "contracted_form": "bdagag",
+        "full_form": "bdag cag",
+        "source": "Bacot 1912: Nous (pronom personnel)."
+    },
+    {
+        "picture": "byang_chub.png",
+        "contracted_form": "byub",
+        "full_form": "byang chub",
+        "source": "Bacot 1912: Saintet\u00e9 (Bodhi)."
+    },
+    {
+        "picture": "rigs_lnga.png",
+        "contracted_form": "rignga",
+        "full_form": "rigs lnga",
+        "source": "Bacot 1912: Les cinq ordres de moines."
+    },
+    {
+        "picture": "shin_tu.png",
+        "contracted_form": "shintu",
+        "full_form": "shin tu",
+        "source": "Bacot 1912: Tr\u00e8s; grandement; vraiment."
+    },
+    {
+        "picture": "gang_zag.png",
+        "contracted_form": "gang^g",
+        "full_form": "gang zag",
+        "source": "Bacot 1912: Etre anim\u00e9 (pudgala)."
+    },
+    {
+        "picture": "gzhu_doms.png",
+        "contracted_form": "gzhuo*s",
+        "full_form": "gzhu 'doms",
+        "source": "Bacot 1912: Une brasse."
+    },
+    {
+        "picture": "_od_gsal_.png",
+        "contracted_form": "'odl",
+        "full_form": "'od gsal ",
+        "source": "Bacot 1912: R\u00e9gion c\u00e9leste; illumination des saints."
+    },
+    {
+        "picture": "rin_chen.png",
+        "contracted_form": "rinen",
+        "full_form": "rin chen",
+        "source": "Bacot 1912: Pr\u00e9cieux; mati\u00e8re pr\u00e9cieuse."
+    },
+    {
+        "picture": "byin_gyis_rlabs0.png",
+        "contracted_form": "byinlibs",
+        "full_form": "byin gyis rlabs",
+        "source": "Bacot 1912: B\u00e9n\u00e9diction."
+    },
+    {
+        "picture": "_khor_das0.png",
+        "contracted_form": "'khordas",
+        "full_form": "'khor 'das",
+        "source": "Bacot 1912: Ceux qui sont d\u00e9livr\u00e9s de la transmigration."
+    },
+    {
+        "picture": "gdung_dzin.png",
+        "contracted_form": "gdu^in",
+        "full_form": "gdung 'dzin",
+        "source": "Bacot 1912: Niche o\u00f9 Ton d\u00e9pose les reliques."
+    },
+    {
+        "picture": "snang_srid.png",
+        "contracted_form": "snringd",
+        "full_form": "snang srid",
+        "source": "Bacot 1912: Monde visible."
+    },
+    {
+        "picture": "bstan_bcos.png",
+        "contracted_form": "bstos",
+        "full_form": "bstan bcos",
+        "source": "Bacot 1912: Commentaire religieux."
+    },
+    {
+        "picture": "gzug_gin_dug.png",
+        "contracted_form": "gzugin 'dug",
+        "full_form": "gzug gin 'dug",
+        "source": "Bacot 1912: Il souffre, est en peine."
+    },
+    {
+        "picture": "lus_ngag_yid_gsum.png",
+        "contracted_form": "lu*gid",
+        "full_form": "lus ngag yid gsum",
+        "source": "Bacot 1912: Les trois: corps, parole et coeur."
+    },
+    {
+        "picture": "sgyu_phrul.png",
+        "contracted_form": "sgyul",
+        "full_form": "sgyu 'phrul",
+        "source": "Bacot 1912: Ph\u00e9nom\u00e8ne magique; illusion due \u00e0 la magie."
+    },
+    {
+        "picture": "gzhan_yang.png",
+        "contracted_form": "gzhanng",
+        "full_form": "gzhan yang",
+        "source": "Bacot 1912: De plus, en outre, d'ailleurs."
+    },
+    {
+        "picture": "de_bzhin_nyid.png",
+        "contracted_form": "dbezhinid",
+        "full_form": "de bzhin nyid",
+        "source": "Bacot 1912: Identit\u00e9, essence (tathata)."
+    },
+    {
+        "picture": "mchog_chen_che_mchog_chen.png",
+        "contracted_form": "chyoen",
+        "full_form": "mchog chen / che mchog chen",
+        "source": "Bacot 1912: Grand et excellent."
+    },
+    {
+        "picture": "stong_nyid.png",
+        "contracted_form": "stongid",
+        "full_form": "stong nyid",
+        "source": "Bacot 1912: Vide, n\u00e9ant."
+    },
+    {
+        "picture": "rgya_gar_dang_bod.png",
+        "contracted_form": "rgya bod",
+        "full_form": "rgya gar dang bod",
+        "source": "Bacot 1912: L'Inde et le Tibet."
+    },
+    {
+        "picture": "rdo_rje_sems_dpa_.png",
+        "contracted_form": "rdoeeds*",
+        "full_form": "rdo rje sems dpa'",
+        "source": "Bacot 1912: Forme tantrique d\u2019Aksobhya (Vajrasattva)."
+    },
+    {
+        "picture": "bcol_pa_i_khra_phrin_las_grub_par_sar_mdzod.png",
+        "contracted_form": "bcoibruir^d",
+        "full_form": "bcol pa'i (khra) phrin las 'grub par (sar) mdzod",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "blo_dman.png",
+        "contracted_form": "blon",
+        "full_form": "blo dman",
+        "source": "Bacot 1912: Volont\u00e9 abattue; \u00e2me vile."
+    },
+    {
+        "picture": "dug_lnga.png",
+        "contracted_form": "dugnga",
+        "full_form": "dug lnga",
+        "source": "Bacot 1912: Les cinq poisons."
+    },
+    {
+        "picture": "byang_chub0.png",
+        "contracted_form": "byu*b",
+        "full_form": "byang chub",
+        "source": "Bacot 1912: Saintet\u00e9 (Bodhi)."
+    },
+    {
+        "picture": "rgyal_mtshan_.png",
+        "contracted_form": "rgyal^n",
+        "full_form": "rgyal mtshan ",
+        "source": "Bacot 1912: Drapeau du bouddhisme."
+    },
+    {
+        "picture": "thams_cad.png",
+        "contracted_form": "tha*scad",
+        "full_form": "thams cad",
+        "source": "Bacot 1912: Tout, tous."
+    },
+    {
+        "picture": "dngos_grub_rtsol0.png",
+        "contracted_form": "dngobr^al",
+        "full_form": "dngos grub rtsol",
+        "source": "Bacot 1912: S'efforcer d'atteindre la perfection."
+    },
+    {
+        "picture": "pha_dang_bu.png",
+        "contracted_form": "pha spang",
+        "full_form": "pha dang bu",
+        "source": "Bacot 1912: Le p\u00e8re et l'enfant."
+    },
+    {
+        "picture": "smin_drug.png",
+        "contracted_form": "smruig",
+        "full_form": "smin drug",
+        "source": "Bacot 1912: Les pl\u00e9iades (constellation)."
+    },
+    {
+        "picture": "drag_po_rtsal.png",
+        "contracted_form": "drag^l",
+        "full_form": "drag po rtsal",
+        "source": "Bacot 1912: Terrible."
+    },
+    {
+        "picture": "so_so_ba.png",
+        "contracted_form": "31_664",
+        "full_form": "so so ba",
+        "source": "Bacot 1912: Diff\u00e9rent, vari\u00e9."
+    },
+    {
+        "picture": "tshul_khrims0.png",
+        "contracted_form": "tshuims",
+        "full_form": "tshul khrims",
+        "source": "Bacot 1912: Moralit\u00e9; bonnes moeurs."
+    },
+    {
+        "picture": "_od_du.png",
+        "contracted_form": "'odu",
+        "full_form": "'od du",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "bka_dang_bstan_bcos.png",
+        "contracted_form": "bka' bstan",
+        "full_form": "bka' dang bstan bcos",
+        "source": "Bacot 1912: Kandjur et Tandjur."
+    },
+    {
+        "picture": "_khrul_khor.png",
+        "contracted_form": "'khruor",
+        "full_form": "'khrul 'khor",
+        "source": "Bacot 1912: Machination, artifice."
+    },
+    {
+        "picture": "thams_cad0.png",
+        "contracted_form": "tha*d",
+        "full_form": "thams cad",
+        "source": "Bacot 1912: Tout, tous."
+    },
+    {
+        "picture": "nyin_ma_dang_mtshan_mo.png",
+        "contracted_form": "nyin mtshan",
+        "full_form": "nyin ma dang mtshan mo",
+        "source": "Bacot 1912: Jour et nuit."
+    },
+    {
+        "picture": "phyag_rgya.png",
+        "contracted_form": "phyargya",
+        "full_form": "phyag rgya",
+        "source": "Bacot 1912: Mudr\u00e2; sceau, cachet; geste rituel."
+    },
+    {
+        "picture": "skad_cig0.png",
+        "contracted_form": "skig",
+        "full_form": "skad cig",
+        "source": "Bacot 1912: Un moment, un instant."
+    },
+    {
+        "picture": "g_yung_drung.png",
+        "contracted_form": "g.yuung",
+        "full_form": "g.yung drung",
+        "source": "Bacot 1912: Yontchron; la croix gamm\u00e9e, Svastika; Figure magnifique (nom propre)."
+    },
+    {
+        "picture": "gson_po_dang_gshin_po.png",
+        "contracted_form": "31_681",
+        "full_form": "gson po dang gshin po",
+        "source": "Bacot 1912: Les vivants et les morts."
+    },
+    {
+        "picture": "zhu_yig.png",
+        "contracted_form": "zhuig",
+        "full_form": "zhu yig",
+        "source": "Bacot 1912: Requ\u00eate \u00e9crite, p\u00e9tition."
+    },
+    {
+        "picture": "rig_dzin.png",
+        "contracted_form": "rig^in",
+        "full_form": "rig 'dzin",
+        "source": "Bacot 1912: Intelligence."
+    },
+    {
+        "picture": "yum_chen.png",
+        "contracted_form": "yuen*",
+        "full_form": "yum chen",
+        "source": "Bacot 1912: Mahamatrka."
+    },
+    {
+        "picture": "klu_bdud0.png",
+        "contracted_form": "klud",
+        "full_form": "klu bdud",
+        "source": "Bacot 1912: Dragon malfaisant."
+    },
+    {
+        "picture": "kha_drang1.png",
+        "contracted_form": "khra*",
+        "full_form": "kha drang",
+        "source": "Bacot 1912: Aussit\u00f4t."
+    },
+    {
+        "picture": "ljang_nag.png",
+        "contracted_form": "ljag",
+        "full_form": "ljang nag",
+        "source": "Bacot 1912: Vert fonc\u00e9."
+    },
+    {
+        "picture": "gnyis_med.png",
+        "contracted_form": "2ed",
+        "full_form": "gnyis med",
+        "source": "Bacot 1912: Unique."
+    },
+    {
+        "picture": "_du_shes.png",
+        "contracted_form": "'dues",
+        "full_form": "'du shes",
+        "source": "Bacot 1912: Conscience."
+    },
+    {
+        "picture": "skyabs_su.png",
+        "contracted_form": "skyabsu",
+        "full_form": "skyabs su",
+        "source": "Bacot 1912: Alors, lors de."
+    },
+    {
+        "picture": "bsdigs_mdzub_mdzad.png",
+        "contracted_form": "bsdiu^b*d",
+        "full_form": "bsdigs mdzub mdzad",
+        "source": "Bacot 1912: Menacer du doigt."
+    },
+    {
+        "picture": "thun_mong.png",
+        "contracted_form": "thunong",
+        "full_form": "thun mong",
+        "source": "Bacot 1912: Commun, ordinaire."
+    },
+    {
+        "picture": "dge_ba_dang_sdig_ba.png",
+        "contracted_form": "dge sdig",
+        "full_form": "dge ba dang sdig ba",
+        "source": "Bacot 1912: Vertu et vice."
+    },
+    {
+        "picture": "bong_bu.png",
+        "contracted_form": "buong",
+        "full_form": "bong bu",
+        "source": "Bacot 1912: Ane."
+    },
+    {
+        "picture": "kun_rdzob.png",
+        "contracted_form": "ku*^ob",
+        "full_form": "kun rdzob",
+        "source": "Bacot 1912: Vain, non r\u00e9el."
+    },
+    {
+        "picture": "bco_lnga.png",
+        "contracted_form": "bconga",
+        "full_form": "bco lnga",
+        "source": "Bacot 1912: Quinze."
+    },
+    {
+        "picture": "che_ge_mo2.png",
+        "contracted_form": "chego",
+        "full_form": "che ge mo",
+        "source": "Bacot 1912: Tel, un tel."
+    },
+    {
+        "picture": "grong_khyer0.png",
+        "contracted_form": "groer",
+        "full_form": "grong khyer",
+        "source": "Bacot 1912: Cit\u00e9, ville."
+    },
+    {
+        "picture": "sbyor_sgrol.png",
+        "contracted_form": "sbyrol",
+        "full_form": "sbyor sgrol",
+        "source": "Bacot 1912: Lier et d\u00e9lier."
+    },
+    {
+        "picture": "me_lha.png",
+        "contracted_form": "mhe",
+        "full_form": "me lha",
+        "source": "Bacot 1912: Dieu du feu."
+    },
+    {
+        "picture": "rten_brel.png",
+        "contracted_form": "rtreel",
+        "full_form": "rten 'brel",
+        "source": "Bacot 1912: Augure."
+    },
+    {
+        "picture": "gur_gum.png",
+        "contracted_form": "gu*r",
+        "full_form": "gur gum",
+        "source": "Bacot 1912: Safran."
+    },
+    {
+        "picture": "skyabs_gro_sems_bskyed.png",
+        "contracted_form": "skyroe*ed",
+        "full_form": "skyabs 'gro sems bskyed",
+        "source": "Bacot 1912: Penser \u00e0 demander protection."
+    },
+    {
+        "picture": "rgun_brum.png",
+        "contracted_form": "rguu*",
+        "full_form": "rgun 'brum",
+        "source": "Bacot 1912: Raisin."
+    },
+    {
+        "picture": "dge_bshes_peng_ge_bre_te_khyer.png",
+        "contracted_form": "32_706",
+        "full_form": "dge bshes peng ge bre te khyer",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "bka_drin.png",
+        "contracted_form": "bkrin",
+        "full_form": "bka' drin",
+        "source": "Bacot 1912: Faveur, gr\u00e2ce."
+    },
+    {
+        "picture": "rong_yul.png",
+        "contracted_form": "roul",
+        "full_form": "rong yul",
+        "source": "Bacot 1912: Contr\u00e9e remplie de d\u00e9fil\u00e9s."
+    },
+    {
+        "picture": "nag_mo.png",
+        "contracted_form": "nog*",
+        "full_form": "nag mo",
+        "source": "Bacot 1912: Femme noire; femme en g\u00e9n\u00e9ral."
+    },
+    {
+        "picture": "cho_lo.png",
+        "contracted_form": "choo",
+        "full_form": "cho lo",
+        "source": "Bacot 1912: Sorte d'arbuste; jeu de d\u00e9s."
+    },
+    {
+        "picture": "chu_snod.png",
+        "contracted_form": "chuod",
+        "full_form": "chu snod",
+        "source": "Bacot 1912: Vaisseau; vase pour l'eau."
+    },
+    {
+        "picture": "_khor_bsrungs1.png",
+        "contracted_form": "'orungs",
+        "full_form": "'khor bsrungs",
+        "source": "Bacot 1912: Protecteur contre les mauvais esprits."
+    },
+    {
+        "picture": "tham_pa.png",
+        "contracted_form": "tha*pa",
+        "full_form": "tham pa",
+        "source": "Bacot 1912: Entier, int\u00e9gral."
+    },
+    {
+        "picture": "yab_dang_sras_bla_ma_dang_slob_ma_.png",
+        "contracted_form": "yab sras",
+        "full_form": "yab dang sras (bla ma dang slob ma)",
+        "source": "Bacot 1912: P\u00e8re et fils ou ma\u00eetre et \u00e9l\u00e8ve."
+    },
+    {
+        "picture": "lcags_kyu.png",
+        "contracted_form": "lcakyu",
+        "full_form": "lcags kyu",
+        "source": "Bacot 1912: Pointe; hamecon; b\u00e2ton \u00e0 crochet pour guider les \u00e9l\u00e9phants."
+    },
+    {
+        "picture": "_du_dzi.png",
+        "contracted_form": "'dui^",
+        "full_form": "'du 'dzi",
+        "source": "Bacot 1912: Tumulte; r\u00e9unions de plaisir; concours de peuple."
+    },
+    {
+        "picture": "nyi_zla.png",
+        "contracted_form": "nyli",
+        "full_form": "nyi zla",
+        "source": "Bacot 1912: Soleil et lune (ornement des tchortens)."
+    },
+    {
+        "picture": "thugs_dam_bskang0.png",
+        "contracted_form": "thya*ng",
+        "full_form": "thugs dam bskang",
+        "source": "Bacot 1912: Accomplissement des d\u00e9sirs."
+    },
+    {
+        "picture": "mtsho_gling.png",
+        "contracted_form": "mtshloing",
+        "full_form": "mtsho gling",
+        "source": "Bacot 1912: \u00cele."
+    },
+    {
+        "picture": "_og_min.png",
+        "contracted_form": "'ogin",
+        "full_form": "'og min",
+        "source": "Bacot 1912: Qui n'est inf\u00e9rieur \u00e0 rien; nom du ciel de l'Est."
+    },
+    {
+        "picture": "g_yu_brug.png",
+        "contracted_form": "g.yuug",
+        "full_form": "g.yu 'brug",
+        "source": "Bacot 1912: Le dragon."
+    },
+    {
+        "picture": "mgon_po0.png",
+        "contracted_form": "mgoon",
+        "full_form": "mgon po",
+        "source": "Bacot 1912: Divinit\u00e9 protectrice."
+    },
+    {
+        "picture": "yon_tan.png",
+        "contracted_form": "yotan",
+        "full_form": "yon tan",
+        "source": "Bacot 1912: Bonne qualit\u00e9."
+    },
+    {
+        "picture": "bstan_bsrung.png",
+        "contracted_form": "bstrung",
+        "full_form": "bstan bsrung",
+        "source": "Bacot 1912: Gardien de la doctrine."
+    },
+    {
+        "picture": "_od_dkar.png",
+        "contracted_form": "'odkar",
+        "full_form": "'od dkar",
+        "source": "Bacot 1912: Lumi\u00e8re blanche."
+    },
+    {
+        "picture": "rnam_mkhyen.png",
+        "contracted_form": "rna*en",
+        "full_form": "rnam mkhyen",
+        "source": "Bacot 1912: Omniscience."
+    },
+    {
+        "picture": "klu_gnyen0.png",
+        "contracted_form": "kluen",
+        "full_form": "klu gnyen",
+        "source": "Bacot 1912: Dragon bienfaisant, protecteur."
+    },
+    {
+        "picture": "_joms_byed.png",
+        "contracted_form": "'jyoe*d",
+        "full_form": "'joms byed",
+        "source": "Bacot 1912: Charme, formule magique."
+    },
+    {
+        "picture": "yid_bzhin.png",
+        "contracted_form": "yidin",
+        "full_form": "yid bzhin",
+        "source": "Bacot 1912: Pens\u00e9e; souhait."
+    },
+    {
+        "picture": "lho_phyogs0.png",
+        "contracted_form": "31_702-1",
+        "full_form": "lho phyogs",
+        "source": "Bacot 1912: Le Sud."
+    },
+    {
+        "picture": "pho_rog.png",
+        "contracted_form": "phoog",
+        "full_form": "pho rog",
+        "source": "Bacot 1912: Corbeau."
+    },
+    {
+        "picture": "thog_med.png",
+        "contracted_form": "thoged",
+        "full_form": "thog med",
+        "source": "Bacot 1912: Sans fruit, st\u00e9rile."
+    },
+    {
+        "picture": "rtsal_du_gsol.png",
+        "contracted_form": "rtsuol",
+        "full_form": "rtsal du gsol",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "klu_bdud.png",
+        "contracted_form": "klud",
+        "full_form": "klu bdud",
+        "source": "Bacot 1912: Dragon malfaisant."
+    },
+    {
+        "picture": "yan_chad.png",
+        "contracted_form": "yand",
+        "full_form": "yan chad",
+        "source": "Bacot 1912: Au-dessus, au del\u00e0."
+    },
+    {
+        "picture": "dge_dun.png",
+        "contracted_form": "dgeun",
+        "full_form": "dge 'dun",
+        "source": "Bacot 1912: Clerg\u00e9 (samgha)."
+    },
+    {
+        "picture": "yongs_rdzogs.png",
+        "contracted_form": "yongo#",
+        "full_form": "yongs rdzogs",
+        "source": "Bacot 1912: Parach\u00e8vement; perfection."
+    },
+    {
+        "picture": "cho_phrul.png",
+        "contracted_form": "chorul",
+        "full_form": "cho 'phrul",
+        "source": "Bacot 1912: Miracle; transformation miraculeuse de soi-m\u00eame."
+    },
+    {
+        "picture": "gdug_rtsub.png",
+        "contracted_form": "gdu^b",
+        "full_form": "gdug rtsub",
+        "source": "Bacot 1912: F\u00e9rocit\u00e9; malice."
+    },
+    {
+        "picture": "thod_khrag0.png",
+        "contracted_form": "throg",
+        "full_form": "thod khrag",
+        "source": "Bacot 1912: Cr\u00e2ne rempli de sang."
+    },
+    {
+        "picture": "bcom_ldan.png",
+        "contracted_form": "bco*dan",
+        "full_form": "bcom ldan",
+        "source": "Bacot 1912: Victorieux; b\u00e9ni; triomphant. Bhagavat."
+    },
+    {
+        "picture": "de_bzhin_gshegs.png",
+        "contracted_form": "deine#",
+        "full_form": "de bzhin gshegs",
+        "source": "Bacot 1912: Tathagata."
+    },
+    {
+        "picture": "rang_bzhin.png",
+        "contracted_form": "rangin",
+        "full_form": "rang bzhin",
+        "source": "Bacot 1912: La nature."
+    },
+    {
+        "picture": "bde_gshegs.png",
+        "contracted_form": "bde#",
+        "full_form": "bde gshegs",
+        "source": "Bacot 1912:  Bienheureux; \u00e9pith\u00e8te de Bouddha."
+    },
+    {
+        "picture": "rgya_nag.png",
+        "contracted_form": "rgyag",
+        "full_form": "rgya nag",
+        "source": "Bacot 1912: La Chine."
+    },
+    {
+        "picture": "khrum_stod.png",
+        "contracted_form": "khruod",
+        "full_form": "khrum stod",
+        "source": "Bacot 1912: PUrvabhAdra."
+    },
+    {
+        "picture": "dug_gsum.png",
+        "contracted_form": "dugsu*",
+        "full_form": "dug gsum",
+        "source": "Bacot 1912: Les trois poisons ou vices."
+    },
+    {
+        "picture": "bon_po_sngon_po_gos_sngon_po.png",
+        "contracted_form": "31_703",
+        "full_form": "bon po sngon po gos sngon po",
+        "source": "Bacot 1912: Ancien Bon ciel bleu."
+    },
+    {
+        "picture": "dbu_thod.png",
+        "contracted_form": "dbuod",
+        "full_form": "dbu thod",
+        "source": "Bacot 1912: Turban, couronne."
+    },
+    {
+        "picture": "dril_bu.png",
+        "contracted_form": "drilu",
+        "full_form": "dril bu",
+        "source": "Bacot 1912: Cloche."
+    },
+    {
+        "picture": "dur_khrod.png",
+        "contracted_form": "duod",
+        "full_form": "dur khrod",
+        "source": "Bacot 1912: Cimeti\u00e8re."
+    },
+    {
+        "picture": "mtha_bral.png",
+        "contracted_form": "mthral",
+        "full_form": "mtha' bral",
+        "source": "Bacot 1912: L'espace."
+    },
+    {
+        "picture": "dmag_dpung.png",
+        "contracted_form": "dmung",
+        "full_form": "dmag dpung",
+        "source": "Bacot 1912: Arm\u00e9e."
+    },
+    {
+        "picture": "dpag_med.png",
+        "contracted_form": "dpaged",
+        "full_form": "dpag med",
+        "source": "Bacot 1912: Sans mesure, beaucoup."
+    },
+    {
+        "picture": "dbang_bskur.png",
+        "contracted_form": "dbu*r",
+        "full_form": "dbang bskur",
+        "source": "Bacot 1912: Sacre, onction."
+    },
+    {
+        "picture": "bka_gyur0.png",
+        "contracted_form": "bgyur",
+        "full_form": "bka' 'gyur",
+        "source": "Bacot 1912: Kandjur."
+    },
+    {
+        "picture": "bstan_dzin_.png",
+        "contracted_form": "bi^n",
+        "full_form": "bstan 'dzin ",
+        "source": "Bacot 1912: Action de comprendre, saisir une d\u00e9monstration."
+    },
+    {
+        "picture": "glo_bur.png",
+        "contracted_form": "glour",
+        "full_form": "glo 'bur",
+        "source": "Bacot 1912: Peintures et sculptures."
+    },
+    {
+        "picture": "zhal_zas0.png",
+        "contracted_form": "zha^s",
+        "full_form": "zhal zas",
+        "source": "Bacot 1912: Nourriture (resp.); biscuit, g\u00e2teau."
+    },
+    {
+        "picture": "zhu_zhing.png",
+        "contracted_form": "zhuing",
+        "full_form": "zhu zhing",
+        "source": "Bacot 1912: Demandant (participe pr\u00e9sent)."
+    },
+    {
+        "picture": "zlum_po.png",
+        "contracted_form": "zluo*",
+        "full_form": "zlum po",
+        "source": "Bacot 1912: Rond, circulaire."
+    },
+    {
+        "picture": "nyi_shu.png",
+        "contracted_form": "nyiu",
+        "full_form": "nyi shu",
+        "source": "Bacot 1912: Vingt."
+    },
+    {
+        "picture": "rnam_thos_sras.png",
+        "contracted_form": "rnra*os",
+        "full_form": "rnam thos sras",
+        "source": "Bacot 1912: Vaisravana."
+    },
+    {
+        "picture": "lhung_bzed.png",
+        "contracted_form": "31_700",
+        "full_form": "lhung bzed",
+        "source": "Bacot 1912: Vase \u00e0 aum\u00f4ne, s\u00e9bile."
+    },
+    {
+        "picture": "spyan_sngar.png",
+        "contracted_form": "spyanngar",
+        "full_form": "spyan sngar",
+        "source": "Bacot 1912: Devant; en pr\u00e9sence de."
+    },
+    {
+        "picture": "dbang_phyug0.png",
+        "contracted_form": "dbyu*g",
+        "full_form": "dbang phyug",
+        "source": "Bacot 1912: Puissant; prince, seigneur; Dieu supr\u00eame; I\u00e7vara."
+    },
+    {
+        "picture": "tshom_bu.png",
+        "contracted_form": "tshuo*",
+        "full_form": "tshom bu",
+        "source": "Bacot 1912: Bouquet; groupement de fleurs ou d'autres choses."
+    },
+    {
+        "picture": "gyur_cig.png",
+        "contracted_form": "gyuig",
+        "full_form": "gyur cig",
+        "source": "Bacot 1912: Soit ! qu\u2019il soit ! imp\u00e9ratif de devenir."
+    },
+    {
+        "picture": "spyi_bor.png",
+        "contracted_form": "spyior",
+        "full_form": "spyi bor",
+        "source": "Bacot 1912: En t\u00e8te."
+    },
+    {
+        "picture": "btsun_jung_chung_chung_bu_chung_khur.png",
+        "contracted_form": "32_705",
+        "full_form": "btsun 'jung chung chung bu chung khur",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mthar_phyin0.png",
+        "contracted_form": "mthyin",
+        "full_form": "mthar phyin",
+        "source": "Bacot 1912: Parfait; arriv\u00e9 \u00e0 la perfection; fini, \u00e9mancip\u00e9; arriver \u00e0 ses fins."
+    },
+    {
+        "picture": "dbyings_phyug.png",
+        "contracted_form": "dbyiug*",
+        "full_form": "dbyings phyug",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mkha_grub.png",
+        "contracted_form": "mkhrub",
+        "full_form": "mkha' grub",
+        "source": "Bacot 1912: Le ciel incr\u00e9\u00e9; tout le ciel."
+    },
+    {
+        "picture": "bdug_spos.png",
+        "contracted_form": "bduos",
+        "full_form": "bdug spos",
+        "source": "Bacot 1912: Toute substance odorif\u00e9rante; encens."
+    },
+    {
+        "picture": "rdzogs_chen.png",
+        "contracted_form": "rdzo#en",
+        "full_form": "rdzogs chen",
+        "source": "Bacot 1912: Tr\u00e8s partait ; secte lamaiste."
+    },
+    {
+        "picture": "bla_ma_yi_dam.png",
+        "contracted_form": "blida*",
+        "full_form": "bla ma yi dam",
+        "source": "Bacot 1912: Lama yidam."
+    },
+    {
+        "picture": "nyi_ma.png",
+        "contracted_form": "nyim",
+        "full_form": "nyi ma",
+        "source": "Bacot 1912: Soleil; un jour."
+    },
+    {
+        "picture": "lha_srin_sde_brgyad.png",
+        "contracted_form": "31_694",
+        "full_form": "lha srin sde brgyad",
+        "source": "Bacot 1912: Les huit classes de dieux et d\u00e9mons."
+    },
+    {
+        "picture": "snang_ba_dang_mun_pa.png",
+        "contracted_form": "snang mun",
+        "full_form": "snang ba dang mun pa",
+        "source": "Bacot 1912: Lumi\u00e8re et obscurit\u00e9."
+    },
+    {
+        "picture": "sham_thabs.png",
+        "contracted_form": "sha*bs",
+        "full_form": "sham thabs",
+        "source": "Bacot 1912: V\u00eatement de dessous."
+    },
+    {
+        "picture": "rnal_byor.png",
+        "contracted_form": "rnor",
+        "full_form": "rnal 'byor",
+        "source": "Bacot 1912: Contemplation (yoga)."
+    },
+    {
+        "picture": "brtson_grus.png",
+        "contracted_form": "brtsuos",
+        "full_form": "brtson 'grus",
+        "source": "Bacot 1912: Industrie; diligence, z\u00e8le, duit\u00e9."
+    },
+    {
+        "picture": "mthu_chen.png",
+        "contracted_form": "mthuen",
+        "full_form": "mthu chen",
+        "source": "Bacot 1912: Puissant."
+    },
+    {
+        "picture": "thugs_rje0.png",
+        "contracted_form": "thye",
+        "full_form": "thugs rje",
+        "source": "Bacot 1912: G\u00e9n\u00e9rosit\u00e9; compassion."
+    },
+    {
+        "picture": "nyon_mongs_tshogs_bcom_mgon_po_lhyod_mchod.png",
+        "contracted_form": "32_710",
+        "full_form": "nyon mongs tshogs bcom mgon po lhyod mchod",
+        "source": "Bacot 1912: Honore les dieux protecteurs, victorieux de la multitude des mis\u00e8res."
+    },
+    {
+        "picture": "rgyu_rkyen.png",
+        "contracted_form": "rgyuen",
+        "full_form": "rgyu rkyen",
+        "source": "Bacot 1912: Raison, cause."
+    },
+    {
+        "picture": "lha_rdzas.png",
+        "contracted_form": "31_692",
+        "full_form": "lha rdzas",
+        "source": "Bacot 1912: Echarpe de soie."
+    },
+    {
+        "picture": "mthing_nag.png",
+        "contracted_form": "mthingg",
+        "full_form": "mthing nag",
+        "source": "Bacot 1912: Bleu fonc\u00e9."
+    },
+    {
+        "picture": "bdag_gis.png",
+        "contracted_form": "bdagis",
+        "full_form": "bdag gis",
+        "source": "Bacot 1912: Mon, de moi."
+    },
+    {
+        "picture": "dpon_slob.png",
+        "contracted_form": "dplon",
+        "full_form": "dpon slob",
+        "source": "Bacot 1912: Titre du gouverneur du Boutan."
+    },
+    {
+        "picture": "blo_bur.png",
+        "contracted_form": "blour",
+        "full_form": "blo bur",
+        "source": "Bacot 1912: Subit, subitement."
+    },
+    {
+        "picture": "_du_bral.png",
+        "contracted_form": "'drul",
+        "full_form": "'du 'bral",
+        "source": "Bacot 1912: Unir et s\u00e9parer."
+    },
+    {
+        "picture": "sdong_grogs.png",
+        "contracted_form": "sdroo#",
+        "full_form": "sdong grogs",
+        "source": "Bacot 1912: Compagnon (?)."
+    },
+    {
+        "picture": "srin_po_.png",
+        "contracted_form": "31_667",
+        "full_form": "srin po ",
+        "source": "Bacot 1912: D\u00e9mon cannibale (Raksasa)."
+    },
+    {
+        "picture": "ser_sna.png",
+        "contracted_form": "31_663",
+        "full_form": "ser sna",
+        "source": "Bacot 1912: Avarice."
+    },
+    {
+        "picture": "khyung_chen.png",
+        "contracted_form": "khyu*en",
+        "full_form": "khyung chen",
+        "source": "Bacot 1912: Le grand Khyung; Garuda."
+    },
+    {
+        "picture": "thob_par_shog_.png",
+        "contracted_form": "thobrog",
+        "full_form": "thob par shog ",
+        "source": "Bacot 1912: Puiss\u00e9-je atteindre!"
+    },
+    {
+        "picture": "snying_thig.png",
+        "contracted_form": "snyingig",
+        "full_form": "snying thig",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "lha_tshogs.png",
+        "contracted_form": "31_691",
+        "full_form": "lha tshogs",
+        "source": "Bacot 1912: Les dieux."
+    },
+    {
+        "picture": "mthu_rtsal.png",
+        "contracted_form": "mthu^l",
+        "full_form": "mthu rtsal",
+        "source": "Bacot 1912: Force, puissance."
+    },
+    {
+        "picture": "rnam_rgyal.png",
+        "contracted_form": "rnya*l",
+        "full_form": "rnam rgyal",
+        "source": "Bacot 1912: Vijaya."
+    },
+    {
+        "picture": "kun_gzigs.png",
+        "contracted_form": "kui#",
+        "full_form": "kun gzigs",
+        "source": "Bacot 1912: Voyant tout."
+    },
+    {
+        "picture": "snying_khar.png",
+        "contracted_form": "snyingr",
+        "full_form": "snying khar",
+        "source": "Bacot 1912: Par coeur."
+    },
+    {
+        "picture": "smin_grol.png",
+        "contracted_form": "smriol",
+        "full_form": "smin grol",
+        "source": "Bacot 1912: La d\u00e9livrance, le salut."
+    },
+    {
+        "picture": "phyogs_bcu_i_lha_la_phyag_tshal_bstod0.png",
+        "contracted_form": "phyou'i lha lya^ltod",
+        "full_form": "phyogs bcu'i lha la phyag 'tshal bstod",
+        "source": "Bacot 1912: Salut aux dieux des dix directions."
+    },
+    {
+        "picture": "cung_zad.png",
+        "contracted_form": "cung^d",
+        "full_form": "cung zad",
+        "source": "Bacot 1912: Un peu."
+    },
+    {
+        "picture": "bstan_bsrung0.png",
+        "contracted_form": "bstrunngs",
+        "full_form": "bstan bsrung",
+        "source": "Bacot 1912: Gardien de la doctrine."
+    },
+    {
+        "picture": "dkyil_khor.png",
+        "contracted_form": "dkyior",
+        "full_form": "dkyil 'khor",
+        "source": "Bacot 1912: Cercle, circonf\u00e9rence."
+    },
+    {
+        "picture": "rtsang_gyer.png",
+        "contracted_form": "rtsya*er",
+        "full_form": "rtsang gyer",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "rgyal_bu.png",
+        "contracted_form": "rgyalu",
+        "full_form": "rgyal bu",
+        "source": "Bacot 1912: Fils de roi."
+    },
+    {
+        "picture": "rtse_rgyud.png",
+        "contracted_form": "rtsyued",
+        "full_form": "rtse rgyud",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "gzhon_nu0.png",
+        "contracted_form": "gzhyonu",
+        "full_form": "gzhon nu",
+        "source": "Bacot 1912: Jeune; jeune homme."
+    },
+    {
+        "picture": "ting_dzin_ji_bzhin_rig_cing_gzigs_shing_dzin.png",
+        "contracted_form": "32_707",
+        "full_form": "ting 'dzin ji bzhin rig cing gzigs shing 'dzin",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "lhun_gyis_grub.png",
+        "contracted_form": "31_699",
+        "full_form": "lhun gyis grub",
+        "source": "Bacot 1912: N\u00e9 spontan\u00e9ment, de soi-m\u00eame."
+    },
+    {
+        "picture": "sdig_srin_.png",
+        "contracted_form": "sdin",
+        "full_form": "sdig srin ",
+        "source": "Bacot 1912: Scorpion."
+    },
+    {
+        "picture": "klu_gnyen1.png",
+        "contracted_form": "kluen",
+        "full_form": "klu gnyen",
+        "source": "Bacot 1912: Dragon bienfaisant, protecteur."
+    },
+    {
+        "picture": "_dod_chags.png",
+        "contracted_form": "'dod#",
+        "full_form": "'dod chags",
+        "source": "Bacot 1912: Passion; d\u00e9sirs charnels."
+    },
+    {
+        "picture": "_od_zer0.png",
+        "contracted_form": "'oer",
+        "full_form": "'od zer",
+        "source": "Bacot 1912: Rayon de lumi\u00e8re."
+    },
+    {
+        "picture": "grang_med_par.png",
+        "contracted_form": "grangedr",
+        "full_form": "grang med par",
+        "source": "Bacot 1912: Pas froid."
+    },
+    {
+        "picture": "dri_med.png",
+        "contracted_form": "dried",
+        "full_form": "dri med",
+        "source": "Bacot 1912: Sans odeur."
+    },
+    {
+        "picture": "bde_chen.png",
+        "contracted_form": "bdeen",
+        "full_form": "bde chen",
+        "source": "Bacot 1912: F\u00e9licit\u00e9, grand bonheur."
+    },
+    {
+        "picture": "gsang_sngags.png",
+        "contracted_form": "31_677",
+        "full_form": "gsang sngags",
+        "source": "Bacot 1912: Charmes, incantations."
+    },
+    {
+        "picture": "_gong_po.png",
+        "contracted_form": "'goong",
+        "full_form": "'gong po",
+        "source": "Bacot 1912: Sorcier, magicien."
+    },
+    {
+        "picture": "mu_stegs0.png",
+        "contracted_form": "mtue#",
+        "full_form": "mu stegs",
+        "source": "Bacot 1912: H\u00e9r\u00e9tique; non bouddhiste (tirthaka)."
+    },
+    {
+        "picture": "thugs_brtse.png",
+        "contracted_form": "thue^#",
+        "full_form": "thugs brtse",
+        "source": "Bacot 1912: Merci; affection; amour."
+    },
+    {
+        "picture": "rnam_rtog.png",
+        "contracted_form": "rno*g",
+        "full_form": "rnam rtog",
+        "source": "Bacot 1912: Perception, pens\u00e9e."
+    },
+    {
+        "picture": "ri_rab.png",
+        "contracted_form": "rib",
+        "full_form": "ri rab",
+        "source": "Bacot 1912: Le mont Sumeru."
+    },
+    {
+        "picture": "gur_thog.png",
+        "contracted_form": "guog",
+        "full_form": "gur thog",
+        "source": "Bacot 1912: Le sommet d'une tente."
+    },
+    {
+        "picture": "phun_tshogs.png",
+        "contracted_form": "phuo^#",
+        "full_form": "phun tshogs",
+        "source": "Bacot 1912: Parfait, accompli."
+    },
+    {
+        "picture": "byang_phyogs0.png",
+        "contracted_form": "byango#",
+        "full_form": "byang phyogs",
+        "source": "Bacot 1912: Le Nord."
+    },
+    {
+        "picture": "rgyal_sras.png",
+        "contracted_form": "rgyalras",
+        "full_form": "rgyal sras",
+        "source": "Bacot 1912: Fils de roi."
+    },
+    {
+        "picture": "gnod_byed.png",
+        "contracted_form": "gnyoed",
+        "full_form": "gnod byed",
+        "source": "Bacot 1912: Mauvaise volont\u00e9; malice."
+    },
+    {
+        "picture": "klu_bdud1.png",
+        "contracted_form": "klud",
+        "full_form": "klu bdud",
+        "source": "Bacot 1912: Dragon malfaisant."
+    },
+    {
+        "picture": "grong_rdal.png",
+        "contracted_form": "grongl",
+        "full_form": "grong rdal",
+        "source": "Bacot 1912: Grande ville sans murs."
+    },
+    {
+        "picture": "dus_gsum.png",
+        "contracted_form": "dusu*",
+        "full_form": "dus gsum",
+        "source": "Bacot 1912: Les trois temps (pass\u00e9, pr\u00e9sent, avenir)."
+    },
+    {
+        "picture": "nub_phyogs0.png",
+        "contracted_form": "nubyo#",
+        "full_form": "nub phyogs",
+        "source": "Bacot 1912: L'Ouest."
+    },
+    {
+        "picture": "dmar_nag.png",
+        "contracted_form": "dmarg",
+        "full_form": "dmar nag",
+        "source": "Bacot 1912: Rouge sombre."
+    },
+    {
+        "picture": "nub_phyogs.png",
+        "contracted_form": "nuo#",
+        "full_form": "nub phyogs",
+        "source": "Bacot 1912: L'Ouest."
+    },
+    {
+        "picture": "skye_med.png",
+        "contracted_form": "skyeed",
+        "full_form": "skye med",
+        "source": "Bacot 1912: Sans commencement."
+    },
+    {
+        "picture": "ji_ltar.png",
+        "contracted_form": "jitar",
+        "full_form": "ji ltar",
+        "source": "Bacot 1912: Comment."
+    },
+    {
+        "picture": "gzung_dzin.png",
+        "contracted_form": "gzui^ngn",
+        "full_form": "gzung 'dzin",
+        "source": "Bacot 1912: Penchant, int\u00e9r\u00eat, inclination."
+    },
+    {
+        "picture": "drang_srong.png",
+        "contracted_form": "drong",
+        "full_form": "drang srong",
+        "source": "Bacot 1912: Ermite."
+    },
+    {
+        "picture": "gtsug_lag0.png",
+        "contracted_form": "gtsugg",
+        "full_form": "gtsug lag",
+        "source": "Bacot 1912: Science."
+    },
+    {
+        "picture": "sems0.png",
+        "contracted_form": "30_656-1",
+        "full_form": "sems",
+        "source": "Bacot 1912: L'\u00e2me."
+    },
+    {
+        "picture": "bcu_gcig.png",
+        "contracted_form": "bcuig",
+        "full_form": "bcu gcig",
+        "source": "Bacot 1912: Onze."
+    },
+    {
+        "picture": "rang_grol.png",
+        "contracted_form": "rangol",
+        "full_form": "rang grol",
+        "source": "Bacot 1912: Salut personnel."
+    },
+    {
+        "picture": "khur_tshos.png",
+        "contracted_form": "khu^os",
+        "full_form": "khur tshos",
+        "source": "Bacot 1912: Les joues."
+    },
+    {
+        "picture": "bskyed_rdzogs.png",
+        "contracted_form": "bskyed^o#",
+        "full_form": "bskyed rdzogs",
+        "source": "Bacot 1912: Engendr\u00e9 parfait."
+    },
+    {
+        "picture": "mtha_yas0.png",
+        "contracted_form": "mthyas",
+        "full_form": "mtha' yas",
+        "source": "Bacot 1912: Infini."
+    },
+    {
+        "picture": "sna_tshogs.png",
+        "contracted_form": "sno#",
+        "full_form": "sna tshogs",
+        "source": "Bacot 1912: De toutes sortes, vari\u00e9."
+    },
+    {
+        "picture": "mtshan_nyid.png",
+        "contracted_form": "mtshid",
+        "full_form": "mtshan nyid",
+        "source": "Bacot 1912: Signe distinctif: crit\u00e9rium."
+    },
+    {
+        "picture": "dam_rdzas.png",
+        "contracted_form": "da*^s",
+        "full_form": "dam rdzas",
+        "source": "Bacot 1912: Objets consacr\u00e9s qu\u2019on porte sur soi; amulettes."
+    },
+    {
+        "picture": "mthar_thug.png",
+        "contracted_form": "mthurg",
+        "full_form": "mthar thug",
+        "source": "Bacot 1912: La fin, le but qu'on se propose."
+    },
+    {
+        "picture": "byin_rlabs0.png",
+        "contracted_form": "byinlabs",
+        "full_form": "byin rlabs",
+        "source": "Bacot 1912: B\u00e9n\u00e9diction."
+    },
+    {
+        "picture": "kun_bzang.png",
+        "contracted_form": "ku*^an",
+        "full_form": "kun bzang",
+        "source": "Bacot 1912: Le lout bon, \u00e9pit. de Bouddha."
+    },
+    {
+        "picture": "pho_brang.png",
+        "contracted_form": "phrong",
+        "full_form": "pho brang",
+        "source": "Bacot 1912: Palais."
+    },
+    {
+        "picture": "mtho_ris0.png",
+        "contracted_form": "mthois",
+        "full_form": "mtho ris",
+        "source": "Bacot 1912: Le paradis."
+    },
+    {
+        "picture": "lho_phyogs.png",
+        "contracted_form": "31_702-2",
+        "full_form": "lho phyogs",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "rgya_nag_dang_bod.png",
+        "contracted_form": "rgya bod",
+        "full_form": "rgya nag dang bod",
+        "source": "Bacot 1912: La Chine et le Tibet."
+    },
+    {
+        "picture": "_khor_lo0.png",
+        "contracted_form": "'khoor",
+        "full_form": "'khor lo",
+        "source": "Bacot 1912: Roue."
+    },
+    {
+        "picture": "legs_sbyar.png",
+        "contracted_form": "legsbyar",
+        "full_form": "legs sbyar",
+        "source": "Bacot 1912: Composition \u00e9l\u00e9gante; sanscrit."
+    },
+    {
+        "picture": "gzug_zer_gzug_gzer.png",
+        "contracted_form": "gzuer",
+        "full_form": "gzug zer / gzug gzer",
+        "source": "Bacot 1912: Peine, douleur."
+    },
+    {
+        "picture": "chos_skyong0.png",
+        "contracted_form": "chyoong",
+        "full_form": "chos skyong",
+        "source": "Bacot 1912: Protecteur de la doctrine."
+    },
+    {
+        "picture": "rgya_gar0.png",
+        "contracted_form": "rgyar",
+        "full_form": "rgya gar",
+        "source": "Bacot 1912: L'Inde."
+    },
+    {
+        "picture": "dpung_tshogs.png",
+        "contracted_form": "dpuo#",
+        "full_form": "dpung tshogs",
+        "source": "Bacot 1912: Troupes assembl\u00e9es, arm\u00e9e."
+    },
+    {
+        "picture": "mi_khyab.png",
+        "contracted_form": "myib",
+        "full_form": "mi khyab",
+        "source": "Bacot 1912: Imp\u00e9n\u00e9trable."
+    },
+    {
+        "picture": "yid_bzhin_nor_bu.png",
+        "contracted_form": "yidinuro",
+        "full_form": "yid bzhin nor bu",
+        "source": "Bacot 1912: Cintamani; pierrre philosophale."
+    },
+    {
+        "picture": "gsung_rab.png",
+        "contracted_form": "31_678",
+        "full_form": "gsung rab",
+        "source": "Bacot 1912: Pr\u00e9cepte essentiel, l'\u00e9criture sacr\u00e9e."
+    },
+    {
+        "picture": "shes_rab.png",
+        "contracted_form": "sheb",
+        "full_form": "shes rab",
+        "source": "Bacot 1912: Esprit, intelligence."
+    },
+    {
+        "picture": "mtha_yas.png",
+        "contracted_form": "mthas",
+        "full_form": "mtha' yas",
+        "source": "Bacot 1912: Infini."
+    },
+    {
+        "picture": "sdong_po.png",
+        "contracted_form": "sdoong",
+        "full_form": "sdong po",
+        "source": "Bacot 1912: Tronc, tige."
+    },
+    {
+        "picture": "byin_gyis_rlabs_tu_gsol.png",
+        "contracted_form": "byinlibs tuol",
+        "full_form": "byin gyis rlabs tu gsol",
+        "source": "Bacot 1912: Demander ia b\u00e9n\u00e9diction."
+    },
+    {
+        "picture": "sems_can_thams_cad.png",
+        "contracted_form": "30_660",
+        "full_form": "sems can thams cad",
+        "source": "Bacot 1912: Tous les \u00eatres anim\u00e9s."
+    },
+    {
+        "picture": "rtsang_bskul_rtsang_bskur.png",
+        "contracted_form": "rtsu*l",
+        "full_form": "rtsang bskul / rtsang bskur",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "phyogs_skyong.png",
+        "contracted_form": "phyoong",
+        "full_form": "phyogs skyong",
+        "source": "Bacot 1912: Dikpala; qui prot\u00e8ge les parties du monde."
+    },
+    {
+        "picture": "sdong_grogs_mdzad.png",
+        "contracted_form": "sdroo#d",
+        "full_form": "sdong grogs mdzad",
+        "source": "Bacot 1912: Accompagner."
+    },
+    {
+        "picture": "gla_rtsi.png",
+        "contracted_form": "gla^i",
+        "full_form": "gla rtsi",
+        "source": "Bacot 1912: Musc."
+    },
+    {
+        "picture": "zla_gam_gsum_gyis.png",
+        "contracted_form": "zla*nyis",
+        "full_form": "zla gam gsum gyis",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "jo_bo.png",
+        "contracted_form": "joo",
+        "full_form": "jo bo",
+        "source": "Bacot 1912: Ma\u00eetre, seigneur; un noble."
+    },
+    {
+        "picture": "spros_bral.png",
+        "contracted_form": "sprol",
+        "full_form": "spros bral",
+        "source": "Bacot 1912: Inactivit\u00e9."
+    },
+    {
+        "picture": "pha_rol.png",
+        "contracted_form": "phrol",
+        "full_form": "pha rol",
+        "source": "Bacot 1912: Autre, \u00e9tranger."
+    },
+    {
+        "picture": "bco_brgyad.png",
+        "contracted_form": "bcoyad",
+        "full_form": "bco brgyad",
+        "source": "Bacot 1912: Dix-huit."
+    },
+    {
+        "picture": "lus_ngag_yid_gsum0.png",
+        "contracted_form": "lu*syid3",
+        "full_form": "lus ngag yid gsum",
+        "source": "Bacot 1912: Les trois: corps, parole et coeur."
+    },
+    {
+        "picture": "rnam_par_snang_mdzad.png",
+        "contracted_form": "rna*rng^d",
+        "full_form": "rnam par snang mdzad",
+        "source": "Bacot 1912: Vairocana."
+    },
+    {
+        "picture": "khram_thog.png",
+        "contracted_form": "khra*og",
+        "full_form": "khram thog",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "dkon_mchog_gsum_la_skyabs_su_mchi.png",
+        "contracted_form": "dkoogsu* la skyabsu mchi",
+        "full_form": "dkon mchog gsum la skyabs su mchi",
+        "source": "Bacot 1912: Demander secours aux trois joyaux."
+    },
+    {
+        "picture": "_od_zer.png",
+        "contracted_form": "'od^er",
+        "full_form": "'od zer",
+        "source": "Bacot 1912: Rayon de lumi\u00e8re."
+    },
+    {
+        "picture": "chu_dkyil.png",
+        "contracted_form": "chuil",
+        "full_form": "chu dkyil",
+        "source": "Bacot 1912: Le milieu de la rivi\u00e8re."
+    },
+    {
+        "picture": "zhes_gsung_so.png",
+        "contracted_form": "zhyeos*",
+        "full_form": "zhes gsung so",
+        "source": "Bacot 1912: Ainsi fut parl\u00e9 ou ordonn\u00e9."
+    },
+    {
+        "picture": "zhing_chen.png",
+        "contracted_form": "zhingen",
+        "full_form": "zhing chen",
+        "source": "Bacot 1912: Une grande province."
+    },
+    {
+        "picture": "kun_mkhyen.png",
+        "contracted_form": "kuen",
+        "full_form": "kun mkhyen",
+        "source": "Bacot 1912: Omniscient, connaissant tout."
+    },
+    {
+        "picture": "mi_byang.png",
+        "contracted_form": "mying",
+        "full_form": "mi byang",
+        "source": "Bacot 1912: Impur."
+    },
+    {
+        "picture": "rnam_sras.png",
+        "contracted_form": "rnra*s",
+        "full_form": "rnam sras",
+        "source": "Bacot 1912: Vaisravana."
+    },
+    {
+        "picture": "ma_lus0.png",
+        "contracted_form": "mus",
+        "full_form": "ma lus",
+        "source": "Bacot 1912: Tout, entier."
+    },
+    {
+        "picture": "log_dren.png",
+        "contracted_form": "lroen",
+        "full_form": "log 'dren",
+        "source": "Bacot 1912: Vinayaka (\u00e9pith\u00e8te de Gane\u00e7a)."
+    },
+    {
+        "picture": "ces_gsungs_so.png",
+        "contracted_form": "ceungso",
+        "full_form": "ces gsungs so",
+        "source": "Bacot 1912: Il parla ainsi; ainsi fut-il dit."
+    },
+    {
+        "picture": "nying_gung.png",
+        "contracted_form": "nyiung",
+        "full_form": "nying gung",
+        "source": "Bacot 1912: Midi."
+    },
+    {
+        "picture": "skye_rgu_skye_dgu.png",
+        "contracted_form": "skyeu",
+        "full_form": "skye rgu / skye dgu",
+        "source": "Bacot 1912: Les \u00eatres engendr\u00e9s, les hommes."
+    },
+    {
+        "picture": "longs_spyod0.png",
+        "contracted_form": "lyoongs",
+        "full_form": "longs spyod",
+        "source": "Bacot 1912: Richesses, biens; jouissance; jouir."
+    },
+    {
+        "picture": "chag_chag.png",
+        "contracted_form": "chagag",
+        "full_form": "chag chag",
+        "source": "Bacot 1912: Fouler aux pieds; repasser."
+    },
+    {
+        "picture": "gnod_sbyin.png",
+        "contracted_form": "gnyodin",
+        "full_form": "gnod sbyin",
+        "source": "Bacot 1912: Yaksa."
+    },
+    {
+        "picture": "slob_gnyer.png",
+        "contracted_form": "31_675",
+        "full_form": "slob gnyer",
+        "source": "Bacot 1912: \u00c9tudiant, disciple."
+    },
+    {
+        "picture": "dbang_drag.png",
+        "contracted_form": "dbra*g",
+        "full_form": "dbang drag",
+        "source": "Bacot 1912: Autorit\u00e9 puissante."
+    },
+    {
+        "picture": "slob_dod.png",
+        "contracted_form": "31_672",
+        "full_form": "slob 'dod",
+        "source": "Bacot 1912: D\u00e9sireux d'apprendre."
+    },
+    {
+        "picture": "_khril_sbyor.png",
+        "contracted_form": "'khrilyor",
+        "full_form": "'khril sbyor",
+        "source": "Bacot 1912: Serrer ensemble, embrasser."
+    },
+    {
+        "picture": "dge_lugs.png",
+        "contracted_form": "dgeu#",
+        "full_form": "dge lugs",
+        "source": "Bacot 1912: Bonnes moeurs."
+    },
+    {
+        "picture": "mkha_gro0.png",
+        "contracted_form": "mkhro'",
+        "full_form": "mkha' 'gro",
+        "source": "Bacot 1912: Qui vit dans le ciel, les esprits; qui va dans l\u2019air, l\u2019oiseau. Magicienne, vampire (dakini)."
+    },
+    {
+        "picture": "spyan_drangs0.png",
+        "contracted_form": "spyrangs",
+        "full_form": "spyan drangs",
+        "source": "Bacot 1912: Invitation; inauguration."
+    },
+    {
+        "picture": "_jam_dbyangs.png",
+        "contracted_form": "'jya*ngs",
+        "full_form": "'jam dbyangs",
+        "source": "Bacot 1912: Manjughosa."
+    },
+    {
+        "picture": "zhe_zhus_so.png",
+        "contracted_form": "zhueso",
+        "full_form": "zhe zhus so",
+        "source": "Bacot 1912: Ainsi fut demand\u00e9 respectueusement."
+    },
+    {
+        "picture": "gnas_lugs.png",
+        "contracted_form": "gnlu#",
+        "full_form": "gnas lugs",
+        "source": "Bacot 1912: L'\u00e9tat naturel de toutes choses."
+    },
+    {
+        "picture": "rnal_byor0.png",
+        "contracted_form": "rnyaor",
+        "full_form": "rnal 'byor",
+        "source": "Bacot 1912: Contemplation (yoga)."
+    },
+    {
+        "picture": "dpal_ldan.png",
+        "contracted_form": "dpaldan",
+        "full_form": "dpal ldan",
+        "source": "Bacot 1912: Glorieux, illustre."
+    },
+    {
+        "picture": "sna_tshogs0.png",
+        "contracted_form": "sna^o#",
+        "full_form": "sna tshogs",
+        "source": "Bacot 1912: De toutes sortes, vari\u00e9."
+    },
+    {
+        "picture": "_dzam_gling.png",
+        "contracted_form": "'zla*ing",
+        "full_form": "'dzam gling",
+        "source": "Bacot 1912: Jambudvipa; le monde."
+    },
+    {
+        "picture": "khrag_thung.png",
+        "contracted_form": "khra*g",
+        "full_form": "khrag 'thung",
+        "source": "Bacot 1912: Boire le sang; divinit\u00e9s buveuses de sang."
+    },
+    {
+        "picture": "chos_khor.png",
+        "contracted_form": "chosor",
+        "full_form": "chos 'khor",
+        "source": "Bacot 1912: Moulin \u00e0 pri\u00e8res."
+    },
+    {
+        "picture": "rgya_gram.png",
+        "contracted_form": "rgyar*",
+        "full_form": "rgya gram",
+        "source": "Bacot 1912: Croix."
+    },
+    {
+        "picture": "dgra_zla0.png",
+        "contracted_form": "dgrla",
+        "full_form": "dgra zla",
+        "source": "Bacot 1912: Adversaire."
+    },
+    {
+        "picture": "gtsug_lag.png",
+        "contracted_form": "gtslug",
+        "full_form": "gtsug lag",
+        "source": "Bacot 1912: Science."
+    },
+    {
+        "picture": "nam_mkha_.png",
+        "contracted_form": "na*kha'",
+        "full_form": "nam mkha'",
+        "source": "Bacot 1912: Le ciel, l'espace."
+    },
+    {
+        "picture": "dkyil_dkrung.png",
+        "contracted_form": "dkyiung",
+        "full_form": "dkyil dkrung",
+        "source": "Bacot 1912: Position assise les jambes crois\u00e9es."
+    },
+    {
+        "picture": "glang_chen.png",
+        "contracted_form": "glangen",
+        "full_form": "glang chen",
+        "source": "Bacot 1912: \u00c9l\u00e9phant."
+    },
+    {
+        "picture": "bon_po.png",
+        "contracted_form": "boon",
+        "full_form": "bon po",
+        "source": "Bacot 1912: Bonpo, ancienne religion du Tibet."
+    },
+    {
+        "picture": "gcan_gzan.png",
+        "contracted_form": "gczan",
+        "full_form": "gcan gzan",
+        "source": "Bacot 1912: Carnivore, b\u00eate de proie."
+    },
+    {
+        "picture": "slob_dpon_dang_slob_ma.png",
+        "contracted_form": "31_674",
+        "full_form": "slob dpon dang slob ma",
+        "source": "Bacot 1912: Le ma\u00eetre et l'\u00e9l\u00e8ve."
+    },
+    {
+        "picture": "bcu_drug0.png",
+        "contracted_form": "bcuug",
+        "full_form": "bcu drug",
+        "source": "Bacot 1912: Seize."
+    },
+    {
+        "picture": "spyi_don.png",
+        "contracted_form": "spyion",
+        "full_form": "spyi don",
+        "source": "Bacot 1912: L'int\u00e9r\u00eat public."
+    },
+    {
+        "picture": "mthe_bong.png",
+        "contracted_form": "mthoeng",
+        "full_form": "mthe bong",
+        "source": "Bacot 1912: Le pouce."
+    },
+    {
+        "picture": "bshad_sgrub.png",
+        "contracted_form": "bshrub",
+        "full_form": "bshad sgrub",
+        "source": "Bacot 1912: Disert (?)."
+    },
+    {
+        "picture": "mkha_gro.png",
+        "contracted_form": "mkha'gro",
+        "full_form": "mkha' 'gro",
+        "source": "Bacot 1912: Qui vit dans le ciel, les esprits; qui va dans l\u2019air, l\u2019oiseau. Magicienne, vampire (dakini)."
+    },
+    {
+        "picture": "sems_dpa_.png",
+        "contracted_form": "30_657",
+        "full_form": "sems dpa'",
+        "source": "Bacot 1912: Une \u00e2me vaillante; un saint."
+    },
+    {
+        "picture": "_khor_dang_bcas0.png",
+        "contracted_form": "'khorngs",
+        "full_form": "'khor dang bcas",
+        "source": "Bacot 1912: Avec un cort\u00e8ge."
+    },
+    {
+        "picture": "sems_bskyed.png",
+        "contracted_form": "30_658",
+        "full_form": "sems bskyed",
+        "source": "Bacot 1912: Notion, id\u00e9e, pens\u00e9e."
+    },
+    {
+        "picture": "legs_ldan0.png",
+        "contracted_form": "lden",
+        "full_form": "legs ldan",
+        "source": "Bacot 1912: Beau, \u00e9l\u00e9gant; dou\u00e9 de qualit\u00e9s."
+    },
+    {
+        "picture": "khrim_sdod.png",
+        "contracted_form": "khri*od",
+        "full_form": "khrim sdod",
+        "source": "Bacot 1912: Si\u00e9ger en justice (?)."
+    },
+    {
+        "picture": "me_tog.png",
+        "contracted_form": "mtoeg",
+        "full_form": "me tog",
+        "source": "Bacot 1912: Fleur."
+    },
+    {
+        "picture": "bshes_gnyen0.png",
+        "contracted_form": "bsheen",
+        "full_form": "bshes gnyen",
+        "source": "Bacot 1912: Ami, relation."
+    },
+    {
+        "picture": "byang_chub_sems_dpa_.png",
+        "contracted_form": "byang chubsd*'",
+        "full_form": "byang chub sems dpa'",
+        "source": "Bacot 1912: Bodhisattva."
+    },
+    {
+        "picture": "_khor_ba_dang_myang_das.png",
+        "contracted_form": "'khor 'das",
+        "full_form": "'khor ba dang myang 'das",
+        "source": "Bacot 1912: La transmigration et la d\u00e9livrance finale."
+    },
+    {
+        "picture": "khro_rgyal.png",
+        "contracted_form": "khrol",
+        "full_form": "khro rgyal",
+        "source": "Bacot 1912: KrodharAja."
+    },
+    {
+        "picture": "gnyis_kyi.png",
+        "contracted_form": "2is",
+        "full_form": "gnyis kyi",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mchod_rten0.png",
+        "contracted_form": "mchoten",
+        "full_form": "mchod rten",
+        "source": "Bacot 1912: Tchorten; stupa; pyramide \u00e0 reliques; chapelle."
+    },
+    {
+        "picture": "tsan_dan.png",
+        "contracted_form": "tsdan",
+        "full_form": "tsan dan",
+        "source": "Bacot 1912: Bois de santal."
+    },
+    {
+        "picture": "bka_gyur.png",
+        "contracted_form": "bkyur",
+        "full_form": "bka' 'gyur",
+        "source": "Bacot 1912: Kandjur."
+    },
+    {
+        "picture": "yin_nam.png",
+        "contracted_form": "yin*",
+        "full_form": "yin nam",
+        "source": "Bacot 1912: Est-il? Y a-t-il?"
+    },
+    {
+        "picture": "gsum_mo.png",
+        "contracted_form": "31_679",
+        "full_form": "gsum mo",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "dus_chod0.png",
+        "contracted_form": "du^od",
+        "full_form": "dus chod",
+        "source": "Bacot 1912: Heure; douzi\u00e8me partie du jour."
+    },
+    {
+        "picture": "lcags.png",
+        "contracted_form": "lca#",
+        "full_form": "lcags",
+        "source": "Bacot 1912: Fer."
+    },
+    {
+        "picture": "bsam_yas.png",
+        "contracted_form": "31_683",
+        "full_form": "bsam yas",
+        "source": "Bacot 1912: Nom d'une lamaserie (Sam ye)."
+    },
+    {
+        "picture": "lcags_sgrog0.png",
+        "contracted_form": "lcarog",
+        "full_form": "lcags sgrog",
+        "source": "Bacot 1912: Cha\u00eene de fer, entrave."
+    },
+    {
+        "picture": "snod_bcud.png",
+        "contracted_form": "snoud",
+        "full_form": "snod bcud",
+        "source": "Bacot 1912: Monde inanim\u00e9 et sensible."
+    },
+    {
+        "picture": "rtsang_brgyur.png",
+        "contracted_form": "rtsyu*r",
+        "full_form": "rtsang brgyur",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "zhal_zas.png",
+        "contracted_form": "zhal^s",
+        "full_form": "zhal zas",
+        "source": "Bacot 1912: Nourriture (resp.); biscuit, g\u00e2teau."
+    },
+    {
+        "picture": "longs_spyod.png",
+        "contracted_form": "longsyod",
+        "full_form": "longs spyod",
+        "source": "Bacot 1912: Richesses, biens; jouissance; jouir."
+    },
+    {
+        "picture": "gzhon_nu1.png",
+        "contracted_form": "gzhonu",
+        "full_form": "gzhon nu",
+        "source": "Bacot 1912: Jeune; jeune homme."
+    },
+    {
+        "picture": "dur_khrod0.png",
+        "contracted_form": "durod",
+        "full_form": "dur khrod",
+        "source": "Bacot 1912: Cimeti\u00e8re."
+    },
+    {
+        "picture": "chos_kyi_dbyings_su.png",
+        "contracted_form": "chosyingsui",
+        "full_form": "chos kyi dbyings su",
+        "source": "Bacot 1912: La doctrine dans son \u00e9tendue."
+    },
+    {
+        "picture": "mtshams_sbyor0.png",
+        "contracted_form": "mtshyo*r",
+        "full_form": "mtshams sbyor",
+        "source": "Bacot 1912: Adh\u00e9rence, contact; r\u00e9unir; occuper un espace; prendre une r\u00e9solution."
+    },
+    {
+        "picture": "lhan_skyes.png",
+        "contracted_form": "31_695",
+        "full_form": "lhan skyes",
+        "source": "Bacot 1912: N\u00e9s ensemble, jumeaux."
+    },
+    {
+        "picture": "bud_shing.png",
+        "contracted_form": "buing",
+        "full_form": "bud shing",
+        "source": "Bacot 1912: Bois \u00e0 br\u00fbler; combustible."
+    },
+    {
+        "picture": "mthun_mong.png",
+        "contracted_form": "mthuong",
+        "full_form": "mthun mong",
+        "source": "Bacot 1912: Commun, ordinaire."
+    },
+    {
+        "picture": "rgyu_sbyor.png",
+        "contracted_form": "rgyuor",
+        "full_form": "rgyu sbyor",
+        "source": "Bacot 1912: Celui qui donne l'aum\u00f4ne."
+    },
+    {
+        "picture": "_bras_bu.png",
+        "contracted_form": "'brus",
+        "full_form": "'bras bu",
+        "source": "Bacot 1912: Fruit."
+    },
+    {
+        "picture": "_od_dpag_med.png",
+        "contracted_form": "'odpaged",
+        "full_form": "'od dpag med",
+        "source": "Bacot 1912: Amitabha."
+    },
+    {
+        "picture": "rgyal_srid.png",
+        "contracted_form": "rgyalrid",
+        "full_form": "rgyal srid",
+        "source": "Bacot 1912: Royaume."
+    },
+    {
+        "picture": "gu_gul.png",
+        "contracted_form": "guul / grul",
+        "full_form": "gu gul",
+        "source": "Bacot 1912: Sorte d'encens pr\u00e9cieux."
+    },
+    {
+        "picture": "smon_lam.png",
+        "contracted_form": "smon*",
+        "full_form": "smon lam",
+        "source": "Bacot 1912: Pranidhana; pri\u00e8re."
+    },
+    {
+        "picture": "srog_gcod.png",
+        "contracted_form": "31_670",
+        "full_form": "srog gcod",
+        "source": "Bacot 1912: Tuer; perdre la vie."
+    },
+    {
+        "picture": "phyi_snod.png",
+        "contracted_form": "phyiod",
+        "full_form": "phyi snod",
+        "source": "Bacot 1912: Vase pour la farine."
+    },
+    {
+        "picture": "dam_can0.png",
+        "contracted_form": "da*^n",
+        "full_form": "dam can",
+        "source": "Bacot 1912: Qui est saint."
+    },
+    {
+        "picture": "khrun_med.png",
+        "contracted_form": "khrued",
+        "full_form": "khrun med",
+        "source": "Bacot 1912: Sans \u00e9tendue."
+    },
+    {
+        "picture": "byol_song.png",
+        "contracted_form": "byoolng",
+        "full_form": "byol song",
+        "source": "Bacot 1912: B\u00eate; quadrup\u00e8de."
+    },
+    {
+        "picture": "rtse_drug.png",
+        "contracted_form": "rtsrueg",
+        "full_form": "rtse drug",
+        "source": "Bacot 1912: A 6 pointes."
+    },
+    {
+        "picture": "rtse_lnga.png",
+        "contracted_form": "rtsnge",
+        "full_form": "rtse lnga",
+        "source": "Bacot 1912: A 5 pointes."
+    },
+    {
+        "picture": "grong_khyer.png",
+        "contracted_form": "gronger",
+        "full_form": "grong khyer",
+        "source": "Bacot 1912: Cit\u00e9, ville."
+    },
+    {
+        "picture": "gser_skyems0.png",
+        "contracted_form": "31_680-2",
+        "full_form": "gser skyems",
+        "source": "Bacot 1912: Boisson c\u00e9leste, nectar."
+    },
+    {
+        "picture": "tshe_dang_bsod_nams.png",
+        "contracted_form": "tshe bsod",
+        "full_form": "tshe dang bsod nams",
+        "source": "Bacot 1912: La vie et les lionnes oeuvres."
+    },
+    {
+        "picture": "_byung_gnas.png",
+        "contracted_form": "'byungs",
+        "full_form": "'byung gnas",
+        "source": "Bacot 1912: Lieu d'origine, source, mine."
+    },
+    {
+        "picture": "me_long0.png",
+        "contracted_form": "moeng",
+        "full_form": "me long",
+        "source": "Bacot 1912: Miroir."
+    },
+    {
+        "picture": "dus_su.png",
+        "contracted_form": "dusu",
+        "full_form": "dus su",
+        "source": "Bacot 1912: Dans le temps, au temps de."
+    },
+    {
+        "picture": "gtum_po.png",
+        "contracted_form": "gtumo",
+        "full_form": "gtum po",
+        "source": "Bacot 1912: F\u00e9roce, cruel."
+    },
+    {
+        "picture": "dam_tshig.png",
+        "contracted_form": "da*^ig",
+        "full_form": "dam tshig",
+        "source": "Bacot 1912: Promesse, voeu, serment."
+    },
+    {
+        "picture": "rang_rang.png",
+        "contracted_form": "rangng",
+        "full_form": "rang rang",
+        "source": "Bacot 1912: Soi-m\u00eame."
+    },
+    {
+        "picture": "dpa_mo.png",
+        "contracted_form": "dpa'*o",
+        "full_form": "dpa' mo",
+        "source": "Bacot 1912: H\u00e9ro\u00efne."
+    },
+    {
+        "picture": "ging_chen.png",
+        "contracted_form": "gingen",
+        "full_form": "ging chen",
+        "source": "Bacot 1912: Gros tambour (?)."
+    },
+    {
+        "picture": "me_ltar.png",
+        "contracted_form": "mter",
+        "full_form": "me ltar",
+        "source": "Bacot 1912: Comme le feu, semblable au feu."
+    },
+    {
+        "picture": "gtsug_gtor0.png",
+        "contracted_form": "gtsuor",
+        "full_form": "gtsug gtor",
+        "source": "Bacot 1912: Usnisa: excroissance sur la t\u00e8te."
+    },
+    {
+        "picture": "rdo_rje.png",
+        "contracted_form": "rdoe",
+        "full_form": "rdo rje",
+        "source": "Bacot 1912: Foudre; sceptre."
+    },
+    {
+        "picture": "rmi_lam.png",
+        "contracted_form": "rmi*",
+        "full_form": "rmi lam",
+        "source": "Bacot 1912: R\u00eave."
+    },
+    {
+        "picture": "ser_nag.png",
+        "contracted_form": "31_662",
+        "full_form": "ser nag",
+        "source": "Bacot 1912: Jaune fonc\u00e9, brun."
+    },
+    {
+        "picture": "bde_bar_gshegs.png",
+        "contracted_form": "bdeer#",
+        "full_form": "bde bar gshegs",
+        "source": "Bacot 1912: Bienheureux (Sugata)."
+    },
+    {
+        "picture": "sku_gsung_thugs.png",
+        "contracted_form": "skung#",
+        "full_form": "sku gsung thugs",
+        "source": "Bacot 1912: Corps; parole; pens\u00e9e."
+    },
+    {
+        "picture": "glegs_bam.png",
+        "contracted_form": "gle*",
+        "full_form": "glegs bam",
+        "source": "Bacot 1912: Volume, livre."
+    },
+    {
+        "picture": "sems.png",
+        "contracted_form": "30_656-2",
+        "full_form": "sems",
+        "source": "Bacot 1912: L'\u00e2me."
+    },
+    {
+        "picture": "sdug_bsngal0.png",
+        "contracted_form": "sdul",
+        "full_form": "sdug bsngal",
+        "source": "Bacot 1912: Souffrance, douleur."
+    },
+    {
+        "picture": "grub_chen.png",
+        "contracted_form": "gruben",
+        "full_form": "grub chen",
+        "source": "Bacot 1912: Un grand saint."
+    },
+    {
+        "picture": "lhan_cig0.png",
+        "contracted_form": "31_696",
+        "full_form": "lhan cig",
+        "source": "Bacot 1912: Ensemble."
+    },
+    {
+        "picture": "shar_lho.png",
+        "contracted_form": "shhor",
+        "full_form": "shar lho",
+        "source": "Bacot 1912: Sud-Est."
+    },
+    {
+        "picture": "chu_srin.png",
+        "contracted_form": "chuin",
+        "full_form": "chu srin",
+        "source": "Bacot 1912: Cr\u00e9ature aquatique."
+    },
+    {
+        "picture": "mu_stegs.png",
+        "contracted_form": "mue#",
+        "full_form": "mu stegs",
+        "source": "Bacot 1912: H\u00e9r\u00e9tique; non bouddhiste (tirthaka)."
+    },
+    {
+        "picture": "chu_smad.png",
+        "contracted_form": "chuad",
+        "full_form": "chu smad",
+        "source": "Bacot 1912: 20e \u00e9toile du Zodiaque dans le Sagittaire."
+    },
+    {
+        "picture": "gzhon_nu.png",
+        "contracted_form": "zhyonu",
+        "full_form": "gzhon nu",
+        "source": "Bacot 1912: Jeune; jeune homme."
+    },
+    {
+        "picture": "rtsa_brgyad.png",
+        "contracted_form": "rtsyad",
+        "full_form": "rtsa brgyad",
+        "source": "Bacot 1912: Et huit."
+    },
+    {
+        "picture": "bdag_dzin_.png",
+        "contracted_form": "bdag^in",
+        "full_form": "bdag 'dzin ",
+        "source": "Bacot 1912: \u00c9go\u00efsme."
+    },
+    {
+        "picture": "khro_bo.png",
+        "contracted_form": "khroo",
+        "full_form": "khro bo",
+        "source": "Bacot 1912: Qui est en col\u00e8re."
+    },
+    {
+        "picture": "dmag_dpon.png",
+        "contracted_form": "dmon",
+        "full_form": "dmag dpon",
+        "source": "Bacot 1912: G\u00e9n\u00e9ral d'arm\u00e9e; officier."
+    },
+    {
+        "picture": "spyi_gtsug.png",
+        "contracted_form": "spyiug",
+        "full_form": "spyi gtsug",
+        "source": "Bacot 1912: Sommet de la t\u00eate."
+    },
+    {
+        "picture": "phyag_tshal_lo.png",
+        "contracted_form": "ph^yaglo",
+        "full_form": "phyag 'tshal lo",
+        "source": "Bacot 1912: Salut \u00e0; je salue."
+    },
+    {
+        "picture": "mi_lus0.png",
+        "contracted_form": "muis",
+        "full_form": "mi lus",
+        "source": "Bacot 1912: Le corps humain."
+    },
+    {
+        "picture": "chu_srin0.png",
+        "contracted_form": "churin",
+        "full_form": "chu srin",
+        "source": "Bacot 1912: Cr\u00e9ature aquatique."
+    },
+    {
+        "picture": "dge_slong0.png",
+        "contracted_form": "dgeong",
+        "full_form": "dge slong",
+        "source": "Bacot 1912: Moine ordonn\u00e9 (bhiksu)."
+    },
+    {
+        "picture": "drin_chen.png",
+        "contracted_form": "drien",
+        "full_form": "drin chen",
+        "source": "Bacot 1912: Tr\u00e8s gracieux, aimable."
+    },
+    {
+        "picture": "khro_nyer.png",
+        "contracted_form": "khroer",
+        "full_form": "khro nyer",
+        "source": "Bacot 1912: En col\u00e8re, irrit\u00e9."
+    },
+    {
+        "picture": "_byung_po.png",
+        "contracted_form": "'byuong",
+        "full_form": "'byung po",
+        "source": "Bacot 1912: Propre, purifi\u00e9."
+    },
+    {
+        "picture": "mchog_bran.png",
+        "contracted_form": "mchogran",
+        "full_form": "mchog bran",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "phyag_tshal.png",
+        "contracted_form": "phya^l",
+        "full_form": "phyag 'tshal",
+        "source": "Bacot 1912: Saluer; prostration, salut (namas)."
+    },
+    {
+        "picture": "dkyil_khor0.png",
+        "contracted_form": "dkyilor",
+        "full_form": "dkyil 'khor",
+        "source": "Bacot 1912: Cercle, circonf\u00e9rence."
+    },
+    {
+        "picture": "rgyal_chen.png",
+        "contracted_form": "rgyalen",
+        "full_form": "rgyal chen",
+        "source": "Bacot 1912: Grand roi."
+    },
+    {
+        "picture": "dge_bsnyen.png",
+        "contracted_form": "dhenyen",
+        "full_form": "dge bsnyen",
+        "source": "Bacot 1912: Moine ayant huit voeux \u00e0 observer."
+    },
+    {
+        "picture": "lhan_rgyas.png",
+        "contracted_form": "31_697",
+        "full_form": "lhan rgyas",
+        "source": "Bacot 1912: Coll\u00e8gue dans un emploi; qui se sert du m\u00eame sceau que son coll\u00e8gue."
+    },
+    {
+        "picture": "mo_gus.png",
+        "contracted_form": "muos",
+        "full_form": "mo gus",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "chen_po.png",
+        "contracted_form": "choen",
+        "full_form": "chen po",
+        "source": "Bacot 1912: Grand."
+    },
+    {
+        "picture": "thugs_khar.png",
+        "contracted_form": "thyar",
+        "full_form": "thugs khar",
+        "source": "Bacot 1912: Semen virile, sperme."
+    },
+    {
+        "picture": "mtsho_skyes_.png",
+        "contracted_form": "mtshyoes",
+        "full_form": "mtsho skyes ",
+        "source": "Bacot 1912: Lotus."
+    },
+    {
+        "picture": "de_bzhin_gshegs0.png",
+        "contracted_form": "dbezhine#",
+        "full_form": "de bzhin gshegs",
+        "source": "Bacot 1912: Tathagata."
+    },
+    {
+        "picture": "_khor_bsrungs.png",
+        "contracted_form": "'khorngs",
+        "full_form": "'khor bsrungs",
+        "source": "Bacot 1912: Protecteur contre les mauvais esprits."
+    },
+    {
+        "picture": "rnam_grangs0.png",
+        "contracted_form": "rna*ngs",
+        "full_form": "rnam grangs",
+        "source": "Bacot 1912: Enum\u00e9ration, d\u00e9veloppement."
+    },
+    {
+        "picture": "dmar_po.png",
+        "contracted_form": "dmor",
+        "full_form": "dmar po",
+        "source": "Bacot 1912: Rouge."
+    },
+    {
+        "picture": "bcom_ldan_das1.png",
+        "contracted_form": "bcodas",
+        "full_form": "bcom ldan 'das",
+        "source": "Bacot 1912: Mort victorieux; \u00e9pith\u00e8te du Bouddha; Bhagavat."
+    },
+    {
+        "picture": "mchod_sbyin0.png",
+        "contracted_form": "mchyodin",
+        "full_form": "mchod sbyin",
+        "source": "Bacot 1912: Sacrifice religieux."
+    },
+    {
+        "picture": "dge_bshes.png",
+        "contracted_form": "dgees",
+        "full_form": "dge bshes",
+        "source": "Bacot 1912: Kalyanamitra."
+    },
+    {
+        "picture": "gtso_khor.png",
+        "contracted_form": "gtsoor",
+        "full_form": "gtso 'khor",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "bka_bsgyur.png",
+        "contracted_form": "bkyur",
+        "full_form": "bka' bsgyur",
+        "source": "Bacot 1912: Traduire les paroles (du Bouddha)."
+    },
+    {
+        "picture": "lhan_cig.png",
+        "contracted_form": "31_696-2",
+        "full_form": "lhan cig",
+        "source": "Bacot 1912: Ensemble."
+    },
+    {
+        "picture": "drung_yig.png",
+        "contracted_form": "druig",
+        "full_form": "drung yig",
+        "source": "Bacot 1912: Secr\u00e9taire, clerc; exp\u00e9ditionnaire."
+    },
+    {
+        "picture": "zhe_sdang0.png",
+        "contracted_form": "zhesdang",
+        "full_form": "zhe sdang",
+        "source": "Bacot 1912: Col\u00e8re, rage."
+    },
+    {
+        "picture": "las_byang0.png",
+        "contracted_form": "lyang",
+        "full_form": "las byang",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "mdzad.png",
+        "contracted_form": "m^d",
+        "full_form": "mdzad",
+        "source": "Bacot 1912: Faire; un fait."
+    },
+    {
+        "picture": "khyad_par.png",
+        "contracted_form": "khyadar",
+        "full_form": "khyad par",
+        "source": "Bacot 1912: Sp\u00e9cialement (vi\u00b0)."
+    },
+    {
+        "picture": "sems_can.png",
+        "contracted_form": "30_659",
+        "full_form": "sems can",
+        "source": "Bacot 1912: Un \u00eatre anim\u00e9."
+    },
+    {
+        "picture": "_ja_tshon.png",
+        "contracted_form": "'ja^on",
+        "full_form": "'ja' tshon",
+        "source": "Bacot 1912: Arc-en-ciel."
+    },
+    {
+        "picture": "dpal_phreng.png",
+        "contracted_form": "dpalreng",
+        "full_form": "dpal 'phreng",
+        "source": "Bacot 1912: Srimala, titre d'un s\u00fctra."
+    },
+    {
+        "picture": "sha_khrag.png",
+        "contracted_form": "shrag",
+        "full_form": "sha khrag",
+        "source": "Bacot 1912: Chair et sang; le corps; consanguin."
+    },
+    {
+        "picture": "gdul_bya.png",
+        "contracted_form": "gdulya",
+        "full_form": "gdul bya",
+        "source": "Bacot 1912: Etre disciplin\u00e9 par la religion."
+    },
+    {
+        "picture": "_khor_bsrungs2.png",
+        "contracted_form": "'orrungs",
+        "full_form": "'khor bsrungs",
+        "source": "Bacot 1912: Protecteur contre les mauvais esprits."
+    },
+    {
+        "picture": "phyin_chad.png",
+        "contracted_form": "phyind",
+        "full_form": "phyin chad",
+        "source": "Bacot 1912: Plus tard, apr\u00e8s."
+    },
+    {
+        "picture": "dgra_zla.png",
+        "contracted_form": "dgla",
+        "full_form": "dgra zla",
+        "source": "Bacot 1912: Adversaire."
+    },
+    {
+        "picture": "mkha_dbyings.png",
+        "contracted_form": "mkhyings",
+        "full_form": "mkha' dbyings",
+        "source": "Bacot 1912: La sph\u00e8re c\u00e9leste."
+    },
+    {
+        "picture": "gtor_ma0.png",
+        "contracted_form": "gto*r",
+        "full_form": "gtor ma",
+        "source": "Bacot 1912: Objets qui doivent \u00eatre consum\u00e9s dans un sacrifice."
+    },
+    {
+        "picture": "bstan_dzin_0.png",
+        "contracted_form": "bsti^n",
+        "full_form": "bstan 'dzin ",
+        "source": "Bacot 1912: Action de comprendre, saisir une d\u00e9monstration."
+    },
+    {
+        "picture": "phrad_dog.png",
+        "contracted_form": "phradog",
+        "full_form": "phrad dog",
+        "source": "Bacot 1912: Jalousie."
+    },
+    {
+        "picture": "_od_zer1.png",
+        "contracted_form": "'oder",
+        "full_form": "'od zer",
+        "source": "Bacot 1912: Rayon de lumi\u00e8re."
+    },
+    {
+        "picture": "ting_nge_dzin0.png",
+        "contracted_form": "tinge^in",
+        "full_form": "ting nge 'dzin",
+        "source": "Bacot 1912: M\u00e9ditation profonde, extase (samadhi)."
+    },
+    {
+        "picture": "nyon_mongs_.png",
+        "contracted_form": "nyoongs",
+        "full_form": "nyon mongs ",
+        "source": "Bacot 1912: Mis\u00e8re; p\u00e9ch\u00e9."
+    },
+    {
+        "picture": "thub_chen.png",
+        "contracted_form": "thuben",
+        "full_form": "thub chen",
+        "source": "Bacot 1912: Tout puissant; grande puissance."
+    },
+    {
+        "picture": "byol_song0.png",
+        "contracted_form": "byong",
+        "full_form": "byol song",
+        "source": "Bacot 1912: B\u00eate; quadrup\u00e8de."
+    },
+    {
+        "picture": "len_chags.png",
+        "contracted_form": "len#",
+        "full_form": "len chags",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "gzhal_yas_khang.png",
+        "contracted_form": "zhya*s",
+        "full_form": "gzhal yas khang",
+        "source": "Bacot 1912: Palais a\u00e9rien (Vimana)."
+    },
+    {
+        "picture": "slob_dpon.png",
+        "contracted_form": "31_673-1",
+        "full_form": "slob dpon",
+        "source": "Bacot 1912: Professeur."
+    },
+    {
+        "picture": "rdzu_phrul.png",
+        "contracted_form": "rdzul",
+        "full_form": "rdzu 'phrul",
+        "source": "Bacot 1912: Miracle; jonglerie."
+    },
+    {
+        "picture": "bdud_dul.png",
+        "contracted_form": "bdudl",
+        "full_form": "bdud 'dul",
+        "source": "Bacot 1912: Vainqueur du d\u00e9mon."
+    },
+    {
+        "picture": "_jig_rten.png",
+        "contracted_form": "'ien",
+        "full_form": "'jig rten",
+        "source": "Bacot 1912: Monde."
+    },
+    {
+        "picture": "kha_drang.png",
+        "contracted_form": "khra*",
+        "full_form": "kha drang",
+        "source": "Bacot 1912: Aussit\u00f4t."
+    },
+    {
+        "picture": "sdig_sgrib.png",
+        "contracted_form": "sdribi",
+        "full_form": "sdig sgrib",
+        "source": "Bacot 1912: La souillure du p\u00e9ch\u00e9."
+    },
+    {
+        "picture": "khyo_dang_chung_ma.png",
+        "contracted_form": "khyo shrug",
+        "full_form": "khyo dang chung ma",
+        "source": "Bacot 1912: Mari et femme."
+    },
+    {
+        "picture": "tshul_ldan.png",
+        "contracted_form": "tshuldan",
+        "full_form": "tshul ldan",
+        "source": "Bacot 1912: R\u00e9gulier."
+    },
+    {
+        "picture": "_gyu_byed.png",
+        "contracted_form": "'gyued",
+        "full_form": "'gyu byed",
+        "source": "Bacot 1912: Qui cause, produit un mouvement, des changements; moteur, mobile."
+    },
+    {
+        "picture": "dug_gsum_bdud_kun_myur_du_babtu_nus_su.png",
+        "contracted_form": "32_708",
+        "full_form": "dug gsum bdud kun myur du babtu nus su",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "_gro_mgon.png",
+        "contracted_form": "'groon",
+        "full_form": "'gro mgon",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "sa_kya_paNDit.png",
+        "contracted_form": "sa paN",
+        "full_form": "sa kya paNDit",
+        "source": "Bacot 1912: Le pandit Sa-kya."
+    },
+    {
+        "picture": "gzugs_med1.png",
+        "contracted_form": "gzued*",
+        "full_form": "gzugs med",
+        "source": "Bacot 1912: Sans corps, immat\u00e9riel."
+    },
+    {
+        "picture": "sngon_gro.png",
+        "contracted_form": "sngonro",
+        "full_form": "sngon 'gro",
+        "source": "Bacot 1912: Qui va devant, pr\u00e9curseur."
+    },
+    {
+        "picture": "mdzod_dzin.png",
+        "contracted_form": "m^odin",
+        "full_form": "mdzod 'dzin",
+        "source": "Bacot 1912: Tr\u00e9sorier."
+    },
+    {
+        "picture": "mchod_stod0.png",
+        "contracted_form": "mchotod",
+        "full_form": "mchod stod",
+        "source": "Bacot 1912: Offrande."
+    },
+    {
+        "picture": "_tshams_med.png",
+        "contracted_form": "'tshed*",
+        "full_form": "'tshams med",
+        "source": "Bacot 1912: Ne convenant pas, impropre."
+    },
+    {
+        "picture": "gnyis_te.png",
+        "contracted_form": "nyie",
+        "full_form": "gnyis te",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "bstan_skyong.png",
+        "contracted_form": "bstanong",
+        "full_form": "bstan skyong",
+        "source": "Bacot 1912: Conserver, prot\u00e9ger la doctrine."
+    },
+    {
+        "picture": "dkyil_khor1.png",
+        "contracted_form": "dior",
+        "full_form": "dkyil 'khor",
+        "source": "Bacot 1912: Cercle, circonf\u00e9rence."
+    },
+    {
+        "picture": "rgya_mtsho.png",
+        "contracted_form": "rgya^o",
+        "full_form": "rgya mtsho",
+        "source": "Bacot 1912: La mer, l'oc\u00e9an."
+    },
+    {
+        "picture": "yan_lag.png",
+        "contracted_form": "yang",
+        "full_form": "yan lag",
+        "source": "Bacot 1912: Membre."
+    },
+    {
+        "picture": "rdzus_skyes.png",
+        "contracted_form": "rdzues",
+        "full_form": "rdzus skyes",
+        "source": "Bacot 1912: N\u00e9 d'une mani\u00e8re miraculeuse, surnaturelle."
+    },
+    {
+        "picture": "thun_mong0.png",
+        "contracted_form": "thuong",
+        "full_form": "thun mong",
+        "source": "Bacot 1912: Commun, ordinaire."
+    },
+    {
+        "picture": "mnyam_bzhag.png",
+        "contracted_form": "mnya*g",
+        "full_form": "mnyam bzhag",
+        "source": "Bacot 1912: Mettre ensemble."
+    },
+    {
+        "picture": "mtshan_ldan.png",
+        "contracted_form": "mtshdan",
+        "full_form": "mtshan ldan",
+        "source": "Bacot 1912: Dou\u00e9 de saintet\u00e9, de gr\u00e2ces sp\u00e9ciales."
+    },
+    {
+        "picture": "zhing_khams.png",
+        "contracted_form": "zhings*",
+        "full_form": "zhing khams",
+        "source": "Bacot 1912: Lieu, pays, demeure."
+    },
+    {
+        "picture": "the_tshom_med.png",
+        "contracted_form": "thoeed*",
+        "full_form": "the tshom med",
+        "source": "Bacot 1912: Sans h\u00e9siter, certain."
+    },
+    {
+        "picture": "bsrung_khor.png",
+        "contracted_form": "31_686",
+        "full_form": "bsrung 'khor",
+        "source": "Bacot 1912: Amulette; charme magique."
+    },
+    {
+        "picture": "bdun_te.png",
+        "contracted_form": "bdune",
+        "full_form": "bdun te",
+        "source": "Bacot 1912"
+    },
+    {
+        "picture": "ri_bo_.png",
+        "contracted_form": "rio",
+        "full_form": "ri bo ",
+        "source": "Bacot 1912: Montagne."
+    },
+    {
+        "picture": "rin_po_che.png",
+        "contracted_form": "rinoe",
+        "full_form": "rin po che",
+        "source": "Bacot 1912: Pr\u00e9cieux; mati\u00e8re pr\u00e9cieuse."
+    },
+    {
+        "picture": "lhun_grub.png",
+        "contracted_form": "31_698",
+        "full_form": "lhun grub",
+        "source": "Bacot 1912: N\u00e9 spontan\u00e9ment, de soi-m\u00eame."
+    },
+    {
+        "picture": "bka_gtsal.png",
+        "contracted_form": "bka^al",
+        "full_form": "bka' gtsal",
+        "source": "Bacot 1912: Pr\u00eacher, r\u00e9pandre la parole (du Bouddha)."
+    },
+    {
+        "picture": "dam_can.png",
+        "contracted_form": "dam^n",
+        "full_form": "dam can",
+        "source": "Bacot 1912: Qui est saint."
+    },
+    {
+        "picture": "mchod_stod.png",
+        "contracted_form": "chyood",
+        "full_form": "mchod stod",
+        "source": "Bacot 1912: Offrande."
+    },
+    {
+        "picture": "mchod_sbyin.png",
+        "contracted_form": "chyodin",
+        "full_form": "mchod sbyin",
+        "source": "Bacot 1912: Sacrifice religieux."
+    },
+    {
+        "picture": "mkha_gro1.png",
+        "contracted_form": "mro",
+        "full_form": "mkha' 'gro",
+        "source": "Bacot 1912: Qui vit dans le ciel, les esprits; qui va dans l\u2019air, l\u2019oiseau. Magicienne, vampire (dakini)."
+    },
+    {
+        "picture": "bde_gshegs0.png",
+        "contracted_form": "bdee#",
+        "full_form": "bde gshegs",
+        "source": "Bacot 1912: Bienheureux; \u00e9pith\u00e8te de Bouddha."
+    },
+    {
+        "picture": "cha_lugs.png",
+        "contracted_form": "chlu^",
+        "full_form": "cha lugs",
+        "source": "Bacot 1912: Apparence; v\u00eatement; marque de distinction."
+    },
+    {
+        "picture": "che_chung.png",
+        "contracted_form": "chueng",
+        "full_form": "che chung",
+        "source": "Bacot 1912: Grand et petit; dimension."
+    },
+    {
+        "picture": "bye_brag0.png",
+        "contracted_form": "breg",
+        "full_form": "bye brag",
+        "source": "Bacot 1912: Particulier, diff\u00e9rent."
+    },
+    {
+        "picture": "_khor_dang_bcas.png",
+        "contracted_form": "'orngs",
+        "full_form": "'khor dang bcas",
+        "source": "Bacot 1912: Avec un cort\u00e8ge."
+    },
+    {
+        "picture": "lus_ngag_yid_gsum1.png",
+        "contracted_form": "luui*d",
+        "full_form": "lus ngag yid gsum",
+        "source": "Bacot 1912: Les trois: corps, parole et coeur."
+    },
+    {
+        "picture": "slob_dpon0.png",
+        "contracted_form": "31_673-2",
+        "full_form": "slob dpon",
+        "source": "Bacot 1912: Professeur."
+    },
+    {
+        "picture": "bu_mo.png",
+        "contracted_form": "buo*",
+        "full_form": "bu mo",
+        "source": "Bacot 1912: Fille."
+    },
+    {
+        "picture": "grang_med.png",
+        "contracted_form": "granged",
+        "full_form": "grang med",
+        "source": "Bacot 1912: Pas froid."
+    },
+    {
+        "picture": "gtun_shing.png",
+        "contracted_form": "gtuing",
+        "full_form": "gtun shing",
+        "source": "Bacot 1912: Un pilon."
+    },
+    {
+        "picture": "bstan_bcos0.png",
+        "contracted_form": "bstonas",
+        "full_form": "bstan bcos",
+        "source": "Bacot 1912: Commentaire religieux."
+    },
+    {
+        "picture": "rigs_gsum.png",
+        "contracted_form": "rigsum",
+        "full_form": "rigs gsum",
+        "source": "Bacot 1912: Les trois classes des \u00eatres."
+    },
+    {
+        "picture": "ma_dang_bu.png",
+        "contracted_form": "ma smad",
+        "full_form": "ma dang bu",
+        "source": "Bacot 1912: La m\u00e8re et l'enfant."
+    },
+    {
+        "picture": "sangs_rgyas.png",
+        "contracted_form": "sangyas",
+        "full_form": "sangs rgyas",
+        "source": "Bacot 1912: Bouddha."
+    },
+    {
+        "picture": "brtson_grus0.png",
+        "contracted_form": "brtsruos",
+        "full_form": "brtson 'grus",
+        "source": "Bacot 1912: Industrie; diligence, z\u00e8le, duit\u00e9."
+    },
+    {
+        "picture": "ma_rig.png",
+        "contracted_form": "mrig",
+        "full_form": "ma rig",
+        "source": "Bacot 1912: Ignorance."
+    },
+    {
+        "picture": "gzugs_sku.png",
+        "contracted_form": "gzugsku",
+        "full_form": "gzugs sku",
+        "source": "Bacot 1912: L'image d'un Bouddha (rupakaya)."
+    },
+    {
+        "picture": "gdung_rten.png",
+        "contracted_form": "gduen",
+        "full_form": "gdung rten",
+        "source": "Bacot 1912: Niche o\u00f9 Ton d\u00e9pose les reliques."
+    },
+    {
+        "picture": "rbod_gtong_rbod_stong.png",
+        "contracted_form": "rboodng",
+        "full_form": "rbod gtong / rbod stong",
+        "source": "Bacot 1912: Maudire, nuire."
+    },
+    {
+        "picture": "me_tog0.png",
+        "contracted_form": "moeg",
+        "full_form": "me tog",
+        "source": "Bacot 1912: Fleur."
+    },
+    {
+        "picture": "nor_bu.png",
+        "contracted_form": "nour",
+        "full_form": "nor bu",
+        "source": "Bacot 1912: Pierre pr\u00e9cieuse joyau."
+    },
+    {
+        "picture": "kun_tu_bzang_po.png",
+        "contracted_form": "kunungo",
+        "full_form": "kun tu bzang po",
+        "source": "Bacot 1912: Kun tu bzang po, divinit\u00e9 Bon-po."
+    },
+    {
+        "picture": "che_mchog.png",
+        "contracted_form": "chyeo",
+        "full_form": "che mchog",
+        "source": "Bacot 1912: Grand et excellent."
+    },
+    {
+        "picture": "_od_phros.png",
+        "contracted_form": "'odros",
+        "full_form": "'od 'phros",
+        "source": "Bacot 1912: Reste de lumi\u00e8re."
+    },
+    {
+        "picture": "dgung_thig.png",
+        "contracted_form": "dguig",
+        "full_form": "dgung thig",
+        "source": "Bacot 1912: La ligne du m\u00e9ridien."
+    },
+    {
+        "picture": "bud_med.png",
+        "contracted_form": "bued",
+        "full_form": "bud med",
+        "source": "Bacot 1912: Le sexe f\u00e9minin; une femme."
+    },
+    {
+        "picture": "don_yod.png",
+        "contracted_form": "donod",
+        "full_form": "don yod",
+        "source": "Bacot 1912: Qui a une cause, motiv\u00e9."
+    },
+    {
+        "picture": "blon_po.png",
+        "contracted_form": "bloon",
+        "full_form": "blon po",
+        "source": "Bacot 1912: Officier, magistrat."
+    },
+    {
+        "picture": "rnam_par_dag.png",
+        "contracted_form": "rna*rg",
+        "full_form": "rnam par dag",
+        "source": "Bacot 1912: Tr\u00e8s pur."
+    },
+    {
+        "picture": "khrum_smad.png",
+        "contracted_form": "khri*ad",
+        "full_form": "khrum smad",
+        "source": "Bacot 1912: UttarabhAdra."
+    },
+    {
+        "picture": "khyu_mchog.png",
+        "contracted_form": "khyuog",
+        "full_form": "khyu mchog",
+        "source": "Bacot 1912: Chef de troupeau, taureau, b\u00e9lier; \u00e9pit. pour bonheur et pour la 8e lune."
+    }
+  ];
+
+  const container = document.getElementById('container');
+  
+  // Copy the array using the spread operator
+  const sorted_entries = [...entries];
+  sorted_entries.sort((a, b) => {
+    // Compare contracted_form alphabetically
+    if (a.contracted_form < b.contracted_form) {
+      return -1;
+    }
+    if (a.contracted_form > b.contracted_form) {
+      return 1;
+    }
+    return 0;
+  });
+  
+  var timeout = null;
+  function display_entries() {
+    clearTimeout(timeout);
+    container.innerHTML = ``
+    query = document.getElementById('search_input').value;
+    if (query == ``){ 
+      sorted_entries.forEach(entry => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="card-image">
+            <img src="${entry.picture}" alt="${entry.contracted_form}" loading="lazy">
+          </div>
+          <div class="card-info">
+            <p><b>Contraction:</b> ${entry.contracted_form}</p>
+            <p><b>Full form:</b> ${entry.full_form}</p>
+            <p><b>Source:</b> ${entry.source}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    } else {
+      sorted_entries.forEach(entry => {
+        if (entry.contracted_form.includes(query) ||
+            entry.full_form.includes(query) ||
+            entry.source.includes(query))
+        {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div class="card-image">
+              <img src="${entry.picture}" alt="${entry.contracted_form}">
+            </div>
+            <div class="card-info">
+              <p>Сокращённая форма: ${entry.contracted_form}</p>
+              <p>Полная форма: ${entry.full_form}</p>
+              <p>Источник: ${entry.source}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        }
+      });
+    }
+  }
+  display_entries();
+
+  var inputElement = document.getElementById('search_input');
+  inputElement.addEventListener('keyup', function() {
+    clearTimeout(timeout);
+    // Call display_entries 500 milliseconds after last keyboard event:
+    timeout = setTimeout(function() {
+      display_entries();
+    }, 250);
+  });
+</script>
+</body>
+</html>
