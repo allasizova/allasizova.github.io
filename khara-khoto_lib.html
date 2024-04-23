@@ -29,22 +29,22 @@
 		}
 		
 		.label-alternative-titles {
-			color: #0a4a0a;
+			color: #083669;
 			font-weight: bold;
 		}
 
 		.label-notes {
-			color: #0a4a0a;
+			color: #083669;
 			font-weight: bold;
 		}
 		
 		.label-manuscripts {
-			color: #0a4a0a;
+			color: #083669;
 			font-weight: bold;
 		}
 		
 		.label-publications {
-			color: #0a4a0a;
+			color: #083669;
 			font-weight: bold;
 		}
 		
@@ -74,22 +74,22 @@
 		}
 		
 		.label-authors {
-			color: #800505;
+			color: #083669;
 			font-weight: bold;
 		}
 		
 		.label-place {
-			color: #800505;
+			color: #083669;
 			font-weight: bold;
 		}
 		
 		.label-tags {
-			color: #800505;
+			color: #083669;
 			font-weight: bold;
 		}
 		
 		.label-pub-notes {
-			color: #800505;
+			color: #083669;
 			font-weight: bold;
 		}
     </style>
@@ -98,9 +98,21 @@
     <h1 style="color: #000000; text-align: center;">
         Tibetan Buddhist Texts from Khara-Khoto:<br>A Database
     </h1>
+	<h2 style="text-align: center; font-size: 110%">TEXTS <span id="textsCount"></span></h2>
+	<h2 style="text-align: center; font-size: 110%">SOURCES<span id="manuscriptsCount" style="font-size: smaller;"></span></h2>
+	<h2 style="text-align: center; font-size: 110%">PUBLICATIONS <span id="publicationsCount" style="font-size: smaller;"></span></h2>
 	<div style="text-align: center;">
     <img src="garuda_sm.png" width="200">
 	</div>
+	
+	<div id="tagsContainer" style="text-align: center; margin-top: 20px;">
+		<h2>Filter Publications by Tags</h2>
+		<!-- Buttons will be added here dynamically -->
+	</div>
+	<div id="filteredPublicationsContainer" class="container">
+		<h2 style="text-align: center;">Results</h2>
+	</div>
+	
 	<div id="textsContainer" class="container">
     <h2 style="text-align: center;">TEXTS</h2>
 	</div>
@@ -119,7 +131,15 @@
                 textAlternativeTitle: "uṣṇīṣavijayā nāma dhāraṇī anuśaṃsasahitasūtrāt saṃgṛhītā, gtsug tor rnam par rgyal ma’i gzungs phan yon dang bcas pa’ | mdo’ las btus pa",
                 manuscriptIds: [2, 4],
                 publicationIds: [1],
-                textNotes: "123",
+                textNotes: "Version produced in the Tangut state",
+            },
+			{
+                textId: 2,
+                textTitle: "Mañjuśrījñānasattvasyaparamārthanāmasaṃgīti",
+                textAlternativeTitle: "",
+                manuscriptIds: [3, 1],
+                publicationIds: [1],
+                textNotes: "",
             }
             // Добавьте дополнительные тексты здесь
         ];
@@ -180,7 +200,7 @@
 				publicationTitle: "A Tibetan Block Print in the Collection of Tibetan Texts from Khara-khoto of the IOM, RAS.",
 				publicationPlace: "Pis’mennye pamiatniki Vostoka. 2021, volume 18, no. 2 (issue 45). P. 5–23.",
 				textIds: [1],
-				manuscriptIds: [1],
+				manuscriptIds: [3],
 				tags: ["item description", "Mañjuśrī"],
 				url: "http://www.orientalstudies.ru/rus/images/pdf/journals/PPV_18_2_45_2021_01_turanskaya.pdf",
 				publicationNotes: "(In Russian) Fragments of Tibetan manuscripts and block prints from Khara-Khoto, which were transferred to the Asiatic Museum after P.K. Kozlov’s Mongolian-Sichuan Expedition, have been insufficiently studied. As a result of the cataloguing project initiated by researchers of the IOM, RAS, in 2018, an unknown Tibetan block print drew our attention. The preserved fragment includes two texts dedicated to the Buddhist deity Mañjuśrī. This paper presents a brief archaeographic description of the block print, a transliteration and translation of the surviving parts of the texts.",
@@ -229,9 +249,57 @@
 				url: "https://www.jstor.org/stable/23496064",
 				publicationNotes: "We can then identify three desiderata within visible acts of patronage: state-protection and legitimization, which are publicly directed; the promotion of a credible Aśokan ideological portrait, which is simultaneously public, personal and in a sense archaeological; and the purely private soteriological resonances, which were directed at personal salvation. (p. 94)<br>The objects inside the Baisigou Square Stupa were probably placed there soon after 1180. One other object found in the rubble may perhaps be connected to the sixtieth birthday celebrations of 1184: it is another printed dharani (prayer) text, the Ushnishavijaya dharani with an image of Ushnishavijaya surrounded by the Sanskrit text (Fig. 3). (p. 96–97).<br>The Ushnishavijaya dharani was well-known in Japan and China, but in East Asia the personified image is extremely rare. Instead, the dharani alone served as the ritual focus. Both Chinese and Sanskrit versions were engraved onto dharani pillars in China.[22] The dharani, if not the personification, is well attested in north-central China in general, in Dali (Yunnan), Liao and Jin contexts in particular, and even Yuan.[23] The original religious context of Ushnishavijaya was certainly cult Mahayana, but it proved to be of interest to those practicing Esoteric Buddhism in China as well. This is demonstrated by both textual and visual evidence. First, there are retranslations of the sutra after Buddhapali’s version of 683 by the eighth century Esoteric masters Subhakarasimha (d. 735, T. 973) and Amoghavajra (705-774, T. 972). Then there are the finds of (non-personified) Ushnlshavijaya mandala at Dunhuang,[24] and finally, the mandala-like contexts surrounding the dharani inscribed in both Sanskrit and Chinese the Dali kingdom of Yunnan.[25](p. 98–99)<br>For reasons which are still not clear to me, the personified form is virtually unknown in East Asia apart from later Tibetan-inspired examples. This is true despite the fact that her description is given in great detail by the versions of the which continued to be translated into Chinese. These descriptions correspond loosely to the few images which are attested in India, but much more closely to the plentiful images in Nepalese, Tibetan and Tangut Xia contexts.[26] In the textual descriptions she is associated with stupa building; indeed, she is described as residing within the womb of the stupa. One of the Chinese translations of her sadhana ritual texts, made in 994 and probably available to the Tanguts, repeatedly instructs the practitioner to make a stupa, paint her image within the dharanl, and place this inside the stupa.[27] Three-faced and eight-armed, she carries a bow and an arrow, a noose, a crossed- or vishva-vajra in front of her chest, a vase full of amrit in her lap, and she makes the abhaya and varada mudras. Perhaps her most distinctive attribute is that she carries a small image of Amitabha Buddha in her upper right hand. In a few examples, instead of carrying it at her shoulder, she is shown placing the Buddha image on her head. Her body and main head is white, while the other heads are yellow and dark blue. [28] (p. 99–100)<br>Considering Ushnlshavijaya’s rather specialized iconography, a surprisingly generous number of Ushnishavijaya texts and images were recovered from Khara Khoto by Kozlov and then by Aurel Stein. These include two mandalas painted on wood panels in the Himalayan style, dated to the late twelfth or early thirteenth century, in which she is clearly seated within a stupa; a similarly dated painting on wood that was meant to be inserted into a seating of some sort (it has been suggested that it was structurally connected to a stupa); and the upper portion of a Himalayan-style printed image now in New Delhi[29] (Fig. 4). Here again she is clearly seated inside the stupa.(p. 100)<br>",
 			},
+			{
+				publicationId: 7,
+				authors: ["Jacques G."],
+				publicationTitle: "Deux noms tangoutes dans une légende tibétaine.",
+				publicationPlace: "Revue d’Etudes Tibétaines numéro treize — Février 2008: 4–10.",
+				textIds: [],
+				manuscriptIds: [],
+				tags: ["Red Annals", "origin of the Tangut emperors"],
+				url: "https://shs.hal.science/halshs-00261709/document",
+				publicationNotes: "translation into French",
+			},
+			{
+				publicationId: 8,
+				authors: ["Stoddard H."],
+				publicationTitle: "The nine brothers of the White High. On the ‘remembering’ of history and the creation of gods.",
+				publicationPlace: "Les habitants du toit du monde, études recueillies en hommage à Alexander Macdonald. Nanterre : société d’ethnologie, 1997. P. 75–109.",
+				textIds: [],
+				manuscriptIds: [],
+				tags: ["Red Annals", "origin of the Tangut emperors", "Clear Mirror", "Yarlungpa's history", "Feast of the Wise"],
+				url: "",
+				publicationNotes: "translation into English",
+			},
+			{
+				publicationId: 9,
+				authors: ["Stein R. A."],
+				publicationTitle: "Mi-ñag et Si-hia. Géographie historique et légendes ancestrales.",
+				publicationPlace: "Bulletin de l'École française d'Extrême-Orient. Année 1951, 44-1: 223–265.",
+				textIds: [],
+				manuscriptIds: [],
+				tags: ["history", "origin of the Tangut emperors", "place names"],
+				url: "https://www.persee.fr/doc/befeo_0336-1519_1951_num_44_1_5048",
+				publicationNotes: "",
+			},
+			{
+				publicationId: 10,
+				authors: ["Sørensen P."],
+				publicationTitle: "The Mirror Illuminating The Royal Genealogies. An Annotated Translation of the XIVth Century Tibetan Chronicle: rGyal rabs gsal ba'i me long.",
+				publicationPlace: "Wiesbaden: Harrassowitz Verlag, 1994.",
+				textIds: [],
+				manuscriptIds: [],
+				tags: ["Clear Mirror", "origin of the Tangut emperors"],
+				url: "https://www.academia.edu/43156728/The_Mirror_Illuminating_The_Royal_Genealogies_An_Annotated_Translation_of_the_XIVth_Century_Tibetan_Chronicle_rGyal_rabs_gsal_bai_me_long",
+				publicationNotes: "",
+			},
 			// Add additional publications here
 		];
 
+		document.addEventListener("DOMContentLoaded", function() {
+		  // Assuming getTextReferences is called here to update something on the page after content is confirmed loaded
+		});
+		
 		function getPublicationReference(publicationIds) {
 			const publicationReferences = publicationIds.map(publicationId => {
 				// Find the publication by ID
@@ -256,7 +324,6 @@
 		}
 
 		function getManuscriptReference(manuscriptIds) {
-			// Adjusted to return shelfmark of each manuscript as the link text
 			const manuscriptReferences = manuscriptIds.map(manuscriptId => {
 				// Find the manuscript by ID
 				const manuscript = manuscripts.find(ms => ms.manuscriptId === manuscriptId);
@@ -271,22 +338,70 @@
 		}
 		
 		function getTextReferences(textIds) {
-			// Iterate over each textId in the textIds array, find the corresponding text, and return its title.
 			const textReferences = textIds.map(textId => {
-				const text = texts.find(txt => txt.textId === textId); // Corrected to match against textId of each text
-				return text ? `${text.textTitle}` : `Unknown Text ${textId}`; // Check if text is found
+				const text = texts.find(txt => txt.textId === textId);
+				if (text) {
+					return `<a href="#text-${textId}">${text.textTitle}</a>`;
+				} else {
+					return `Unknown text ${textId}`;
+				}
 			});
-			
-			// Join all found text titles with a comma or any other delimiter as appropriate
-			return textReferences.join(', ');
+			return textReferences.join('; ');
+		}
+		
+		function createTagButtons() {
+			const tagsContainer = document.getElementById('tagsContainer');
+			const allTags = publications.flatMap(pub => pub.tags); // Flatten the tags array from all publications
+			const uniqueTags = [...new Set(allTags)]; // Create a unique set of tags
+
+			uniqueTags.forEach(tag => {
+				const button = document.createElement('button');
+				button.textContent = tag;
+				button.onclick = () => filterPublicationsByTag(tag);
+				tagsContainer.appendChild(button);
+			});
+		}
+
+		function filterPublicationsByTag(tag) {
+			const filteredPublicationsContainer = document.getElementById('filteredPublicationsContainer');
+			filteredPublicationsContainer.innerHTML = ''; // Clear previous results
+
+			const filteredPublications = publications.filter(pub => pub.tags.includes(tag));
+			filteredPublications.forEach(publication => {
+				const publicationEl = document.createElement('div');
+				publicationEl.classList.add('publication-item');
+				let publicationHtml = `<h3>${publication.publicationTitle}</h3>
+									   <p><span class="label-authors">Authors:</span> ${publication.authors.join(', ')}</p>
+									   <p><span class="label-place">Place:</span> ${publication.publicationPlace}</p>`;
+				if (publication.tags.length > 0) {
+					publicationHtml += `<p><span class="label-tags">Tags:</span> ${publication.tags.join(', ')}</p>`;
+				}
+				if (publication.url) {
+					publicationHtml += `<a href="${publication.url}" target="_blank">Download</a>`;
+				}
+				if (publication.publicationNotes) {
+					publicationHtml += `<p><span class="label-pub-notes">Notes:</span> ${publication.publicationNotes}</p>`;
+				}
+				if (publication.textIds.length > 0) {
+					publicationHtml += `<p><span class="manuscript-texts">Texts:</span> ${getTextReferences(publication.textIds)}</p>`;
+				}
+				if (publication.manuscriptIds.length > 0) {
+					publicationHtml += `<p><span class="label-manuscripts">Sources:</span> ${getManuscriptReference(publication.manuscriptIds)}</p>`;
+				}
+				publicationEl.innerHTML = publicationHtml;
+				filteredPublicationsContainer.appendChild(publicationEl);
+			});
 		}
 		
 		// Corrected displayData function to append to publicationsContainer correctly
 		function displayData() {
 			const textsContainer = document.getElementById('textsContainer');
+			const textsCount = document.getElementById('textsCount');
+			createTagButtons();
 			texts.forEach(text => {
 				const textEl = document.createElement('div');
 				textEl.classList.add('text-item');
+				textEl.setAttribute('id', `text-${text.textId}`);
 				let htmlContent = `<h3>${text.textTitle}</h3>`;
 				if (text.textAlternativeTitle) {
 					htmlContent += `<p><span class="label-alternative-titles">Alternative Titles:</span> ${text.textAlternativeTitle}</p>`;
@@ -299,8 +414,10 @@
 				textEl.innerHTML = htmlContent;
 				textsContainer.appendChild(textEl);
 			});
+			textsCount.textContent = `: ${texts.length}`;
 
 			const manuscriptsContainer = document.getElementById('manuscriptsContainer');
+			const manuscriptsCount = document.getElementById('manuscriptsCount');
 			manuscripts.forEach(manuscript => {
 				const manuscriptEl = document.createElement('div');
 				manuscriptEl.classList.add('manuscript-item');
@@ -320,27 +437,36 @@
 				manuscriptEl.innerHTML = manuscriptHtml;
 				manuscriptsContainer.appendChild(manuscriptEl);
 			});
+			manuscriptsCount.textContent = `: ${manuscripts.length}`;
 
-			const publicationsContainer = document.getElementById('publicationsContainer');
-			publications.forEach(publication => {
-				const publicationEl = document.createElement('div');
-				publicationEl.classList.add('publication-item');
-				publicationEl.setAttribute('id', `publication-${publication.publicationId}`);
-				let publicationHtml = `<h3>${publication.publicationTitle}</h3>
-									   <p><span class="label-authors">Authors:</span> ${publication.authors.join(', ')}</p>
-									   <p><span class="label-place">Place:</span> ${publication.publicationPlace}</p>`;
-				if (publication.tags.length > 0) {
-					publicationHtml += `<p><span class="label-tags">Tags:</span> ${publication.tags.join(', ')}</p>`;
-				}
-				if (publication.url) {
-					publicationHtml += `<a href="${publication.url}" target="_blank">Download</a>`;
-				}
-				if (publication.publicationNotes) {
-					publicationHtml += `<p><span class="label-pub-notes">Notes:</span> ${publication.publicationNotes}</p>`;
-				}
-				publicationEl.innerHTML = publicationHtml;
-				publicationsContainer.appendChild(publicationEl);
-			});
+		const publicationsContainer = document.getElementById('publicationsContainer');
+		const publicationsCount = document.getElementById('publicationsCount');
+		publications.forEach(publication => {
+			const publicationEl = document.createElement('div');
+			publicationEl.classList.add('publication-item');
+			publicationEl.setAttribute('id', `publication-${publication.publicationId}`);
+			let publicationHtml = `<h3>${publication.publicationTitle}</h3>
+								   <p><span class="label-authors">Authors:</span> ${publication.authors.join(', ')}</p>
+								   <p><span class="label-place">Place:</span> ${publication.publicationPlace}</p>`;
+			if (publication.tags.length > 0) {
+				publicationHtml += `<p><span class="label-tags">Tags:</span> ${publication.tags.join(', ')}</p>`;
+			}
+			if (publication.url) {
+				publicationHtml += `<a href="${publication.url}" target="_blank">Download</a>`;
+			}
+			if (publication.publicationNotes) {
+				publicationHtml += `<p><span class="label-pub-notes">Notes:</span> ${publication.publicationNotes}</p>`;
+			}
+			if (publication.textIds.length > 0) {
+				publicationHtml += `<p><span class="manuscript-texts">Texts:</span> ${getTextReferences(publication.textIds)}</p>`;
+			}
+			if (publication.manuscriptIds.length > 0) {
+				publicationHtml += `<p><span class="label-manuscripts">Sources:</span> ${getManuscriptReference(publication.manuscriptIds)}</p>`;
+			}
+			publicationEl.innerHTML = publicationHtml;
+			publicationsContainer.appendChild(publicationEl);
+		});
+		publicationsCount.textContent = `: ${publications.length}`;
 		}
         window.onload = displayData;
     </script>
