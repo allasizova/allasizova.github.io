@@ -63,7 +63,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
   <input type="text" id="search_input" placeholder="Enter text to search" style="margin-right: 10px; width: 50%">
   <input type="checkbox" id="exact_match_checkbox" style="margin-right: 5px;">
   <label for="exact_match_checkbox">Exact match</label>&nbsp;&nbsp;
-  <button type="button" onclick="document.getElementById('search_input').value = ``; display_entries();">Show all</button>
+  <button type="button" id="showAllButton">Show all</button>
 </div>
 <br/>
 <div id="container"></div>
@@ -5081,6 +5081,20 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     timeout = setTimeout(function() {
       display_entries();
     }, 250);
+  });
+  
+  var exactElement = document.getElementById('exact_match_checkbox');
+  exactElement.addEventListener('click', function() {
+    clearTimeout(timeout);
+    display_entries();
+  });
+  
+  var showAllButton = document.getElementById('showAllButton');
+  showAllButton.addEventListener('click', function() {
+    clearTimeout(timeout);
+    inputElement.value = ``;
+    exactElement.checked = false;
+    display_entries();
   });
 </script>
 </body>
