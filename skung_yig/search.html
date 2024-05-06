@@ -38,9 +38,9 @@
 <body>
 <h1 style="text-align: center;">
 </h1>
-<p style="font-size: 1.5cm; text-align: left; margin: 20px;">
+<p style="font-size: 1.1cm; text-align: left; margin: 10px;">
   <b>Tibetan shorthand contractions</b> <br/>
-  <p style="font-size: 0.5cm; text-align: left; margin: 20px;">Compiled by A. Sizova<br/></p>
+  <p style="font-size: 0.4cm; text-align: left; margin: 10px;">Compiled by A. Sizova<br/></p>
   <br/>
   When transliterating contractions, the consonants are written down in the order of appearance: prescripts, superscripts, root letters, subscripts, post- and post-postscripts. Vowels, the <i>anusvāra</i> sign, and the <i>tsa 'phru</i> sign are not included.
   <br/>
@@ -61,8 +61,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
 
 <div style="display: flex;">
   <input type="text" id="search_input" placeholder="Enter text to search" style="margin-right: 10px; width: 50%">
-  <button type="button" onclick="document.getElementById('search_input').value = ``; display_entries();">Show&nbsp;all</button>
+  <input type="checkbox" id="exact_match_checkbox" style="margin-right: 5px;">
+  <label for="exact_match_checkbox">Exact match</label>&nbsp;&nbsp;
+  <button type="button" onclick="document.getElementById('search_input').value = ``; display_entries();">Show all</button>
 </div>
+<br/>
 <div id="container"></div>
 <script>
   const entries = [
@@ -86,25 +89,25 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thor_gtsug.png",
-        "contracted_form": "thour^g",
+        "contracted_form": "thrg",
         "full_form": "thor gtsug",
         "source": "Bacot 1912: Turban."
     },
     {
         "picture": "dpon_mo.png",
-        "contracted_form": "dpon*",
+        "contracted_form": "dpn",
         "full_form": "dpon mo",
         "source": "Bacot 1912: Ma\u00eetresse."
     },
     {
         "picture": "rnam_grangs.png",
-        "contracted_form": "rnra*ngs",
+        "contracted_form": "rnrngs",
         "full_form": "rnam grangs",
         "source": "Bacot 1912: Enum\u00e9ration, d\u00e9veloppement."
     },
     {
         "picture": "bsdigs_dzub.png",
-        "contracted_form": "bsdiu^b",
+        "contracted_form": "bsdb",
         "full_form": "bsdigs 'dzub",
         "source": "Bacot 1912: L'index."
     },
@@ -112,7 +115,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "srin_mo.png",
         "contracted_form": "31_668",
         "full_form": "srin mo",
-        "source": "Bacot 1912: D\u00e9mon cannibale femelle (Raksasi)."
+        "source": "Bacot 1912: D\u00e9mon cannibale femelle (<i>Rākṣasī<i>)."
     },
     {
         "picture": "dbang_phyug.png",
@@ -122,7 +125,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "theg_chen.png",
-        "contracted_form": "thegen",
+        "contracted_form": "thgn",
         "full_form": "theg chen",
         "source": "Bacot 1912: Le grand v\u00e9hicule."
     },
@@ -134,7 +137,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mtha_khob.png",
-        "contracted_form": "mthob",
+        "contracted_form": "mthb",
         "full_form": "mtha' 'khob",
         "source": "Bacot 1912: Contr\u00e9e barbare."
     },
@@ -146,7 +149,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phun_gsum_tshogs.png",
-        "contracted_form": "phuuo*^#",
+        "contracted_form": "ph#",
         "full_form": "phun gsum tshogs",
         "source": "Bacot 1912: Parfait, accompli."
     },
@@ -224,7 +227,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "_dod_yon.png",
-        "contracted_form": "'dodon",
+        "contracted_form": "'ddn",
         "full_form": "'dod yon",
         "source": "Bacot 1912: Diable rus\u00e9."
     },
@@ -242,7 +245,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "sdug_bsngal.png",
-        "contracted_form": "bsdul",
+        "contracted_form": "bsdl",
         "full_form": "sdug bsngal",
         "source": "Bacot 1912: Souffrance, douleur."
     },
@@ -260,55 +263,55 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phrin_las.png",
-        "contracted_form": "phris",
+        "contracted_form": "phrs",
         "full_form": "phrin las",
         "source": "Bacot 1912: Affaire, commission."
     },
     {
         "picture": "mthu_stobs.png",
-        "contracted_form": "mthuobs",
+        "contracted_form": "mthbs",
         "full_form": "mthu stobs",
         "source": "Bacot 1912: Magie, sorcellerie."
     },
     {
         "picture": "rdo_rje_chang.png",
-        "contracted_form": "rdoe^ng",
+        "contracted_form": "rdng",
         "full_form": "rdo rje 'chang",
-        "source": "Bacot 1912: Vajradhara; nom de divinit\u00e9."
+        "source": "Bacot 1912: <i>Vajradhara</i>; nom de divinit\u00e9."
     },
     {
         "picture": "snying_re_rje.png",
-        "contracted_form": "snyienge",
+        "contracted_form": "snyng",
         "full_form": "snying re rje",
         "source": "Bacot 1912: Avoir piti\u00e9, compatir."
     },
     {
         "picture": "dpon_po.png",
-        "contracted_form": "dpoon",
+        "contracted_form": "dpn",
         "full_form": "dpon po",
         "source": "Bacot 1912: Chef."
     },
     {
         "picture": "phyag_rgya_chen_po.png",
-        "contracted_form": "phyargyoen",
+        "contracted_form": "phyrgyn",
         "full_form": "phyag rgya chen po",
-        "source": "Bacot 1912: Mahamudra; extase sexuelle des divinit\u00e9s tantriques."
+        "source": "Bacot 1912: <i>Mahāmudrā</i>; extase sexuelle des divinit\u00e9s tantriques."
     },
     {
         "picture": "rig_pa_drug.png",
         "contracted_form": "rigrug",
         "full_form": "rig pa drug",
-        "source": "Bacot 1912: Les six sciences ou connaissances."
+        "source": "Bacot 1912: Les six sciences <i>ou</i> connaissances."
     },
     {
         "picture": "rang_byung_rang_byung.png",
         "contracted_form": "ryu*g",
         "full_form": "rang 'byung / rang byung",
-        "source": "Bacot 1912: Svayambhu (\u00e9pith\u00e8te de Brahma)."
+        "source": "Bacot 1912: <i>Svayambhū</i> (\u00e9pith\u00e8te de Brahma)."
     },
     {
         "picture": "gnam_lcags.png",
-        "contracted_form": "gna*ca#",
+        "contracted_form": "gnc#",
         "full_form": "gnam lcags",
         "source": "Bacot 1912: Le tonnerre."
     },
@@ -350,7 +353,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mnyam_par_bzhag.png",
-        "contracted_form": "mnya*rg",
+        "contracted_form": "mnyrg",
         "full_form": "mnyam par bzhag",
         "source": "Bacot 1912: Apaiser son esprit pour la m\u00e9ditation."
     },
@@ -374,7 +377,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mthar_phyin.png",
-        "contracted_form": "mtharin",
+        "contracted_form": "mthrn",
         "full_form": "mthar phyin",
         "source": "Bacot 1912: Parfait; arriv\u00e9 \u00e0 la perfection; fini, \u00e9mancip\u00e9; arriver \u00e0 ses fins."
     },
@@ -392,7 +395,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thugs_dam_bskang.png",
-        "contracted_form": "thyada*ng",
+        "contracted_form": "thydng",
         "full_form": "thugs dam bskang",
         "source": "Bacot 1912: Accomplissement des d\u00e9sirs."
     },
@@ -440,7 +443,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "nag_po.png",
-        "contracted_form": "nog",
+        "contracted_form": "ng",
         "full_form": "nag po",
         "source": "Bacot 1912: Noir."
     },
@@ -508,7 +511,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "mngon_shes.png",
         "contracted_form": "mngs",
         "full_form": "mngon shes",
-        "source": "Bacot 1912: Prescience (abhijna)."
+        "source": "Bacot 1912: Prescience (<i>abhijñā</i>)."
     },
     {
         "picture": "mchod.png",
@@ -536,7 +539,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnyis_dzin.png",
-        "contracted_form": "2^in",
+        "contracted_form": "2n",
         "full_form": "gnyis 'dzin",
         "source": "Bacot 1912: Ambiguit\u00e9, doute."
     },
@@ -554,19 +557,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thun_bzhi.png",
-        "contracted_form": "thuni",
+        "contracted_form": "thn",
         "full_form": "thun bzhi",
         "source": "Bacot 1912: Les quatre veilles de nuit."
     },
     {
         "picture": "bag_chags.png",
-        "contracted_form": "bag#",
+        "contracted_form": "bg#",
         "full_form": "bag chags",
         "source": "Bacot 1912: Tendance, inclination, passion."
     },
     {
         "picture": "thabs_shes.png",
-        "contracted_form": "thabes",
+        "contracted_form": "thbs",
         "full_form": "thabs shes",
         "source": "Bacot 1912: Les arts et la science."
     },
@@ -590,15 +593,15 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_snang.png",
-        "contracted_form": "rna*ng",
+        "contracted_form": "rnng",
         "full_form": "rnam snang",
         "source": "Bacot 1912: Apparaitre; prendre forme."
     },
     {
         "picture": "thugs_rje_chen_po.png",
-        "contracted_form": "thyeeno",
+        "contracted_form": "thyn",
         "full_form": "thugs rje chen po",
-        "source": "Bacot 1912: Le tr\u00e8s compatissant (\u00e9pith\u00e8te d'Avalokite\u00e7vara)."
+        "source": "Bacot 1912: Le tr\u00e8s compatissant (\u00e9pith\u00e8te d'<i>Avalokiteśvara</i>)."
     },
     {
         "picture": "shar_phyogs.png",
@@ -688,11 +691,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "dbang_chen.png",
         "contracted_form": "dbangen",
         "full_form": "dbang chen",
-        "source": "Bacot 1912: Mahendra."
+        "source": "Bacot 1912: <i>Mahendra</i>."
     },
     {
         "picture": "rnam_shes.png",
-        "contracted_form": "rna*es",
+        "contracted_form": "rns",
         "full_form": "rnam shes",
         "source": "Bacot 1912: Connaissance."
     },
@@ -700,7 +703,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "dgra_bcom.png",
         "contracted_form": "dgr",
         "full_form": "dgra bcom",
-        "source": "Bacot 1912: Arhat."
+        "source": "Bacot 1912: <i>Arhat</i>."
     },
     {
         "picture": "sbrang_rtsi.png",
@@ -728,7 +731,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpal_byor.png",
-        "contracted_form": "dpalyor",
+        "contracted_form": "dplyr",
         "full_form": "dpal 'byor",
         "source": "Bacot 1912: Gloire, grandeur."
     },
@@ -740,7 +743,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpon_g_yog.png",
-        "contracted_form": "dponog",
+        "contracted_form": "dpng",
         "full_form": "dpon g.yog",
         "source": "Bacot 1912: Ma\u00eetres et serviteurs; serviteurs de chef."
     },
@@ -766,7 +769,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "chos_dbyings.png",
         "contracted_form": "chyngs",
         "full_form": "chos dbyings",
-        "source": "Bacot 1912: \u00c9tendue de la doctrine (dharmadhatu)."
+        "source": "Bacot 1912: \u00c9tendue de la doctrine (<i>dharmadhātu</i>)."
     },
     {
         "picture": "kha_drang0.png",
@@ -782,7 +785,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "ting_dzin.png",
-        "contracted_form": "ting^in",
+        "contracted_form": "tngn",
         "full_form": "ting 'dzin",
         "source": "Bacot 1912: M\u00e9ditation profonde; nom propre usit\u00e9 au Tibet."
     },
@@ -800,7 +803,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "nub_byang.png",
-        "contracted_form": "nubyang",
+        "contracted_form": "nbyng",
         "full_form": "nub byang",
         "source": "Bacot 1912: Nord-Ouest."
     },
@@ -830,19 +833,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpal_chen.png",
-        "contracted_form": "dpalen",
+        "contracted_form": "dpln",
         "full_form": "dpal chen",
         "source": "Bacot 1912: Glorieux, illustre."
     },
     {
         "picture": "the_tshom_.png",
-        "contracted_form": "th^oe",
+        "contracted_form": "th",
         "full_form": "the tshom ",
         "source": "Bacot 1912: H\u00e9sitation, doute."
     },
     {
         "picture": "mnyam_nyid.png",
-        "contracted_form": "mnya*id",
+        "contracted_form": "mnyd",
         "full_form": "mnyam nyid",
         "source": "Bacot 1912: Impartialit\u00e9, \u00e9quit\u00e9."
     },
@@ -860,7 +863,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "snying_rje.png",
-        "contracted_form": "snyieng",
+        "contracted_form": "snyng",
         "full_form": "snying rje",
         "source": "Bacot 1912: Bonte, compassion."
     },
@@ -874,7 +877,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "mu_men_.png",
         "contracted_form": "muen",
         "full_form": "mu men ",
-        "source": "Bacot 1912: Lapis-lazuli ou malachite."
+        "source": "Bacot 1912: Lapis-lazuli <i>ou</i> malachite."
     },
     {
         "picture": "blon_po_dang_bangs_khor.png",
@@ -890,7 +893,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpon_g_yog0.png",
-        "contracted_form": "dpoog",
+        "contracted_form": "dpg",
         "full_form": "dpon g.yog",
         "source": "Bacot 1912: Ma\u00eetres et serviteurs; serviteurs de chef."
     },
@@ -932,15 +935,15 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "drag_po.png",
-        "contracted_form": "drago",
+        "contracted_form": "drg",
         "full_form": "drag po",
         "source": "Bacot 1912: Terrible."
     },
     {
         "picture": "spyan_ras_gzigs.png",
-        "contracted_form": "spyri^#",
+        "contracted_form": "spyr#",
         "full_form": "spyan ras gzigs",
-        "source": "Bacot 1912: Avalokite\u00e7vara."
+        "source": "Bacot 1912: <i>Avalokiteśvara</i>."
     },
     {
         "picture": "gzugs_med.png",
@@ -964,13 +967,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "rab_byor.png",
         "contracted_form": "rabyor",
         "full_form": "rab 'byor",
-        "source": "Bacot 1912: Subhuti, disciple du Bouddha."
+        "source": "Bacot 1912: <i>Subhūti</i>, disciple du Bouddha."
     },
     {
         "picture": "lo_tshA_ba_dang_paNDi_ta.png",
         "contracted_form": "lo paN",
         "full_form": "lo tshA ba dang paNDi ta",
-        "source": "Bacot 1912: Lotsava (interpr\u00e8te); pandit."
+        "source": "Bacot 1912: <i>Lotsava</i> (interpr\u00e8te); pandit."
     },
     {
         "picture": "bde_med_ye_shes_che_ske_gter_de_dbed.png",
@@ -1004,13 +1007,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spyan_drangs.png",
-        "contracted_form": "spyanrangs",
+        "contracted_form": "spynrngs",
         "full_form": "spyan drangs",
         "source": "Bacot 1912: Invitation; inauguration."
     },
     {
         "picture": "don_dam.png",
-        "contracted_form": "don*",
+        "contracted_form": "dn",
         "full_form": "don dam",
         "source": "Bacot 1912: Sens propre; sens vrai objectivement."
     },
@@ -1034,13 +1037,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdag_nyid.png",
-        "contracted_form": "bdagid",
+        "contracted_form": "bdgd",
         "full_form": "bdag nyid",
         "source": "Bacot 1912: Moi-m\u00eame."
     },
     {
         "picture": "ting_nge_dzin.png",
-        "contracted_form": "tingi^n",
+        "contracted_form": "tngn",
         "full_form": "ting nge 'dzin",
         "source": "Bacot 1912: M\u00e9ditation profonde, extase (samadhi)."
     },
@@ -1064,7 +1067,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "snying_po.png",
-        "contracted_form": "snyiong",
+        "contracted_form": "snyng",
         "full_form": "snying po",
         "source": "Bacot 1912: La moelle, le coeur, l'essence."
     },
@@ -1088,7 +1091,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thod_khrag.png",
-        "contracted_form": "thodg",
+        "contracted_form": "thdg",
         "full_form": "thod khrag",
         "source": "Bacot 1912: Cr\u00e2ne rempli de sang."
     },
@@ -1100,7 +1103,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnyis_su_med.png",
-        "contracted_form": "2sued",
+        "contracted_form": "2sd",
         "full_form": "gnyis su med",
         "source": "Bacot 1912: Sans double, identique, unique."
     },
@@ -1132,17 +1135,17 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "_jam_dpal.png",
         "contracted_form": "'jl",
         "full_form": "'jam dpal",
-        "source": "Bacot 1912: Manjusri."
+        "source": "Bacot 1912: <i>Mañjuśrī</i>."
     },
     {
         "picture": "pho_nya.png",
-        "contracted_form": "phnyo",
+        "contracted_form": "phny",
         "full_form": "pho nya",
         "source": "Bacot 1912: Messager."
     },
     {
         "picture": "thod_phreng.png",
-        "contracted_form": "throdeng",
+        "contracted_form": "thrdng",
         "full_form": "thod phreng",
         "source": "Bacot 1912: Guirlande de cr\u00e2nes; guirlande pour orner la t\u00eate."
     },
@@ -1178,13 +1181,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dal_byor.png",
-        "contracted_form": "dalyor",
+        "contracted_form": "dlyr",
         "full_form": "dal 'byor",
         "source": "Bacot 1912: B\u00e9atitude."
     },
     {
         "picture": "phyogs_bcu_i_lha_la_phyag_tshal_bstod.png",
-        "contracted_form": "phyou'i lha lya stod",
+        "contracted_form": "phy' lh ly std",
         "full_form": "phyogs bcu'i lha la phyag 'tshal bstod",
         "source": "Bacot 1912: Salut aux dieux des dix directions."
     },
@@ -1220,13 +1223,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "_phra_chen.png",
-        "contracted_form": "'phren",
+        "contracted_form": "'phrn",
         "full_form": "'phra chen",
         "source": "Bacot 1912"
     },
     {
         "picture": "gdub_bu.png",
-        "contracted_form": "gdubu",
+        "contracted_form": "gdb",
         "full_form": "gdub bu",
         "source": "Bacot 1912: Bracelet, anneau; ornement."
     },
@@ -1268,7 +1271,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "ting_shag.png",
-        "contracted_form": "tingg",
+        "contracted_form": "tngg",
         "full_form": "ting shag",
         "source": "Bacot 1912: Grelots."
     },
@@ -1286,7 +1289,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnas_su.png",
-        "contracted_form": "nyasu",
+        "contracted_form": "nys",
         "full_form": "gnas su",
         "source": "Bacot 1912: Sur place."
     },
@@ -1310,7 +1313,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mnyan_yod.png",
-        "contracted_form": "mnyod",
+        "contracted_form": "mnyd",
         "full_form": "mnyan yod",
         "source": "Bacot 1912: \u00c7r\u00e0vasti ; nom de ville."
     },
@@ -1366,7 +1369,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "log_dren0.png",
         "contracted_form": "logren",
         "full_form": "log 'dren",
-        "source": "Bacot 1912: Vinayaka (\u00e9pith\u00e8te de Gane\u00e7a)."
+        "source": "Bacot 1912: <i>Vināyaka</i> (\u00e9pith\u00e8te de Gane\u00e7a)."
     },
     {
         "picture": "skad_cig.png",
@@ -1408,7 +1411,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "lung_bstan.png",
         "contracted_form": "lungn",
         "full_form": "lung bstan",
-        "source": "Bacot 1912: Vyakarana; proph\u00e9tie."
+        "source": "Bacot 1912: <i>Vyākaraṇa</i>; proph\u00e9tie."
     },
     {
         "picture": "mtshams_brgyad.png",
@@ -1418,7 +1421,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gdam_ngag.png",
-        "contracted_form": "gda*g",
+        "contracted_form": "gdg",
         "full_form": "gdam ngag",
         "source": "Bacot 1912: Conseil, avis."
     },
@@ -1460,7 +1463,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_dag.png",
-        "contracted_form": "rna*g",
+        "contracted_form": "rng",
         "full_form": "rnam dag",
         "source": "Bacot 1912: Tr\u00e8s pur."
     },
@@ -1478,7 +1481,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdag_nyid0.png",
-        "contracted_form": "bdid",
+        "contracted_form": "bdd",
         "full_form": "bdag nyid",
         "source": "Bacot 1912: Moi-m\u00eame."
     },
@@ -1490,9 +1493,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyag_tshal0.png",
-        "contracted_form": "phyag^l",
+        "contracted_form": "phygl",
         "full_form": "phyag 'tshal",
-        "source": "Bacot 1912: Saluer; prostration, salut (namas)."
+        "source": "Bacot 1912: Saluer; prostration, salut (<i>namas</i>)."
     },
     {
         "picture": "bka_srung.png",
@@ -1502,13 +1505,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "pho_rgyud.png",
-        "contracted_form": "phyuod",
+        "contracted_form": "phyd",
         "full_form": "pho rgyud",
         "source": "Bacot 1912"
     },
     {
         "picture": "gtor_ma.png",
-        "contracted_form": "tyo*r",
+        "contracted_form": "tyr",
         "full_form": "gtor ma",
         "source": "Bacot 1912: Objets qui doivent \u00eatre consum\u00e9s dans un sacrifice."
     },
@@ -1528,11 +1531,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "dkon_mchog.png",
         "contracted_form": "dkg",
         "full_form": "dkon mchog",
-        "source": "Bacot 1912: Ratna."
+        "source": "Bacot 1912: <i>Ratna</i>."
     },
     {
         "picture": "bstan_skyong0.png",
-        "contracted_form": "bstanyong",
+        "contracted_form": "bstnyng",
         "full_form": "bstan skyong",
         "source": "Bacot 1912: Conserver, prot\u00e9ger la doctrine."
     },
@@ -1562,15 +1565,15 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dus_chod.png",
-        "contracted_form": "dus^od",
+        "contracted_form": "dsd",
         "full_form": "dus chod",
         "source": "Bacot 1912: Heure; douzi\u00e8me partie du jour."
     },
     {
         "picture": "_du_byed.png",
-        "contracted_form": "'dued",
+        "contracted_form": "'dd",
         "full_form": "'du byed",
-        "source": "Bacot 1912: Notion, forme des choses; com pos\u00e9; synth\u00e8se (samskara)."
+        "source": "Bacot 1912: Notion, forme des choses; com pos\u00e9; synth\u00e8se (<i>samskāra</i>)."
     },
     {
         "picture": "ji_srid.png",
@@ -1610,7 +1613,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bsnyen_bkur.png",
-        "contracted_form": "bsnyur",
+        "contracted_form": "bsnyr",
         "full_form": "bsnyen bkur",
         "source": "Bacot 1912: Respect; politesse."
     },
@@ -1628,7 +1631,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bar_chad.png",
-        "contracted_form": "bard",
+        "contracted_form": "brd",
         "full_form": "bar chad",
         "source": "Bacot 1912: Entre, parmi, pendant que; interruption."
     },
@@ -1646,13 +1649,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyi_nang_gsang_gsum.png",
-        "contracted_form": "phying syangsu*",
+        "contracted_form": "phyng syngs",
         "full_form": "phyi nang gsang gsum",
         "source": "Bacot 1912: Les trois caract\u00e8res (exot\u00e9rique, \u00e9sot\u00e9rique et mystique)."
     },
     {
         "picture": "thod_phreng_rtsal_.png",
-        "contracted_form": "throdeng^l",
+        "contracted_form": "thrdngl",
         "full_form": "thod phreng rtsal ",
         "source": "Bacot 1912: La force d'une guirlande de cr\u00e2nes."
     },
@@ -1694,7 +1697,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "brtul_zhugs.png",
-        "contracted_form": "brtug",
+        "contracted_form": "brtg",
         "full_form": "brtul zhugs",
         "source": "Bacot 1912: Voeu, p\u00e9nitence."
     },
@@ -1712,7 +1715,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdag_med.png",
-        "contracted_form": "bdaged",
+        "contracted_form": "bdgd",
         "full_form": "bdag med",
         "source": "Bacot 1912: Sans ma\u00eetre; le vide."
     },
@@ -1724,13 +1727,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "sde_brgyad.png",
-        "contracted_form": "sdyed",
+        "contracted_form": "sdyd",
         "full_form": "sde brgyad",
         "source": "Bacot 1912: Les huit classes (de d\u00e9mons)."
     },
     {
         "picture": "bu_tsha.png",
-        "contracted_form": "bu^",
+        "contracted_form": "b",
         "full_form": "bu tsha",
         "source": "Bacot 1912: Fils, gar\u00e7on."
     },
@@ -1742,7 +1745,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phung_po.png",
-        "contracted_form": "phuong",
+        "contracted_form": "phng",
         "full_form": "phung po",
         "source": "Bacot 1912: Le corps."
     },
@@ -1760,13 +1763,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thig_le.png",
-        "contracted_form": "thige",
+        "contracted_form": "thg",
         "full_form": "thig le",
-        "source": "Bacot 1912: Tilaka."
+        "source": "Bacot 1912: <i>Tilaka</i>."
     },
     {
         "picture": "bdud_rtsi.png",
-        "contracted_form": "bdu^id",
+        "contracted_form": "bdd",
         "full_form": "bdud rtsi",
         "source": "Bacot 1912: Nectar."
     },
@@ -1838,13 +1841,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gti_mug.png",
-        "contracted_form": "gtiug",
+        "contracted_form": "gtg",
         "full_form": "gti mug",
         "source": "Bacot 1912: Ignorance, stupidit\u00e9."
     },
     {
         "picture": "phyag_tshal_lo0.png",
-        "contracted_form": "ph^yaol",
+        "contracted_form": "phyl",
         "full_form": "phyag 'tshal lo",
         "source": "Bacot 1912: Salut \u00e0; je salue."
     },
@@ -1856,7 +1859,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thugs_rje.png",
-        "contracted_form": "thu#e",
+        "contracted_form": "th#",
         "full_form": "thugs rje",
         "source": "Bacot 1912: G\u00e9n\u00e9rosit\u00e9; compassion."
     },
@@ -1886,7 +1889,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnas_kyis.png",
-        "contracted_form": "nyasyi",
+        "contracted_form": "nysy",
         "full_form": "gnas kyis",
         "source": "Bacot 1912"
     },
@@ -1910,7 +1913,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "sdigs_mdzub.png",
-        "contracted_form": "sdiu^b",
+        "contracted_form": "sdb",
         "full_form": "sdigs mdzub",
         "source": "Bacot 1912: Un doigt mena\u00e7ant."
     },
@@ -1922,13 +1925,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnod_sbyin_bdag_po.png",
-        "contracted_form": "gnyodingo",
+        "contracted_form": "gnydng",
         "full_form": "gnod sbyin bdag po",
-        "source": "Bacot 1912: Le roi des Yaksas."
+        "source": "Bacot 1912: Le roi des <i>Yakṣas</i>."
     },
     {
         "picture": "de_dag.png",
-        "contracted_form": "dge",
+        "contracted_form": "dg",
         "full_form": "de dag",
         "source": "Bacot 1912: Ces; eux."
     },
@@ -1946,13 +1949,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyi_rol.png",
-        "contracted_form": "phyriol",
+        "contracted_form": "phyrl",
         "full_form": "phyi rol",
         "source": "Bacot 1912: Ext\u00e9rieur, dehors."
     },
     {
         "picture": "spyan_gzigs.png",
-        "contracted_form": "spyin#",
+        "contracted_form": "spyn#",
         "full_form": "spyan gzigs",
         "source": "Bacot 1912: Voir, regarder; pr\u00e9sents pr\u00e9cieux."
     },
@@ -1988,7 +1991,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rta_mgrin.png",
-        "contracted_form": "rtrin",
+        "contracted_form": "rtrn",
         "full_form": "rta mgrin",
         "source": "Bacot 1912: Tamdin; divinit\u00e9 \u00e0 t\u00eate de cheval."
     },
@@ -2006,7 +2009,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mtho_ris.png",
-        "contracted_form": "mthrois",
+        "contracted_form": "mthrs",
         "full_form": "mtho ris",
         "source": "Bacot 1912: Le paradis."
     },
@@ -2018,7 +2021,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spu_gri.png",
-        "contracted_form": "sprui",
+        "contracted_form": "spr",
         "full_form": "spu gri",
         "source": "Bacot 1912: Rasoir; ciseaux."
     },
@@ -2050,7 +2053,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "grub_thob.png",
         "contracted_form": "grb",
         "full_form": "grub thob",
-        "source": "Bacot 1912: Un saint (siddha)."
+        "source": "Bacot 1912: Un saint (<i>siddha</i>)."
     },
     {
         "picture": "gtso_bo.png",
@@ -2066,9 +2069,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "don_yod_grub.png",
-        "contracted_form": "donruodb",
+        "contracted_form": "dnrdb",
         "full_form": "don yod grub",
-        "source": "Bacot 1912: Amoghasiddha."
+        "source": "Bacot 1912: <i>Amoghasiddha</i>."
     },
     {
         "picture": "_jig_rten0.png",
@@ -2090,7 +2093,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdag_cag.png",
-        "contracted_form": "bdagag",
+        "contracted_form": "bdgg",
         "full_form": "bdag cag",
         "source": "Bacot 1912: Nous (pronom personnel)."
     },
@@ -2098,7 +2101,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "byang_chub.png",
         "contracted_form": "byub",
         "full_form": "byang chub",
-        "source": "Bacot 1912: Saintet\u00e9 (Bodhi)."
+        "source": "Bacot 1912: Saintet\u00e9 (<i>Bodhi</i>)."
     },
     {
         "picture": "rigs_lnga.png",
@@ -2116,7 +2119,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "gang_zag.png",
         "contracted_form": "gngg",
         "full_form": "gang zag",
-        "source": "Bacot 1912: Etre anim\u00e9 (pudgala)."
+        "source": "Bacot 1912: Etre anim\u00e9 (<i>pudgala</i>)."
     },
     {
         "picture": "gzhu_doms.png",
@@ -2150,19 +2153,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gdung_dzin.png",
-        "contracted_form": "gdu^in",
+        "contracted_form": "gdn",
         "full_form": "gdung 'dzin",
         "source": "Bacot 1912: Niche o\u00f9 Ton d\u00e9pose les reliques."
     },
     {
         "picture": "snang_srid.png",
-        "contracted_form": "snringd",
+        "contracted_form": "snrngd",
         "full_form": "snang srid",
         "source": "Bacot 1912: Monde visible."
     },
     {
         "picture": "bstan_bcos.png",
-        "contracted_form": "bstos",
+        "contracted_form": "bsts",
         "full_form": "bstan bcos",
         "source": "Bacot 1912: Commentaire religieux."
     },
@@ -2192,9 +2195,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "de_bzhin_nyid.png",
-        "contracted_form": "dbezhinid",
+        "contracted_form": "dbzhnd",
         "full_form": "de bzhin nyid",
-        "source": "Bacot 1912: Identit\u00e9, essence (tathata)."
+        "source": "Bacot 1912: Identit\u00e9, essence (<i>tathāta</i>)."
     },
     {
         "picture": "mchog_chen_che_mchog_chen.png",
@@ -2204,7 +2207,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "stong_nyid.png",
-        "contracted_form": "stongid",
+        "contracted_form": "stngd",
         "full_form": "stong nyid",
         "source": "Bacot 1912: Vide, n\u00e9ant."
     },
@@ -2216,9 +2219,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rdo_rje_sems_dpa_.png",
-        "contracted_form": "rdoeeds*",
+        "contracted_form": "rdds",
         "full_form": "rdo rje sems dpa'",
-        "source": "Bacot 1912: Forme tantrique d\u2019Aksobhya (Vajrasattva)."
+        "source": "Bacot 1912: Forme tantrique d\u2019Aksobhya (<i>Vajrasattva</i>)."
     },
     {
         "picture": "bcol_pa_i_khra_phrin_las_grub_par_sar_mdzod.png",
@@ -2234,7 +2237,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dug_lnga.png",
-        "contracted_form": "dugnga",
+        "contracted_form": "dgng",
         "full_form": "dug lnga",
         "source": "Bacot 1912: Les cinq poisons."
     },
@@ -2252,7 +2255,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thams_cad.png",
-        "contracted_form": "tha*scad",
+        "contracted_form": "thscd",
         "full_form": "thams cad",
         "source": "Bacot 1912: Tout, tous."
     },
@@ -2264,7 +2267,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "pha_dang_bu.png",
-        "contracted_form": "pha spang",
+        "contracted_form": "pha spad",
         "full_form": "pha dang bu",
         "source": "Bacot 1912: Le p\u00e8re et l'enfant."
     },
@@ -2276,7 +2279,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "drag_po_rtsal.png",
-        "contracted_form": "drag^l",
+        "contracted_form": "drgl",
         "full_form": "drag po rtsal",
         "source": "Bacot 1912: Terrible."
     },
@@ -2312,7 +2315,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thams_cad0.png",
-        "contracted_form": "tha*d",
+        "contracted_form": "thd",
         "full_form": "thams cad",
         "source": "Bacot 1912: Tout, tous."
     },
@@ -2324,9 +2327,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyag_rgya.png",
-        "contracted_form": "phyargya",
+        "contracted_form": "phyrgy",
         "full_form": "phyag rgya",
-        "source": "Bacot 1912: Mudr\u00e2; sceau, cachet; geste rituel."
+        "source": "Bacot 1912: <i>Mudrā</i>; sceau, cachet; geste rituel."
     },
     {
         "picture": "skad_cig0.png",
@@ -2368,7 +2371,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "yum_chen.png",
         "contracted_form": "yuen*",
         "full_form": "yum chen",
-        "source": "Bacot 1912: Mahamatrka."
+        "source": "Bacot 1912: <i>Mahāmātṛkā</i>."
     },
     {
         "picture": "klu_bdud0.png",
@@ -2390,13 +2393,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnyis_med.png",
-        "contracted_form": "2ed",
+        "contracted_form": "2d",
         "full_form": "gnyis med",
         "source": "Bacot 1912: Unique."
     },
     {
         "picture": "_du_shes.png",
-        "contracted_form": "'dues",
+        "contracted_form": "'ds",
         "full_form": "'du shes",
         "source": "Bacot 1912: Conscience."
     },
@@ -2408,13 +2411,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bsdigs_mdzub_mdzad.png",
-        "contracted_form": "bsdiu^b*d",
+        "contracted_form": "bsdbd",
         "full_form": "bsdigs mdzub mdzad",
         "source": "Bacot 1912: Menacer du doigt."
     },
     {
         "picture": "thun_mong.png",
-        "contracted_form": "thunong",
+        "contracted_form": "thnng",
         "full_form": "thun mong",
         "source": "Bacot 1912: Commun, ordinaire."
     },
@@ -2468,7 +2471,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rten_brel.png",
-        "contracted_form": "rtreel",
+        "contracted_form": "rtrl",
         "full_form": "rten 'brel",
         "source": "Bacot 1912: Augure."
     },
@@ -2510,7 +2513,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "nag_mo.png",
-        "contracted_form": "nog*",
+        "contracted_form": "ng",
         "full_form": "nag mo",
         "source": "Bacot 1912: Femme noire; femme en g\u00e9n\u00e9ral."
     },
@@ -2534,7 +2537,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "tham_pa.png",
-        "contracted_form": "tha*pa",
+        "contracted_form": "thp",
         "full_form": "tham pa",
         "source": "Bacot 1912: Entier, int\u00e9gral."
     },
@@ -2552,7 +2555,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "_du_dzi.png",
-        "contracted_form": "'dui^",
+        "contracted_form": "'d",
         "full_form": "'du 'dzi",
         "source": "Bacot 1912: Tumulte; r\u00e9unions de plaisir; concours de peuple."
     },
@@ -2564,7 +2567,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thugs_dam_bskang0.png",
-        "contracted_form": "thya*ng",
+        "contracted_form": "thyng",
         "full_form": "thugs dam bskang",
         "source": "Bacot 1912: Accomplissement des d\u00e9sirs."
     },
@@ -2600,7 +2603,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bstan_bsrung.png",
-        "contracted_form": "bstrung",
+        "contracted_form": "bstrng",
         "full_form": "bstan bsrung",
         "source": "Bacot 1912: Gardien de la doctrine."
     },
@@ -2612,7 +2615,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_mkhyen.png",
-        "contracted_form": "rna*en",
+        "contracted_form": "rnn",
         "full_form": "rnam mkhyen",
         "source": "Bacot 1912: Omniscience."
     },
@@ -2642,13 +2645,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "pho_rog.png",
-        "contracted_form": "phoog",
+        "contracted_form": "phg",
         "full_form": "pho rog",
         "source": "Bacot 1912: Corbeau."
     },
     {
         "picture": "thog_med.png",
-        "contracted_form": "thoged",
+        "contracted_form": "thgd",
         "full_form": "thog med",
         "source": "Bacot 1912: Sans fruit, st\u00e9rile."
     },
@@ -2674,7 +2677,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "dge_dun.png",
         "contracted_form": "dgn",
         "full_form": "dge 'dun",
-        "source": "Bacot 1912: Clerg\u00e9 (samgha)."
+        "source": "Bacot 1912: Clerg\u00e9 (<i>saṃgha</i>)."
     },
     {
         "picture": "yongs_rdzogs.png",
@@ -2690,13 +2693,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gdug_rtsub.png",
-        "contracted_form": "gdu^b",
+        "contracted_form": "gdb",
         "full_form": "gdug rtsub",
         "source": "Bacot 1912: F\u00e9rocit\u00e9; malice."
     },
     {
         "picture": "thod_khrag0.png",
-        "contracted_form": "throg",
+        "contracted_form": "thrg",
         "full_form": "thod khrag",
         "source": "Bacot 1912: Cr\u00e2ne rempli de sang."
     },
@@ -2708,9 +2711,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "de_bzhin_gshegs.png",
-        "contracted_form": "deine#",
+        "contracted_form": "dn#",
         "full_form": "de bzhin gshegs",
-        "source": "Bacot 1912: Tathagata."
+        "source": "Bacot 1912: <i>Tathāgata</i>."
     },
     {
         "picture": "rang_bzhin.png",
@@ -2720,7 +2723,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bde_gshegs.png",
-        "contracted_form": "bde#",
+        "contracted_form": "bd#",
         "full_form": "bde gshegs",
         "source": "Bacot 1912:  Bienheureux; \u00e9pith\u00e8te de Bouddha."
     },
@@ -2734,11 +2737,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "khrum_stod.png",
         "contracted_form": "khrd",
         "full_form": "khrum stod",
-        "source": "Bacot 1912: PUrvabhAdra."
+        "source": "Bacot 1912: <i>Pūrvabhādra</i>."
     },
     {
         "picture": "dug_gsum.png",
-        "contracted_form": "dugsu*",
+        "contracted_form": "dgs",
         "full_form": "dug gsum",
         "source": "Bacot 1912: Les trois poisons ou vices."
     },
@@ -2756,19 +2759,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dril_bu.png",
-        "contracted_form": "drilu",
+        "contracted_form": "drl",
         "full_form": "dril bu",
         "source": "Bacot 1912: Cloche."
     },
     {
         "picture": "dur_khrod.png",
-        "contracted_form": "duod",
+        "contracted_form": "drd",
         "full_form": "dur khrod",
         "source": "Bacot 1912: Cimeti\u00e8re."
     },
     {
         "picture": "mtha_bral.png",
-        "contracted_form": "mthral",
+        "contracted_form": "mthrl",
         "full_form": "mtha' bral",
         "source": "Bacot 1912: L'espace."
     },
@@ -2780,7 +2783,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpag_med.png",
-        "contracted_form": "dpaged",
+        "contracted_form": "dpgd",
         "full_form": "dpag med",
         "source": "Bacot 1912: Sans mesure, beaucoup."
     },
@@ -2798,7 +2801,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bstan_dzin_.png",
-        "contracted_form": "bi^n",
+        "contracted_form": "bn",
         "full_form": "bstan 'dzin ",
         "source": "Bacot 1912: Action de comprendre, saisir une d\u00e9monstration."
     },
@@ -2834,7 +2837,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_thos_sras.png",
-        "contracted_form": "rnra*os",
+        "contracted_form": "rnrs",
         "full_form": "rnam thos sras",
         "source": "Bacot 1912: Vaisravana."
     },
@@ -2846,7 +2849,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spyan_sngar.png",
-        "contracted_form": "spyanngar",
+        "contracted_form": "spynngr",
         "full_form": "spyan sngar",
         "source": "Bacot 1912: Devant; en pr\u00e9sence de."
     },
@@ -2870,7 +2873,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spyi_bor.png",
-        "contracted_form": "spyior",
+        "contracted_form": "spyr",
         "full_form": "spyi bor",
         "source": "Bacot 1912: En t\u00e8te."
     },
@@ -2882,7 +2885,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mthar_phyin0.png",
-        "contracted_form": "mthyin",
+        "contracted_form": "mthyn",
         "full_form": "mthar phyin",
         "source": "Bacot 1912: Parfait; arriv\u00e9 \u00e0 la perfection; fini, \u00e9mancip\u00e9; arriver \u00e0 ses fins."
     },
@@ -2900,7 +2903,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdug_spos.png",
-        "contracted_form": "bduos",
+        "contracted_form": "bds",
         "full_form": "bdug spos",
         "source": "Bacot 1912: Toute substance odorif\u00e9rante; encens."
     },
@@ -2942,7 +2945,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnal_byor.png",
-        "contracted_form": "rnor",
+        "contracted_form": "rnr",
         "full_form": "rnal 'byor",
         "source": "Bacot 1912: Contemplation (yoga)."
     },
@@ -2954,13 +2957,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mthu_chen.png",
-        "contracted_form": "mthuen",
+        "contracted_form": "mthn",
         "full_form": "mthu chen",
         "source": "Bacot 1912: Puissant."
     },
     {
         "picture": "thugs_rje0.png",
-        "contracted_form": "thye",
+        "contracted_form": "thy",
         "full_form": "thugs rje",
         "source": "Bacot 1912: G\u00e9n\u00e9rosit\u00e9; compassion."
     },
@@ -2984,19 +2987,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mthing_nag.png",
-        "contracted_form": "mthingg",
+        "contracted_form": "mthngg",
         "full_form": "mthing nag",
         "source": "Bacot 1912: Bleu fonc\u00e9."
     },
     {
         "picture": "bdag_gis.png",
-        "contracted_form": "bdagis",
+        "contracted_form": "bdgs",
         "full_form": "bdag gis",
         "source": "Bacot 1912: Mon, de moi."
     },
     {
         "picture": "dpon_slob.png",
-        "contracted_form": "dplon",
+        "contracted_form": "dpln",
         "full_form": "dpon slob",
         "source": "Bacot 1912: Titre du gouverneur du Boutan."
     },
@@ -3008,13 +3011,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "_du_bral.png",
-        "contracted_form": "'drul",
+        "contracted_form": "'drl",
         "full_form": "'du 'bral",
         "source": "Bacot 1912: Unir et s\u00e9parer."
     },
     {
         "picture": "sdong_grogs.png",
-        "contracted_form": "sdroo#",
+        "contracted_form": "sdr#",
         "full_form": "sdong grogs",
         "source": "Bacot 1912: Compagnon (?)."
     },
@@ -3022,7 +3025,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "srin_po_.png",
         "contracted_form": "31_667",
         "full_form": "srin po ",
-        "source": "Bacot 1912: D\u00e9mon cannibale (Raksasa)."
+        "source": "Bacot 1912: D\u00e9mon cannibale (<i>Rākṣasa</i>)."
     },
     {
         "picture": "ser_sna.png",
@@ -3038,13 +3041,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thob_par_shog_.png",
-        "contracted_form": "thobrog",
+        "contracted_form": "thbrg",
         "full_form": "thob par shog ",
         "source": "Bacot 1912: Puiss\u00e9-je atteindre!"
     },
     {
         "picture": "snying_thig.png",
-        "contracted_form": "snyingig",
+        "contracted_form": "snyngg",
         "full_form": "snying thig",
         "source": "Bacot 1912"
     },
@@ -3056,15 +3059,15 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mthu_rtsal.png",
-        "contracted_form": "mthu^l",
+        "contracted_form": "mthl",
         "full_form": "mthu rtsal",
         "source": "Bacot 1912: Force, puissance."
     },
     {
         "picture": "rnam_rgyal.png",
-        "contracted_form": "rnya*l",
+        "contracted_form": "rnyl",
         "full_form": "rnam rgyal",
-        "source": "Bacot 1912: Vijaya."
+        "source": "Bacot 1912: <i>Vijaya</i>."
     },
     {
         "picture": "kun_gzigs.png",
@@ -3074,7 +3077,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "snying_khar.png",
-        "contracted_form": "snyingr",
+        "contracted_form": "snyngr",
         "full_form": "snying khar",
         "source": "Bacot 1912: Par coeur."
     },
@@ -3098,7 +3101,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bstan_bsrung0.png",
-        "contracted_form": "bstrunngs",
+        "contracted_form": "bstrnngs",
         "full_form": "bstan bsrung",
         "source": "Bacot 1912: Gardien de la doctrine."
     },
@@ -3146,7 +3149,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "sdig_srin_.png",
-        "contracted_form": "sdin",
+        "contracted_form": "sdn",
         "full_form": "sdig srin ",
         "source": "Bacot 1912: Scorpion."
     },
@@ -3158,7 +3161,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "_dod_chags.png",
-        "contracted_form": "'dod#",
+        "contracted_form": "'dd#",
         "full_form": "'dod chags",
         "source": "Bacot 1912: Passion; d\u00e9sirs charnels."
     },
@@ -3176,13 +3179,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dri_med.png",
-        "contracted_form": "dried",
+        "contracted_form": "drd",
         "full_form": "dri med",
         "source": "Bacot 1912: Sans odeur."
     },
     {
         "picture": "bde_chen.png",
-        "contracted_form": "bdeen",
+        "contracted_form": "bdn",
         "full_form": "bde chen",
         "source": "Bacot 1912: F\u00e9licit\u00e9, grand bonheur."
     },
@@ -3202,17 +3205,17 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "mu_stegs0.png",
         "contracted_form": "mtue#",
         "full_form": "mu stegs",
-        "source": "Bacot 1912: H\u00e9r\u00e9tique; non bouddhiste (tirthaka)."
+        "source": "Bacot 1912: H\u00e9r\u00e9tique; non bouddhiste (<i>tīrthaka</i>)."
     },
     {
         "picture": "thugs_brtse.png",
-        "contracted_form": "thue^#",
+        "contracted_form": "th#",
         "full_form": "thugs brtse",
         "source": "Bacot 1912: Merci; affection; amour."
     },
     {
         "picture": "rnam_rtog.png",
-        "contracted_form": "rno*g",
+        "contracted_form": "rng",
         "full_form": "rnam rtog",
         "source": "Bacot 1912: Perception, pens\u00e9e."
     },
@@ -3230,7 +3233,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phun_tshogs.png",
-        "contracted_form": "phuo^#",
+        "contracted_form": "ph#",
         "full_form": "phun tshogs",
         "source": "Bacot 1912: Parfait, accompli."
     },
@@ -3248,7 +3251,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnod_byed.png",
-        "contracted_form": "gnyoed",
+        "contracted_form": "gnyd",
         "full_form": "gnod byed",
         "source": "Bacot 1912: Mauvaise volont\u00e9; malice."
     },
@@ -3266,13 +3269,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dus_gsum.png",
-        "contracted_form": "dusu*",
+        "contracted_form": "ds",
         "full_form": "dus gsum",
         "source": "Bacot 1912: Les trois temps (pass\u00e9, pr\u00e9sent, avenir)."
     },
     {
         "picture": "nub_phyogs0.png",
-        "contracted_form": "nubyo#",
+        "contracted_form": "nby#",
         "full_form": "nub phyogs",
         "source": "Bacot 1912: L'Ouest."
     },
@@ -3284,7 +3287,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "nub_phyogs.png",
-        "contracted_form": "nuo#",
+        "contracted_form": "n#",
         "full_form": "nub phyogs",
         "source": "Bacot 1912: L'Ouest."
     },
@@ -3308,7 +3311,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "drang_srong.png",
-        "contracted_form": "drong",
+        "contracted_form": "drng",
         "full_form": "drang srong",
         "source": "Bacot 1912: Ermite."
     },
@@ -3350,13 +3353,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mtha_yas0.png",
-        "contracted_form": "mthyas",
+        "contracted_form": "mthys",
         "full_form": "mtha' yas",
         "source": "Bacot 1912: Infini."
     },
     {
         "picture": "sna_tshogs.png",
-        "contracted_form": "sno#",
+        "contracted_form": "sn#",
         "full_form": "sna tshogs",
         "source": "Bacot 1912: De toutes sortes, vari\u00e9."
     },
@@ -3368,13 +3371,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dam_rdzas.png",
-        "contracted_form": "da*^s",
+        "contracted_form": "ds",
         "full_form": "dam rdzas",
         "source": "Bacot 1912: Objets consacr\u00e9s qu\u2019on porte sur soi; amulettes."
     },
     {
         "picture": "mthar_thug.png",
-        "contracted_form": "mthurg",
+        "contracted_form": "mthrg",
         "full_form": "mthar thug",
         "source": "Bacot 1912: La fin, le but qu'on se propose."
     },
@@ -3392,13 +3395,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "pho_brang.png",
-        "contracted_form": "phrong",
+        "contracted_form": "phrng",
         "full_form": "pho brang",
         "source": "Bacot 1912: Palais."
     },
     {
         "picture": "mtho_ris0.png",
-        "contracted_form": "mthois",
+        "contracted_form": "mths",
         "full_form": "mtho ris",
         "source": "Bacot 1912: Le paradis."
     },
@@ -3446,7 +3449,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpung_tshogs.png",
-        "contracted_form": "dpuo#",
+        "contracted_form": "dp#",
         "full_form": "dpung tshogs",
         "source": "Bacot 1912: Troupes assembl\u00e9es, arm\u00e9e."
     },
@@ -3460,7 +3463,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "yid_bzhin_nor_bu.png",
         "contracted_form": "yidinuro",
         "full_form": "yid bzhin nor bu",
-        "source": "Bacot 1912: Cintamani; pierrre philosophale."
+        "source": "Bacot 1912: <i>Cintāmaṇi</i>; pierre philosophale."
     },
     {
         "picture": "gsung_rab.png",
@@ -3476,13 +3479,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mtha_yas.png",
-        "contracted_form": "mthas",
+        "contracted_form": "mths",
         "full_form": "mtha' yas",
         "source": "Bacot 1912: Infini."
     },
     {
         "picture": "sdong_po.png",
-        "contracted_form": "sdoong",
+        "contracted_form": "sdng",
         "full_form": "sdong po",
         "source": "Bacot 1912: Tronc, tige."
     },
@@ -3506,13 +3509,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyogs_skyong.png",
-        "contracted_form": "phyoong",
+        "contracted_form": "phyng",
         "full_form": "phyogs skyong",
-        "source": "Bacot 1912: Dikpala; qui prot\u00e8ge les parties du monde."
+        "source": "Bacot 1912: <i>Dikpāla</i>; qui prot\u00e8ge les parties du monde."
     },
     {
         "picture": "sdong_grogs_mdzad.png",
-        "contracted_form": "sdroo#d",
+        "contracted_form": "sdr#d",
         "full_form": "sdong grogs mdzad",
         "source": "Bacot 1912: Accompagner."
     },
@@ -3536,13 +3539,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spros_bral.png",
-        "contracted_form": "sprol",
+        "contracted_form": "sprl",
         "full_form": "spros bral",
         "source": "Bacot 1912: Inactivit\u00e9."
     },
     {
         "picture": "pha_rol.png",
-        "contracted_form": "phrol",
+        "contracted_form": "phrl",
         "full_form": "pha rol",
         "source": "Bacot 1912: Autre, \u00e9tranger."
     },
@@ -3560,7 +3563,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_par_snang_mdzad.png",
-        "contracted_form": "rna*rng^d",
+        "contracted_form": "rnrngd",
         "full_form": "rnam par snang mdzad",
         "source": "Bacot 1912: Vairocana."
     },
@@ -3614,7 +3617,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_sras.png",
-        "contracted_form": "rnra*s",
+        "contracted_form": "rnrs",
         "full_form": "rnam sras",
         "source": "Bacot 1912: Vaisravana."
     },
@@ -3662,9 +3665,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnod_sbyin.png",
-        "contracted_form": "gnyodin",
+        "contracted_form": "gnydn",
         "full_form": "gnod sbyin",
-        "source": "Bacot 1912: Yaksa."
+        "source": "Bacot 1912: <i>Yakṣa</i>."
     },
     {
         "picture": "slob_gnyer.png",
@@ -3704,7 +3707,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spyan_drangs0.png",
-        "contracted_form": "spyrangs",
+        "contracted_form": "spyrngs",
         "full_form": "spyan drangs",
         "source": "Bacot 1912: Invitation; inauguration."
     },
@@ -3712,7 +3715,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "_jam_dbyangs.png",
         "contracted_form": "'jyngs",
         "full_form": "'jam dbyangs",
-        "source": "Bacot 1912: Manjughosa."
+        "source": "Bacot 1912: <i>Mañjughoṣa</i>."
     },
     {
         "picture": "zhe_zhus_so.png",
@@ -3722,19 +3725,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnas_lugs.png",
-        "contracted_form": "gnlu#",
+        "contracted_form": "gnl#",
         "full_form": "gnas lugs",
         "source": "Bacot 1912: L'\u00e9tat naturel de toutes choses."
     },
     {
         "picture": "rnal_byor0.png",
-        "contracted_form": "rnyaor",
+        "contracted_form": "rnyr",
         "full_form": "rnal 'byor",
-        "source": "Bacot 1912: Contemplation (yoga)."
+        "source": "Bacot 1912: Contemplation (<i>yoga</i>)."
     },
     {
         "picture": "dpal_ldan.png",
-        "contracted_form": "dpaldan",
+        "contracted_form": "dpldn",
         "full_form": "dpal ldan",
         "source": "Bacot 1912: Glorieux, illustre."
     },
@@ -3748,7 +3751,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "_dzam_gling.png",
         "contracted_form": "'zla*ing",
         "full_form": "'dzam gling",
-        "source": "Bacot 1912: Jambudvipa; le monde."
+        "source": "Bacot 1912: <i>Jambudvīpa</i>; le monde."
     },
     {
         "picture": "khrag_thung.png",
@@ -3782,7 +3785,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "nam_mkha_.png",
-        "contracted_form": "na*kha'",
+        "contracted_form": "nkh'",
         "full_form": "nam mkha'",
         "source": "Bacot 1912: Le ciel, l'espace."
     },
@@ -3824,13 +3827,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spyi_don.png",
-        "contracted_form": "spyion",
+        "contracted_form": "spyn",
         "full_form": "spyi don",
         "source": "Bacot 1912: L'int\u00e9r\u00eat public."
     },
     {
         "picture": "mthe_bong.png",
-        "contracted_form": "mthoeng",
+        "contracted_form": "mthng",
         "full_form": "mthe bong",
         "source": "Bacot 1912: Le pouce."
     },
@@ -3892,7 +3895,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "byang_chub_sems_dpa_.png",
         "contracted_form": "byang chubsd*'",
         "full_form": "byang chub sems dpa'",
-        "source": "Bacot 1912: Bodhisattva."
+        "source": "Bacot 1912: <i>Bodhisattva</i>."
     },
     {
         "picture": "_khor_ba_dang_myang_das.png",
@@ -3904,11 +3907,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "khro_rgyal.png",
         "contracted_form": "khrl",
         "full_form": "khro rgyal",
-        "source": "Bacot 1912: KrodharAja."
+        "source": "Bacot 1912: <i>Krodharāja</i>."
     },
     {
         "picture": "gnyis_kyi.png",
-        "contracted_form": "2is",
+        "contracted_form": "2s",
         "full_form": "gnyis kyi",
         "source": "Bacot 1912"
     },
@@ -3944,7 +3947,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dus_chod0.png",
-        "contracted_form": "du^od",
+        "contracted_form": "dd",
         "full_form": "dus chod",
         "source": "Bacot 1912: Heure; douzi\u00e8me partie du jour."
     },
@@ -3958,7 +3961,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "bsam_yas.png",
         "contracted_form": "31_683",
         "full_form": "bsam yas",
-        "source": "Bacot 1912: Nom d'une lamaserie (Sam ye)."
+        "source": "Bacot 1912: Nom d'une lamaserie (<i>Sam ye</i>)."
     },
     {
         "picture": "lcags_sgrog0.png",
@@ -3968,7 +3971,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "snod_bcud.png",
-        "contracted_form": "snoud",
+        "contracted_form": "snd",
         "full_form": "snod bcud",
         "source": "Bacot 1912: Monde inanim\u00e9 et sensible."
     },
@@ -3998,7 +4001,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dur_khrod0.png",
-        "contracted_form": "durod",
+        "contracted_form": "drrd",
         "full_form": "dur khrod",
         "source": "Bacot 1912: Cimeti\u00e8re."
     },
@@ -4028,7 +4031,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "mthun_mong.png",
-        "contracted_form": "mthuong",
+        "contracted_form": "mthng",
         "full_form": "mthun mong",
         "source": "Bacot 1912: Commun, ordinaire."
     },
@@ -4048,7 +4051,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "_od_dpag_med.png",
         "contracted_form": "'odpaged",
         "full_form": "'od dpag med",
-        "source": "Bacot 1912: Amitabha."
+        "source": "Bacot 1912: <i>Amitābha</i>."
     },
     {
         "picture": "rgyal_srid.png",
@@ -4066,7 +4069,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "smon_lam.png",
         "contracted_form": "smon*",
         "full_form": "smon lam",
-        "source": "Bacot 1912: Pranidhana; pri\u00e8re."
+        "source": "Bacot 1912: <i>Praṇidhāna</i>; pri\u00e8re."
     },
     {
         "picture": "srog_gcod.png",
@@ -4076,13 +4079,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyi_snod.png",
-        "contracted_form": "phyiod",
+        "contracted_form": "phyd",
         "full_form": "phyi snod",
         "source": "Bacot 1912: Vase pour la farine."
     },
     {
         "picture": "dam_can0.png",
-        "contracted_form": "da*^n",
+        "contracted_form": "dn",
         "full_form": "dam can",
         "source": "Bacot 1912: Qui est saint."
     },
@@ -4142,19 +4145,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dus_su.png",
-        "contracted_form": "dusu",
+        "contracted_form": "ds",
         "full_form": "dus su",
         "source": "Bacot 1912: Dans le temps, au temps de."
     },
     {
         "picture": "gtum_po.png",
-        "contracted_form": "gtumo",
+        "contracted_form": "gtm",
         "full_form": "gtum po",
         "source": "Bacot 1912: F\u00e9roce, cruel."
     },
     {
         "picture": "dam_tshig.png",
-        "contracted_form": "da*^ig",
+        "contracted_form": "dg",
         "full_form": "dam tshig",
         "source": "Bacot 1912: Promesse, voeu, serment."
     },
@@ -4166,7 +4169,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpa_mo.png",
-        "contracted_form": "dpa'*o",
+        "contracted_form": "dp'",
         "full_form": "dpa' mo",
         "source": "Bacot 1912: H\u00e9ro\u00efne."
     },
@@ -4186,11 +4189,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "gtsug_gtor0.png",
         "contracted_form": "gtsuor",
         "full_form": "gtsug gtor",
-        "source": "Bacot 1912: Usnisa: excroissance sur la t\u00e8te."
+        "source": "Bacot 1912: <i>Uṣṇīṣa</i>: excroissance sur la t\u00e8te."
     },
     {
         "picture": "rdo_rje.png",
-        "contracted_form": "rdoe",
+        "contracted_form": "rd",
         "full_form": "rdo rje",
         "source": "Bacot 1912: Foudre; sceptre."
     },
@@ -4208,9 +4211,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bde_bar_gshegs.png",
-        "contracted_form": "bdeer#",
+        "contracted_form": "bdr#",
         "full_form": "bde bar gshegs",
-        "source": "Bacot 1912: Bienheureux (Sugata)."
+        "source": "Bacot 1912: Bienheureux (<i>Sugata</i>)."
     },
     {
         "picture": "sku_gsung_thugs.png",
@@ -4232,7 +4235,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "sdug_bsngal0.png",
-        "contracted_form": "sdul",
+        "contracted_form": "sdl",
         "full_form": "sdug bsngal",
         "source": "Bacot 1912: Souffrance, douleur."
     },
@@ -4286,7 +4289,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdag_dzin_.png",
-        "contracted_form": "bdag^in",
+        "contracted_form": "bdgn",
         "full_form": "bdag 'dzin ",
         "source": "Bacot 1912: \u00c9go\u00efsme."
     },
@@ -4304,13 +4307,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "spyi_gtsug.png",
-        "contracted_form": "spyiug",
+        "contracted_form": "spyg",
         "full_form": "spyi gtsug",
         "source": "Bacot 1912: Sommet de la t\u00eate."
     },
     {
         "picture": "phyag_tshal_lo.png",
-        "contracted_form": "ph^yaglo",
+        "contracted_form": "phygl",
         "full_form": "phyag 'tshal lo",
         "source": "Bacot 1912: Salut \u00e0; je salue."
     },
@@ -4330,11 +4333,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "dge_slong0.png",
         "contracted_form": "dgng",
         "full_form": "dge slong",
-        "source": "Bacot 1912: Moine ordonn\u00e9 (bhiksu)."
+        "source": "Bacot 1912: Moine ordonn\u00e9 (<i>bhikṣu</i>)."
     },
     {
         "picture": "drin_chen.png",
-        "contracted_form": "drien",
+        "contracted_form": "drn",
         "full_form": "drin chen",
         "source": "Bacot 1912: Tr\u00e8s gracieux, aimable."
     },
@@ -4358,9 +4361,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyag_tshal.png",
-        "contracted_form": "phya^l",
+        "contracted_form": "phyl",
         "full_form": "phyag 'tshal",
-        "source": "Bacot 1912: Saluer; prostration, salut (namas)."
+        "source": "Bacot 1912: Saluer; prostration, salut (<i>namas</i>)."
     },
     {
         "picture": "dkyil_khor0.png",
@@ -4400,7 +4403,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thugs_khar.png",
-        "contracted_form": "thyar",
+        "contracted_form": "thr",
         "full_form": "thugs khar",
         "source": "Bacot 1912: Semen virile, sperme."
     },
@@ -4412,9 +4415,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "de_bzhin_gshegs0.png",
-        "contracted_form": "dbezhine#",
+        "contracted_form": "dbzhn#",
         "full_form": "de bzhin gshegs",
-        "source": "Bacot 1912: Tathagata."
+        "source": "Bacot 1912: <i>Tathāgata</i>."
     },
     {
         "picture": "_khor_bsrungs.png",
@@ -4424,7 +4427,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_grangs0.png",
-        "contracted_form": "rna*ngs",
+        "contracted_form": "rnngs",
         "full_form": "rnam grangs",
         "source": "Bacot 1912: Enum\u00e9ration, d\u00e9veloppement."
     },
@@ -4450,7 +4453,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "dge_bshes.png",
         "contracted_form": "dgs",
         "full_form": "dge bshes",
-        "source": "Bacot 1912: Kalyanamitra."
+        "source": "Bacot 1912: <i>Kalyāṇamitra</i>."
     },
     {
         "picture": "gtso_khor.png",
@@ -4472,7 +4475,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "drung_yig.png",
-        "contracted_form": "druig",
+        "contracted_form": "drg",
         "full_form": "drung yig",
         "source": "Bacot 1912: Secr\u00e9taire, clerc; exp\u00e9ditionnaire."
     },
@@ -4514,9 +4517,9 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dpal_phreng.png",
-        "contracted_form": "dpalreng",
+        "contracted_form": "dplrng",
         "full_form": "dpal 'phreng",
-        "source": "Bacot 1912: Srimala, titre d'un s\u00fctra."
+        "source": "Bacot 1912: <i>Śrīmālā</i>, titre d'un s\u00fctra."
     },
     {
         "picture": "sha_khrag.png",
@@ -4526,7 +4529,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gdul_bya.png",
-        "contracted_form": "gdulya",
+        "contracted_form": "gdly",
         "full_form": "gdul bya",
         "source": "Bacot 1912: Etre disciplin\u00e9 par la religion."
     },
@@ -4538,7 +4541,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "phyin_chad.png",
-        "contracted_form": "phyind",
+        "contracted_form": "phynd",
         "full_form": "phyin chad",
         "source": "Bacot 1912: Plus tard, apr\u00e8s."
     },
@@ -4556,20 +4559,20 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gtor_ma0.png",
-        "contracted_form": "gto*r",
+        "contracted_form": "gtr",
         "full_form": "gtor ma",
         "source": "Bacot 1912: Objets qui doivent \u00eatre consum\u00e9s dans un sacrifice."
     },
     {
         "picture": "bstan_dzin_0.png",
-        "contracted_form": "bsti^n",
+        "contracted_form": "bstn",
         "full_form": "bstan 'dzin ",
         "source": "Bacot 1912: Action de comprendre, saisir une d\u00e9monstration."
     },
     {
         "picture": "phrad_dog.png",
-        "contracted_form": "phradog",
-        "full_form": "phrad dog",
+        "contracted_form": "phrdg",
+        "full_form": "phrag dog",
         "source": "Bacot 1912: Jalousie."
     },
     {
@@ -4580,19 +4583,19 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "ting_nge_dzin0.png",
-        "contracted_form": "tinge^in",
+        "contracted_form": "tngn",
         "full_form": "ting nge 'dzin",
-        "source": "Bacot 1912: M\u00e9ditation profonde, extase (samadhi)."
+        "source": "Bacot 1912: M\u00e9ditation profonde, extase (<i>samādhi</i>)."
     },
     {
         "picture": "nyon_mongs_.png",
         "contracted_form": "nyngs",
-        "full_form": "nyon mongs ",
+        "full_form": "nyon mongs",
         "source": "Bacot 1912: Mis\u00e8re; p\u00e9ch\u00e9."
     },
     {
         "picture": "thub_chen.png",
-        "contracted_form": "thuben",
+        "contracted_form": "thbn",
         "full_form": "thub chen",
         "source": "Bacot 1912: Tout puissant; grande puissance."
     },
@@ -4612,7 +4615,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "gzhal_yas_khang.png",
         "contracted_form": "zhya*s",
         "full_form": "gzhal yas khang",
-        "source": "Bacot 1912: Palais a\u00e9rien (Vimana)."
+        "source": "Bacot 1912: Palais a\u00e9rien (<i>Vimāna</i>)."
     },
     {
         "picture": "slob_dpon.png",
@@ -4628,7 +4631,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdud_dul.png",
-        "contracted_form": "bdudl",
+        "contracted_form": "bddl",
         "full_form": "bdud 'dul",
         "source": "Bacot 1912: Vainqueur du d\u00e9mon."
     },
@@ -4646,7 +4649,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "sdig_sgrib.png",
-        "contracted_form": "sdribi",
+        "contracted_form": "sdrb",
         "full_form": "sdig sgrib",
         "source": "Bacot 1912: La souillure du p\u00e9ch\u00e9."
     },
@@ -4718,13 +4721,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gnyis_te.png",
-        "contracted_form": "nyie",
+        "contracted_form": "2",
         "full_form": "gnyis te",
         "source": "Bacot 1912"
     },
     {
         "picture": "bstan_skyong.png",
-        "contracted_form": "bstanong",
+        "contracted_form": "bstnng",
         "full_form": "bstan skyong",
         "source": "Bacot 1912: Conserver, prot\u00e9ger la doctrine."
     },
@@ -4754,13 +4757,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "thun_mong0.png",
-        "contracted_form": "thuong",
+        "contracted_form": "thng",
         "full_form": "thun mong",
         "source": "Bacot 1912: Commun, ordinaire."
     },
     {
         "picture": "mnyam_bzhag.png",
-        "contracted_form": "mnya*g",
+        "contracted_form": "mnyg",
         "full_form": "mnyam bzhag",
         "source": "Bacot 1912: Mettre ensemble."
     },
@@ -4778,7 +4781,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "the_tshom_med.png",
-        "contracted_form": "thoeed*",
+        "contracted_form": "thd",
         "full_form": "the tshom med",
         "source": "Bacot 1912: Sans h\u00e9siter, certain."
     },
@@ -4790,7 +4793,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bdun_te.png",
-        "contracted_form": "bdune",
+        "contracted_form": "bdn",
         "full_form": "bdun te",
         "source": "Bacot 1912"
     },
@@ -4820,7 +4823,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "dam_can.png",
-        "contracted_form": "dam^n",
+        "contracted_form": "dmn",
         "full_form": "dam can",
         "source": "Bacot 1912: Qui est saint."
     },
@@ -4840,11 +4843,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "mkha_gro1.png",
         "contracted_form": "mr",
         "full_form": "mkha' 'gro",
-        "source": "Bacot 1912: Qui vit dans le ciel, les esprits; qui va dans l\u2019air, l\u2019oiseau. Magicienne, vampire (dakini)."
+        "source": "Bacot 1912: Qui vit dans le ciel, les esprits; qui va dans l\u2019air, l\u2019oiseau. Magicienne, vampire (<i>ḍākinī</i>)."
     },
     {
         "picture": "bde_gshegs0.png",
-        "contracted_form": "bdee#",
+        "contracted_form": "bd#",
         "full_form": "bde gshegs",
         "source": "Bacot 1912: Bienheureux; \u00e9pith\u00e8te de Bouddha."
     },
@@ -4886,7 +4889,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bu_mo.png",
-        "contracted_form": "buo*",
+        "contracted_form": "b",
         "full_form": "bu mo",
         "source": "Bacot 1912: Fille."
     },
@@ -4898,13 +4901,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "gtun_shing.png",
-        "contracted_form": "gtuing",
+        "contracted_form": "gtng",
         "full_form": "gtun shing",
         "source": "Bacot 1912: Un pilon."
     },
     {
         "picture": "bstan_bcos0.png",
-        "contracted_form": "bstonas",
+        "contracted_form": "bstns",
         "full_form": "bstan bcos",
         "source": "Bacot 1912: Commentaire religieux."
     },
@@ -4942,11 +4945,11 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "gzugs_sku.png",
         "contracted_form": "gzugsku",
         "full_form": "gzugs sku",
-        "source": "Bacot 1912: L'image d'un Bouddha (rupakaya)."
+        "source": "Bacot 1912: L'image d'un Bouddha (<i>rūpakāya</i>)."
     },
     {
         "picture": "gdung_rten.png",
-        "contracted_form": "gduen",
+        "contracted_form": "gdn",
         "full_form": "gdung rten",
         "source": "Bacot 1912: Niche o\u00f9 Ton d\u00e9pose les reliques."
     },
@@ -4964,7 +4967,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "nor_bu.png",
-        "contracted_form": "nour",
+        "contracted_form": "nr",
         "full_form": "nor bu",
         "source": "Bacot 1912: Pierre pr\u00e9cieuse joyau."
     },
@@ -4972,7 +4975,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "kun_tu_bzang_po.png",
         "contracted_form": "knng",
         "full_form": "kun tu bzang po",
-        "source": "Bacot 1912: Kun tu bzang po, divinit\u00e9 Bon-po."
+        "source": "Bacot 1912: <i>Kun tu bzang po</i>, divinit\u00e9 Bon-po."
     },
     {
         "picture": "che_mchog.png",
@@ -4994,13 +4997,13 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "bud_med.png",
-        "contracted_form": "bued",
+        "contracted_form": "bd",
         "full_form": "bud med",
         "source": "Bacot 1912: Le sexe f\u00e9minin; une femme."
     },
     {
         "picture": "don_yod.png",
-        "contracted_form": "donod",
+        "contracted_form": "dnd",
         "full_form": "don yod",
         "source": "Bacot 1912: Qui a une cause, motiv\u00e9."
     },
@@ -5012,7 +5015,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     },
     {
         "picture": "rnam_par_dag.png",
-        "contracted_form": "rna*rg",
+        "contracted_form": "rnrg",
         "full_form": "rnam par dag",
         "source": "Bacot 1912: Tr\u00e8s pur."
     },
@@ -5020,7 +5023,7 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
         "picture": "khrum_smad.png",
         "contracted_form": "khrd",
         "full_form": "khrum smad",
-        "source": "Bacot 1912: UttarabhAdra."
+        "source": "Bacot 1912: <i>Uttarabhādra</i>."
     },
     {
         "picture": "khyu_mchog.png",
@@ -5030,28 +5033,29 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
     }
   ];
 
-  const container = document.getElementById('container');
+	const container = document.getElementById('container');
   
-  // Copy the array using the spread operator
-  const sorted_entries = [...entries];
-  sorted_entries.sort((a, b) => {
-    // Compare contracted_form alphabetically
-    if (a.contracted_form < b.contracted_form) {
-      return -1;
-    }
-    if (a.contracted_form > b.contracted_form) {
-      return 1;
-    }
-    return 0;
-  });
+	// Copy the array using the spread operator
+	const sorted_entries = [...entries];
+	  sorted_entries.sort((a, b) => {
+		// Compare contracted_form alphabetically
+		if (a.contracted_form < b.contracted_form) {
+		  return -1;
+		}
+		if (a.contracted_form > b.contracted_form) {
+		  return 1;
+		}
+		return 0;
+	  });
   
   var timeout = null;
   function display_entries() {
     clearTimeout(timeout);
-    container.innerHTML = ``
-    query = document.getElementById('search_input').value;
-    if (query == ``){ 
-      sorted_entries.forEach(entry => {
+    container.innerHTML = ``;
+    const query = document.getElementById('search_input').value;
+    const exactMatch = document.getElementById('exact_match_checkbox').checked;
+    sorted_entries.forEach(entry => {
+      if ((exactMatch && entry.contracted_form === query) || (!exactMatch && (entry.contracted_form.includes(query) || entry.full_form.includes(query) || entry.source.includes(query)))) {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
@@ -5065,29 +5069,8 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
           </div>
         `;
         container.appendChild(card);
-      });
-    } else {
-      sorted_entries.forEach(entry => {
-        if (entry.contracted_form.includes(query) ||
-            entry.full_form.includes(query) ||
-            entry.source.includes(query))
-        {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <div class="card-image">
-              <img src="${entry.picture}" alt="${entry.contracted_form}">
-            </div>
-            <div class="card-info">
-              <p><b>Contraction:</b> ${entry.contracted_form}</p>
-              <p><b>Full form:</b> ${entry.full_form}</p>
-              <p><b>Source:</b> ${entry.source}</p>
-            </div>
-          `;
-          container.appendChild(card);
-        }
-      });
-    }
+      }
+    });
   }
   display_entries();
 
