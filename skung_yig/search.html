@@ -41,6 +41,7 @@
 <p style="font-size: 1.1cm; text-align: left; margin: 10px;">
   <b>Tibetan shorthand contractions</b> <br/>
   <p style="font-size: 0.4cm; text-align: left; margin: 10px;">Compiled by A. Sizova<br/></p>
+  <h2 style="text-align: left; margin: 10px; font-size: 110%">Number of entries <span id="entriesCount"></span></h2>
   <br/>
   When transliterating contractions, the consonants are written down in the order of appearance: prescripts, superscripts, root letters, subscripts, post- and post-postscripts. Vowels, the <i>anusvāra</i> sign, and the <i>tsa 'phru</i> sign are not included.
   <br/>
@@ -5064,6 +5065,8 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
   ];
 
 	const container = document.getElementById('container');
+	const entriesCount = document.getElementById('entriesCount');
+	entriesCount.textContent = `: ${entries.length}`;
   
 	// Copy the array using the spread operator
 	const sorted_entries = [...entries];
@@ -5079,29 +5082,33 @@ SYBB: ngo mtshar ba'i gangs can 'phrul ldan skung yig be'u bum (1995)
 	  });
   
   var timeout = null;
-  function display_entries() {
-    clearTimeout(timeout);
-    container.innerHTML = ``;
-    const query = document.getElementById('search_input').value;
-    const exactMatch = document.getElementById('exact_match_checkbox').checked;
-    sorted_entries.forEach(entry => {
-      if ((exactMatch && entry.contracted_form === query) || (!exactMatch && (entry.contracted_form.includes(query) || entry.full_form.includes(query) || entry.source.includes(query)))) {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <div class="card-image">
-            <img src="${entry.picture}" alt="${entry.contracted_form}" loading="lazy">
-          </div>
-          <div class="card-info">
-            <p><b>Contraction:</b> ${entry.contracted_form}</p>
-            <p><b>Full form:</b> ${entry.full_form}</p>
-            <p><b>Source:</b> ${entry.source}</p>
-          </div>
-        `;
-        container.appendChild(card);
-      }
-    });
-  }
+	function display_entries() {
+		clearTimeout(timeout);
+		container.innerHTML = '';
+		const query = document.getElementById('search_input').value;
+		const exactMatch = document.getElementById('exact_match_checkbox').checked;
+		let displayedCount = 0; // This will count how many entries are displayed
+		sorted_entries.forEach(entry => {
+			if ((exactMatch && entry.contracted_form === query) || (!exactMatch && (entry.contracted_form.includes(query) || entry.full_form.includes(query) || entry.source.includes(query)))) {
+				const card = document.createElement('div');
+				card.className = 'card';
+				card.innerHTML = `
+					<div class="card-image">
+						<img src="${entry.picture}" alt="${entry.contracted_form}" loading="lazy">
+					</div>
+					<div class="card-info">
+						<p><b>Contraction:</b> ${entry.contracted_form}</p>
+						<p><b>Full form:</b> ${entry.full_form}</p>
+						<p><b>Source:</b> ${entry.source}</p>
+					</div>
+				`;
+				container.appendChild(card);
+				displayedCount++;
+			}
+		});
+		// Update the count of displayed entries
+		entriesCount.textContent = `: ${displayedCount}`;
+	}
   display_entries();
 
   var inputElement = document.getElementById('search_input');
