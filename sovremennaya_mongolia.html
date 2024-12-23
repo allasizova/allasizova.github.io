@@ -2,24 +2,336 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.2">
-    <title>Centered Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современная Монголия</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center; /* Центрирование только по горизонтали */
+			margin: 0;
+			padding: 0;
+			background-color: #ffffff;
+			text-align: center;
+			min-height: 100vh;
+		}
+
+		img {
+			width: 500px;
+			height: auto;
+			margin-top: 20px; /* Отступ сверху */
+		}
+
+		.columns {
+			display: flex; /* Включает Flexbox */
+			flex-wrap: wrap; /* Позволяет колонкам переноситься */
+			justify-content: center; /* Центрирует строки колонок */
+			gap: 20px; /* Расстояние между колонками */
+			margin-top: 20px; /* Отступ сверху */
+			width: 100%; /* Убедитесь, что контейнер занимает всю ширину */
+		}
+
+        .column {
+            flex: 1 1 200px; /* Flexible layout with a minimum size of 200px */
+            max-width: 200px;
+            text-align: left;
         }
-        img {
-            max-width: 100%;
-            height: auto;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h4 {
+            color: #cd6e93;
         }
     </style>
 </head>
 <body>
     <img src="sovr_mong.jpg" alt="Centered Image">
+
+    <div class="columns">
+        <div class="column">
+            <h4>1933</h4>
+            <ul>
+                <li><a href="#1933-1">Выпуск 1</a></li>
+                <li><a href="#1933-2">Выпуск 2</a></li>
+                <li><a href="#1933-3">Выпуск 3</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h4>1934</h4>
+            <ul>
+                <li><a href="#1934-1">Выпуск 1 (4)</a></li>
+                <li><a href="#1934-2">Выпуск 2 (5)</a></li>
+                <li><a href="#1934-3">Выпуск 3 (6)</a></li>
+                <li><a href="#1934-4">Выпуск 4 (7)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1935</h4>
+            <ul>
+                <li><a href="#1935-1">Выпуск 1 (8)</a></li>
+                <li><a href="#1935-2">Выпуск 2 (9)</a></li>
+                <li><a href="#1935-3">Выпуск 3 (10)</a></li>
+                <li><a href="#1935-4">Выпуск 4 (11)</a></li>
+                <li><a href="#1935-5">Выпуск 3 (12)</a></li>
+                <li><a href="#1935-6">Выпуск 4 (13)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1936</h4>
+            <ul>
+                <li><a href="#1936-1">Выпуск 1 (14)</a></li>
+                <li><a href="#1936-2">Выпуск 2 (15)</a></li>
+                <li><a href="#1936-3">Выпуск 3 (16)</a></li>
+                <li><a href="#1936-4">Выпуск 4/5 (17/18)</a></li>
+                <li><a href="#1936-6">Выпуск 6 (19)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1937</h4>
+            <ul>
+                <li><a href="#1937-1">Выпуск 1 (20)</a></li>
+                <li><a href="#1937-2">Выпуск 2 (21)</a></li>
+                <li><a href="#1937-3">Выпуск 3 (22)</a></li>
+                <li><a href="#1937-4">Выпуск 4 (23)</a></li>
+                <li><a href="#1937-5">Выпуск 5 (24)</a></li>
+				<li><a href="#1937-6">Выпуск 6 (25)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1938</h4>
+            <ul>
+                <li><a href="#1938-1">Выпуск 1 (26)</a></li>
+                <li><a href="#1938-2">Выпуск 2 (27)</a></li>
+                <li><a href="#1938-3">Выпуск 3 (28)</a></li>
+                <li><a href="#1938-4">Выпуск 4/6 (29/31)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1939</h4>
+            <ul>
+                <li><a href="#1939-1">Выпуск 1/2 (32/33)</a></li>
+                <li><a href="#1939-3">Выпуск 3 (34)</a></li>
+                <li><a href="#1939-4">Выпуск 4 (35)</a></li>
+                <li><a href="#1939-5">Выпуск 5 (36</a></li>
+				<li><a href="#1939-6">Выпуск 6 (37)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1940</h4>
+            <ul>
+                <li><a href="#1940-1">Выпуск 1/2 (38/39)</a></li>
+                <li><a href="#1940-3">Выпуск 3 (40)</a></li>
+                <li><a href="#1940-4">Выпуск 4 (41)</a></li>
+                <li><a href="#1940-5">Выпуск 5/6 (42/43)</a></li>
+            </ul>
+        </div>
+		<div class="column">
+            <h4>1941</h4>
+            <ul>
+                <li><a href="#1941-1">Выпуск 1 (44)</a></li>
+            </ul>
+        </div>
+    </div>
+
+	<div class="details" id="1933-1">
+		<h3>1933: Выпуск 1</h3>
+		<p>20 октября 1933 г.</p>
+		
+		<a href="https://rusneb.ru/catalog/000200_000018_RU_NLR_PER_B_2353211_1933_1/" download style="font-size: small; color: #007BFF; text-decoration: none;">
+			Скачать выпуск (PDF)
+		</a>
+		
+		<p style="font-size: normal; margin-top: 10px;">
+			<i>Редколлегия: А. М. Руттер (председатель редколлегии), Е. А. Стулов (ответственный секретарь), А. И. Бирккенгоф, <br>И. В. Ершов, К. Н. Зимин, Е. М. Бекетова (технический редактор)
+<br>Тираж: 1000 экз.</i>
+		</p>
+
+		<h4>Содержание</h4>
+			<ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+				<li>
+					<span>Задачи и программа журнала</span>
+					<span style="float: right;">стр. 3</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">М. Шихин и Я. Колосов</span>: Скотоводство МНР
+					<span style="float: right;">стр. 5</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">Цэбэль</span>: Кочевки
+					<span style="float: right;">стр. 27</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">А. Симуков</span>: Географическое положение МНР
+					<span style="float: right;">стр. 32</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">Е. С.</span>: Территориальное деление МНР
+					<span style="float: right;">стр. 37</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">П. Клопов</span>: Из истории юстиции МНР
+					<span style="float: right;">стр. 41</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">А. Ефремов</span>: Творческий путь театра МНР
+					<span style="float: right;">стр. 47</span>
+				</li>
+				<li>
+					<span>Три года</span>
+					<span style="float: right;">стр. 55</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">Ринчин</span>: Старик Ама
+					<span style="float: right;">стр. 61</span>
+				</li>
+				<li>
+					<span>Программа по монголоведению</span>
+					<span style="float: right;">стр. 66</span>
+				</li>
+				<li>
+					<span>Постановление Президиума Малого хурала об амнистии</span>
+					<span style="float: right;">стр. 68</span>
+				</li>
+				<li>
+					<span>Положение о Министерстве торговли, транспорта, промышленности, и связи МНР</span>
+					<span style="float: right;">стр. 70</span>
+				</li>
+				<li>
+					<span>Положение о Главном управлении связи</span>
+					<span style="float: right;">стр. 74</span>
+				</li>
+				<li>
+					<span>Положение о Транспортно-дорожном управлении</span>
+					<span style="float: right;">стр. 79</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">Н. Шастина</span>: Основная литература о Монголии
+					<span style="float: right;">стр. 82</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">Н. Коноплев</span>: Тракты МНР
+					<span style="float: right;">стр. 95</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">С. Лебединский</span>: Календарь огородных работ
+					<span style="float: right;">стр. 99</span>
+				</li>
+			</ul>
+	</div>
+
+	<div class="details" id="1933-2">
+		<h3>1933: Выпуск 2</h3>
+		<p>Ноябрь 1933 г.<br>16 ЛЕТ ОКТЯБРЯ</p>
+		
+		<a href="https://rusneb.ru/catalog/000200_000018_RU_NLR_PER_B_2353211_1933_2/" download style="font-size: small; color: #007BFF; text-decoration: none;">
+			Скачать выпуск (PDF)
+		</a>
+		
+		<p style="font-size: normal; margin-top: 10px;">
+			<i>Редколлегия: А. М. Руттер (председатель редколлегии), Е. А. Стулов (ответственный секретарь), А. И. Бирккенгоф, <br>И. В. Ершов, К. Н. Зимин, Е. М. Бекетова (технический редактор), И. М. Эпов (корректор)
+<br>Тираж: 1000 экз.</i>
+		</p>
+
+		<h4>Содержание</h4>
+			<ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+				<!-- Рубрикация: Передовая -->
+				<li>
+					<span>Передовая</span>
+				</li>
+				<li>
+					<span>Шестнадцать героических лет Октября</span>
+					<span style="float: right;">стр. 3</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">С. Большаков</span>: Два итога двух систем
+					<span style="float: right;">стр. 8</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">А Руттер</span>: Октябрь и национальности
+					<span style="float: right;">стр. 19</span>
+				</li>
+
+				<!-- Рубрикация: КОЧЕВОЕ СКОТОВОДСТВО -->
+				<li>
+					<h4 style="text-align: center; color: #6b1436;">КОЧЕВОЕ СКОТОВОДСТВО</h4>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">С. Азаров</span>: Животноводческая техника кочевого хозяйства
+					<span style="float: right;">стр. 23</span>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">А. Симуков</span>: Пища и жилище монголов
+					<span style="float: right;">стр. 42</span>
+				</li>
+
+				<!-- Рубрикация: НАРОДНОЕ ЗДРАВООХРАНЕНИЕ -->
+				<li>
+					<h4 style="text-align: center; color: #6b1436;">НАРОДНОЕ ЗДРАВООХРАНЕНИЕ</h4>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">А. Берлин</span>: Чума в МНР и тарбаганий промысел
+					<span style="float: right;">стр. 50</span>
+				</li>
+
+				<!-- Рубрикация: МОНГОЛЬСКОЕ ЗАКОНОДАТЕЛЬСТВО -->
+				<li>
+					<h4 style="text-align: center; color: #6b1436;">МОНГОЛЬСКОЕ ЗАКОНОДАТЕЛЬСТВО</h4>
+				</li>
+				<li>
+					<span>Постановление Совета министров МНР</span>: О состоянии и мероприятиях по ветеринарии
+					<span style="float: right;">стр. 62</span>
+				</li>
+				<li>
+					<span>Положение о Министерстве иностранных дел</span>
+					<span style="float: right;">стр. 67</span>
+				</li>
+				<li>
+					<span>Положение о национальных казакских и урянхайском хошунах</span>
+					<span style="float: right;">стр. 69</span>
+				</li>
+				<li>
+					<span>Положение о сомонах в казакских и урянхайском национальных хошунах</span>
+					<span style="float: right;">стр. 71</span>
+				</li>
+				<li>
+					<span>Положение о Педагогическом техникуме</span>
+					<span style="float: right;">стр. 73</span>
+				</li>
+
+				<!-- Рубрикация: ОГОРОДНОЕ ХОЗЯЙСТВО -->
+				<li>
+					<h4 style="text-align: center; color: #6b1436;">ОГОРОДНОЕ ХОЗЯЙСТВО</h4>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">С. Лебединский</span>: Календарь огородных работ (окончание)
+					<span style="float: right;">стр. 77</span>
+				</li>
+
+				<!-- Рубрикация: БИБЛИОГРАФИЯ -->
+				<li>
+					<h4 style="text-align: center; color: #6b1436;">БИБЛИОГРАФИЯ</h4>
+				</li>
+				<li>
+					<span style="color: #6b1436; font-weight: bold;">Н. П. Шастина</span>: Основная литература о Монголии (окончание)
+					<span style="float: right;">стр. 92</span>
+				</li>
+			</ul>
+	</div>
 </body>
 </html>
