@@ -22,27 +22,94 @@
             align-items: center; /* Center align items horizontally */
             text-align: center;
         }
+        .language-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .language-buttons a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #E63b60;
+            border-radius: 5px;
+            color: #E63b60;
+            background-color: #223bc9;
+            font-weight: bold;
+        }
+        .language-buttons a.active {
+            background-color: #E63b60;
+            color: #223bc9;
+        }
+        .text-button {
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #E63b60;
+            border-radius: 5px;
+            color: #223bc9;
+            background-color: #067fd0;
+            font-weight: bold;
+            margin: 10px 0;
+            display: inline-block;
+        }
+        .text-button:hover {
+            background-color: #E63b60;
+            color: #223bc9;
+        }
         img {
             max-width: 90%; /* Adjust the max-width to allow for better responsiveness */
             height: auto;
             margin-bottom: 20px; /* Add space between the image and the button */
         }
-        /* Style for the button image if needed */
-        .button-img {
-            cursor: pointer; /* Indicates the link is clickable */
-            max-width: 90%; /* Optional: Adjust the max-width as needed for responsiveness */
-        }
     </style>
+    <script>
+        function setLanguage(lang) {
+            const engButtons = document.querySelectorAll('.text-button.eng');
+            const rusButtons = document.querySelectorAll('.text-button.rus');
+
+            if (lang === 'eng') {
+                engButtons.forEach(button => button.style.display = 'inline-block');
+                rusButtons.forEach(button => button.style.display = 'none');
+            } else {
+                engButtons.forEach(button => button.style.display = 'none');
+                rusButtons.forEach(button => button.style.display = 'inline-block');
+            }
+
+            const languageLinks = document.querySelectorAll('.language-buttons a');
+            languageLinks.forEach(link => link.classList.remove('active'));
+            document.querySelector(`.language-buttons a[href="?lang=${lang}"]`).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const lang = params.get('lang') || 'eng';
+            setLanguage(lang);
+        });
+    </script>
 </head>
 <body>
+    <!-- Language Selection Buttons -->
+    <div class="language-buttons">
+        <a href="?lang=eng" class="active" onclick="setLanguage('eng'); return false;">ENG</a>
+        <a href="?lang=rus" onclick="setLanguage('rus'); return false;">RUS</a>
+    </div>
+
     <div class="container">
         <img src="stupa_sm2.png" alt="Stupa Image">
-        <!-- Button below the image -->
-        <a href="https://khara-khoto.city/russian_tibetology.html">
-            <img src="lotus button_russian tibetology.png" alt="Button Image" class="button-img">
+        <!-- Text Buttons for English Version -->
+        <a href="https://khara-khoto.city/russian_tibetology.html" class="text-button eng">
+            List of Publications on Tibetology and Tibeto-Mongolian Buddhism by Russian Authors or Authors Affiliated with Russian Institutions: 1722–2024
         </a>
-		<a href="https://khara-khoto.city/skung_yig/search.html">
-            <img src="bija button_contractions.png" alt="Button Image" class="button-img">
+        <a href="https://khara-khoto.city/skung_yig/search.html" class="text-button eng">
+            Tibetan Shorthand Contractions
+        </a>
+        <!-- Text Buttons for Russian Version -->
+        <a href="https://khara-khoto.city/russian_tibetology.html" class="text-button rus" style="display: none;">
+            Список публикаций по тибетологии и тибетско-монгольскому буддизму российских или аффилированных с российскими научными учреждениями авторов: 1722–2024 гг.
+        </a>
+        <a href="https://khara-khoto.city/skung_yig/search.html" class="text-button rus" style="display: none;">
+            Тибетские скорописные сокращения
         </a>
     </div>
 </body>
