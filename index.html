@@ -5,64 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/icon.png" type="image/x-icon">
     <title>Khara-Khoto City</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #223bc9;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            display: flex;
-            flex-direction: column; /* Stack flex items vertically */
-            align-items: center; /* Center align items horizontally */
-            text-align: center;
-        }
-        .language-buttons {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 10px;
-        }
-        .language-buttons a {
-            text-decoration: none;
-            padding: 5px 10px;
-            border: 1px solid #E63b60;
-            border-radius: 5px;
-            color: #E63b60;
-            background-color: #223bc9;
-            font-weight: bold;
-        }
-        .language-buttons a.active {
-            background-color: #E63b60;
-            color: #223bc9;
-        }
-        .text-button {
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #E63b60;
-            border-radius: 5px;
-            color: #151a7b; /* Updated text color */
-            background-color: #60b1e8; /* Lighter shade of blue */
-            font-weight: bold;
-            margin: 10px 0;
-            display: inline-block;
-        }
-        .text-button:hover {
-            background-color: #E63b60;
-            color: #223bc9;
-        }
-        img {
-            max-width: 90%; /* Adjust the max-width to allow for better responsiveness */
-            height: auto;
-            margin-bottom: 20px; /* Add space between the image and the button */
-        }
-    </style>
+	<style>
+		body, html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #223bc9;
+			font-family: Arial, sans-serif;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+		.language-buttons {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			display: flex;
+			gap: 10px;
+		}
+		.language-buttons a {
+			text-decoration: none;
+			padding: 5px 10px;
+			border: 1px solid #E63b60;
+			border-radius: 5px;
+			color: #E63b60;
+			background-color: #223bc9;
+			font-weight: bold;
+		}
+		.language-buttons a.active {
+			background-color: #E63b60;
+			color: #223bc9;
+		}
+		.text-button {
+			text-decoration: none;
+			padding: 10px 20px;
+			width: 600px; /* Фиксированная ширина кнопок */
+			text-align: center; /* Центрирование текста */
+			border: 1px solid #E63b60;
+			border-radius: 5px;
+			color: #151a7b;
+			background-color: #60b1e8;
+			font-weight: bold;
+			margin: 10px 0;
+			display: inline-block;
+			white-space: normal; /* Разрешить перенос текста */
+		}
+		.text-button:hover {
+			background-color: #E63b60;
+			color: #223bc9;
+		}
+		img {
+			max-width: 300px; /* Фиксированная ширина изображения */
+			height: auto;
+			margin-bottom: 20px;
+		}
+	</style>
     <script>
         function setLanguage(lang) {
             const engButtons = document.querySelectorAll('.text-button.eng');
