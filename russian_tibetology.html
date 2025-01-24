@@ -60019,9 +60019,14 @@
         }
 		
 		function applyHashtagFilter(hashtag, scrollToEntries = true) {
-			// Удаляем символ '#' для корректного сравнения
+			// Remove '#' symbol if present
 			const filteredTag = hashtag.replace('#', '');
-			currentFilteredEntries = bibliographicEntries.filter(entry => entry.hashtags.some(tag => tag.includes(filteredTag)));
+			
+			// Filter entries with exact hashtag match
+			currentFilteredEntries = bibliographicEntries.filter(entry => 
+				entry.hashtags.includes(filteredTag)  // Using includes for exact match
+			);
+			
 			displayBibliographicEntries(currentFilteredEntries, true);
 			updatePublicationCount();
 		}
