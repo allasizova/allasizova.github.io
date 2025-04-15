@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangut Studies Researchers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #666;
+            padding-bottom: 10px;
+        }
+        
+        .country-section {
+            margin-bottom: 40px;
+        }
+        
+        .country-title {
+            color: #333;
+            background-color: #d9e9f7;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 5px solid #337ab7;
+        }
+        
+        .researcher {
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .researcher-name {
+            background-color: #e0e0e0;
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .researcher-name:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .researcher-content {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .active .researcher-content {
+            display: block;
+        }
+        
+        .active .researcher-name {
+            background-color: #c0c0c0;
+        }
+        
+        .bio, .works {
+            margin-bottom: 15px;
+        }
+        
+        .bio {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .bio {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .researcher-photo {
+            flex-shrink: 0;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .researcher-photo img {
+            max-width: 200px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid #ddd;
+        }
+        
+        .bio-text {
+            flex-grow: 1;
+        }
+        
+        .works-list {
+            padding-left: 20px;
+        }
+        
+        .works-list li {
+            margin-bottom: 10px;
+        }
+        
+        .works-list a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+        
+        .works-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .download-link {
+            display: inline-block;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 2px 8px;
+            margin-left: 8px;
+            font-size: 0.8em;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .download-link:hover {
+            background-color: #e9ecef;
+        }
+        
+        .arrow {
+            transition: transform 0.3s;
+            font-size: 0.8em;
+        }
+        
+        .active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .dates {
+            font-weight: normal;
+            font-style: italic;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+    <script>
+        // Database of all publications (abbreviated)
+        const publicationsDatabase = [
+            {
+                id: 1,
+                title: "Tangut Philology. Research and Dictionary",
+                year: 1960,
+                authors: ["Nevsky"],
+                note: "published posthumously",
+                url: "https://example.org/publications/nevsky-tangut-philology",
+                downloadUrl: "https://example.org/download/nevsky-tangut-philology.pdf"
+            },
+            {
+                id: 2,
+                title: "On the Name of the Tangut State",
+                year: 1933,
+                authors: ["Nevsky"],
+                url: "https://example.org/publications/nevsky-tangut-state"
+            },
+            {
+                id: 17,
+                title: "Studies on Tangut Phonetics",
+                year: 1932,
+                authors: ["Wang"],
+                url: "https://example.org/publications/wang-phonetics",
+                downloadUrl: "https://example.org/download/wang-phonetics.pdf"
+            },
+            {
+                id: 19,
+                title: "Research on the Tangut Language",
+                year: 1980,
+                authors: ["Wang"],
+                url: "https://example.org/publications/wang-research",
+                downloadUrl: "https://example.org/download/wang-research.pdf"
+            },
+            {
+                id: 24,
+                title: "A Study of the Hsi-Hsia Language: Reconstruction of the Hsi-Hsia Rhymes",
+                year: 1964,
+                authors: ["Nishida"],
+                url: "https://example.org/publications/nishida-reconstruction",
+                downloadUrl: "https://example.org/download/nishida-reconstruction.pdf"
+            },
+            {
+                id: 25,
+                title: "The Structure of the Tangut Language",
+                year: 1966,
+                authors: ["Nishida"],
+                url: "https://example.org/publications/nishida-structure"
+            },
+            {
+                id: 31,
+                title: "Analysis of the Tangut Script",
+                year: 1972,
+                authors: ["Grinstead"],
+                url: "https://example.org/publications/grinstead-analysis",
+                downloadUrl: "https://example.org/download/grinstead-analysis.pdf"
+            },
+            {
+                id: 33,
+                title: "The Tangut Tripitaka",
+                year: 1971,
+                authors: ["Grinstead"],
+                note: "catalog",
+                url: "https://example.org/publications/grinstead-tripitaka",
+                downloadUrl: "https://example.org/download/grinstead-tripitaka.pdf"
+            }
+        ];
+
+        // Database of researchers (abbreviated)
+        const researchersDatabase = {
+            "Nevsky": {
+                fullName: "Nikolai Alexandrovich Nevsky",
+                years: "1892-1937",
+                country: "Russia / USSR",
+                bio: "Outstanding Russian and Soviet orientalist, linguist, and ethnographer. A pioneer in the study of the Tangut language and writing system. Worked in Japan and the USSR. Repressed in 1937, posthumously rehabilitated. Awarded the USSR State Prize (1962, posthumously) for his fundamental work \"Tangut Philology.\"",
+                photo: "https://example.org/images/nevsky.jpg"
+            },
+            "Wang": {
+                fullName: "Wang Jingru (王靜如)",
+                years: "1903-1990",
+                country: "China",
+                bio: "Chinese linguist and one of the pioneers of Tangut studies in China. Conducted significant research on the Tangut script and language. Member of the Chinese Academy of Sciences. Made important contributions to the decipherment of Tangut characters.",
+                photo: "https://example.org/images/wang.jpg"
+            },
+            "Nishida": {
+                fullName: "Tatsuo Nishida (西田龍雄)",
+                years: "1928-2012",
+                country: "Japan",
+                bio: "Japanese linguist and leading expert on Tangut language. Professor at Kyoto University. Made significant contributions to the study of Tangut phonetics and grammar. His research focused on Tangut-Chinese dictionaries and comparative linguistics of Tibeto-Burman languages.",
+                photo: "https://example.org/images/nishida.jpg"
+            },
+            "Grinstead": {
+                fullName: "Eric Grinstead",
+                years: "1921-2008",
+                country: "Europe and America",
+                bio: "Danish orientalist and Tangut scholar. Worked at the Library of the Leningrad Branch of the Institute of Oriental Studies of the USSR Academy of Sciences, and later at the British Museum. Prepared editions of Tangut texts and compiled a catalog of Tangut collections.",
+                photo: "https://example.org/images/grinstead.jpg"
+            }
+        };
+
+        // Function to get publications for a specific researcher
+        function getPublicationsForResearcher(researcherKey) {
+            return publicationsDatabase.filter(pub => pub.authors.includes(researcherKey))
+                .sort((a, b) => a.year - b.year);
+        }
+
+        // Function to organize researchers by country
+        function organizeResearchersByCountry() {
+            const countries = {};
+            
+            // Group researchers by country
+            for (const [key, researcher] of Object.entries(researchersDatabase)) {
+                if (!countries[researcher.country]) {
+                    countries[researcher.country] = [];
+                }
+                countries[researcher.country].push({
+                    key: key,
+                    ...researcher
+                });
+            }
+            
+            return countries;
+        }
+
+        // Function to generate HTML for all researchers
+        function generateResearchersHTML() {
+            const countriesData = organizeResearchersByCountry();
+            let html = '';
+            
+            for (const [country, researchers] of Object.entries(countriesData)) {
+                html += `
+                <div class="country-section">
+                    <h2 class="country-title">${country}</h2>
+                `;
+                
+                for (const researcher of researchers) {
+                    const publications = getPublicationsForResearcher(researcher.key);
+                    
+                    html += `
+                    <div class="researcher">
+                        <div class="researcher-name" onclick="toggleResearcher(this)">
+                            ${researcher.fullName} <span class="dates">(${researcher.years})</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="researcher-content">
+                            <div class="bio">
+                    `;
+                    
+                    // Add researcher photo if available
+                    if (researcher.photo) {
+                        html += `
+                            <div class="researcher-photo">
+                                <img src="${researcher.photo}" alt="${researcher.fullName}" title="${researcher.fullName}">
+                            </div>
+                        `;
+                    }
+                    
+                    html += `
+                            <div class="bio-text">
+                                <h3>Biography</h3>
+                                <p>${researcher.bio}</p>
+                            </div>
+                        </div>
+                        <div class="works">
+                            <h3>Bibliography</h3>
+                            <ul class="works-list">
+                    `;
+                    
+                    for (const publication of publications) {
+                        html += `<li>`;
+                        
+                        // Add link to publication if URL is available
+                        if (publication.url) {
+                            html += `<a href="${publication.url}" target="_blank">"${publication.title}"</a> (${publication.year})`;
+                        } else {
+                            html += `"${publication.title}" (${publication.year})`;
+                        }
+                        
+                        // Add note if available
+                        if (publication.note) {
+                            html += ` - ${publication.note}`;
+                        }
+                        
+                        // Add download link if available
+                        if (publication.downloadUrl) {
+                            html += ` <a href="${publication.downloadUrl}" class="download-link" target="_blank">Download PDF</a>`;
+                        }
+                        
+                        html += `</li>`;
+                    }
+                    
+                    html += `
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                `;
+                }
+                
+                html += `</div>`;
+            }
+            
+            return html;
+        }
+
+        // Function to toggle researcher information display
+        function toggleResearcher(element) {
+            const researcher = element.parentNode;
+            if (researcher.classList.contains('active')) {
+                researcher.classList.remove('active');
+            } else {
+                researcher.classList.add('active');
+            }
+        }
+
+        // Initialize the page when it loads
+        window.onload = function() {
+            document.getElementById('researchers-container').innerHTML = generateResearchersHTML();
+        };
+    </script>
+</head>
+<body>
+    <h1>Tangut Studies Researchers</h1>
+    
+    <div id="researchers-container" class="researchers-list">
+        <!-- This content will be generated by JavaScript -->
+    </div>
+</body>
+</html>
