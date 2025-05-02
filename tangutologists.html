@@ -157,72 +157,159 @@
     </style>
     <script>
         // Database of all publications (abbreviated)
-        const publicationsDatabase = [
-            {
-                id: 1,
-                title: "Tangut Philology. Research and Dictionary",
-                year: 1960,
-                authors: ["Nevsky"],
-                note: "published posthumously",
-                url: "https://example.org/publications/nevsky-tangut-philology",
-                downloadUrl: "https://example.org/download/nevsky-tangut-philology.pdf"
-            },
-            {
-                id: 2,
-                title: "On the Name of the Tangut State",
-                year: 1933,
-                authors: ["Nevsky"],
-                url: "https://example.org/publications/nevsky-tangut-state"
-            },
-            {
-                id: 17,
-                title: "Studies on Tangut Phonetics",
-                year: 1932,
-                authors: ["Wang"],
-                url: "https://example.org/publications/wang-phonetics",
-                downloadUrl: "https://example.org/download/wang-phonetics.pdf"
-            },
-            {
-                id: 19,
-                title: "Research on the Tangut Language",
-                year: 1980,
-                authors: ["Wang"],
-                url: "https://example.org/publications/wang-research",
-                downloadUrl: "https://example.org/download/wang-research.pdf"
-            },
-            {
-                id: 24,
-                title: "A Study of the Hsi-Hsia Language: Reconstruction of the Hsi-Hsia Rhymes",
-                year: 1964,
-                authors: ["Nishida"],
-                url: "https://example.org/publications/nishida-reconstruction",
-                downloadUrl: "https://example.org/download/nishida-reconstruction.pdf"
-            },
-            {
-                id: 25,
-                title: "The Structure of the Tangut Language",
-                year: 1966,
-                authors: ["Nishida"],
-                url: "https://example.org/publications/nishida-structure"
-            },
-            {
-                id: 31,
-                title: "Analysis of the Tangut Script",
-                year: 1972,
-                authors: ["Grinstead"],
-                url: "https://example.org/publications/grinstead-analysis",
-                downloadUrl: "https://example.org/download/grinstead-analysis.pdf"
-            },
-            {
-                id: 33,
-                title: "The Tangut Tripitaka",
-                year: 1971,
-                authors: ["Grinstead"],
-                note: "catalog",
-                url: "https://example.org/publications/grinstead-tripitaka",
-                downloadUrl: "https://example.org/download/grinstead-tripitaka.pdf"
-            }
-        ];
+		const publicationsDatabase = [
+			{
+				id: 1,
+				title: "Tangut Philology. Research and Dictionary",
+				year: 1960,
+				authors: ["Nevsky"],
+				type: "book",
+				publisher: "USSR Academy of Sciences Publishing House",
+				note: "published posthumously",
+				url: "https://example.org/publications/nevsky-tangut-philology",
+				downloadUrl: "https://example.org/download/nevsky-tangut-philology.pdf"
+			},
+			{
+				id: 2,
+				title: "On the Name of the Tangut State",
+				year: 1933,
+				authors: ["Nevsky"],
+				type: "article",
+				journal: "Bulletin of the Institute of Oriental Studies",
+				url: "https://example.org/publications/nevsky-tangut-state"
+			},
+			{
+				id: 3,
+				title: "Из находок П. К. Козлова в г. Хара-Хото: I. Иванов А. Тангутские рукописи из Хара-Хото [From the Findings of P. K. Kozlov in the City of Khara-Khoto: I. Ivanov A. Tangut Manuscripts from Khara-Khoto]",
+				year: 1909,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "Известия Императорского Русского Географического Общества [Bulletin of the Imperial Geographical Society], том XLV, вып. VIII, 1909, c. 1‒8 (463‒470).",
+				url: "https://www.orientalstudies.ru/rus/images/pdf/add1/a_ivanov_oldenburg_kotvich_1909.pdf"
+			},
+			{
+				id: 4,
+				title: "Страница из истории Си-ся [A Page from the History of Xi-Xia]",
+				year: 1911,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "Mélanges asiatiques. Tirés du Bulletin de l’Académie Impériale des sciences de St.-Pétersbourg. Tome XV (1911–1912). St.-Pétersbourg, 1912. С. 193–198 = Известия Императорской Академии Наук [Bulletin of the Imperial Academy of Sciences], 1911. С. 831–836.",
+				url: "https://www.orientalstudies.ru/rus/images/pdf/journals/Melanges_Asiatiques_15_1911-1912_14_ivanov.pdf"
+			},
+			{
+				id: 5,
+				title: "Zur Kenntniss der Hsi-hsia-Sprache",
+				year: 1909,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "Mélanges asiatiques. Tirés du Bulletin de l’Académie Impériale des sciences de St.-Pétersbourg. Tome XIV (1909–1910). St.-Pétersbourg, 1910. С. 171–184] = BAIS VIme Série. III. 1909, 1221–1233.",
+				url: "https://www.orientalstudies.ru/rus/images/pdf/journals/Melanges_Asiatiques_14_1909-1910_16_ivanov.pdf"
+			},
+			{
+				id: 6,
+				title: "Документы из города Хара-Хото. I. Китайское частное письмо XIV вeка [Documents from the City of Khara-Khoto. I. A Chinese Private Letter from the 14th Century]",
+				year: 1913,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "Известия Императорской Академии Наук [Bulletin of the Imperial Academy of Sciences] VI серия, 1913, том 7, выпуск 14, 811–816.",
+				url: "https://www.mathnet.ru/links/e4fd66db81ba9a574a050dc6d0c86bbd/im6684.pdf"
+			},
+			{
+				id: 7,
+				title: "Сутра «Восхождение Майтрейи на небо Тушита» [The Sutra “Maitreya's Ascension to the Tushita Heaven”]",
+				year: 1916,
+				authors: ["Ivanov"],
+				type: "book",
+				publisher: "Пг.: Факультет восточных языков.",
+				note: "тангутский текст издал и китайским переводом снабдил А. И. Иванов [The Tangut text was published and furnished with a Chinese translation by A. I. Ivanov]"
+			},
+			{
+				id: 8,
+				title: "Памятники тангутского письма [Monuments of Tangut Writing]",
+				year: 1918,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "Азиатский сборник. Из Известий Российской Академии Наук. Новая серия = Mélanges asiatiques tirés du Bulletin de l’Académie des Sciences de Russie. Nouvelle Série. Петроград, 1918. С. 799—800.",
+				url: "https://www.orientalstudies.ru/rus/images/pdf/journals/Melanges_Asiatiques_NS_1_1918_16_ivanov.pdf"
+			},
+			{
+				id: 9,
+				title: "Monuments de l’écriture tangout",
+				year: 1920,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "Journal Asiatique: Recueil de mémoires et de notices relatifs aux études orientales publié par la Société Asiatique, Onzième (XIe) série, tome XV, n°1. - Janvier-Mars 1920. Paris: Imprimerie Nationale, Éditions Ernest Leroux. pp.107–109.",
+				url: "https://www.orientalstudies.ru/rus/images/pdf/journals/Melanges_Asiatiques_NS_1_1918_16_ivanov.pdf"
+			},
+			{
+				id: 9,
+				title: "西夏國書說 = The Language of Hsi-Hsia",
+				year: 1923,
+				authors: ["Ivanov"],
+				type: "article",
+				journal: "國立北京大學《國學季刊》第一卷、第四號、十二年十二月出版。北平：北京大學出版部。 = The Kuo-Hsio Chi-K'an: A Journal of Sinological Studies. Vol. I. No. 4. December, 1923. Beijing: Beijing Daxue chubanbu. P. 675-686.",
+			},
+			{
+				id: 17,
+				title: "Studies on Tangut Phonetics",
+				year: 1932,
+				authors: ["Wang"],
+				type: "article",
+				journal: "",
+				url: "https://example.org/publications/wang-phonetics",
+				downloadUrl: "https://example.org/download/wang-phonetics.pdf"
+			},
+			{
+				id: 19,
+				title: "Research on the Tangut Language",
+				year: 1980,
+				authors: ["Wang"],
+				type: "book",
+				publisher: "Science Press, Beijing",
+				url: "https://example.org/publications/wang-research",
+				downloadUrl: "https://example.org/download/wang-research.pdf"
+			},
+			{
+				id: 24,
+				title: "A Study of the Hsi-Hsia Language: Reconstruction of the Hsi-Hsia Rhymes",
+				year: 1964,
+				authors: ["Nishida"],
+				type: "book",
+				publisher: "Kyoto University Press",
+				url: "https://example.org/publications/nishida-reconstruction",
+				downloadUrl: "https://example.org/download/nishida-reconstruction.pdf"
+			},
+			{
+				id: 25,
+				title: "The Structure of the Tangut Language",
+				year: 1966,
+				authors: ["Nishida"],
+				type: "article",
+				journal: "Journal of Asian Studies",
+				url: "https://example.org/publications/nishida-structure"
+			},
+			{
+				id: 31,
+				title: "Analysis of the Tangut Script",
+				year: 1972,
+				authors: ["Grinstead"],
+				type: "book",
+				publisher: "Scandinavian Institute of Asian Studies",
+				url: "https://example.org/publications/grinstead-analysis",
+				downloadUrl: "https://example.org/download/grinstead-analysis.pdf"
+			},
+			{
+				id: 33,
+				title: "The Tangut Tripitaka",
+				year: 1971,
+				authors: ["Grinstead"],
+				type: "book",
+				publisher: "British Museum",
+				note: "catalog",
+				url: "https://example.org/publications/grinstead-tripitaka",
+				downloadUrl: "https://example.org/download/grinstead-tripitaka.pdf"
+			}
+		];
 
         // Database of researchers (abbreviated)
         const researchersDatabase = {
@@ -232,6 +319,13 @@
                 country: "Russia / USSR",
                 bio: "Outstanding Russian and Soviet orientalist, linguist, and ethnographer. A pioneer in the study of the Tangut language and writing system. Worked in Japan and the USSR. Repressed in 1937, posthumously rehabilitated. Awarded the USSR State Prize (1962, posthumously) for his fundamental work \"Tangut Philology.\"",
                 photo: "https://allasizova.github.io/tangutologists_photos/nevsky.png"
+            },
+            "Ivanov": {
+                fullName: "Aleksei Ivanovich Ivanov 伊鳳閣",
+                years: "1878–1937",
+                country: "Russia / USSR",
+                bio: "Sinologist, Tangutologist, Japanologist.<br>After graduating from the Faculty of Oriental Languages at St. Petersburg University in 1901, he was retained to prepare for a professorship. He completed internships in China and Japan. From 1905, worked as a lecturer, and in 1913–1922, as a professor at St. Petersburg University. In 1908–1924, headed the Department of Culture of Eastern Countries at the Museum of Anthropology and Ethnography; in 1910–1913, taught at the Practical Eastern Academy; in the early 1920s, taught Chinese and Japanese languages at universities in Petrograd and Moscow. In 1922–27, he was engaged in diplomatic and academic work in China. Upon his return, worked in academic institutions in Moscow: the Institute of Oriental Studies named after Narimanov, the Eastern Department of the Lenin State Library, as Deputy Director of the Research Institute of Ethnic and National Cultures of the Peoples of the East, and from 1929, as Academic Secretary and Head of the Far East Department at the Central Museum of Ethnology. From 1932, he concurrently served as Academic Secretary of the Committee for the Protection of Historical Monuments under the All-Russian Central Executive Committee of the USSR.<br>His main works were devoted to Chinese language, literature, history, ethnography, and philosophy. In 1935, he was awarded the degree of Doctor of Philological Sciences without defending a dissertation.<br>On June 25, 1937, he was arrested, and on October 8, sentenced to death on false charges and executed on the same day. He was rehabilitated in 1958.<br><br>Ivanov was the first scholar to study the printed books and manuscripts written in the then-undeciphered Tangut script that had been discovered in the abandoned city of Khara-Khoto in Inner Mongolia by Pyotr Kozlov in 1908–1909.",
+                photo: "https://allasizova.github.io/tangutologists_photos/ivanov.png"
             },
             "Wang": {
                 fullName: "Wang Jingru (王靜如)",
@@ -281,85 +375,98 @@
         }
 
         // Function to generate HTML for all researchers
-        function generateResearchersHTML() {
-            const countriesData = organizeResearchersByCountry();
-            let html = '';
-            
-            for (const [country, researchers] of Object.entries(countriesData)) {
-                html += `
-                <div class="country-section">
-                    <h2 class="country-title">${country}</h2>
-                `;
-                
-                for (const researcher of researchers) {
-                    const publications = getPublicationsForResearcher(researcher.key);
-                    
-                    html += `
-                    <div class="researcher">
-                        <div class="researcher-name" onclick="toggleResearcher(this)">
-                            ${researcher.fullName} <span class="dates">(${researcher.years})</span>
-                            <span class="arrow">▼</span>
-                        </div>
-                        <div class="researcher-content">
-                            <div class="bio">
-                    `;
-                    
-                    // Add researcher photo if available
-                    if (researcher.photo) {
-                        html += `
-                            <div class="researcher-photo">
-                                <img src="${researcher.photo}" alt="${researcher.fullName}" title="${researcher.fullName}">
-                            </div>
-                        `;
-                    }
-                    
-                    html += `
-                            <div class="bio-text">
-                                <h3>Biography</h3>
-                                <p>${researcher.bio}</p>
-                            </div>
-                        </div>
-                        <div class="works">
-                            <h3>Bibliography</h3>
-                            <ul class="works-list">
-                    `;
-                    
-                    for (const publication of publications) {
-                        html += `<li>`;
-                        
-                        // Add link to publication if URL is available
-                        if (publication.url) {
-                            html += `<a href="${publication.url}" target="_blank">"${publication.title}"</a> (${publication.year})`;
-                        } else {
-                            html += `"${publication.title}" (${publication.year})`;
-                        }
-                        
-                        // Add note if available
-                        if (publication.note) {
-                            html += ` - ${publication.note}`;
-                        }
-                        
-                        // Add download link if available
-                        if (publication.downloadUrl) {
-                            html += ` <a href="${publication.downloadUrl}" class="download-link" target="_blank">Download PDF</a>`;
-                        }
-                        
-                        html += `</li>`;
-                    }
-                    
-                    html += `
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                `;
-                }
-                
-                html += `</div>`;
-            }
-            
-            return html;
-        }
+		function generateResearchersHTML() {
+			const countriesData = organizeResearchersByCountry();
+			let html = '';
+			
+			for (const [country, researchers] of Object.entries(countriesData)) {
+				html += `
+				<div class="country-section">
+					<h2 class="country-title">${country}</h2>
+				`;
+				
+				for (const researcher of researchers) {
+					const publications = getPublicationsForResearcher(researcher.key);
+					
+					html += `
+					<div class="researcher">
+						<div class="researcher-name" onclick="toggleResearcher(this)">
+							${researcher.fullName} <span class="dates">(${researcher.years})</span>
+							<span class="arrow">▼</span>
+						</div>
+						<div class="researcher-content">
+							<div class="bio">
+					`;
+					
+					// Add researcher photo if available
+					if (researcher.photo) {
+						html += `
+							<div class="researcher-photo">
+								<img src="${researcher.photo}" alt="${researcher.fullName}" title="${researcher.fullName}">
+							</div>
+						`;
+					}
+					
+					html += `
+							<div class="bio-text">
+								<h3>Biography</h3>
+								<p>${researcher.bio}</p>
+							</div>
+						</div>
+						<div class="works">
+							<h3>Bibliography</h3>
+							<ul class="works-list">
+					`;
+					
+					for (const publication of publications) {
+						html += `<li>`;
+						
+						// Add link to publication if URL is available
+						if (publication.url) {
+							html += `<a href="${publication.url}" target="_blank">"${publication.title}"</a>`;
+						} else {
+							html += `"${publication.title}"`;
+						}
+						
+						// Add journal for articles
+						if (publication.type === "article" && publication.journal) {
+							html += `, ${publication.journal}`;
+						}
+						
+						// Add publication year
+						html += ` (${publication.year})`;
+						
+						// Add publisher for books
+						if (publication.type === "book" && publication.publisher) {
+							html += `, ${publication.publisher}`;
+						}
+						
+						// Add note if available
+						if (publication.note) {
+							html += ` - ${publication.note}`;
+						}
+						
+						// Add download link if available
+						if (publication.downloadUrl) {
+							html += ` <a href="${publication.downloadUrl}" class="download-link" target="_blank">Download PDF</a>`;
+						}
+						
+						html += `</li>`;
+					}
+					
+					html += `
+							</ul>
+						</div>
+					</div>
+				</div>
+				`;
+				}
+				
+				html += `</div>`;
+			}
+			
+			return html;
+		}
 
         // Function to toggle researcher information display
         function toggleResearcher(element) {
