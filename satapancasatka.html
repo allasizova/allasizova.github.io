@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Śatapañcāśatka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Noto+Serif:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+Tibetan:wght@300;400;500&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f7f3ec;
+    --bg2:       #efe9de;
+    --bg3:       #e5ddd0;
+    --ink:       #2b2318;
+    --ink2:      #5c4a35;
+    --ink3:      #8a7560;
+    --crimson:   #8b1a1a;
+    --crimson2:  #b5302a;
+    --gold:      #c8960c;
+    --gold-lt:   #f0d88a;
+    --toc-w:     260px;
+    --shadow:    0 2px 12px rgba(43,35,24,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Serif', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--crimson);
+    color: #f7f0e4;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  header h1 {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: .02em;
+    flex: 1;
+  }
+  header .subtitle {
+    font-size: .75rem;
+    color: #d4b896;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  #toc-toggle {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #f7f0e4;
+    padding: .3rem .7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    transition: background .2s;
+  }
+  #toc-toggle:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: flex;
+    height: calc(100vh - 56px);
+  }
+
+  /* ── TOC SIDEBAR ── */
+  #toc {
+    width: var(--toc-w);
+    min-width: var(--toc-w);
+    background: #2b2318;
+    color: #c8b99a;
+    overflow-y: auto;
+    transition: width .3s, min-width .3s;
+    flex-shrink: 0;
+    border-right: 2px solid var(--crimson);
+  }
+  #toc.collapsed { width: 0; min-width: 0; overflow: hidden; }
+  #toc h2 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: #8a7560;
+    padding: 1.2rem 1rem .6rem;
+    position: sticky;
+    top: 0;
+    background: #2b2318;
+    border-bottom: 1px solid #3d3020;
+  }
+  #toc ul { list-style: none; padding: .5rem 0; }
+  #toc li a {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    padding: .3rem 1rem;
+    text-decoration: none;
+    color: #c8b99a;
+    font-size: .8rem;
+    font-family: 'Noto Sans', sans-serif;
+    transition: background .15s, color .15s;
+    border-left: 2px solid transparent;
+  }
+  #toc li a:hover { background: #3d3020; color: #f0d88a; }
+  #toc li a.active {
+    background: #3d3020;
+    color: var(--gold-lt);
+    border-left-color: var(--crimson2);
+  }
+  #toc li a .num {
+    font-size: .65rem;
+    color: var(--crimson2);
+    min-width: 1.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem 2.5rem 4rem;
+    scroll-behavior: smooth;
+  }
+
+  /* ── VERSE BLOCK ── */
+  .verse-block {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 1.5rem;
+  }
+  .verse-block:not(:last-child) {
+    border-bottom: 1px solid var(--bg3);
+    padding-bottom: 3rem;
+  }
+
+  .verse-number {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--crimson);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+  }
+  .verse-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--bg3), transparent);
+  }
+
+  /* Paired row layout */
+  .columns { display: flex; flex-direction: column; gap: 0; }
+
+  .lang-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--bg3);
+  }
+  .lang-pair:last-of-type { border-bottom: none; }
+
+  .col-source { border-right: 1px solid var(--bg3); padding-right: 2rem; }
+  .col-trans  { padding-left: .5rem; }
+
+  .commentary-row {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .source-label, .trans-label {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--ink3);
+    margin-bottom: .5rem;
+  }
+
+  .sanskrit {
+    font-style: italic;
+    color: var(--ink2);
+    font-size: .95rem;
+    margin-bottom: 1rem;
+    line-height: 1.9;
+  }
+
+  .tibetan-verse {
+    font-style: italic;
+    color: var(--ink2);
+    font-size: .95rem;
+    margin-bottom: 1rem;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  /* Clickable words */
+  .tw {
+    cursor: pointer;
+    padding: 0 1px;
+    border-radius: 2px;
+    transition: background .15s, color .15s;
+    position: relative;
+  }
+  .tw:hover { background: var(--gold-lt); color: var(--crimson); }
+  .tw.active { background: var(--gold); color: var(--ink); }
+  .tw.dimmed { opacity: .35; }
+
+  /* Commentary */
+  .commentary-wrap {
+    margin-top: .8rem;
+    border-top: 1px dashed var(--bg3);
+    padding-top: .9rem;
+  }
+  .commentary-label {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--ink3);
+    margin-bottom: .5rem;
+  }
+  .tibetan-commentary {
+    font-family: 'Noto Serif Tibetan', serif;
+    font-size: .95rem;
+    line-height: 2;
+    color: var(--ink2);
+  }
+  .cw {
+    border-radius: 2px;
+    transition: background .15s;
+  }
+  .cw.highlight { background: var(--gold-lt); color: var(--ink); }
+
+  /* Translation column */
+  .trans-block {
+    margin-bottom: 1.1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--bg3);
+  }
+  .trans-block:last-of-type { border-bottom: none; margin-bottom: 0; }
+  .trans-source-label {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .58rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--crimson);
+    margin-bottom: .35rem;
+  }
+  .translation {
+    font-size: .95rem;
+    line-height: 1.85;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .trans-commentary {
+    font-size: .88rem;
+    line-height: 1.75;
+    color: var(--ink2);
+    border-left: 2px solid var(--bg3);
+    padding-left: .9rem;
+    margin-top: .8rem;
+  }
+  .trans-commentary p { margin-bottom: .5rem; }
+
+  /* Footnote markers */
+  .fn { font-size: .7rem; vertical-align: super; color: var(--crimson); margin-left: 1px; cursor: default; }
+
+  /* Legend */
+  .legend {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .72rem;
+    color: var(--ink3);
+    background: var(--bg2);
+    border: 1px solid var(--bg3);
+    border-radius: 6px;
+    padding: .5rem .9rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .legend span { display: flex; align-items: center; gap: .3rem; }
+  .swatch {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 800px) {
+    .columns { grid-template-columns: 1fr; }
+    .col-source { border-right: none; padding-right: 0; border-bottom: 1px solid var(--bg3); padding-bottom: 1.2rem; margin-bottom: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button id="toc-toggle" onclick="toggleToc()">☰ Содержание</button>
+  <h1>Śatapañcāśatka</h1>
+  <span class="subtitle">Mātṛceṭa · Śatapañcāśatka · brgya lnga bcu pa zhes bya ba'i bstod pa</span>
+</header>
+
+<div class="layout">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav id="toc">
+    <h2>150 шлок</h2>
+    <ul id="toc-list"></ul>
+  </nav>
+
+  <!-- MAIN TEXT -->
+  <main id="main">
+
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--gold)"></span> Слово/фраза в коренном тексте</span>
+      <span><span class="swatch" style="background:var(--gold-lt)"></span> Комментарий</span>
+      <strong style="margin-left:auto;color:var(--ink2)">Наведите курсор на тибетский текст для подсветки комментария</strong>
+    </div>
+
+    <div id="verses-container"></div>
+
+  </main>
+</div>
+
+<script>
+// ── SAMPLE DATA ──────────────────────────────────────────────────────────────
+// Each verse: { sanskrit, tibetan (array of {word, id}), commentary (array of {text, wids}), translation (Sanskrit tr.), transTibetan (Tibetan tr.), transCommentary }
+// wids = array of word ids this commentary segment corresponds to
+
+const VERSES = [
+  {
+    title: "",
+    numLabel: "1–2",
+    sanskrit: "sarvadā sarvathā sarve yasya doṣā na santi ha |<br>sarve sarvābhisāreṇa yatra cāvasthitā guṇāḥ ||",
+    tibetan: "{gang zhig} la ni {nyes pa} kun/ / {gtan nas} {yod ye} {mi mnga'} zhing/ / gang la'ang {rnam pa thams cad} du/ / {yon tan} {thams cad} {gnas gyur pa}/ /",
+    commentary: "{gang zhig} la ni {nyes pa} kun/ zhes smros pa la/ de nyid la ni skyabs su 'gro ba'i rigs zhes bya ba la sogs pa'i tshig dang sbyar ro/ {gang zhig} ces bya ba ni thun mong gi sgra yin yang don gyis sangs rgyas bcom ldan 'das kho na la 'jug go/ {nyes pa} zhes bya ba ni 'dod chags la sogs pa ste/ nyes pa byed pa zhes bya ba'i phyir ro/ {mi mnga'} zhes bya ba ni mi mnga' ba ste/ skyon du gyur pa ma brnyes pa'i phyir ro/ {yod ye} zhes bya ba ni bcom ldan 'das kyi spangs pa phun sum tshogs pas ngo mtshar ba gsal bar byed pa'o/ {gtan nas} zhes bya ba ni dus thams cad du'o zhes bya ba'o/ {rnam pa thams cad} ces bya ba ni rnam pa thams cad kyis zhes bya ba'i don to/ {yon tan} {thams cad} gang zhe na/ nyan thos dang thun mong du nyon mongs pa med pa dang smon lam gyi ye shes la sogs pa'o/ {gnas gyur pa} zhes bya ba ni yang dag par gnas pa ste/ bzhed pa tsam gyi phyir dang mngon du gyur pa'i nus pa yin pa'i phyir ro/",
+    translation: "В ком ни в каком виде никогда нет никаких недостатков, в ком пребывают все достоинства в своей полной силе –",
+    transTibetan: "В ком все изъяны совсем [и] абсолютно отсутствуют, в ком во всей полноте пребывают все достоинства —",
+    transCommentary: "<p><i>В ком все изъяны</i>, — эти слова соединяются с последующими: «подобает прибегать к тому самому за прибежищем» и т. д.<br>Слово <i>кто</i> является общеупотребительным, однако по смыслу оно относится исключительно к Будде Бхагавану.<br><i>Изъяны</i> — это страсть и прочее подобное, ибо [они названы так] в том смысле, что причиняют ущерб. etc</p>"
+  },
+  {
+    title: "",
+    hideNum: true,
+    sanskrit: "tam eva śaraṇaṃ gantuṃ taṃ stotuṃ tam upāsitum |<br>tasyaiva śāsane sthātuṃ nyāyyaṃ yady asti cetanā ||",
+    tibetan: "gal te sems shig yod na ni/ / {de nyid} la ni {skyabs 'gro} zhing/ / de bstod de ni bkur ba dang/ / de yi bstan la gnas pa'i rigs/ /",
+    commentary: "{de nyid} la ni {skyabs su 'gro} ba'i rigs so zhes bya ba ni rgyas pa'o/",
+    translation: "к тому подобает прибегать за защитой, того подобает восхвалять, того подобает почитать, его учения подобает держаться всем, кто наделен сознанием.",
+    transTibetan: "если наделен сознанием, в нем подобает [искать] прибежище, восхвалять его, почитать его и пребывать в его учении.",
+    transCommentary: "<p>Пример перевода комментария к шлоке 2.</p>"
+  },
+  {
+    title: "3",
+    sanskrit: "kṣaṇasampat sudurlabhā prāptā manuṣyāḥ sarvakāmadā |\nyadi dharmo na cīyeta ko 'nyasyodeti saṃbhavaḥ ||",
+    tibetan: "{dal 'byor} 'di {rnyed dka'} 'di {byang chub} {sgrub} nus shing/ gal te lam mi sgrub na/ phyir yang gang la 'byung bar 'gyur/",
+    commentary: "{dal 'byor} 'di {rnyed dka'} zhes pa la/ dal ba brgyad dang 'byor ba bcu la thams cad kyis rnyed par nus pa ma yin no/ {byang chub} {sgrub} nus shing/ mi lus thob na byang chub kyi lam sgrub par nus la/",
+    translation: "This moment of leisure and endowment, so difficult to obtain, has been attained — capable of yielding all aims. If the Dharma is not cultivated now, how will such a chance arise again?",
+    transTibetan: "This dal 'byor, so hard to find, is capable of accomplishing awakening — if the path is not cultivated now, when again will it arise?",
+    transCommentary: "<p>Пример перевода комментария к шлоке 3.</p>"
+  }
+];
+
+// Fill remaining verses with placeholder data
+for (let i = 4; i <= 150; i++) {
+  VERSES.push({
+    title: `${i}`,
+    sanskrit: `[Sanskrit text of verse ${i} to be entered]`,
+    tibetan: `[Tibetan text of verse ${i} — use {word} for linked terms]`,
+    commentary: `[Commentary for verse ${i} — use {word} to reference linked terms]`,
+    translation: `[Translation of Sanskrit for verse ${i} to be entered.]`,
+    transTibetan: `[Translation of Tibetan for verse ${i} to be entered.]`,
+    transCommentary: `<p>[Commentary translation for verse ${i}.]</p>`
+  });
+}
+
+// ── TOC ──────────────────────────────────────────────────────────────────────
+const tocList = document.getElementById('toc-list');
+VERSES.forEach((v, i) => {
+  const n = i + 1;
+  if (v.hideNum) return;
+  const label = v.numLabel || n;
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = `#verse-${n}`;
+  a.innerHTML = `<span class="num">${label}</span>${v.title}`;
+  a.addEventListener('click', () => setActive(a));
+  li.appendChild(a);
+  tocList.appendChild(li);
+});
+
+function setActive(el) {
+  document.querySelectorAll('#toc a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Intersection observer to update TOC active state
+const tocLinks = Array.from(tocList.querySelectorAll('a'));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      tocLinks.forEach(a => a.classList.toggle('active', a.href.endsWith(`#${id}`)));
+      const activeLink = tocLinks.find(a => a.href.endsWith(`#${id}`));
+      if (activeLink) activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  });
+}, { threshold: 0.3 });
+
+// ── PARSE {word} markup ────────────────────────────────────────────────────────
+// Converts "{word} rest of text" into spans.
+// prefix ensures unique keys per verse within a group (e.g. "v0_", "v1_")
+function parseTibetan(str, prefix) {
+  return str.replace(/\{([^}]+)\}/g, (_, word) => {
+    const key = prefix + word;
+    return `<span class="tw" data-word="${key}" tabindex="0">${word}</span>`;
+  });
+}
+
+function parseCommentary(str, prefix) {
+  return str.replace(/\{([^}]+)\}/g, (_, word) => {
+    const key = prefix + word;
+    return `<span class="cw" data-word="${key}">${word}</span>`;
+  });
+}
+
+// ── RENDER VERSES ─────────────────────────────────────────────────────────────
+const container = document.getElementById('verses-container');
+
+// Pre-group verses (consecutive hideNum merge into previous)
+const groups = [];
+let gi = 0;
+while (gi < VERSES.length) {
+  const grp = { verses: [VERSES[gi]], startIndex: gi };
+  gi++;
+  while (gi < VERSES.length && VERSES[gi].hideNum) {
+    grp.verses.push(VERSES[gi]);
+    gi++;
+  }
+  groups.push(grp);
+}
+
+groups.forEach(grp => {
+  const firstIdx = grp.startIndex;
+  const firstV   = grp.verses[0];
+  const label    = firstV.numLabel || (firstIdx + 1);
+
+  const div = document.createElement('div');
+  div.className = 'verse-block';
+  div.id = `verse-${firstIdx + 1}`;
+
+  const sanskritHTML  = grp.verses.map(v => `<div class="sanskrit">${v.sanskrit}</div>`).join('');
+  const tibetanHTML   = grp.verses.map((v, vi) => `<div class="tibetan-verse">${parseTibetan(v.tibetan, `v${vi}_`)}</div>`).join('');
+  const transSktHTML  = grp.verses.map(v => `<div class="translation">${v.translation}</div>`).join('');
+  const transTibHTML  = grp.verses.map(v => `<div class="translation">${v.transTibetan}</div>`).join('');
+  const commTibHTML   = grp.verses.map((v, vi) => `<div class="tibetan-commentary">${parseCommentary(v.commentary, `v${vi}_`)}</div>`).join('');
+  const commTransHTML = grp.verses.map(v => `<div class="trans-commentary">${v.transCommentary}</div>`).join('');
+
+  div.innerHTML = `
+    <div class="verse-number">Шлока ${label}</div>
+    <div class="columns">
+
+      <div class="lang-pair">
+        <div class="col-source">
+          <div class="source-label">Санскрит</div>
+          ${sanskritHTML}
+        </div>
+        <div class="col-trans">
+          <div class="trans-source-label">Перевод с санскрита</div>
+          ${transSktHTML}
+        </div>
+      </div>
+
+      <div class="lang-pair">
+        <div class="col-source">
+          <div class="source-label">Тибетский</div>
+          ${tibetanHTML}
+        </div>
+        <div class="col-trans">
+          <div class="trans-source-label">Перевод с тибетского</div>
+          ${transTibHTML}
+        </div>
+      </div>
+
+      <div class="commentary-row">
+        <div class="col-source" style="border-right:1px solid var(--bg3);padding-right:2rem;">
+          <div class="commentary-label">Тибетский комментарий</div>
+          ${commTibHTML}
+        </div>
+        <div class="col-trans">
+          <div class="commentary-label">Перевод комментария</div>
+          ${commTransHTML}
+        </div>
+      </div>
+
+    </div>
+  `;
+
+  container.appendChild(div);
+  observer.observe(div);
+
+  // Word ↔ Commentary hover interaction
+  const words     = div.querySelectorAll('.tw');
+  const commSpans = div.querySelectorAll('.cw');
+
+  words.forEach(w => {
+    const activate = () => {
+      const key = w.dataset.word;
+      words.forEach(x => {
+        x.classList.remove('active');
+        x.classList.toggle('dimmed', x.dataset.word !== key);
+      });
+      w.classList.add('active');
+      w.classList.remove('dimmed');
+      commSpans.forEach(s => s.classList.toggle('highlight', s.dataset.word === key));
+    };
+    const deactivate = () => {
+      words.forEach(x => x.classList.remove('active', 'dimmed'));
+      commSpans.forEach(s => s.classList.remove('highlight'));
+    };
+    w.addEventListener('mouseenter', activate);
+    w.addEventListener('mouseleave', deactivate);
+    w.addEventListener('focus', activate);
+    w.addEventListener('blur', deactivate);
+  });
+});
+
+// ── TOGGLE TOC ────────────────────────────────────────────────────────────────
+function toggleToc() {
+  document.getElementById('toc').classList.toggle('collapsed');
+}
+</script>
+</body>
+</html>
