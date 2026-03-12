@@ -132,6 +132,120 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* ── TOC CHAPTERS ── */
+  .toc-chapter-header {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .68rem;
+    font-weight: 500;
+    color: var(--gold-lt);
+    padding: .55rem 1rem .2rem;
+    letter-spacing: .05em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    user-select: none;
+    transition: color .15s;
+  }
+  .toc-chapter-header:hover { color: #fff; }
+  .toc-chapter-header .ch-num {
+    font-size: .58rem;
+    color: var(--crimson2);
+    min-width: 1.4rem;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+  .toc-chapter-header .ch-arrow {
+    margin-left: auto;
+    font-size: .6rem;
+    color: #8a7560;
+    transition: transform .2s;
+  }
+  .toc-chapter-header.open .ch-arrow { transform: rotate(90deg); }
+
+  .toc-chapter-verses {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .25s ease;
+  }
+  .toc-chapter-verses.open { max-height: 500px; }
+  .toc-chapter-verses li a {
+    padding-left: 2rem;
+    font-size: .75rem;
+    color: #a09070;
+  }
+  .toc-intro-link {
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    padding: .4rem 1rem;
+    text-decoration: none;
+    color: var(--gold-lt);
+    font-size: .8rem;
+    font-family: 'Noto Sans', sans-serif;
+    border-left: 2px solid transparent;
+    transition: background .15s, color .15s;
+    font-style: italic;
+  }
+  .toc-intro-link:hover { background: #3d3020; color: #fff; }
+  .toc-intro-link.active { background: #3d3020; border-left-color: var(--crimson2); }
+
+  /* ── CHAPTER DIVIDER in main content ── */
+  .chapter-divider {
+    margin: 3rem 0 2rem;
+    padding: .9rem 1.2rem;
+    background: linear-gradient(135deg, #2b2318 0%, #3d3020 100%);
+    border-left: 4px solid var(--crimson);
+    border-radius: 0 6px 6px 0;
+    scroll-margin-top: 1rem;
+  }
+  .chapter-divider:first-child { margin-top: 0; }
+  .chapter-divider .ch-label {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: var(--crimson2);
+    margin-bottom: .2rem;
+  }
+  .chapter-divider .ch-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    color: #f0d88a;
+    font-weight: 400;
+  }
+  .chapter-divider .ch-subtitle {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .75rem;
+    color: #a09070;
+    margin-top: .15rem;
+  }
+
+  /* ── INTRO COMMENTARY BLOCK ── */
+  .intro-block {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 2px solid var(--bg3);
+    scroll-margin-top: 1rem;
+  }
+  .intro-block .intro-header {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--crimson);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+  }
+  .intro-block .intro-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--bg3), transparent);
+  }
+
   /* ── MAIN CONTENT ── */
   main {
     flex: 1;
@@ -174,7 +288,7 @@
   .lang-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 0;
     align-items: start;
     padding: 1.2rem 0;
     border-bottom: 1px solid var(--bg3);
@@ -182,13 +296,55 @@
   .lang-pair:last-of-type { border-bottom: none; }
 
   .col-source { border-right: 1px solid var(--bg3); padding-right: 2rem; }
-  .col-trans  { padding-left: .5rem; }
+  .col-trans  { padding-left: 2rem; }
 
   .commentary-row {
     padding-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+  }
+
+  /* Commentary table: Tibetan sentence ↔ Russian translation, no visible borders */
+  .commentary-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .commentary-table td {
+    vertical-align: top;
+    padding: .55rem .8rem .55rem 0;
+    border: none;
+  }
+  .commentary-table th {
+    text-align: left;
+    font-weight: 400;
+    padding: 0 .8rem .6rem 0;
+    border: none;
+    vertical-align: bottom;
+  }
+  .commentary-table th.ct-tib {
+    width: 50%;
+    padding-right: 2rem;
+    border-right: 1px solid var(--bg3);
+  }
+  .commentary-table th.ct-rus {
+    width: 50%;
+    padding-left: 2rem;
+  }
+  .commentary-table td.ct-tib {
+    width: 50%;
+    padding-right: 2rem;
+    border-right: 1px solid var(--bg3);
+  }
+  .commentary-table td.ct-rus {
+    width: 50%;
+    padding-left: 2rem;
+    color: var(--ink2);
+    font-size: .88rem;
+    line-height: 1.75;
+  }
+  .commentary-table tr + tr td {
+    border-top: 1px solid transparent;
+  }
+  .commentary-table tr:not(:last-child) td {
+    padding-bottom: .7rem;
   }
 
   .source-label, .trans-label {
@@ -328,7 +484,7 @@
 
   <!-- TABLE OF CONTENTS -->
   <nav id="toc">
-    <h2>150 шлок</h2>
+    <h2>150 шлок · 13 разделов</h2>
     <ul id="toc-list"></ul>
   </nav>
 
@@ -357,74 +513,252 @@ const VERSES = [
     numLabel: "1–2",
     sanskrit: "sarvadā sarvathā sarve yasya doṣā na santi ha |<br>sarve sarvābhisāreṇa yatra cāvasthitā guṇāḥ ||",
     tibetan: "{gang zhig} la ni {nyes pa} kun/ / {gtan nas} {yod ye} {mi mnga'} zhing/ / gang la'ang {rnam pa thams cad} du/ / {yon tan} {thams cad} {gnas gyur pa}/ /",
-    commentary: "{gang zhig} la ni {nyes pa} kun/ zhes smros pa la/ de nyid la ni skyabs su 'gro ba'i rigs zhes bya ba la sogs pa'i tshig dang sbyar ro/ {gang zhig} ces bya ba ni thun mong gi sgra yin yang don gyis sangs rgyas bcom ldan 'das kho na la 'jug go/ {nyes pa} zhes bya ba ni 'dod chags la sogs pa ste/ nyes pa byed pa zhes bya ba'i phyir ro/ {mi mnga'} zhes bya ba ni mi mnga' ba ste/ skyon du gyur pa ma brnyes pa'i phyir ro/ {yod ye} zhes bya ba ni bcom ldan 'das kyi spangs pa phun sum tshogs pas ngo mtshar ba gsal bar byed pa'o/ {gtan nas} zhes bya ba ni dus thams cad du'o zhes bya ba'o/ {rnam pa thams cad} ces bya ba ni rnam pa thams cad kyis zhes bya ba'i don to/ {yon tan} {thams cad} gang zhe na/ nyan thos dang thun mong du nyon mongs pa med pa dang smon lam gyi ye shes la sogs pa'o/ {gnas gyur pa} zhes bya ba ni yang dag par gnas pa ste/ bzhed pa tsam gyi phyir dang mngon du gyur pa'i nus pa yin pa'i phyir ro/",
+    commentaryPairs: [
+      {
+        tib: "{gang zhig} la ni {nyes pa} kun/ zhes smros pa la/ de nyid la ni skyabs su 'gro ba'i rigs zhes bya ba la sogs pa'i tshig dang sbyar ro/",
+        rus: "<i>В ком все изъяны</i> — эти слова соединяются с последующими: <i>в нем подобает [искать] прибежище</i> и т. д."
+      },
+      {
+        tib: "{gang zhig} ces bya ba ni thun mong gi sgra yin yang don gyis sangs rgyas bcom ldan 'das kho na la 'jug go/",
+        rus: "Слово <i>кто</i> является общеупотребительным, однако по смыслу оно относится исключительно к Будде Бхагавану."
+      },
+      {
+        tib: "{nyes pa} zhes bya ba ni 'dod chags la sogs pa ste/ nyes pa byed pa zhes bya ba'i phyir ro/",
+        rus: "<i>Изъяны</i> — это страсть и прочее подобное, ибо [они названы так] в том смысле, что причиняют ущерб."
+      },
+      {
+        tib: "{mi mnga'} zhes bya ba ni mi mnga' ba ste/ skyon du gyur pa ma brnyes pa'i phyir ro/",
+        rus: "<i>Отсутствуют</i> — то есть не имеются, ибо [он] не обрел того, что обратилось бы в изъян."
+      },
+      {
+        tib: "{yod ye} zhes bya ba ni bcom ldan 'das kyi spangs pa phun sum tshogs pas ngo mtshar ba gsal bar byed pa'o/",
+        rus: "Слово <i>совсем</i> указывает на удивительность [Бхагавана], проявляющуюся в совершенстве его отречения."
+      },
+      {
+        tib: "{gtan nas} zhes bya ba ni dus thams cad du'o zhes bya ba'o/",
+        rus: "<i>Абсолютно</i> означает «во все времена»."
+      },
+      {
+        tib: "{rnam pa thams cad} ces bya ba ni rnam pa thams cad kyis zhes bya ba'i don to/",
+        rus: "<i>Во всей полноте</i> означает «во всех своих аспектах»."
+      },
+      {
+        tib: "{yon tan} {thams cad} gang zhe na/ nyan thos dang thun mong du nyon mongs pa med pa dang smon lam gyi ye shes la sogs pa'o/",
+        rus: "Что же представляют собой <i>все достоинства</i>? — Свобода от клеш, общая со шраваками, и мудрость устремления и прочее подобное."
+      },
+      {
+        tib: "{gnas gyur pa} zhes bya ba ni yang dag par gnas pa ste/ bzhed pa tsam gyi phyir dang mngon du gyur pa'i nus pa yin pa'i phyir ro/",
+        rus: "<i>Пребывают</i> означает «пребывают в полноте»: ибо [достоинства] наличествуют как по намерению, так и по способности к проявлению."
+      }
+    ],
     translation: "В ком ни в каком виде никогда нет никаких недостатков, в ком пребывают все достоинства в своей полной силе –",
-    transTibetan: "В ком все изъяны совсем [и] абсолютно отсутствуют, в ком во всей полноте пребывают все достоинства —",
-    transCommentary: "<p><i>В ком все изъяны</i>, — эти слова соединяются с последующими: «подобает прибегать к тому самому за прибежищем» и т. д.<br>Слово <i>кто</i> является общеупотребительным, однако по смыслу оно относится исключительно к Будде Бхагавану.<br><i>Изъяны</i> — это страсть и прочее подобное, ибо [они названы так] в том смысле, что причиняют ущерб. etc</p>"
+    transTibetan: "В ком все изъяны совсем [и] абсолютно отсутствуют, в ком во всей полноте пребывают все достоинства —"
   },
   {
     title: "",
     hideNum: true,
     sanskrit: "tam eva śaraṇaṃ gantuṃ taṃ stotuṃ tam upāsitum |<br>tasyaiva śāsane sthātuṃ nyāyyaṃ yady asti cetanā ||",
     tibetan: "gal te sems shig yod na ni/ / {de nyid} la ni {skyabs 'gro} zhing/ / de bstod de ni bkur ba dang/ / de yi bstan la gnas pa'i rigs/ /",
-    commentary: "{de nyid} la ni {skyabs su 'gro} ba'i rigs so zhes bya ba ni rgyas pa'o/",
+    commentaryPairs: [
+      {
+        tib: "{de nyid} la ni {skyabs su 'gro} ba'i rigs so zhes bya ba ni rgyas pa'o/",
+        rus: "«В нём самом подобает искать прибежище» — это [выражение] является развёрнутым [изложением]."
+      }
+    ],
     translation: "к тому подобает прибегать за защитой, того подобает восхвалять, того подобает почитать, его учения подобает держаться всем, кто наделен сознанием.",
-    transTibetan: "если наделен сознанием, в нем подобает [искать] прибежище, восхвалять его, почитать его и пребывать в его учении.",
-    transCommentary: "<p>Пример перевода комментария к шлоке 2.</p>"
+    transTibetan: "если наделен сознанием, в нем подобает [искать] прибежище, восхвалять его, почитать его и пребывать в его учении."
   },
   {
     title: "3",
     sanskrit: "kṣaṇasampat sudurlabhā prāptā manuṣyāḥ sarvakāmadā |\nyadi dharmo na cīyeta ko 'nyasyodeti saṃbhavaḥ ||",
     tibetan: "{dal 'byor} 'di {rnyed dka'} 'di {byang chub} {sgrub} nus shing/ gal te lam mi sgrub na/ phyir yang gang la 'byung bar 'gyur/",
-    commentary: "{dal 'byor} 'di {rnyed dka'} zhes pa la/ dal ba brgyad dang 'byor ba bcu la thams cad kyis rnyed par nus pa ma yin no/ {byang chub} {sgrub} nus shing/ mi lus thob na byang chub kyi lam sgrub par nus la/",
+    commentaryPairs: [
+      {
+        tib: "{dal 'byor} 'di {rnyed dka'} zhes pa la/ dal ba brgyad dang 'byor ba bcu la thams cad kyis rnyed par nus pa ma yin no/",
+        rus: "Относительно <i>эта [свобода-и-] наделённость столь трудна для обретения</i>: не все способны обрести восемь свобод и десять наделённостей."
+      },
+      {
+        tib: "{byang chub} {sgrub} nus shing/ mi lus thob na byang chub kyi lam sgrub par nus la/",
+        rus: "[Она] <i>способна осуществить пробуждение</i>: обретя человеческое тело, [существо] способно осуществить путь к пробуждению."
+      }
+    ],
     translation: "This moment of leisure and endowment, so difficult to obtain, has been attained — capable of yielding all aims. If the Dharma is not cultivated now, how will such a chance arise again?",
-    transTibetan: "This dal 'byor, so hard to find, is capable of accomplishing awakening — if the path is not cultivated now, when again will it arise?",
-    transCommentary: "<p>Пример перевода комментария к шлоке 3.</p>"
+    transTibetan: "This dal 'byor, so hard to find, is capable of accomplishing awakening — if the path is not cultivated now, when again will it arise?"
   }
 ];
 
-// Fill remaining verses with placeholder data
 for (let i = 4; i <= 150; i++) {
   VERSES.push({
     title: `${i}`,
     sanskrit: `[Sanskrit text of verse ${i} to be entered]`,
     tibetan: `[Tibetan text of verse ${i} — use {word} for linked terms]`,
-    commentary: `[Commentary for verse ${i} — use {word} to reference linked terms]`,
+    commentaryPairs: [
+      {
+        tib: `[Тибетский комментарий к шлоке ${i}]`,
+        rus: `[Перевод комментария к шлоке ${i}]`
+      }
+    ],
     translation: `[Translation of Sanskrit for verse ${i} to be entered.]`,
-    transTibetan: `[Translation of Tibetan for verse ${i} to be entered.]`,
-    transCommentary: `<p>[Commentary translation for verse ${i}.]</p>`
+    transTibetan: `[Translation of Tibetan for verse ${i} to be entered.]`
   });
 }
 
+// ── CHAPTER STRUCTURE ─────────────────────────────────────────────────────────
+// Verse ranges are 1-based inclusive. Confirmed: ch1 = 1-9 (polyglotta).
+// Remaining chapters follow Shackleton Bailey's edition (1951).
+const CHAPTERS = [
+  { num: 1,  sanskrit: "Upodghātaḥ",          russian: "Введение",                  from: 1,   to: 9   },
+  { num: 2,  sanskrit: "Hetustavaḥ",           russian: "Восхваление причин",         from: 10,  to: 18  },
+  { num: 3,  sanskrit: "Nirupamastavaḥ",       russian: "Восхваление несравненности", from: 19,  to: 27  },
+  { num: 4,  sanskrit: "Adbhutastavaḥ",        russian: "Восхваление чудесного",      from: 28,  to: 36  },
+  { num: 5,  sanskrit: "Rūpastavaḥ",           russian: "Восхваление образа",         from: 37,  to: 45  },
+  { num: 6,  sanskrit: "Karuṇāstavaḥ",         russian: "Восхваление сострадания",    from: 46,  to: 63  },
+  { num: 7,  sanskrit: "Vacanastavaḥ",         russian: "Восхваление речи",           from: 64,  to: 81  },
+  { num: 8,  sanskrit: "Śāsanastavaḥ",         russian: "Восхваление учения",         from: 82,  to: 91  },
+  { num: 9,  sanskrit: "Praṇidhistavaḥ",       russian: "Восхваление устремлений",    from: 92,  to: 104 },
+  { num: 10, sanskrit: "Mārgāvatārastavaḥ",    russian: "Восхваление наставничества", from: 105, to: 117 },
+  { num: 11, sanskrit: "Duṣkarastavaḥ",        russian: "Восхваление трудных деяний", from: 118, to: 131 },
+  { num: 12, sanskrit: "Kauśalastavaḥ",        russian: "Восхваление искусности",     from: 132, to: 143 },
+  { num: 13, sanskrit: "Ānṛṇyastavaḥ",         russian: "Восхваление свободы от долга", from: 144, to: 150 },
+];
+
+// Helper: which chapter does verse n belong to?
+function getChapter(n) {
+  return CHAPTERS.find(c => n >= c.from && n <= c.to);
+}
+
+// ── INTRODUCTION TO THE COMMENTARY ────────────────────────────────────────────
+// Sentence pairs: Tibetan original + Russian translation.
+// Fill in with actual text from the Nandipriya commentary introduction.
+const INTRO_COMMENT = [
+  {
+    tib: "spel mar bstod pa phyogs glang pos<br>zab mo nye bar bshad pa ni<br>brgya ni lnga bcu pa yi don<br>rmad byung de las rnam shes nas<br>rgyal ba la ni gus pa yi<br>dga' byed snyan pa'i dge slong gis<br>de yi phyogs la dad pa yis<br>rnam par dbye ba rab tu bya//",
+    rus: "Постигнув чудесный смысл <i>Śatapañcāśatka</i>,<br>Глубокое наставление Дигнаги <i>Miśrakastotra</i>,<br>Монах Нандаприя, почитающий Будду,<br>С верой в традицию надлежащим образом рассмотрит [смысл текста]."
+  },
+  {
+    tib: "de la 'dir brgya lnga bcu pa'i bstod pa re zhig dang por gleng bslang ba dang/ rgyu dang 'bras bu dang/ sman 'dogs pa'i sgo nas bstod pa dang/ bcu gsum du rab tu bstan pa ni 'di lta ste/ gleng bslang ba'i bstod pa dang /pha rol tu phyin pa drug gi rgyu thun mong ma yin pa'i phyir gcig tu byas nas rgyu la bstod pa'o//",
+    rus: "Относительно <i>Śatapañcāśatka</i>: вначале идет введение, за которым следует восхваление через [описание] причины и следствия, а также через [описание] пользы, всего тринадцать разделов. Вводное восхваление (<i>Upodghātaḥ</i>); поскольку причины шести парамит необычайны, они объединены в одно в <i>Hetustavaḥ</i>."
+  },
+  {
+    tib: "'bras bu la bstod pa ni dpe med pa la sogs pa'i dbye bas rnam pa gsum ste/ dpe med pa la rmad du byung ba la bstod pa dang/ sku la bstod pa zhes bya ba'o//",
+    rus: "Восхваление следствий разделяется на три: «Несравненный» (<i>Nirupamastavaḥ</i>) и так далее. «Несравненный» (<i>Nirupamastavaḥ</i>), «Чудесный» (<i>Adbhutastavaḥ</i>), «Форма» (<i>Rūpastavaḥ</i>)."
+  },
+  {
+    tib: "sman 'dogs pa'i bstod pa ni snying rje la sogs pa'i dbye bas rnam pa brgyad de/ thugs rje la bstod pa dang/ / gsung la bstod pa dang/ / bstan pa la bstod pa dang/ smon lam la bstod pa dang/ lam la 'jug pa la bstod pa dang/ /dka' ba mdzad pa la bstod pa dang/ mkhas par bstod pa dang/ bu lon med pa la bstod pa zhes bya'o/ /",    
+	rus: "Восхваление пользы разделяется на восемь: «Сострадание» и так далее. Восхваление сострадания (<i>Karuṇāstavaḥ</i>), восхваление речи (<i>Vacanastavaḥ</i>), восхваление учения (<i>Śāsanastavaḥ</i>), восхваление устремления (<i>Praṇidhistavaḥ</i>), восхваление наставничества (<i>Mārgāvatārastavaḥ</i>), восхваление трудных деяний (<i>Duṣkarastavaḥ</i>), восхваление искусности (<i>Kauśalastavaḥ</i>) и восхваление свободы от долга (<i>Ānṛṇyastavaḥ</i>)."
+  },
+  {
+    tib: "de rnams kyi bsdus pa'i tshigs su bcad pa dag ni/",    
+	rus: "[Ниже] названия разделов в стихотворной форме."
+  },
+  {
+    tib: "gleng bslang bstod dang rgyu la ni/<br>rnam drug 'bras bu dpe med dang/<br>rmad du byung dang de bzhin sku/<br>sman 'dogs rnam brgyad de yang ni/<br>thugs rje gsung dang bstan pa dang/<br>smon lam dang ni lam 'jug dang/<br>dka' mdzad nyid dang mkhas pa dang/<br>bu lon med dang bcu gsum mo/<br>",    
+	rus: ""
+  },
+  {
+    tib: "bstod pa bcu gsum po de rnams kyi re re'i bshad pa yongs su rdzogs pa ni phyis bshad par bya'o/ de la gleng bslang ba zhes bya ba ni dang por brtsam pa'o/  gleng bslang ba der don gang dang gang gis bshad pa zhes bya ba bstan pa dang / rgyu la bstod pa la sogs pa rnams la yang tshigs su bcad pa gang gis don gang bshad pa de yang rab tu bshad par bya'o/",    
+	rus: "Полное объяснение каждого из этих тринадцати разделов будет представлено ниже.<br>Введение идет в начале. В этом введении будет изложено, как объясняются те или иные смыслы, в разделах <i>Hetustavaḥ</i> и так далее так же смыслы всех шлок будут тщательно разъяснены."
+  },
+  {
+    tib: "re zhig gleng bslang ba'i bstod pa'i tshig gi don ni",    
+	rus: "Прежде всего, смысл хвалебных вступительных стихов таков:"
+  },
+  {
+    tib: "de bzhin gshegs pa la skyabs su 'gro ba la sogs pa'i mchod 'os nyid dang/",    
+	rus: "Достоинство Татхагаты как объекта подношений, обусловленное тем, что он является прибежищем и так далее <b>(шлоки 1–2)</b>."
+  },
+  {
+    tib: "de bzhin gshegs pa'i rgyu nyid dang de bzhin gshegs pa'i nyes pa ma lus pa zad pa rjes su dpag pa dang/",    
+	rus: "Природа Татхагаты как причины и умозаключение о полном исчерпании всех изъянов Татхагаты <b>(шлоки 3–6)</b>."
+  },
+  {
+    tib: "yon tan ma lus pa mi shes pas kyang bcom ldan 'das la yon tan gyi phyogs gcig tsam gyis bstod pa dang phyag 'tshal ba'i yon tan gyi tshogs tsam bshad pa zhes bya'o/",    
+	rus: "А также, несмотря на то что все качества не известны в полной мере, само по себе изложение совокупности качеств — восхваление и простирание перед Бхагаваном посредством лишь части этих качеств <b>(шлоки 7–9)</b>."
+  },
+  {
+    tib: "'dir yang bsdus pa'i tshigs su bcad pa ni/",    
+	rus: "Ниже шлока, суммирующая (смысл)."
+  },
+  {
+    tib: "ston la skyabs 'gro sogs mchod 'os/<br>nyes pa med pa rjes su dpag/<br>yon tan mtha' yas kyang ni chas/<br>bstod pa 'dir ni phyag 'tshal phyogs/<br>",    
+	rus: ""
+  }
+];
+
 // ── TOC ──────────────────────────────────────────────────────────────────────
 const tocList = document.getElementById('toc-list');
-VERSES.forEach((v, i) => {
-  const n = i + 1;
-  if (v.hideNum) return;
-  const label = v.numLabel || n;
-  const li = document.createElement('li');
-  const a = document.createElement('a');
-  a.href = `#verse-${n}`;
-  a.innerHTML = `<span class="num">${label}</span>${v.title}`;
-  a.addEventListener('click', () => setActive(a));
-  li.appendChild(a);
-  tocList.appendChild(li);
+
+// Intro link
+const introLi = document.createElement('li');
+const introA  = document.createElement('a');
+introA.className = 'toc-intro-link';
+introA.href = '#intro-commentary';
+introA.textContent = '↳ Предисловие комментария';
+introLi.appendChild(introA);
+tocList.appendChild(introLi);
+
+// Build chapter-grouped TOC
+CHAPTERS.forEach(ch => {
+  // Chapter header row
+  const chLi = document.createElement('li');
+  const chHeader = document.createElement('div');
+  chHeader.className = 'toc-chapter-header';
+  chHeader.innerHTML = `
+    <span class="ch-num">${ch.num}</span>
+    <span>${ch.sanskrit}<br><small style="color:#8a7560;font-weight:400;font-size:.62rem">${ch.russian}</small></span>
+    <span class="ch-arrow">▶</span>`;
+
+  // Verse sub-list
+  const verseUl = document.createElement('ul');
+  verseUl.className = 'toc-chapter-verses';
+
+  VERSES.forEach((v, i) => {
+    const n = i + 1;
+    if (v.hideNum) return;
+    const label = v.numLabel || n;
+    const verseNum = typeof label === 'string' && label.includes('–')
+      ? parseInt(label.split('–')[0]) : n;
+    if (verseNum < ch.from || verseNum > ch.to) return;
+    const li = document.createElement('li');
+    const a  = document.createElement('a');
+    a.href = `#verse-${n}`;
+    a.innerHTML = `<span class="num">${label}</span>`;
+    a.addEventListener('click', e => { e.stopPropagation(); setActive(a); });
+    li.appendChild(a);
+    verseUl.appendChild(li);
+  });
+
+  // Toggle collapse
+  chHeader.addEventListener('click', () => {
+    const isOpen = verseUl.classList.contains('open');
+    verseUl.classList.toggle('open', !isOpen);
+    chHeader.classList.toggle('open', !isOpen);
+  });
+
+  chLi.appendChild(chHeader);
+  chLi.appendChild(verseUl);
+  tocList.appendChild(chLi);
 });
 
 function setActive(el) {
-  document.querySelectorAll('#toc a').forEach(a => a.classList.remove('active'));
+  document.querySelectorAll('#toc a, .toc-intro-link').forEach(a => a.classList.remove('active'));
   el.classList.add('active');
+  // Open the parent chapter
+  const ul = el.closest('.toc-chapter-verses');
+  if (ul) {
+    ul.classList.add('open');
+    ul.previousElementSibling?.classList.add('open');
+  }
 }
 
 // Intersection observer to update TOC active state
-const tocLinks = Array.from(tocList.querySelectorAll('a'));
+const allTocLinks = Array.from(tocList.querySelectorAll('a'));
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
-      tocLinks.forEach(a => a.classList.toggle('active', a.href.endsWith(`#${id}`)));
-      const activeLink = tocLinks.find(a => a.href.endsWith(`#${id}`));
-      if (activeLink) activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      const matched = allTocLinks.find(a => a.getAttribute('href') === `#${id}`);
+      if (matched) setActive(matched);
     }
   });
 }, { threshold: 0.3 });
@@ -446,8 +780,36 @@ function parseCommentary(str, prefix) {
   });
 }
 
-// ── RENDER VERSES ─────────────────────────────────────────────────────────────
+// ── RENDER INTRO COMMENTARY ───────────────────────────────────────────────────
 const container = document.getElementById('verses-container');
+
+const introBlock = document.createElement('div');
+introBlock.className = 'intro-block';
+introBlock.id = 'intro-commentary';
+
+const introRows = INTRO_COMMENT.map(pair =>
+  `<tr>
+    <td class="ct-tib tibetan-commentary">${pair.tib}</td>
+    <td class="ct-rus">${pair.rus}</td>
+  </tr>`
+).join('');
+
+introBlock.innerHTML = `
+  <div class="intro-header">Предисловие комментария</div>
+  <table class="commentary-table">
+    <thead>
+      <tr>
+        <th class="ct-tib ct-head"><span class="commentary-label">Тибетский комментарий</span></th>
+        <th class="ct-rus ct-head"><span class="trans-source-label">Перевод комментария</span></th>
+      </tr>
+    </thead>
+    <tbody>${introRows}</tbody>
+  </table>
+`;
+container.appendChild(introBlock);
+observer.observe(introBlock);
+
+// ── RENDER VERSES ─────────────────────────────────────────────────────────────
 
 // Pre-group verses (consecutive hideNum merge into previous)
 const groups = [];
@@ -462,10 +824,28 @@ while (gi < VERSES.length) {
   groups.push(grp);
 }
 
+let lastChapterNum = null;
+
 groups.forEach(grp => {
   const firstIdx = grp.startIndex;
   const firstV   = grp.verses[0];
   const label    = firstV.numLabel || (firstIdx + 1);
+  const verseNum = firstIdx + 1;
+
+  // Insert chapter divider before first verse of each chapter
+  const ch = getChapter(verseNum);
+  if (ch && ch.num !== lastChapterNum) {
+    lastChapterNum = ch.num;
+    const divider = document.createElement('div');
+    divider.className = 'chapter-divider';
+    divider.id = `chapter-${ch.num}`;
+    divider.innerHTML = `
+      <div class="ch-label">Раздел ${ch.num} · rab tu bstan pa ${ch.num}</div>
+      <div class="ch-title">${ch.sanskrit}</div>
+      <div class="ch-subtitle">${ch.russian} · Шлоки ${ch.from}–${ch.to}</div>
+    `;
+    container.appendChild(divider);
+  }
 
   const div = document.createElement('div');
   div.className = 'verse-block';
@@ -475,8 +855,27 @@ groups.forEach(grp => {
   const tibetanHTML   = grp.verses.map((v, vi) => `<div class="tibetan-verse">${parseTibetan(v.tibetan, `v${vi}_`)}</div>`).join('');
   const transSktHTML  = grp.verses.map(v => `<div class="translation">${v.translation}</div>`).join('');
   const transTibHTML  = grp.verses.map(v => `<div class="translation">${v.transTibetan}</div>`).join('');
-  const commTibHTML   = grp.verses.map((v, vi) => `<div class="tibetan-commentary">${parseCommentary(v.commentary, `v${vi}_`)}</div>`).join('');
-  const commTransHTML = grp.verses.map(v => `<div class="trans-commentary">${v.transCommentary}</div>`).join('');
+
+  // Build commentary as sentence-pair table
+  const commTableRows = grp.verses.map((v, vi) => {
+    const pairs = v.commentaryPairs || [];
+    return pairs.map(pair => {
+      const tibParsed = parseCommentary(pair.tib, `v${vi}_`);
+      return `<tr>
+        <td class="ct-tib tibetan-commentary">${tibParsed}</td>
+        <td class="ct-rus">${pair.rus}</td>
+      </tr>`;
+    }).join('');
+  }).join('');
+  const commHTML = `<table class="commentary-table">
+    <thead>
+      <tr>
+        <th class="ct-tib ct-head"><span class="commentary-label">Тибетский комментарий</span></th>
+        <th class="ct-rus ct-head"><span class="trans-source-label">Перевод комментария</span></th>
+      </tr>
+    </thead>
+    <tbody>${commTableRows}</tbody>
+  </table>`;
 
   div.innerHTML = `
     <div class="verse-number">Шлока ${label}</div>
@@ -505,14 +904,7 @@ groups.forEach(grp => {
       </div>
 
       <div class="commentary-row">
-        <div class="col-source" style="border-right:1px solid var(--bg3);padding-right:2rem;">
-          <div class="commentary-label">Тибетский комментарий</div>
-          ${commTibHTML}
-        </div>
-        <div class="col-trans">
-          <div class="commentary-label">Перевод комментария</div>
-          ${commTransHTML}
-        </div>
+        ${commHTML}
       </div>
 
     </div>
