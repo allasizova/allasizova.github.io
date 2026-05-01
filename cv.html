@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alla Sizova — CV | khara-khoto.city</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #bcd8eb;
+      --text: #223bc9;
+      --accent: #1a2d9e;
+      --red: #E63b60;
+      --line: rgba(34, 59, 201, 0.25);
+      --card: rgba(255, 255, 255, 0.18);
+      --card-border: rgba(34, 59, 201, 0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 64px 0 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .site-link {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      opacity: 0.7;
+      margin-bottom: 28px;
+      transition: opacity 0.2s;
+    }
+    .site-link:hover { opacity: 1; }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--red);
+      line-height: 1.1;
+    }
+
+    .tagline {
+      margin-top: 12px;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    .academia-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      background: transparent;
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--text);
+      border-radius: 2px;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .academia-btn:hover { opacity: 1; }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── NAV ── */
+    nav.toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      padding: 28px 0 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    nav.toc a {
+      font-size: 13px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    nav.toc a:hover { opacity: 1; }
+
+    /* ── SECTION ── */
+    section {
+      padding: 48px 0 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--line);
+      margin-top: 48px;
+    }
+
+    h2 {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+
+    /* ── TIMELINE (work & studies) ── */
+    .timeline { list-style: none; }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 24px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline li:first-child { border-top: 1px solid var(--line); }
+
+    .year {
+      font-size: 13px;
+      opacity: 0.55;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+
+    .entry-body strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .entry-body span {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-group { margin-bottom: 36px; }
+
+    .pub-group h3 {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--red);
+      margin-bottom: 16px;
+      color: var(--red);
+      opacity: 0.9;
+    }
+
+    .pub-list { list-style: none; }
+
+    .pub-list li {
+      font-size: 14.5px;
+      line-height: 1.6;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .pub-list li:last-child { border-bottom: none; }
+
+    .pub-list a {
+      color: var(--text);
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+    .pub-list a:hover { opacity: 0.7; }
+
+    .pub-year {
+      font-size: 12px;
+      opacity: 0.55;
+      margin-left: 6px;
+    }
+
+    /* ── CONFERENCES ── */
+    .conf-list { list-style: none; }
+
+    .conf-list li {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 0 20px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14.5px;
+    }
+    .conf-list li:first-child { border-top: 1px solid var(--line); }
+
+    .conf-year {
+      font-size: 13px;
+      opacity: 0.55;
+      padding-top: 2px;
+    }
+
+    .conf-body em {
+      display: block;
+      font-style: italic;
+      font-size: 13px;
+      opacity: 0.65;
+      margin-top: 2px;
+    }
+
+    /* ── VIDEOS ── */
+    .video-list { list-style: none; }
+
+    .video-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .video-list li:first-child { border-top: 1px solid var(--line); }
+
+    .video-list a {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .video-list a:hover { opacity: 0.7; }
+
+    .play-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--text);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .play-icon svg { fill: var(--bg); }
+
+    .video-meta {
+      font-size: 12px;
+      font-weight: 400;
+      opacity: 0.6;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      opacity: 0.5;
+    }
+    footer a { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .timeline li { grid-template-columns: 90px 1fr; gap: 0 12px; }
+      .conf-list li { grid-template-columns: 52px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="site-link" href="https://khara-khoto.city">↩ khara-khoto.city</a>
+  <h1>Alla Sizova</h1>
+  <p class="tagline">Researcher · Tibetan Studies · Mongolian Studies · Tangut Studies</p>
+</header>
+
+<main>
+
+  <nav class="toc">
+    <a href="#positions">Positions</a>
+    <a href="#education">Education</a>
+    <a href="#publications">Publications</a>
+    <a href="#conferences">Conferences</a>
+    <a href="#lectures">Lectures & Videos</a>
+  </nav>
+
+  <!-- ── POSITIONS ── -->
+  <section id="positions">
+    <h2>Positions Held</h2>
+    <ul class="timeline">
+      <li>
+        <span class="year">2023 — 2027</span>
+        <div class="entry-body">
+          <strong>Doctoral Student</strong>
+          <span>Institut für Indologie und Tibetologie, Ludwig-Maximilians-Universität München<br>Equipe Tibet, Bhoutan et aire culturelle tibétaine, Centre de recherche sur les civilisations de l'Asie orientale, École Pratique des Hautes Études</span>
+        </div>
+      </li>
+      <li>
+        <span class="year">2010 – 2022</span>
+        <div class="entry-body">
+          <strong>Assistant Researcher → Junior Researcher → Researcher</strong>
+          <span>Institute for Oriental Manuscripts, Russian Academy of Sciences, St. Petersburg</span>
+        </div>
+      </li>
+      <!-- Add more positions here -->
+    </ul>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="timeline">
+      <li>
+        <span class="year">2003 – 2010</span>
+        <div class="entry-body">
+          <strong>Master’s degree in Literature</strong>
+          <span>St. Petersburg State University, Faculty of Oriental Studies, Department of Mongolian Philology (now Department of Mongolian and Tibetan Studies)</span>
+        </div>
+      </li>
+      <!-- Add more education here -->
+    </ul>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section id="publications">
+    <h2>Selected Publications</h2>
+
+    <div class="pub-group">
+      <h3>Tibetan Buddhism in the Tangut Empire</h3>
+      <ul class="pub-list">
+        <li>
+          <a href="https://www.academia.edu/144941472/Tibetan_Translation_of_the_U%E1%B9%A3%E1%B9%87%C4%AB%E1%B9%A3avijay%C4%81dh%C4%81ra%E1%B9%87%C4%ABs%C5%ABtra_Produced_in_the_12th_Century_in_the_Tangut_Empire" target="_blank" rel="noopener">Tibetan Translation of the Uṣṇīṣavijāyadhāraṇīsūtra Produced in the 12th Century in the Tangut Empire</a>
+          <span class="pub-year">2025</span><br>
+          <span>BuddhistRoad Paper 2.10. Ruhr University Bochum</span>
+        </li>
+        <li>
+          <a href="https://journals.eco-vector.com/2410-0145/article/view/48894" target="_blank" rel="noopener">Imperial Postscript to the Tangut, Chinese and Tibetan Editions of the dhāraṇī-sūtras in the Collection of the IOM, RAS</a>
+          <span class="pub-year">2020</span><br>
+          <span>With Saya Hamanaka. <em>Written Monuments of the Orient</em>, vol. 6, no. 2 (12), pp. 65–92</span>
+        </li>
+        <li>
+          <a href="https://journals.eco-vector.com/2410-0145/article/view/25873" target="_blank" rel="noopener">On the History of the Formation and Processing of the Collection of the Tibetan Texts from Khara-Khoto Kept at the IOM, RAS</a>
+          <span class="pub-year">2019</span><br>
+          <span>With Alexander Zorin. <em>Written Monuments of the Orient</em>, vol. 5, no. 2 (10), pp. 3–18</span>
+        </li>
+        <!-- Add more publications here -->
+      </ul>
+    </div>
+
+    <div class="pub-group">
+      <h3>Manuscript Studies &amp; Codicology</h3>
+      <ul class="pub-list">
+        <li>
+          <a href="https://journals.eco-vector.com/2410-0145/article/view/633140" target="_blank" rel="noopener">Tibetan Birchbark Manuscripts in the Serindian Collection of the IOM, RAS: Restoration and Identification</a>
+          <span class="pub-year">2024</span><br>
+          <span>With Kristina Korosteleva. <em>Written Monuments of the Orient</em>, vol. 10, no. 1 (20), pp. 29–61</span>
+        </li>
+        <li>
+          <a href="https://himalaya.socanth.cam.ac.uk/collections/journals/ret/pdf/ret_55_20.pdf" target="_blank" rel="noopener">Tibetan Manuscript on Birchbark from the Collection of the Institute of Oriental Manuscripts RAS</a>
+          <span class="pub-year">2020</span><br>
+          <span><em>Revue d'Etudes Tibétaines</em>, no. 55, pp. 462–474</span>
+        </li>
+        <!-- Add more publications here -->
+      </ul>
+    </div>
+
+    <div class="pub-group">
+      <h3>History of Tibetology</h3>
+      <ul class="pub-list">
+        <li>
+          <a href="https://hal.science/hal-04647519" target="_blank" rel="noopener">Documents from the National Library of France related to the first Tibetan manuscripts in Europe and early Russian-French academic relations</a>
+          <span class="pub-year">2024</span><br>
+          <span>With Emanuela Garatti &amp; Nathalie Monnet. <em>Revue d'Etudes Tibétaines</em>, no. 71, pp. 13–32</span>
+        </li>
+        <!-- Add more publications here -->
+      </ul>
+    </div>
+	
+	<div class="pub-group">
+      <h3>Academic Life</h3>
+      <ul class="pub-list">
+        <li>
+          <a href="https://khara-khoto.city/pdf/JAH_58_1-2_Zorin_Sizova_Walravens_Forum_SD.pdf" target="_blank" rel="noopener">Veritable Records vs. Censored History of the Serindica Laboratory at the Institute of Oriental Manuscripts, RAS</a>
+          <span class="pub-year">2024</span><br>
+          <span>With Alexander Zorin &amp; Hartmut Walravens. <em>Journal of Asian History</em>, no. 58 (2024), pp. 237–242</span>
+        </li>
+        <!-- Add more publications here -->
+      </ul>
+    </div>
+	
+	<div class="pub-group">
+      <h3>Reviews</h3>
+      <ul class="pub-list">
+        <li>
+          <a href="http://journals.openedition.org/emscat/7429" target="_blank" rel="noopener">Kapstein Matthew T. (ed.), <i>Tibetan Manuscripts and Early Printed Books</i>, vol. 1, <i>Elements</i>, vol. 2, <i>Elaborations</i></a>
+          <span class="pub-year">2025</span><br>
+          <span><em>Études mongoles et sibériennes, centrasiatiques et tibétaines</em> 56 | 2025, Online since 31 December 2025, connection on 10 January 2026</span>
+        </li>
+        <!-- Add more publications here -->
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ── CONFERENCES ── -->
+  <section id="conferences">
+    <h2>Selected Conferences</h2>
+    <ul class="conf-list">
+      <li>
+        <span class="conf-year">2025</span>
+        <div class="conf-body">
+          Paper title: "The Ritual Aspect of Tibetan Buddhism in the Tangut State: Manuscript Collections and Historical Sources"
+          <em>Association for Asian Studies (AAS), Columbus, Ohio</em>
+        </div>
+      </li>
+	  <li>
+        <span class="conf-year">2025</span>
+        <div class="conf-body">
+          Paper title: "The Ritual Aspect of Tibetan Buddhism in the Tangut State"
+          <em>XXth Congress of the International Association of Buddhist Studies (IABS), Leipzig</em>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── LECTURES & VIDEOS ── -->
+  <section id="lectures">
+    <h2>Lectures &amp; Videos</h2>
+    <ul class="video-list">
+      <li>
+        <a href="https://podcasts.ox.ac.uk/first-tibetan-block-print-khara-khoto-collection-precious-dharanis-emperors-postscript" target="_blank" rel="noopener">
+          <span class="play-icon">
+            <svg width="9" height="10" viewBox="0 0 9 10"><polygon points="1,0 9,5 1,10"/></svg>
+          </span>
+          <span>
+            The First Tibetan Block Print: The Khara-Khoto Collection of Precious Dhāraṇīs with the Emperor's Postscript
+            <span class="video-meta">Tibetan Graduate Studies Seminar · University of Oxford Podcasts</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=PulBkAB9O4U&t" target="_blank" rel="noopener">
+          <span class="play-icon">
+            <svg width="9" height="10" viewBox="0 0 9 10"><polygon points="1,0 9,5 1,10"/></svg>
+          </span>
+          <span>
+            Tibetan manuscripts from Kharakhoto - Talking to Alla Sizova
+            <span class="video-meta">Interview · The Chinese Alphabet — YouTube channel of Imre Galambos · 2025</span>
+          </span>
+        </a>
+      </li>
+	  <li>
+        <a href="https://www.youtube.com/watch?v=807xbZmt3e0&t" target="_blank" rel="noopener">
+          <span class="play-icon">
+            <svg width="9" height="10" viewBox="0 0 9 10"><polygon points="1,0 9,5 1,10"/></svg>
+          </span>
+          <span>
+            Star Prophecy, Massacre of the Innocents, Baby in a Basket, and other legends about the origin of the Tangut state
+            <span class="video-meta">Lecture · Centre for Oriental Studies of Tartu University · 2024</span>
+          </span>
+        </a>
+      </li>
+      <!-- Add more videos here -->
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="https://khara-khoto.city">khara-khoto.city</a> &nbsp;·&nbsp; Alla Sizova</p>
+  <p style="margin-top: 12px;">
+    <a class="academia-btn" href=https://lmu-munich.academia.edu/AllaSizova target="_blank" rel="noopener">
+      Academia.edu
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>
