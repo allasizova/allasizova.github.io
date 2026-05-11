@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interlinear Gloss</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Noto+Sans+Tibetan&display=swap');
+
+  :root {
+    --bg: #faf8f3;
+    --text: #1a1a1a;
+    --tibetan: #1a1a1a;
+    --gloss: #2c5f8a;
+    --translation: #7a3e1a;
+    --meta: #888;
+    --border: #d8d0c0;
+    --divider: #c8bfaa;
+    --speech: #4a6e3a;
+    --fn: #999;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Serif', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 3rem 2rem;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #333;
+  }
+
+  .doc-meta {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin-bottom: 2.5rem;
+  }
+
+  /* Section headers */
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--meta);
+    border-top: 1px solid var(--divider);
+    padding-top: 1.5rem;
+    margin: 2rem 0 1.2rem;
+  }
+
+  /* Individual sentence gloss block */
+  .gloss-block {
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px dashed #e0d8cc;
+  }
+
+  .gloss-block:last-child {
+    border-bottom: none;
+  }
+
+  /* Interlinear rows */
+  .interlinear {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 1.4rem;
+    margin-bottom: 0.9rem;
+    align-items: flex-end;
+  }
+
+  .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.05rem;
+  }
+
+  .tier-tibetan {
+    font-family: 'Noto Sans Tibetan', serif;
+    font-size: 1.18rem;
+    line-height: 1.85;
+    color: var(--tibetan);
+    white-space: nowrap;
+  }
+
+  .tier-roman {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #555;
+    white-space: nowrap;
+  }
+
+  .tier-gloss {
+    font-size: 0.75rem;
+    color: var(--gloss);
+    font-variant: small-caps;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  /* Sub-labels for grammatical categories within gloss tier */
+  .g {
+    font-variant: normal;
+    font-size: 0.88em;
+    font-weight: 400;
+    color: var(--gloss);
+  }
+
+  /* Translation line */
+  .translation {
+    font-style: italic;
+    color: var(--translation);
+    border-left: 3px solid var(--translation);
+    padding-left: 1rem;
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+
+  /* Direct speech translation */
+  .translation.speech {
+    border-left-color: var(--speech);
+    color: var(--speech);
+  }
+
+  .fn-line {
+    font-size: 0.78rem;
+    color: var(--fn);
+    margin-top: 0.3rem;
+    padding-left: 1rem;
+  }
+
+  /* Proper name marker */
+  .pn { font-variant: normal; font-size: 0.88em; }
+
+  /* Auto sentence numbering via CSS counter */
+  .gloss-wrapper { counter-reset: sent; }
+  .gloss-block { counter-increment: sent; }
+  .gloss-block::before {
+    content: "(" counter(sent) ")";
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #bbb;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Legend */
+  .legend {
+    border-bottom: 2px solid var(--divider);
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--meta);
+    column-count: 3;
+    column-gap: 2rem;
+  }
+
+  .legend h3 {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    column-span: all;
+    color: #999;
+  }
+
+  .legend p { margin-bottom: 0.3rem; }
+  .legend abbr {
+    font-variant: small-caps;
+    font-weight: 600;
+    color: var(--gloss);
+    margin-right: 0.4rem;
+    font-style: normal;
+  }
+
+  @media (max-width: 600px) {
+    .legend { column-count: 2; }
+    body { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1><a href="https://lsf.verwaltung.uni-muenchen.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=1112896&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung" style="color:inherit;text-decoration:none;">12182 Klassisches Tibetisch 2 Grammatik und Semantik</a></h1>
+<div class="doc-meta">Reading — Householder Dbyig pa can · Interlinear Gloss</div>
+
+<!-- ══════════════ ABBREVIATIONS ══════════════ -->
+<div class="legend">
+  <h3>Abbreviations</h3>
+  <p><abbr>abl</abbr> ablative particle (<em>las, nas</em>)</p>
+  <p><abbr>adv</abbr> adverb</p>
+  <p><abbr>and</abbr> additive conjunction (<em>dang</em>)</p>
+  <p><abbr>cntr</abbr> contrastive (<em>gi, kyi, gyi, 'i</em>)</p>
+  <p><abbr>cond</abbr> conditional (<em>na</em>)</p>
+  <p><abbr>conj</abbr> conjunctive (semifinal) particle (<em>ste, te, de</em>)</p>
+  <p><abbr>coord</abbr> coordinative particle (<em>zhing, cing, shing</em>)</p>
+  <p><abbr>dat</abbr> dative/purposive (<em>la, du, tu, r, su</em>)</p>
+  <p><abbr>decl</abbr> declarative final particle</p>
+  <p><abbr>erg</abbr> ergative/agentive (<em>gis, kyis, gyis, s</em>)</p>
+  <p><abbr>fut</abbr> future stem</p>
+  <p><abbr>gen</abbr> genitive particle (<em>gi, kyi, gyi, 'i</em>)</p>
+  <p><abbr>hon</abbr> honorific form</p>
+  <p><abbr>imp</abbr> imperative</p>
+  <p><abbr>indf</abbr> indefinite article (<em>zhig, cig</em>)</p>
+  <p><abbr>inf</abbr> infinitive</p>
+  <p><abbr>ins</abbr> instrumental</p>
+  <p><abbr>loc</abbr> locative particle (<em>na</em>)</p>
+  <p><abbr>neg</abbr> negation (<em>mi, ma, med</em>)</p>
+  <p><abbr>nmlz</abbr> nominalizer (<em>pa, ba</em>)</p>
+  <p><abbr>pl</abbr> plural marker (<em>dag, rnams</em>)</p>
+  <p><abbr>pn</abbr> proper noun</p>
+  <p><abbr>pst</abbr> past / perfective stem</p>
+  <p><abbr>q</abbr> interrogative particle (<em>'am</em>)</p>
+  <p><abbr>quot</abbr> quotative particle (<em>zhes, ces</em>)</p>
+  <p><abbr>top</abbr> topic marker (<em>ni</em>)</p>
+</div>
+
+<div class="gloss-wrapper">
+
+<!-- ══════════════ SECTION 1: NIDĀNA ══════════════ -->
+<div class="section-label">Nidāna</div>
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">འདི་སྐད་</span><span class="tier-roman">ʼdi skad</span><span class="tier-gloss">this word</span></div>
+    <div class="unit"><span class="tier-tibetan">བདག་གིས་</span><span class="tier-roman">bdag gis</span><span class="tier-gloss">I.<g>erg</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཐོས་པ་</span><span class="tier-roman">thos pa</span><span class="tier-gloss">hear.<g>nmlz</g></span></div>
+    <div class="unit"><span class="tier-tibetan">དུས་གཅིག་ན།</span><span class="tier-roman">dus gcig na</span><span class="tier-gloss">time one <g>loc</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བཅོམ་ལྡན་འདས་</span><span class="tier-roman">bcom ldan ʼdas</span><span class="tier-gloss">Bhagavān</span></div>
+    <div class="unit"><span class="tier-tibetan">མཉན་ཡོད་ན།</span><span class="tier-roman">mnyan yod na</span><span class="tier-gloss">Śrāvastī <g>loc</g></span></div>
+    <div class="unit"><span class="tier-tibetan">རྒྱལ་བུ་རྒྱལ་བྱེད་</span><span class="tier-roman">rgyal bu rgyal byed</span><span class="tier-gloss">Prince Jeta</span></div>
+    <div class="unit"><span class="tier-tibetan">ཀྱི་</span><span class="tier-roman">kyi</span><span class="tier-gloss"><g>gen</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཚལ་</span><span class="tier-roman">tshal</span><span class="tier-gloss">grove</span></div>
+    <div class="unit"><span class="tier-tibetan">མགོན་མེད་ཟས་སྦྱིན་</span><span class="tier-roman">mgon med zas sbyin</span><span class="tier-gloss">Anāthapiṇḍada</span></div>
+    <div class="unit"><span class="tier-tibetan">གྱི་</span><span class="tier-roman">gyi</span><span class="tier-gloss"><g>gen</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཀུན་དགའ་ར་བ་ན་</span><span class="tier-roman">kun dgaʼ ra ba na</span><span class="tier-gloss">pleasure-grove <g>loc</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བཞུགས་སོ།</span><span class="tier-roman">bźugs so</span><span class="tier-gloss">abide.<g>hon.pst.decl</g></span></div>
+  </div>
+  <div class="translation">[These are] the words I heard. One day the Bhagavān was abiding in Śrāvastī, in the Grove of Prince Jeta, the pleasure-grove of Anāthapiṇḍada.</div>
+</div>
+
+<!-- ══════════════ SECTION 2: INTRODUCING THE BRAHMIN ══════════════ -->
+<div class="section-label">Introducing the Brahmin</div>
+
+<!-- S1 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">དེའི་ཚེ་</span><span class="tier-roman">de'i tshe</span><span class="tier-gloss">that.<g>gen</g> time</span></div>
+    <div class="unit"><span class="tier-tibetan">ཡུལ་དེ་ན་</span><span class="tier-roman">yul de na</span><span class="tier-gloss">country that <g>loc</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བྲམ་ཟེ་</span><span class="tier-roman">bram ze</span><span class="tier-gloss">brahmin</span></div>
+    <div class="unit"><span class="tier-tibetan">ཕྱིན་ཏེ་ལོ་ཤུ་ཤ་</span><span class="tier-roman">phyin te lo shu sha</span><span class="tier-gloss"><g>pn</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཞེས་བྱ་བ་</span><span class="tier-roman">zhes bya ba</span><span class="tier-gloss"><g>quot</g>.call.<g>nmlz</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཞིག་</span><span class="tier-roman">zhig</span><span class="tier-gloss"><g>indf</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཡོད་དེ།</span><span class="tier-roman">yod de</span><span class="tier-gloss">exist.<g>conj</g></span></div>
+  </div>
+  <div class="translation">At that time in that country there was a Brahmin called <i>Phyin te lo shu sha</i>.</div>
+</div>
+
+<!-- S2 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">བྲམ་ཟེ་དེའི་</span><span class="tier-roman">bram ze de'i</span><span class="tier-gloss">brahmin that.<g>gen</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཆུང་མ་དེ་</span><span class="tier-roman">chung ma de</span><span class="tier-gloss">wife that</span></div>
+    <div class="unit"><span class="tier-tibetan">རབ་ཏུ་མི་སྡུག་</span><span class="tier-roman">rab tu mi sdug</span><span class="tier-gloss">very <g>neg</g>.beautiful</span></div>
+    <div class="unit"><span class="tier-tibetan">ཅིང་</span><span class="tier-roman">cing</span><span class="tier-gloss"><g>coord</g></span></div>
+    <div class="unit"><span class="tier-tibetan">མིག་གཉིས་</span><span class="tier-roman">mig gnyis</span><span class="tier-gloss">eye two</span></div>
+    <div class="unit"><span class="tier-tibetan">ཀྱང་</span><span class="tier-roman">kyang</span><span class="tier-gloss">also</span></div>
+    <div class="unit"><span class="tier-tibetan">མི་མཐོང་སྟེ།</span><span class="tier-roman">mi mthong ste</span><span class="tier-gloss"><g>neg</g>.see.<g>conj</g></span></div>
+  </div>
+  <div class="translation">The wife of that Brahmin was very ugly and also blind in both eyes.</div>
+</div>
+
+<!-- S3 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">མི་མཐོང་བ་དེ་ལ་</span><span class="tier-roman">mi mthong ba de la</span><span class="tier-gloss"><g>neg</g>.see.<g>nmlz</g> that <g>dat</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བུ་ཕོ་ནི་</span><span class="tier-roman">bu pho ni</span><span class="tier-gloss">son.male <g>top</g></span></div>
+    <div class="unit"><span class="tier-tibetan">མེད་ཀྱི།</span><span class="tier-roman">med kyi</span><span class="tier-gloss"><g>neg</g>.exist.<g>cntr</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བུ་མོ་བདུན་</span><span class="tier-roman">bu mo bdun</span><span class="tier-gloss">daughter seven</span></div>
+    <div class="unit"><span class="tier-tibetan">ཡོད་དེ།</span><span class="tier-roman">yod de</span><span class="tier-gloss">exist.<g>decl</g></span></div>
+    <div class="unit"><span class="tier-tibetan">རབ་ཏུ་</span><span class="tier-roman">rab tu</span><span class="tier-gloss">very</span></div>
+    <div class="unit"><span class="tier-tibetan">དབུལ་ཕོངས་སོ།</span><span class="tier-roman">dbul phongs so</span><span class="tier-gloss">poor.<g>pst.decl</g></span></div>
+  </div>
+  <div class="translation">The blind one had seven daughters but no son, [the family] was very poor.</div>
+</div>
+
+<!-- ══════════════ SECTION 3: FAMILY TROUBLES ══════════════ -->
+<div class="section-label">The Brahmin's family troubles</div>
+
+<!-- S4 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">བྲམ་ཟེའི་བུ་མོ་</span><span class="tier-roman">bram ze'i bu mo</span><span class="tier-gloss">brahmin.<g>gen</g> daughter</span></div>
+    <div class="unit"><span class="tier-tibetan">དེ་དག་ཀྱང་</span><span class="tier-roman">de dag kyang</span><span class="tier-gloss">those <g>pl</g> also</span></div>
+    <div class="unit"><span class="tier-tibetan">སོ་སོར་</span><span class="tier-roman">so sor</span><span class="tier-gloss">one-by-one</span></div>
+    <div class="unit"><span class="tier-tibetan">བག་མར་</span><span class="tier-roman">bag mar</span><span class="tier-gloss">bride.<g>dat</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བཏང་སྟེ།</span><span class="tier-roman">btang ste</span><span class="tier-gloss">give.<g>pst.conj</g></span></div>
+  </div>
+  <div class="translation">[The couple] gave the daughters of the Brahmin in marriage<sup>*</sup> one after another (<em>so sor</em>).</div>
+  <div class="fn-line"><sup>*</sup> Lit. "sent [them] as brides."</div>
+</div>
+
+<!-- S5 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">ཕྱིས་</span><span class="tier-roman">phyis</span><span class="tier-gloss">later</span></div>
+    <div class="unit"><span class="tier-tibetan">དམག་པ་དག་</span><span class="tier-roman">dmag pa dag</span><span class="tier-gloss">son-in-law <g>pl</g></span></div>
+    <div class="unit"><span class="tier-tibetan">འདུས་ནས།</span><span class="tier-roman">ʼdus nas</span><span class="tier-gloss">gather.<g>pst.abl</g></span></div>
+  </div>
+  <div class="translation">Later, the sons-in-law gathered [in their house].</div>
+</div>
+
+<!-- S6 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">བྲམ་ཟེའི་ཆུང་མ་</span><span class="tier-roman">bram ze'i chung ma</span><span class="tier-gloss">brahmin.<g>gen</g> wife</span></div>
+    <div class="unit"><span class="tier-tibetan">ཡང་</span><span class="tier-roman">yang</span><span class="tier-gloss">also</span></div>
+    <div class="unit"><span class="tier-tibetan">ཁྲོ་ཞིང་</span><span class="tier-roman">khro zhing</span><span class="tier-gloss">wrathful.<g>coord</g></span></div>
+    <div class="unit"><span class="tier-tibetan">གཏུམ་མོ་</span><span class="tier-roman">gtum mo</span><span class="tier-gloss">fierce woman</span></div>
+    <div class="unit"><span class="tier-tibetan">ཞིག་སྟེ།</span><span class="tier-roman">zhig ste</span><span class="tier-gloss"><g>indf.conj</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བུ་མོ་དང་</span><span class="tier-roman">bu mo dang</span><span class="tier-gloss">daughter <g>and</g></span></div>
+    <div class="unit"><span class="tier-tibetan">དམག་པ་དག་</span><span class="tier-roman">dmag pa dag</span><span class="tier-gloss">son-in-law <g>pl</g></span></div>
+    <div class="unit"><span class="tier-tibetan">འོང་བ་ལ་</span><span class="tier-roman">ʼong ba la</span><span class="tier-gloss">come.<g>nmlz dat</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཁྲོས་ནས།</span><span class="tier-roman">khros nas</span><span class="tier-gloss">rage.<g>pst.abl</g></span></div>
+  </div>
+  <div class="translation">The wife of the Brahmin, being also a wrathful and hot-tempered woman (<em>mo</em>), raged at the visiting (lit. coming) daughters and sons-in-law.</div>
+</div>
+
+<!-- S7 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">བུ་མོ་དག་</span><span class="tier-roman">bu mo dag</span><span class="tier-gloss">daughter <g>pl</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཀྱང་</span><span class="tier-roman">kyang</span><span class="tier-gloss">also</span></div>
+    <div class="unit"><span class="tier-tibetan">ཕྱིར་</span><span class="tier-roman">phyir</span><span class="tier-gloss">back</span></div>
+    <div class="unit"><span class="tier-tibetan">མ་ལ་</span><span class="tier-roman">ma la</span><span class="tier-gloss">mother <g>dat</g></span></div>
+    <div class="unit"><span class="tier-tibetan">གཤེའོ།</span><span class="tier-roman">gshe'o</span><span class="tier-gloss">scold.<g>decl</g></span></div>
+  </div>
+  <div class="translation">Thereupon (<em>nas</em>), the daughters scolded their mother in return (<em>phyir</em>, lit. back).</div>
+</div>
+
+<!-- ══════════════ SECTION 4: THE LOST OX ══════════════ -->
+<div class="section-label">The lost ox</div>
+
+<!-- S8 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">དེའི་ཚེ་</span><span class="tier-roman">de'i tshe</span><span class="tier-gloss">that.<g>gen</g> time</span></div>
+    <div class="unit"><span class="tier-tibetan">ཞིང་དག་</span><span class="tier-roman">zhing dag</span><span class="tier-gloss">field <g>pl</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཀྱང་</span><span class="tier-roman">kyang</span><span class="tier-gloss">also</span></div>
+    <div class="unit"><span class="tier-tibetan">བརྔ་རན་ནས།</span><span class="tier-roman">brnga ran nas</span><span class="tier-gloss">reap.ready for.<g>abl</g></span></div>
+  </div>
+  <div class="translation">At that time, it was the season for fields to be reaped.<sup>*</sup></div>
+  <div class="fn-line"><sup>*</sup> Lit. "the fields also having become [time for] reaping."</div>
+</div>
+
+<!-- S9 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">ཁྱིམ་མཚེས་ལས་</span><span class="tier-roman">khyim mtshe las</span><span class="tier-gloss">neighbour <g>abl</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བ་ལང་ཞིག་</span><span class="tier-roman">ba lang zhig</span><span class="tier-gloss">ox <g>indf</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བརྙས་ཏེ།</span><span class="tier-roman">brnyas te</span><span class="tier-gloss">borrow.<g>pst.conj</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཞིང་ཐོག་ཏུ་</span><span class="tier-roman">zhing thog tu</span><span class="tier-gloss">field.on <g>loc</g></span></div>
+    <div class="unit"><span class="tier-tibetan">སོང་སོང་བ་ལས།</span><span class="tier-roman">song song ba las</span><span class="tier-gloss">go.go.<g>nmlz abl</g></span></div>
+  </div>
+  <div class="translation">Having borrowed an ox from a neighbour, [the Brahmin] was going back and forth on the field [and],</div>
+</div>
+
+<!-- S10 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">ལེགས་པར་</span><span class="tier-roman">legs par</span><span class="tier-gloss">well</span></div>
+    <div class="unit"><span class="tier-tibetan">མ་བསྲུངས་པས་</span><span class="tier-roman">ma bsrungs pas</span><span class="tier-gloss"><g>neg</g>.guard.<g>pst.nmlz.instr</g></span></div>
+    <div class="unit"><span class="tier-tibetan">སྟོར་ཏོ།</span><span class="tier-roman">stor to</span><span class="tier-gloss">lose.<g>pst.decl</g></span></div>
+  </div>
+  <div class="translation">because [he] had not watched (lit. guarded) [the ox] properly, [it] got lost.</div>
+</div>
+
+<!-- ══════════════ SECTION 5: INNER MONOLOGUE ══════════════ -->
+<div class="section-label">The Brahmin's inner monologue</div>
+
+<!-- S11 – framing -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">དེའི་ཚེ་ན་</span><span class="tier-roman">de'i tshe na</span><span class="tier-gloss">that.<g>gen</g> time <g>loc</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཕྱིན་ཏེ་ལོ་ཤུ་ཤས་</span><span class="tier-roman">phyin te lo shu sha</span><span class="tier-gloss"><g>pn.erg</g></span></div>
+    <div class="unit"><span class="tier-tibetan">འདི་སྙམ་དུ་</span><span class="tier-roman">ʼdi snyam du</span><span class="tier-gloss">this think.<g>dat</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བསམས་སོ།</span><span class="tier-roman">bsams so</span><span class="tier-gloss">think.<g>pst.decl</g></span></div>
+  </div>
+  <div class="translation">At that point Phyin te lo shu sha thought this in [his] mind:</div>
+</div>
+
+<!-- S12 – inner speech -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">བདག་གིས་</span><span class="tier-roman">bdag gis</span><span class="tier-gloss">I.<g>erg</g></span></div>
+    <div class="unit"><span class="tier-tibetan">སྔོན་</span><span class="tier-roman">sngon</span><span class="tier-gloss">before</span></div>
+    <div class="unit"><span class="tier-tibetan">ཉེས་པ་ཅི་ཞིག་</span><span class="tier-roman">nyes pa ci zhig</span><span class="tier-gloss">fault what <g>indf</g></span></div>
+    <div class="unit"><span class="tier-tibetan">བྱས་ན།</span><span class="tier-roman">byas na</span><span class="tier-gloss">do.<g>pst cond</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཁྱིམ་དུ་འོང་ན་ནི།</span><span class="tier-roman">khyim du ʼong na ni</span><span class="tier-gloss">home <g>dat</g> come <g>cond top</g></span></div>
+    <div class="unit"><span class="tier-tibetan">ཆུང་མས་</span><span class="tier-roman">chung mas</span><span class="tier-gloss">wife.<g>erg</g></span></div>
+    <div class="unit"><span class="tier-tibetan">རྟག་ཏུ་</span><span class="tier-roman">rtag tu</span><span class="tier-gloss">always</span></div>
+    <div class="unit"><span class="tier-tibetan">སྤྱོ་ཞིང་</span><span class="tier-roman">spyo zhing</span><span class="tier-gloss">scold.<g>coord</g></span></div>
+  </div>
+  <div class="translation speech">"What bad deeds did I do earlier so that when I return home [my] wife is always scolding</div>
+</div>
+
+<!-- S13 -->
+<div class="gloss-block">
+  <div class="interlinear">
+    <div class="unit"><span class="tier-tibetan">བུ་མོ་བདུན་དང་</span><span class="tier-roman">bu mo bdun dang</span><span class="tier-gloss">daughter seven <g>and</g></span></div>
+    <div class="unit"><span class="tier-tibetan">དམག་པ་རྣམས་ཀྱིས་</span><span class="tier-roman">dmag pa rnams kyis</span><span class="tier-gloss">son-in-law <g>pl.erg</g></span></div>
+    <div class="unit"><span class="tier-tibetan">འདུག་ཏུ་</span><span class="tier-roman">ʼdug tu</span><span class="tier-gloss">stay.<g>dat</g></span></div>
+    <div class="unit"><span class="tier-tibetan">མི་སྟེར།</span><span class="tier-roman">mi ster</span><span class="tier-gloss"><g>neg</g>.give</span></div>
+  </div>
+  <div class="translation speech">and the seven daughters and the sons-in-law do not [even] allow [me] to stay?</div>
+</div>
+
+</div><!-- end gloss-wrapper -->
+
+</body>
+</html>
