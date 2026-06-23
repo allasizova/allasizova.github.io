@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мои собаки в Азии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:   #3f6e78;   /* единственный акцентный цвет */
+    --accent-dk:#2c545d;
+    --bg:       #faf8f3;   /* спокойный фон */
+    --ink:      #2f2f2c;   /* основной текст */
+    --ink-soft: #76746c;
+    --rule:     #e4e0d6;
+
+    --font: "Nunito", system-ui, sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font);
+    font-size:20px;
+    line-height:1.75;
+  }
+
+  .wrap{ max-width:44rem; margin:0 auto; padding:0 1.4rem; }
+
+  /* ── Шапка ──────────────────────────────── */
+  .book-header{
+    text-align:center;
+    padding:4rem 0 2rem;
+    border-bottom:2px solid var(--accent);
+    margin-bottom:2.5rem;
+  }
+  .book-header h1{
+    font-weight:700;
+    font-size:clamp(2.2rem, 7vw, 3rem);
+    color:var(--accent);
+    margin:0 0 .5rem;
+    line-height:1.15;
+  }
+  .book-header .author{
+    font-weight:600;
+    color:var(--ink-soft);
+    font-size:1.1rem;
+    margin:0;
+  }
+
+  /* ── Оглавление ─────────────────────────── */
+  .toc{ margin:0 0 3.5rem; }
+  .toc h2{
+    font-weight:700;
+    color:var(--accent);
+    font-size:1.2rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin:0 0 1rem;
+    padding-bottom:.5rem;
+    border-bottom:1px solid var(--rule);
+  }
+  .toc ol{ list-style:none; margin:0; padding:0; counter-reset:c; }
+  .toc li{ counter-increment:c; border-bottom:1px solid var(--rule); }
+  .toc a{
+    display:flex; align-items:baseline; gap:.9rem;
+    padding:.6rem .2rem;
+    text-decoration:none;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .toc a::before{
+    content: counter(c) ".";
+    flex:0 0 auto;
+    min-width:1.8rem;
+    color:var(--accent);
+    font-weight:700;
+  }
+  .toc a:hover{ color:var(--accent-dk); }
+  .toc a:hover::before{ color:var(--accent-dk); }
+  .toc a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* ── Главы ──────────────────────────────── */
+  .chapter{ padding:2.5rem 0; border-top:1px solid var(--rule); }
+  .chapter:first-of-type{ border-top:none; padding-top:0; }
+  .chapter h2{
+    font-weight:700;
+    font-size:clamp(1.5rem, 4.5vw, 2rem);
+    color:var(--accent);
+    line-height:1.2;
+    margin:0 0 1.4rem;
+  }
+  .chapter h2 .num{
+    color:var(--ink-soft);
+    font-weight:600;
+    margin-right:.5rem;
+  }
+  .chapter-body p{ margin:0 0 1.2rem; }
+  .chapter-body p:last-child{ margin-bottom:0; }
+
+  .chapter-body figure{ margin:1.8rem 0; text-align:center; }
+  .chapter-body figure img{
+    width:100%;
+    max-width:30rem;
+    height:auto;
+    border-radius:6px;
+    border:1px solid var(--rule);
+    display:block;
+    margin:0 auto;
+  }
+  .chapter-body figcaption{
+    margin-top:.6rem;
+    font-size:.9rem;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+
+  .placeholder{ color:var(--ink-soft); font-style:italic; }
+
+  .to-top{
+    display:inline-block;
+    margin-top:1.4rem;
+    font-size:.9rem;
+    font-weight:700;
+    color:var(--accent);
+    text-decoration:none;
+  }
+  .to-top:hover{ color:var(--accent-dk); text-decoration:underline; }
+
+  footer{ padding:2rem 0 4rem; border-top:2px solid var(--accent); margin-top:1rem; }
+
+  @media (max-width: 600px){ body{ font-size:18px; } }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="book-header" id="top">
+      <h1>Мои собаки в Азии</h1>
+      <p class="author">Свен Гедин</p>
+    </header>
+
+    <!-- ОГЛАВЛЕНИЕ -->
+    <nav class="toc" aria-label="Оглавление">
+      <h2>Содержание</h2>
+      <ol>
+        <li><a href="#ch1">Мои первые воспоминания о собаках из Азии</a></li>
+        <li><a href="#ch2">Мой первый Йолдаш и его трагическая судьба</a></li>
+        <li><a href="#ch3">Вниз по Тариму с двумя собаками и диким гусём</a></li>
+        <li><a href="#ch4">Дикие и домашние животные в Северо-Восточном Тибете</a></li>
+        <li><a href="#ch5">Борзые, тигры и другие животные</a></li>
+        <li><a href="#ch6">Две собаки и автор несут караульную службу</a></li>
+        <li><a href="#ch7">Паппи (Щенок)</a></li>
+        <li><a href="#ch8">Трупные собаки</a></li>
+        <li><a href="#ch9">Таккар, умная пастушья собака</a></li>
+        <li><a href="#ch10">Хами и Дикки</a></li>
+        <li><a href="#ch11">Пекинес Путте</a></li>
+        <li><a href="#ch12">Тагиль</a></li>
+      </ol>
+    </nav>
+
+    <!-- ── Глава 1 ── -->
+    <article class="chapter" id="ch1">
+      <h2><span class="num">1.</span>Мои первые воспоминания о собаках из Азии</h2>
+      <div class="chapter-body">
+        <p>До того памятного дня в 1885 году, когда я, двадцатилетний юноша, впервые отправился к порогу Азии — в Баку на Каспийском море, чтобы занять место домашнего учителя у Йохана Сандгрена, инженера заводов Нобеля, — я дома, в Швеции, никогда ещё не держал собаки. Сын Сандгрена, Эрхард, учившийся в школе Бескова в Стокгольме, должен был провести год у родителей, и ему требовались частные уроки, чтобы не потерять учебный год. В доме папаши Сандгрена — каменной вилле в полутатарском стиле, состоявшей лишь из первого этажа с углублённой верандой, — я прожил полгода, вбивая в голову моего милого Эрхарда полезные знания. Худшего учителя наверняка не бывало ни к востоку, ни к западу от границы между двумя частями света, ибо обучать мальчика склонению слова mensa, шведскому правописанию и прочим важным премудростям в то время, как вся Азия с её лошадьми, собаками и верблюдами лежала передо мной в ожидании, было требованием, далеко превосходившим мои силы.</p>
+        <figure>
+          <img src="https://s0.rbk.ru/v6_top_pics/media/img/7/19/756752350085197.webp" alt="Мопс">
+          <figcaption>Мопс</figcaption>
+        </figure>
+        <!-- Вставьте остальные абзацы главы здесь -->
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 2 ── -->
+    <article class="chapter" id="ch2">
+      <h2><span class="num">2.</span>Мой первый Йолдаш и его трагическая судьба</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 3 ── -->
+    <article class="chapter" id="ch3">
+      <h2><span class="num">3.</span>Вниз по Тариму с двумя собаками и диким гусём</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 4 ── -->
+    <article class="chapter" id="ch4">
+      <h2><span class="num">4.</span>Дикие и домашние животные в Северо-Восточном Тибете</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 5 ── -->
+    <article class="chapter" id="ch5">
+      <h2><span class="num">5.</span>Борзые, тигры и другие животные</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 6 ── -->
+    <article class="chapter" id="ch6">
+      <h2><span class="num">6.</span>Две собаки и автор несут караульную службу</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 7 ── -->
+    <article class="chapter" id="ch7">
+      <h2><span class="num">7.</span>Паппи (Щенок)</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 8 ── -->
+    <article class="chapter" id="ch8">
+      <h2><span class="num">8.</span>Трупные собаки</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 9 ── -->
+    <article class="chapter" id="ch9">
+      <h2><span class="num">9.</span>Таккар, умная пастушья собака</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 10 ── -->
+    <article class="chapter" id="ch10">
+      <h2><span class="num">10.</span>Хами и Дикки</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 11 ── -->
+    <article class="chapter" id="ch11">
+      <h2><span class="num">11.</span>Пекинес Путте</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <!-- ── Глава 12 ── -->
+    <article class="chapter" id="ch12">
+      <h2><span class="num">12.</span>Тагиль</h2>
+      <div class="chapter-body">
+        <!-- Вставьте текст главы здесь -->
+        <p class="placeholder">Текст главы будет добавлен здесь.</p>
+      </div>
+      <a href="#top" class="to-top">↑ К содержанию</a>
+    </article>
+
+    <footer></footer>
+
+  </div>
+
+</body>
+</html>
